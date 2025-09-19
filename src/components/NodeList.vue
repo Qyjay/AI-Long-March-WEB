@@ -45,66 +45,90 @@
     
     <!-- 搜索和筛选 -->
     <div class="p-4 border-b border-gray-200">
-      <div class="relative mb-3">
-        <input 
-          v-model="searchQuery"
-          type="text" 
-          placeholder="搜索节点名称、描述或标签..."
-          class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-        >
-        <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-        </svg>
-        <button 
-          v-if="searchQuery"
-          @click="searchQuery = ''"
-          class="absolute right-3 top-2.5 w-5 h-5 text-gray-400 hover:text-gray-600"
-        >
-          <svg fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+      <div class="flex items-center gap-3 mb-3">
+        <div class="relative flex-1">
+          <input 
+            v-model="searchQuery"
+            type="text" 
+            placeholder="搜索节点名称、描述或标签..."
+            class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+          >
+          <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
           </svg>
-        </button>
-      </div>
-      
-      <!-- 筛选器 -->
-      <div class="flex flex-wrap gap-2 mb-3">
+          <button 
+            v-if="searchQuery"
+            @click="searchQuery = ''"
+            class="absolute right-3 top-2.5 w-5 h-5 text-gray-400 hover:text-gray-600"
+          >
+            <svg fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        
+        <!-- 筛选栏收缩按钮 -->
         <button 
-          v-for="filter in filters"
-          :key="filter.key"
-          @click="toggleFilter(filter.key)"
-          class="px-3 py-1 text-sm rounded-full border transition-all duration-200 flex items-center gap-1"
-          :class="activeFilters.includes(filter.key) 
-            ? 'bg-primary text-white border-primary shadow-md transform scale-105' 
-            : 'bg-gray-100 text-gray-600 border-gray-300 hover:bg-gray-200 hover:border-gray-400'"
+          @click="toggleFilterCollapse"
+          class="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors flex items-center gap-1 text-sm text-gray-600"
+          :title="isFilterCollapsed ? '展开筛选' : '收起筛选'"
         >
-          <span>{{ filter.label }}</span>
-          <span v-if="activeFilters.includes(filter.key)" class="text-xs">
-            ({{ getFilterCount(filter.key) }})
-          </span>
-        </button>
-      </div>
-      
-      <!-- 排序选项 -->
-      <div class="flex items-center gap-2 text-sm">
-        <span class="text-gray-600">排序:</span>
-        <select 
-          v-model="sortBy"
-          class="px-2 py-1 border border-gray-300 rounded text-sm focus:ring-1 focus:ring-primary focus:border-primary"
-        >
-          <option value="order">默认顺序</option>
-          <option value="name">名称</option>
-          <option value="distance">距离</option>
-          <option value="visited">访问状态</option>
-        </select>
-        <button 
-          @click="toggleSortOrder"
-          class="p-1 text-gray-400 hover:text-gray-600 transition-colors"
-          :title="sortOrder === 'asc' ? '升序' : '降序'"
-        >
-          <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': sortOrder === 'desc' }" fill="currentColor" viewBox="0 0 20 20">
+          <svg 
+            class="w-4 h-4 transition-transform duration-200" 
+            :class="{ 'rotate-180': isFilterCollapsed }"
+            fill="currentColor" 
+            viewBox="0 0 20 20"
+          >
             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
+          <span class="hidden sm:inline">{{ isFilterCollapsed ? '展开' : '收起' }}</span>
         </button>
+      </div>
+      
+      <!-- 筛选器 (可收缩) -->
+      <div 
+        v-show="!isFilterCollapsed"
+        class="transition-all duration-300 ease-in-out overflow-hidden"
+      >
+        <div class="flex flex-wrap gap-2 mb-3">
+          <button 
+            v-for="filter in filters"
+            :key="filter.key"
+            @click="toggleFilter(filter.key)"
+            class="px-3 py-1 text-sm rounded-full border transition-all duration-200 flex items-center gap-1"
+            :class="activeFilters.includes(filter.key) 
+              ? 'bg-primary text-white border-primary shadow-md transform scale-105' 
+              : 'bg-gray-100 text-gray-600 border-gray-300 hover:bg-gray-200 hover:border-gray-400'"
+          >
+            <span>{{ filter.label }}</span>
+            <span v-if="activeFilters.includes(filter.key)" class="text-xs">
+              ({{ getFilterCount(filter.key) }})
+            </span>
+          </button>
+        </div>
+        
+        <!-- 排序选项 -->
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-gray-600">排序:</span>
+          <select 
+            v-model="sortBy"
+            class="px-2 py-1 border border-gray-300 rounded text-sm focus:ring-1 focus:ring-primary focus:border-primary"
+          >
+            <option value="order">默认顺序</option>
+            <option value="name">名称</option>
+            <option value="distance">距离</option>
+            <option value="visited">访问状态</option>
+          </select>
+          <button 
+            @click="toggleSortOrder"
+            class="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+            :title="sortOrder === 'asc' ? '升序' : '降序'"
+          >
+            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': sortOrder === 'desc' }" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
     
@@ -570,6 +594,7 @@ const sortBy = ref('order') // 'order' | 'name' | 'distance' | 'visited'
 const sortOrder = ref('asc') // 'asc' | 'desc'
 const selectedNode = ref(null)
 const showNodeDetail = ref(false)
+const isFilterCollapsed = ref(false) // 筛选栏收缩状态
 
 // 存储
 const progressStore = useProgressStore()
@@ -836,6 +861,13 @@ const toggleViewMode = () => {
  */
 const toggleSortOrder = () => {
   sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
+}
+
+/**
+ * 切换筛选栏收缩状态
+ */
+const toggleFilterCollapse = () => {
+  isFilterCollapsed.value = !isFilterCollapsed.value
 }
 
 /**

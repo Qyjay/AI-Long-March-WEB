@@ -135,7 +135,7 @@
       </div>
     </div>
     
-    <!-- 进度指示器 -->
+    <!-- 进度指示器
     <div class="progress-indicator">
       <div class="progress-content">
         <div class="progress-info">
@@ -154,7 +154,7 @@
           ></div>
         </div>
       </div>
-    </div>
+    </div> -->
     
     <!-- 节点信息弹窗 -->
     <div 
