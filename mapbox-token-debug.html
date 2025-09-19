@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapbox Token 调试</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        #map { width: 100%; height: 400px; margin: 20px 0; }
+        .info { background: #f0f0f0; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .error { background: #ffebee; color: #c62828; }
+        .success { background: #e8f5e8; color: #2e7d32; }
+    </style>
+</head>
+<body>
+    <h1>Mapbox Token 调试工具</h1>
+    
+    <div class="info">
+        <h3>Token 信息:</h3>
+        <p id="token-info">检查中...</p>
+    </div>
+    
+    <div class="info">
+        <h3>API 测试:</h3>
+        <p id="api-test">测试中...</p>
+    </div>
+    
+    <div id="map"></div>
+    
+    <div class="info">
+        <h3>地图加载状态:</h3>
+        <p id="map-status">初始化中...</p>
+    </div>
+
+    <script>
+        // 从 .env 文件中读取的 token
+        const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGVmaHR1ciIsImEiOiJjbWZueTh5anQwMDU2MnBwc2x1MTdvbTRyIn0.6wzewy9iWSbbpixDbjvXrw';
+        
+        // 显示 token 信息
+        function displayTokenInfo() {
+            const tokenInfo = document.getElementById('token-info');
+            if (!MAPBOX_TOKEN) {
+                tokenInfo.innerHTML = '<span class="error">❌ Token 未配置</span>';
+                return false;
+            }
+            
+            if (!MAPBOX_TOKEN.startsWith('pk.')) {
+                tokenInfo.innerHTML = '<span class="error">❌ Token 格式错误，应该以 "pk." 开头</span>';
+                return false;
+            }
+            
+            tokenInfo.innerHTML = `
+                <span class="success">✅ Token 格式正确</span><br>
+                <strong>Token:</strong> ${MAPBOX_TOKEN.substring(0, 20)}...<br>
+                <strong>长度:</strong> ${MAPBOX_TOKEN.length} 字符
+            `;
+            return true;
+        }
+        
+        // 测试 API 访问
+        async function testAPI() {
+            const apiTest = document.getElementById('api-test');
+            try {
+                const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/beijing.json?access_token=${MAPBOX_TOKEN}`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    apiTest.innerHTML = '<span class="success">✅ API 访问成功</span>';
+                    return true;
+                } else {
+                    const errorData = await response.json();
+                    apiTest.innerHTML = `<span class="error">❌ API 访问失败: ${errorData.message || response.statusText}</span>`;
+                    return false;
+                }
+            } catch (error) {
+                apiTest.innerHTML = `<span class="error">❌ API 请求错误: ${error.message}</span>`;
+                return false;
+            }
+        }
+        
+        // 初始化地图
+        function initializeMap() {
+            const mapStatus = document.getElementById('map-status');
+            
+            try {
+                mapboxgl.accessToken = MAPBOX_TOKEN;
+                
+                const map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v11',
+                    center: [116.4074, 39.9042], // 北京坐标
+                    zoom: 10
+                });
+                
+                map.on('load', () => {
+                    mapStatus.innerHTML = '<span class="success">✅ 地图加载成功</span>';
+                });
+                
+                map.on('error', (e) => {
+                    mapStatus.innerHTML = `<span class="error">❌ 地图加载失败: ${e.error.message}</span>`;
+                });
+                
+            } catch (error) {
+                mapStatus.innerHTML = `<span class="error">❌ 地图初始化失败: ${error.message}</span>`;
+            }
+        }
+        
+        // 运行所有测试
+        async function runTests() {
+            const tokenValid = displayTokenInfo();
+            
+            if (tokenValid) {
+                const apiValid = await testAPI();
+                if (apiValid) {
+                    initializeMap();
+                }
+            }
+        }
+        
+        // 页面加载完成后运行测试
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

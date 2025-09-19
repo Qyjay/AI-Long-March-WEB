@@ -1,0 +1,240 @@
+[
+  {
+    "id": "first_step",
+    "name": "踏出第一步",
+    "description": "开始长征之旅",
+    "icon": "/assets/achv/first_step.svg",
+    "category": "progress",
+    "points": 10,
+    "rarity": "common",
+    "unlockCondition": {
+      "type": "visit_node",
+      "nodeId": "node_ruijin"
+    }
+  },
+  {
+    "id": "river_crosser",
+    "name": "渡江勇士",
+    "description": "成功渡过湘江",
+    "icon": "/assets/achv/river_crosser.svg",
+    "category": "combat",
+    "points": 25,
+    "rarity": "uncommon",
+    "unlockCondition": {
+      "type": "complete_scene",
+      "sceneId": "scene_xiangjiang_battle"
+    }
+  },
+  {
+    "id": "strategic_mind",
+    "name": "战略家",
+    "description": "参与遵义会议，见证历史转折",
+    "icon": "/assets/achv/strategic_mind.svg",
+    "category": "story",
+    "points": 50,
+    "rarity": "rare",
+    "unlockCondition": {
+      "type": "visit_node",
+      "nodeId": "node_zunyi"
+    }
+  },
+  {
+    "id": "master_tactician",
+    "name": "用兵如神",
+    "description": "完成四渡赤水的经典战例",
+    "icon": "/assets/achv/master_tactician.svg",
+    "category": "tactical",
+    "points": 75,
+    "rarity": "epic",
+    "unlockCondition": {
+      "type": "complete_scene",
+      "sceneId": "scene_chishui_crossing"
+    }
+  },
+  {
+    "id": "bridge_hero",
+    "name": "飞夺英雄",
+    "description": "勇敢参与飞夺泸定桥",
+    "icon": "/assets/achv/bridge_hero.svg",
+    "category": "heroic",
+    "points": 100,
+    "rarity": "legendary",
+    "unlockCondition": {
+      "type": "complete_scene",
+      "sceneId": "scene_luding_bridge"
+    }
+  },
+  {
+    "id": "mountain_climber",
+    "name": "雪山征服者",
+    "description": "成功翻越夹金山",
+    "icon": "/assets/achv/mountain_climber.svg",
+    "category": "survival",
+    "points": 60,
+    "rarity": "rare",
+    "unlockCondition": {
+      "type": "visit_node",
+      "nodeId": "node_jiajin"
+    }
+  },
+  {
+    "id": "grassland_survivor",
+    "name": "草地求生者",
+    "description": "穿越茫茫草地",
+    "icon": "/assets/achv/grassland_survivor.svg",
+    "category": "survival",
+    "points": 80,
+    "rarity": "epic",
+    "unlockCondition": {
+      "type": "visit_node",
+      "nodeId": "node_grassland"
+    }
+  },
+  {
+    "id": "pass_breaker",
+    "name": "关隘突破者",
+    "description": "攻克腊子口天险",
+    "icon": "/assets/achv/pass_breaker.svg",
+    "category": "combat",
+    "points": 70,
+    "rarity": "rare",
+    "unlockCondition": {
+      "type": "visit_node",
+      "nodeId": "node_lazikou"
+    }
+  },
+  {
+    "id": "long_march_hero",
+    "name": "长征英雄",
+    "description": "完成整个长征之旅",
+    "icon": "/assets/achv/long_march_hero.svg",
+    "category": "completion",
+    "points": 200,
+    "rarity": "legendary",
+    "unlockCondition": {
+      "type": "visit_node",
+      "nodeId": "node_wuqizheng"
+    }
+  },
+  {
+    "id": "explorer",
+    "name": "探索者",
+    "description": "访问5个不同的节点",
+    "icon": "/assets/achv/explorer.svg",
+    "category": "exploration",
+    "points": 30,
+    "rarity": "common",
+    "unlockCondition": {
+      "type": "visit_nodes_count",
+      "count": 5
+    }
+  },
+  {
+    "id": "historian",
+    "name": "历史学家",
+    "description": "完成10个历史场景",
+    "icon": "/assets/achv/historian.svg",
+    "category": "story",
+    "points": 100,
+    "rarity": "epic",
+    "unlockCondition": {
+      "type": "complete_scenes_count",
+      "count": 10
+    }
+  },
+  {
+    "id": "decision_maker",
+    "name": "决策者",
+    "description": "做出50个重要选择",
+    "icon": "/assets/achv/decision_maker.svg",
+    "category": "choice",
+    "points": 80,
+    "rarity": "rare",
+    "unlockCondition": {
+      "type": "make_choices_count",
+      "count": 50
+    }
+  },
+  {
+    "id": "speed_runner",
+    "name": "急行军",
+    "description": "在30分钟内完成长征",
+    "icon": "/assets/achv/speed_runner.svg",
+    "category": "challenge",
+    "points": 150,
+    "rarity": "legendary",
+    "unlockCondition": {
+      "type": "complete_time",
+      "maxTime": 1800000
+    }
+  },
+  {
+    "id": "perfectionist",
+    "name": "完美主义者",
+    "description": "在所有选择中都做出最优决策",
+    "icon": "/assets/achv/perfectionist.svg",
+    "category": "challenge",
+    "points": 300,
+    "rarity": "mythic",
+    "unlockCondition": {
+      "type": "perfect_choices",
+      "percentage": 100
+    }
+  },
+  {
+    "id": "unity_builder",
+    "name": "团结建设者",
+    "description": "在困难时刻始终选择团结选项",
+    "icon": "/assets/achv/unity_builder.svg",
+    "category": "virtue",
+    "points": 120,
+    "rarity": "epic",
+    "unlockCondition": {
+      "type": "virtue_choices",
+      "virtue": "unity",
+      "count": 10
+    }
+  },
+  {
+    "id": "brave_heart",
+    "name": "勇敢之心",
+    "description": "在危险时刻始终选择勇敢面对",
+    "icon": "/assets/achv/brave_heart.svg",
+    "category": "virtue",
+    "points": 120,
+    "rarity": "epic",
+    "unlockCondition": {
+      "type": "virtue_choices",
+      "virtue": "courage",
+      "count": 10
+    }
+  },
+  {
+    "id": "wise_leader",
+    "name": "智慧领袖",
+    "description": "在战略决策中展现卓越智慧",
+    "icon": "/assets/achv/wise_leader.svg",
+    "category": "virtue",
+    "points": 150,
+    "rarity": "legendary",
+    "unlockCondition": {
+      "type": "virtue_choices",
+      "virtue": "wisdom",
+      "count": 15
+    }
+  },
+  {
+    "id": "collection_master",
+    "name": "收藏大师",
+    "description": "解锁所有其他成就",
+    "icon": "/assets/achv/collection_master.svg",
+    "category": "meta",
+    "points": 500,
+    "rarity": "mythic",
+    "unlockCondition": {
+      "type": "unlock_achievements",
+      "excludeIds": ["collection_master"],
+      "percentage": 100
+    }
+  }
+]

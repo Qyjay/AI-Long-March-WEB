@@ -1,0 +1,311 @@
+好的！下面是一份\*\*“能被 AI 读懂、可直接作为提示词（prompt）使用的前端开发文档”\*\*。内容围绕你的“重走长征路”沉浸式互动网页，技术栈为 **Vue3 + JavaScript + Vite + Mapbox GL + Pinia + Tailwind + GSAP**。文档采用“指令化规范”写法，AI 据此即可自动生成/修改代码与资产。
+
+---
+
+# PromptSpec · Frontend – Immersive Long March (Vue3)
+
+## 0) 项目目标（Goal）
+
+* 构建一个**沉浸式互动网页**，用户在可缩放的大地图上逐步解锁**长征关键节点**，进入**剧情式任务**，做出**分支选择**，通过**小游戏**体验艰险，获得**成就徽章**，并在结尾生成**分享海报**。
+* 强调**AI 小精灵（讲解员）**的陪伴与问答，支持**离线兜底内容**，保证**演示视频可一遍过**。
+* **先 Mapbox 2D/2.5D 倾斜视角**实现（可后续切 Cesium 3D）。
+
+## 1) 非功能需求（NFR）
+
+* **首屏可交互 ≤ 3s**（桌面 Chrome/1080p 录屏环境）。
+* **无后端亦可运行**：本地 JSON Mock + 本地图像/音频兜底。
+* **演示模式**：可脚本化自动飞行/点击/选择，便于录屏。
+* **可配置**：节点/剧情/成就均来源 JSON，不硬编码在组件。
+* **可访问性**：键盘可用、文本对比度合规、按钮状态可见。
+* **国际化预留**：字段中保留 `name_zh`/`name_en`。
+
+## 2) 技术栈（Tech Stack）
+
+* 前端：Vue3 + Vite + Vue Router + Pinia + TailwindCSS + GSAP + Mapbox GL JS
+* 工具：axios、mitt（事件总线）、html2canvas（分享海报）、lottie-web（可选）
+* 代码风格：ESLint + Prettier（推荐 airbnb/standard 其一）
+* 包管理器：pnpm（可替换为 npm/yarn）
+
+## 3) 目录结构（必须遵守）
+
+```
+src/
+  api/            # 请求封装 & Mock 切换（axios）
+  assets/         # 全局样式/图标/字体
+  components/     # 复用组件（地图、对话、成就、徽章、弹窗）
+  data/           # JSON 配置与 Mock（nodes/scenes/achievements/route/demo.script）
+  pages/          # 页面（Home/Map/Story/Achievement/Settings）
+  router/         # vue-router 配置
+  stores/         # pinia（progress、achievements、settings）
+  utils/          # 工具（bus、guards、animation、geo、download、a11y）
+  App.vue
+  main.js
+public/
+  assets/         # 体积可控的插画/音频（webp/mp3），或改用 CDN
+```
+
+## 4) 环境变量（.env）
+
+```
+VITE_API_BASE_URL=http://localhost:8787
+VITE_USE_MOCK=1           # 1=Mock, 0=走后端
+VITE_MAPBOX_TOKEN=<your_token>
+VITE_APP_TITLE="Immersive Long March"
+```
+
+## 5) 路由（Router）
+
+* `/`：首页引导（开始旅程 / 了解背景）
+* `/map`：地图主视（节点列表 + Mapbox 视图 + 飞行动画）
+* `/story/:nodeId`：剧情页（渲染 steps；分支选择；点亮成就）
+* `/achievements`：成就墙（徽章状态、说明、当代价值）
+* `/settings`：设置（语言、演示模式开关、清空进度）
+
+**守卫**：首次进入若无进度，导航至 `/`；选择节点后进入 `/story/:nodeId`。
+
+## 6) 状态（Pinia Stores）
+
+* `useProgress`：`currentNodeId: string | null`，`visited: string[]`，`choicesTrail: {nodeId, choiceKey}[]`
+* `useAchievements`：`earned: Record<string, boolean>`
+* `useSettings`：`lang: 'zh'|'en'`，`demoMode: boolean`，`sfx: boolean`，`tts: boolean`
+* 方法：`goto(nodeId)`、`award(key)`、`recordChoice(nodeId, key)`、`resetAll()`
+
+## 7) 数据契约（API/JSON Schema）
+
+> **要求：严格遵守字段名**。AI 生成数据时按下述样例即可。
+
+### 7.1 /api/route （或本地 `data/route.mock.json`）
+
+* **类型**：GeoJSON FeatureCollection（LineString）
+
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature",
+      "properties": { "id": "main_route", "name": "Long March Main Route" },
+      "geometry": { "type": "LineString", "coordinates": [[116.027,25.875],[106.927,27.731]] }
+    }
+  ]
+}
+```
+
+### 7.2 /api/nodes （或 `data/nodes.mock.json`）
+
+```json
+[
+  { "id":"ruijin","name_zh":"瑞金出发","name_en":"Departure from Ruijin",
+    "lng":116.027,"lat":25.875,
+    "summary_zh":"中央红军从瑞金出发，踏上艰苦卓绝的征途。",
+    "summary_en":"The Central Red Army departs from Ruijin...",
+    "poem_zh":"雄关漫道真如铁，而今迈步从头越。",
+    "poem_en":"The pass is like iron; we stride anew.",
+    "image":"/assets/nodes/ruijin.webp",
+    "assets":{"broll":"/assets/broll/ruijin.mp4","sfx":"/assets/sfx/step.mp3"}
+  }
+]
+```
+
+### 7.3 /api/scene/\:id （或 `data/scenes/<id>.json`）
+
+```json
+{
+  "id":"zunyi",
+  "steps":[
+    {"type":"narration","text_zh":"遵义会议是一次生死攸关的转折。","text_en":"A vital turning point."},
+    {"type":"poem","text_zh":"雄关漫道真如铁...","text_en":"..."},
+    {"type":"choice","question_zh":"如何摆脱被动？","question_en":"How to break the deadlock?",
+      "options":[
+        {"key":"a","text_zh":"坚持原路线","text_en":"Stay the course","explain_zh":"会继续受挫","effect":{"award":"perseverance"}},
+        {"key":"b","text_zh":"实事求是，调整战略","text_en":"Adjust strategy pragmatically",
+          "effect":{"award":"seeking-truth","goto":"next"}},
+        {"key":"c","text_zh":"停滞观望","text_en":"Wait and see","explain_zh":"错失转机"}
+      ]
+    }
+  ],
+  "minigame": {
+    "type":"resource-planning",
+    "config":{"slots":3,"items":["food","medicine","clothes"]}
+  }
+}
+```
+
+### 7.4 /api/achievements （或 `data/achievements.json`）
+
+```json
+[
+  {"key":"perseverance","name_zh":"坚韧不拔","name_en":"Perseverance","icon":"/assets/achv/persev.svg",
+   "desc_zh":"面对逆境仍不放弃。","desc_en":"Enduring adversity."},
+  {"key":"seeking-truth","name_zh":"实事求是","name_en":"Seeking Truth","icon":"/assets/achv/truth.svg",
+   "desc_zh":"以事实为依据，调整路线。","desc_en":"Adjusting by facts."}
+]
+```
+
+### 7.5 进度保存（POST /api/progress）
+
+```json
+{
+  "currentNode":"zunyi",
+  "visited":["ruijin","zunyi"],
+  "achievements":{"seeking-truth":true},
+  "choicesTrail":[{"nodeId":"zunyi","choiceKey":"b"}]
+}
+```
+
+### 7.6 AI 解说（POST /api/chat）—（前端仅预留）
+
+```json
+{"query":"这句诗的当代意义是什么？","context":{"nodeId":"zunyi"}}
+```
+
+**响应**：
+
+```json
+{"text":"...简明解析...","sources":[{"title":"史料A","url":"https://..." }]}
+```
+
+### 7.7 演示脚本（`data/demo.script.json`）
+
+```json
+[
+  {"action":"flyTo","nodeId":"ruijin","ms":2000},
+  {"action":"openScene","nodeId":"ruijin"},
+  {"action":"wait","ms":1500},
+  {"action":"choose","nodeId":"ruijin","choiceKey":"b"},
+  {"action":"flyTo","nodeId":"zunyi","ms":2500}
+]
+```
+
+## 8) 组件清单（Components）
+
+* `MapView.vue`：创建 Mapbox 实例，加载路线与节点 Marker，监听 `bus` 事件：`flyToNode(id)`、`openScene(id)`。
+* `NodeList.vue`：侧栏列表（搜索/过滤），点击触发飞行与打开剧情。
+* `StoryRunner.vue`：根据 `scene.steps` 逐条渲染 `narration/poem/image/choice`，处理 `options.effect`（点亮成就/跳转）。
+* `ChoicePanel.vue`：三列布局按钮，支持键盘操作与高亮。
+* `AchievementToast.vue`：成就解锁弹窗（GSAP 入场）。
+* `DemoPlayer.vue`：读取 `demo.script.json` 顺序执行，暴露 `start()/stop()`。
+* `SharePoster.vue`：使用 html2canvas 截屏生成海报（用户名+徽章）。
+
+## 9) 地图规范（Mapbox）
+
+* **风格**：`mapbox://styles/mapbox/streets-v12`（可替换）
+* **默认视角**：`center:[105,31.5]`, `zoom:3.4`, `pitch:45`, `bearing:-15`
+* **Marker**：红色小圆点 + 白色描边；点击发射 `openScene`
+* **路线层**：id=`route-line`，`line-width:3`，`line-color:#dc2626`
+* **飞行**：`map.flyTo({ center:[lng,lat], zoom:6, speed:0.8, curve:1.5, pitch:55 })`
+
+## 10) 动画规范（GSAP）
+
+* 统一过渡：`ease:'power2.out'`，时长 `0.4–0.6s`
+* 弹窗：`from({y:20,opacity:0})`
+* 成就 Toast：停留 `1.2s` 后自动淡出
+
+## 11) 可访问性（A11y）
+
+* 所有可点击元素：`role="button"`、`tabindex="0"`、`aria-label`
+* 焦点环：Tailwind `focus-visible:ring-2`
+* 色彩对比：按钮/文本对比度 ≥ 4.5:1
+* 所有图像：`alt` 文本；诗词提供英文/中文切换
+
+## 12) 性能（Perf）
+
+* 懒加载：地图与大图组件按需加载（`defineAsyncComponent`）
+* 资源：插画用 `webp`；音频 `mp3`；图片 `<img loading="lazy">`
+* 打包：Vite 分包；移除未使用的图标/字体
+
+## 13) 演示模式（Demo Mode）
+
+* 入口：`Settings` 开关或 `?demo=1`
+* 行为：锁定脚本步骤、禁用自由输入、节流动画，保证录屏稳定
+* 错误兜底：遇到缺失 scene/asset，展示“友好提示卡片”，不中断流程
+
+## 14) 离线兜底（Offline）
+
+* `VITE_USE_MOCK=1` 时，全走本地 JSON 与 `public/assets/*`
+* 若后端失败（超时>2s），自动 fallback Mock，并显示角标“离线内容”
+
+## 15) 协作契约（成员1↔成员2）
+
+* 成员2只需编辑：`data/nodes.mock.json`、`data/scenes/*.json`、`data/achievements.json`
+* 命名：`id` 全小写短横线；图片放 `public/assets/nodes/<id>.*`
+* 变更流程：PR 合并前跑 `pnpm lint && pnpm typecheck`（若加 TS 可启用）
+
+## 16) 日志与埋点（可选）
+
+* `utils/telemetry.ts`：`track(event, payload)`，关键事件：`node_open`、`choice_click`、`achievement_unlock`、`demo_start`
+* 录屏安全：埋点只在本地 console，不上报
+
+## 17) 测试（最低保障）
+
+* 单元：`StoryRunner` 对 `choice` 的 effect 应用（award/goto）
+* 端到端：`/map` → 点击 Marker → `/story/:id` 渲染 → 选择 → 成就点亮
+* 演示模式：读取 `demo.script.json` 全流程不报错
+
+## 18) 构建与部署
+
+```bash
+pnpm i
+pnpm dev                 # 本地开发
+pnpm build               # 产出 dist/
+# Vercel/Netlify 部署静态站点；需设置环境变量（见 .env）
+```
+
+* 录屏建议：OBS 1080p/30fps，Chrome 硬件加速 ON。
+
+## 19) 验收清单（Acceptance）
+
+* [ ] 无后端可全流程体验（至少 6–10 个节点）
+* [ ] 地图可飞行、节点可点击、剧情可选、成就可点亮
+* [ ] 演示模式脚本驱动完整流程
+* [ ] 分享海报可生成并下载
+* [ ] 文案/插画可配置，修改 JSON 即生效
+* [ ] 首屏 3s 内可操作（本地/部署）
+
+## 20) 任务分解（从易到难）
+
+1. 初始化项目 + Tailwind + Router + Pinia
+2. `MapView` + `NodeList`（加载 `nodes` 与 `route`）
+3. `StoryPage` + `StoryRunner`（渲染 steps/choice）
+4. 成就系统（Store + Toast）
+5. `DemoPlayer`（读 `demo.script.json` 并顺序执行）
+6. 分享海报（html2canvas）
+7. 无障碍与性能优化（懒加载/懒资源）
+
+---
+
+# 指令块 · 让 AI 直接开工（可复制到后续对话）
+
+### \[TASK-BOOTSTRAP]
+
+“在 `long-march-voyage` 项目内，创建并填充以下文件：
+
+* `src/api/client.js`：实现 `getRoute/getNodes/getScene/saveProgress`，支持 `VITE_USE_MOCK`。
+* `src/data/nodes.mock.json`、`src/data/route.mock.json`、`src/data/scenes/ruijin.json`、`src/data/scenes/zunyi.json`、`src/data/achievements.json`、`src/data/demo.script.json`（按本规范的样例）。
+* `src/stores/progress.js`、`src/stores/settings.js`、`src/stores/achievements.js`（字段与方法照规范）。
+* `src/components/MapView.vue`、`src/pages/MapPage.vue`、`src/pages/StoryPage.vue`、`src/pages/Achievements.vue`、`src/pages/Home.vue`。
+  要求：可运行、/map 可显示路线/节点、点击 Marker 进入 `/story/:id`，选择后能点亮一个成就并保存进度（Mock）。”
+
+### \[TASK-DEMO-MODE]
+
+“新增 `DemoPlayer.vue` 并在 `/map` 顶部放置‘开始演示’按钮。读取 `data/demo.script.json`，依序派发 `flyTo`、`openScene`、`choose`、`wait` 事件，确保全流程可录屏。遇到未知节点/选项时跳过并继续。”
+
+### \[TASK-POSTER]
+
+“创建 `SharePoster.vue`，将用户昵称（传参）+ 成就徽章渲染为卡片，然后用 html2canvas 导出 PNG。按钮：‘保存我的数字长征证书’。”
+
+### \[TASK-A11Y-PERF]
+
+“为所有交互元素添加 `aria-label`、键盘操作与 `focus-visible` 样式；将大图/地图组件懒加载；确保图片 `loading=lazy`；把插画转为 webp。”
+
+---
+
+# 附：命名与品牌（可用于文档/海报）
+
+* 英文名推荐：**Immersive Long March: An AI Journey**
+* Slogan：**Walk the spirit. Learn by choices.**
+* 中文副标：**走一次数字长征，带走一颗不灭星火。**
+
+---
+
+如果你点头，我就用这份 PromptSpec 直接**落盘为项目内的 `docs/Frontend_PromptSpec.md`**，并按 **\[TASK-BOOTSTRAP]** 开始生成首批文件。
+**单选小问：现在就按这个规范创建文件骨架吗？**

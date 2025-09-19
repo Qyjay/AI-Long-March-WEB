@@ -1,0 +1,253 @@
+{
+  "historicalMedia": {
+    "node_1": [
+      {
+        "id": "media_1_1",
+        "type": "images",
+        "title": "瑞金革命根据地",
+        "description": "中华苏维埃共和国临时中央政府成立地",
+        "thumbnail": "/assets/nodes/node1_thumb.jpg",
+        "items": [
+          {
+            "url": "/assets/historical/ruijin_1.jpg",
+            "caption": "瑞金叶坪革命旧址群 - 中华苏维埃共和国临时中央政府成立地"
+          },
+          {
+            "url": "/assets/historical/ruijin_2.jpg",
+            "caption": "红井 - 毛主席亲自为群众挖的井"
+          },
+          {
+            "url": "/assets/historical/ruijin_3.jpg",
+            "caption": "沙洲坝革命旧址 - 中央政府大礼堂"
+          }
+        ]
+      },
+      {
+        "id": "media_1_2",
+        "type": "document",
+        "title": "中华苏维埃共和国宪法大纲",
+        "description": "1931年11月7日通过的第一部红色宪法",
+        "date": "1931年11月7日",
+        "source": "中华苏维埃共和国临时中央政府",
+        "thumbnail": "/assets/historical/constitution_thumb.jpg",
+        "content": "<h2>中华苏维埃共和国宪法大纲</h2><p>中华苏维埃共和国是工人和农民的民主专政的国家。苏维埃全部政权是属于工人、农民、红军兵士及一切劳苦民众的。</p><p>在苏维埃政权领域内的工人、农民、红军兵士及一切劳苦民众和他们的家属，不分男女、种族、宗教，在苏维埃法律面前一律平等，皆为苏维埃共和国的公民。</p><p>中华苏维埃共和国之最高政权为全国工农兵会议（苏维埃）大会，在大会闭会期间，全国苏维埃临时中央执行委员会为最高政权机关。</p>"
+      },
+      {
+        "id": "media_1_3",
+        "type": "audio",
+        "title": "《十送红军》",
+        "description": "反映苏区人民送别红军的深情厚谊",
+        "url": "/assets/audio/ten_send_red_army.mp3",
+        "thumbnail": "/assets/audio/ten_send_thumb.jpg"
+      }
+    ],
+    "node_5": [
+      {
+        "id": "media_5_1",
+        "type": "video",
+        "title": "湘江战役纪录片",
+        "description": "红军长征中最惨烈的一战",
+        "url": "/assets/video/xiangjiang_battle.mp4",
+        "poster": "/assets/video/xiangjiang_poster.jpg",
+        "thumbnail": "/assets/video/xiangjiang_thumb.jpg"
+      },
+      {
+        "id": "media_5_2",
+        "type": "images",
+        "title": "湘江战役遗址",
+        "description": "血战湘江的历史见证",
+        "thumbnail": "/assets/nodes/node5_thumb.jpg",
+        "items": [
+          {
+            "url": "/assets/historical/xiangjiang_1.jpg",
+            "caption": "湘江战役纪念园 - 缅怀英烈的神圣之地"
+          },
+          {
+            "url": "/assets/historical/xiangjiang_2.jpg",
+            "caption": "红军渡江遗址 - 生死存亡的关键渡口"
+          },
+          {
+            "url": "/assets/historical/xiangjiang_3.jpg",
+            "caption": "烈士纪念碑 - 永远的丰碑"
+          },
+          {
+            "url": "/assets/historical/xiangjiang_4.jpg",
+            "caption": "战斗遗址 - 血与火的见证"
+          }
+        ]
+      },
+      {
+        "id": "media_5_3",
+        "type": "document",
+        "title": "湘江战役战斗详报",
+        "description": "记录湘江战役的珍贵史料",
+        "date": "1934年12月",
+        "source": "红军总政治部",
+        "thumbnail": "/assets/historical/battle_report_thumb.jpg",
+        "content": "<h2>湘江战役战斗详报</h2><p>1934年11月27日至12月1日，中央红军在湘江上游广西境内的兴安县、全州县、灌阳县，与国民党军苦战五昼夜，最终从全州、兴安之间强渡湘江，突破了国民党军的第四道封锁线，粉碎了蒋介石围歼中央红军于湘江以东的企图。</p><p>但是，中央红军也为此付出了极为惨重的代价。部队指战员和中央机关人员由长征出发时的8万多人锐减至3万余人。</p><p>湘江战役是关系中央红军生死存亡的一战。</p>"
+      }
+    ],
+    "node_10": [
+      {
+        "id": "media_10_1",
+        "type": "images",
+        "title": "遵义会议会址",
+        "description": "中国共产党历史上的伟大转折",
+        "thumbnail": "/assets/nodes/node10_thumb.jpg",
+        "items": [
+          {
+            "url": "/assets/historical/zunyi_1.jpg",
+            "caption": "遵义会议会址 - 伟大转折的历史见证"
+          },
+          {
+            "url": "/assets/historical/zunyi_2.jpg",
+            "caption": "会议室原貌 - 决定中国革命前途的地方"
+          },
+          {
+            "url": "/assets/historical/zunyi_3.jpg",
+            "caption": "遵义会议纪念馆 - 缅怀历史的神圣殿堂"
+          }
+        ]
+      },
+      {
+        "id": "media_10_2",
+        "type": "document",
+        "title": "遵义会议决议",
+        "description": "确立毛泽东在党和红军中领导地位的重要文件",
+        "date": "1935年1月15日",
+        "source": "中共中央政治局",
+        "thumbnail": "/assets/historical/zunyi_resolution_thumb.jpg",
+        "content": "<h2>中共中央关于反对敌人五次'围剿'的总结的决议</h2><p>遵义会议集中全力纠正了当时具有决定意义的军事上和组织上的错误，是完全正确的。这次会议开始确立了毛泽东同志在党中央和红军的领导地位，开始确立了以毛泽东同志为主要代表的马克思主义的正确路线在党中央的领导地位，开始形成以毛泽东同志为核心的党的第一代中央领导集体，这是我们党和革命事业转危为安、不断打开新局面最重要的保证。</p><p>遵义会议在极端危急的历史关头挽救了党，挽救了红军，挽救了中国革命，是党的历史上一个生死攸关的转折点。</p>"
+      },
+      {
+        "id": "media_10_3",
+        "type": "audio",
+        "title": "《遵义会议放光辉》",
+        "description": "歌颂遵义会议历史意义的经典歌曲",
+        "url": "/assets/audio/zunyi_meeting.mp3",
+        "thumbnail": "/assets/audio/zunyi_song_thumb.jpg"
+      }
+    ],
+    "node_15": [
+      {
+        "id": "media_15_1",
+        "type": "video",
+        "title": "四渡赤水纪录片",
+        "description": "毛泽东军事指挥艺术的经典之作",
+        "url": "/assets/video/chishui_crossing.mp4",
+        "poster": "/assets/video/chishui_poster.jpg",
+        "thumbnail": "/assets/video/chishui_thumb.jpg"
+      },
+      {
+        "id": "media_15_2",
+        "type": "images",
+        "title": "赤水河渡口",
+        "description": "红军四渡赤水的历史现场",
+        "thumbnail": "/assets/nodes/node15_thumb.jpg",
+        "items": [
+          {
+            "url": "/assets/historical/chishui_1.jpg",
+            "caption": "一渡赤水河 - 土城渡口"
+          },
+          {
+            "url": "/assets/historical/chishui_2.jpg",
+            "caption": "二渡赤水河 - 太平渡口"
+          },
+          {
+            "url": "/assets/historical/chishui_3.jpg",
+            "caption": "三渡赤水河 - 茅台渡口"
+          },
+          {
+            "url": "/assets/historical/chishui_4.jpg",
+            "caption": "四渡赤水河 - 二郎滩渡口"
+          }
+        ]
+      }
+    ],
+    "node_20": [
+      {
+        "id": "media_20_1",
+        "type": "images",
+        "title": "泸定桥",
+        "description": "飞夺泸定桥的英雄壮举",
+        "thumbnail": "/assets/nodes/node20_thumb.jpg",
+        "items": [
+          {
+            "url": "/assets/historical/luding_1.jpg",
+            "caption": "泸定桥全景 - 大渡河上的铁索桥"
+          },
+          {
+            "url": "/assets/historical/luding_2.jpg",
+            "caption": "桥头堡 - 红军勇士冲锋的起点"
+          },
+          {
+            "url": "/assets/historical/luding_3.jpg",
+            "caption": "铁索链 - 英雄们攀爬的生命线"
+          }
+        ]
+      },
+      {
+        "id": "media_20_2",
+        "type": "audio",
+        "title": "《飞夺泸定桥》朗诵",
+        "description": "经典革命诗歌朗诵",
+        "url": "/assets/audio/luding_bridge_poem.mp3",
+        "thumbnail": "/assets/audio/luding_poem_thumb.jpg"
+      }
+    ],
+    "node_25": [
+      {
+        "id": "media_25_1",
+        "type": "images",
+        "title": "延安宝塔山",
+        "description": "革命圣地延安的象征",
+        "thumbnail": "/assets/nodes/node25_thumb.jpg",
+        "items": [
+          {
+            "url": "/assets/historical/yanan_1.jpg",
+            "caption": "宝塔山 - 延安的象征和标志"
+          },
+          {
+            "url": "/assets/historical/yanan_2.jpg",
+            "caption": "延河 - 见证革命历史的母亲河"
+          },
+          {
+            "url": "/assets/historical/yanan_3.jpg",
+            "caption": "杨家岭革命旧址 - 中共中央所在地"
+          },
+          {
+            "url": "/assets/historical/yanan_4.jpg",
+            "caption": "枣园革命旧址 - 中央书记处所在地"
+          }
+        ]
+      },
+      {
+        "id": "media_25_2",
+        "type": "video",
+        "title": "延安精神纪录片",
+        "description": "自力更生、艰苦奋斗的延安精神",
+        "url": "/assets/video/yanan_spirit.mp4",
+        "poster": "/assets/video/yanan_poster.jpg",
+        "thumbnail": "/assets/video/yanan_thumb.jpg"
+      },
+      {
+        "id": "media_25_3",
+        "type": "document",
+        "title": "《论持久战》",
+        "description": "毛泽东关于抗日战争的重要军事理论著作",
+        "date": "1938年5月",
+        "source": "毛泽东",
+        "thumbnail": "/assets/historical/protracted_war_thumb.jpg",
+        "content": "<h2>论持久战</h2><p>中国的抗日战争，从一九三七年七月七日卢沟桥事变开始，到现在已经一年了。在这一年中，中国人民的抗战，在世界面前显示了它的伟大意义。</p><p>这个战争，就其特点来说，第一，它是一个半殖民地的大国和一个帝国主义的小国之间的战争。第二，它是在二十世纪三十年代进行的战争。</p><p>中国必胜，日本必败，这是毫无疑义的。但是中国的胜利，将是一个长期的过程。</p>"
+      },
+      {
+        "id": "media_25_4",
+        "type": "audio",
+        "title": "《南泥湾》",
+        "description": "歌颂大生产运动的经典歌曲",
+        "url": "/assets/audio/nanniwan.mp3",
+        "thumbnail": "/assets/audio/nanniwan_thumb.jpg"
+      }
+    ]
+  }
+}

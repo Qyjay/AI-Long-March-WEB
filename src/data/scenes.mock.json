@@ -1,0 +1,400 @@
+[
+  {
+    "id": "scene_ruijin_start",
+    "nodeId": "node_ruijin",
+    "title": "瑞金出发",
+    "type": "story",
+    "background": "/assets/scenes/ruijin_bg.jpg",
+    "music": "/assets/sfx/departure_theme.mp3",
+    "characters": [
+      {
+        "id": "narrator",
+        "name": "旁白",
+        "avatar": "/assets/characters/narrator.png"
+      },
+      {
+        "id": "mao",
+        "name": "毛泽东",
+        "avatar": "/assets/characters/mao.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "narrator",
+        "text": "1934年10月，中央红军被迫开始战略转移。",
+        "duration": 3000
+      },
+      {
+        "character": "narrator",
+        "text": "8万多名红军战士告别了苏区人民，踏上了漫漫征程。",
+        "duration": 4000
+      },
+      {
+        "character": "mao",
+        "text": "同志们，我们要坚定信念，为了革命的胜利，我们必须走出一条新路！",
+        "duration": 5000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_1",
+        "text": "继续前进",
+        "nextScene": "scene_xiangjiang_approach",
+        "effect": {
+          "morale": 5,
+          "supplies": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_xiangjiang_approach",
+    "nodeId": "node_xiangjiang",
+    "title": "湘江战役前夕",
+    "type": "decision",
+    "background": "/assets/scenes/xiangjiang_approach_bg.jpg",
+    "music": "/assets/sfx/tension_theme.mp3",
+    "characters": [
+      {
+        "id": "commander",
+        "name": "指挥员",
+        "avatar": "/assets/characters/commander.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "commander",
+        "text": "前方就是湘江，敌军已经在对岸布防。我们必须做出选择。",
+        "duration": 4000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_frontal",
+        "text": "正面强攻渡江",
+        "nextScene": "scene_xiangjiang_battle",
+        "effect": {
+          "casualties": 30,
+          "speed": 10
+        }
+      },
+      {
+        "id": "choice_detour",
+        "text": "绕道寻找渡口",
+        "nextScene": "scene_xiangjiang_detour",
+        "effect": {
+          "time": -5,
+          "supplies": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_xiangjiang_battle",
+    "nodeId": "node_xiangjiang",
+    "title": "湘江血战",
+    "type": "story",
+    "background": "/assets/scenes/xiangjiang_battle_bg.jpg",
+    "music": "/assets/sfx/battle_theme.mp3",
+    "characters": [
+      {
+        "id": "narrator",
+        "name": "旁白",
+        "avatar": "/assets/characters/narrator.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "narrator",
+        "text": "湘江战役是红军长征中最惨烈的一战。",
+        "duration": 3000
+      },
+      {
+        "character": "narrator",
+        "text": "红军付出了巨大牺牲，但最终突破了敌军封锁线。",
+        "duration": 4000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_continue",
+        "text": "继续西进",
+        "nextScene": "scene_zunyi_approach",
+        "effect": {
+          "morale": -10,
+          "experience": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_zunyi_meeting",
+    "nodeId": "node_zunyi",
+    "title": "遵义会议",
+    "type": "story",
+    "background": "/assets/scenes/zunyi_meeting_bg.jpg",
+    "music": "/assets/sfx/meeting_theme.mp3",
+    "characters": [
+      {
+        "id": "narrator",
+        "name": "旁白",
+        "avatar": "/assets/characters/narrator.png"
+      },
+      {
+        "id": "mao",
+        "name": "毛泽东",
+        "avatar": "/assets/characters/mao.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "narrator",
+        "text": "1935年1月，中共中央在遵义召开了具有历史意义的会议。",
+        "duration": 4000
+      },
+      {
+        "character": "narrator",
+        "text": "这次会议确立了毛泽东在党和红军中的领导地位。",
+        "duration": 4000
+      },
+      {
+        "character": "mao",
+        "text": "我们要实事求是，从中国革命的实际出发！",
+        "duration": 3000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_new_strategy",
+        "text": "采用新的军事策略",
+        "nextScene": "scene_chishui_approach",
+        "effect": {
+          "morale": 20,
+          "leadership": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_chishui_crossing",
+    "nodeId": "node_chishui",
+    "title": "四渡赤水",
+    "type": "strategy",
+    "background": "/assets/scenes/chishui_bg.jpg",
+    "music": "/assets/sfx/strategy_theme.mp3",
+    "characters": [
+      {
+        "id": "mao",
+        "name": "毛泽东",
+        "avatar": "/assets/characters/mao.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "mao",
+        "text": "兵贵神速，我们要声东击西，调动敌人！",
+        "duration": 4000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_first_crossing",
+        "text": "一渡赤水",
+        "nextScene": "scene_chishui_second",
+        "effect": {
+          "tactical": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_luding_bridge",
+    "nodeId": "node_luding",
+    "title": "飞夺泸定桥",
+    "type": "action",
+    "background": "/assets/scenes/luding_bridge_bg.jpg",
+    "music": "/assets/sfx/heroic_theme.mp3",
+    "characters": [
+      {
+        "id": "hero",
+        "name": "突击队员",
+        "avatar": "/assets/characters/hero.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "hero",
+        "text": "同志们，为了革命，冲啊！",
+        "duration": 3000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_charge",
+        "text": "勇敢冲锋",
+        "nextScene": "scene_luding_victory",
+        "effect": {
+          "heroism": 25,
+          "morale": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_jiajin_mountain",
+    "nodeId": "node_jiajin",
+    "title": "翻越夹金山",
+    "type": "survival",
+    "background": "/assets/scenes/jiajin_mountain_bg.jpg",
+    "music": "/assets/sfx/mountain_theme.mp3",
+    "characters": [
+      {
+        "id": "narrator",
+        "name": "旁白",
+        "avatar": "/assets/characters/narrator.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "narrator",
+        "text": "夹金山海拔4000多米，空气稀薄，天气恶劣。",
+        "duration": 4000
+      },
+      {
+        "character": "narrator",
+        "text": "红军战士克服重重困难，成功翻越了这座大雪山。",
+        "duration": 4000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_persevere",
+        "text": "坚持前进",
+        "nextScene": "scene_maogai_meeting",
+        "effect": {
+          "endurance": 20,
+          "unity": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_grassland_crossing",
+    "nodeId": "node_grassland",
+    "title": "过草地",
+    "type": "survival",
+    "background": "/assets/scenes/grassland_bg.jpg",
+    "music": "/assets/sfx/desolate_theme.mp3",
+    "characters": [
+      {
+        "id": "soldier",
+        "name": "红军战士",
+        "avatar": "/assets/characters/soldier.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "soldier",
+        "text": "这片草地看似平静，实则危机四伏。",
+        "duration": 3000
+      },
+      {
+        "character": "soldier",
+        "text": "我们要互相帮助，一个都不能少！",
+        "duration": 3000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_help_comrades",
+        "text": "帮助掉队的同志",
+        "nextScene": "scene_grassland_survival",
+        "effect": {
+          "unity": 15,
+          "morale": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_lazikou_pass",
+    "nodeId": "node_lazikou",
+    "title": "腊子口战斗",
+    "type": "action",
+    "background": "/assets/scenes/lazikou_bg.jpg",
+    "music": "/assets/sfx/battle_theme.mp3",
+    "characters": [
+      {
+        "id": "commander",
+        "name": "指挥员",
+        "avatar": "/assets/characters/commander.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "commander",
+        "text": "腊子口是通往陕北的咽喉要道，我们必须拿下！",
+        "duration": 4000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_night_attack",
+        "text": "夜袭腊子口",
+        "nextScene": "scene_lazikou_victory",
+        "effect": {
+          "tactical": 15,
+          "morale": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "scene_wuqizheng_arrival",
+    "nodeId": "node_wuqizheng",
+    "title": "到达吴起镇",
+    "type": "story",
+    "background": "/assets/scenes/wuqizheng_bg.jpg",
+    "music": "/assets/sfx/victory_theme.mp3",
+    "characters": [
+      {
+        "id": "narrator",
+        "name": "旁白",
+        "avatar": "/assets/characters/narrator.png"
+      },
+      {
+        "id": "mao",
+        "name": "毛泽东",
+        "avatar": "/assets/characters/mao.png"
+      }
+    ],
+    "dialogues": [
+      {
+        "character": "narrator",
+        "text": "1935年10月19日，中央红军到达陕北吴起镇。",
+        "duration": 4000
+      },
+      {
+        "character": "narrator",
+        "text": "历时一年，行程二万五千里的长征胜利结束。",
+        "duration": 4000
+      },
+      {
+        "character": "mao",
+        "text": "长征是宣言书，长征是宣传队，长征是播种机！",
+        "duration": 5000
+      }
+    ],
+    "choices": [
+      {
+        "id": "choice_celebrate",
+        "text": "庆祝胜利",
+        "nextScene": null,
+        "effect": {
+          "victory": 50,
+          "morale": 30
+        }
+      }
+    ]
+  }
+]

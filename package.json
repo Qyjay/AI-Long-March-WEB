@@ -1,0 +1,41 @@
+{
+  "name": "immersive-long-march",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext vue,js,jsx,cjs,mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "mcp:start": "npx @mapbox/mcp-server",
+    "mcp:test": "node mcp/mcp-client.js",
+    "mcp:config": "echo 'MCP配置文件: mcp/mcp-config.json'",
+    "trae:setup": "node mcp/setup-trae-mcp.js",
+    "trae:test": "node -e \"import('./mcp/test-mcp.js').then(m => m.runTests())\""
+  },
+  "dependencies": {
+    "@mapbox/mapbox-gl-language": "^1.0.1",
+    "@mapbox/mcp-server": "^0.4.0",
+    "axios": "^1.6.2",
+    "gsap": "^3.12.2",
+    "html2canvas": "^1.4.1",
+    "mapbox-gl": "^3.0.1",
+    "mitt": "^3.0.1",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.0",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@vitejs/plugin-vue": "^4.5.2",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-plugin-vue": "^9.19.2",
+    "postcss": "^8.4.32",
+    "prettier": "^3.1.1",
+    "tailwindcss": "^3.3.6",
+    "vite": "^5.0.8"
+  }
+}
