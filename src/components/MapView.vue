@@ -396,14 +396,38 @@ const loadMapData = async () => {
     // 获取路线数据
     const routeDataResponse = await apiClient.getRoute()
     
-    if (routeDataResponse && routeDataResponse.coordinates && routeDataResponse.coordinates.length > 0) {
-      console.log('路线数据加载成功，坐标点数量:', routeDataResponse.coordinates.length)
-      routeData.value = routeDataResponse
-      
-      // 添加路线图层
-      addRouteLayer()
+    if (routeDataResponse) {
+      // 处理GeoJSON格式的路线数据
+      if (routeDataResponse.type === 'FeatureCollection' && routeDataResponse.features) {
+        // 提取主路线的坐标
+        const mainRoute = routeDataResponse.features.find(feature => 
+          feature.properties && feature.properties.id === 'main_route'
+        )
+        
+        if (mainRoute && mainRoute.geometry && mainRoute.geometry.coordinates) {
+          console.log('路线数据加载成功，坐标点数量:', mainRoute.geometry.coordinates.length)
+          routeData.value = {
+            coordinates: mainRoute.geometry.coordinates,
+            properties: mainRoute.properties
+          }
+          
+          // 添加路线图层
+          addRouteLayer()
+        } else {
+          console.warn('未找到主路线数据')
+        }
+      } else if (routeDataResponse.coordinates && routeDataResponse.coordinates.length > 0) {
+        // 处理简单格式的路线数据
+        console.log('路线数据加载成功，坐标点数量:', routeDataResponse.coordinates.length)
+        routeData.value = routeDataResponse
+        
+        // 添加路线图层
+        addRouteLayer()
+      } else {
+        console.warn('路线数据格式不正确')
+      }
     } else {
-      console.warn('路线数据为空或格式不正确')
+      console.warn('路线数据为空')
     }
     
     // 获取节点数据
