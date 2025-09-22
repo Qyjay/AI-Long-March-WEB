@@ -51,14 +51,6 @@ const routes = [
     }
   },
   {
-    path: '/mapbox-test',
-    name: 'MapboxTest',
-    component: () => import('@/views/MapboxTest.vue'),
-    meta: {
-      title: 'Mapbox Token 测试'
-    }
-  },
-  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     redirect: '/'

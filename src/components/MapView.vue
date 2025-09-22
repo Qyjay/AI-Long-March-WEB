@@ -185,8 +185,7 @@
 </template>
 
 <script setup>
-import mapboxgl from 'mapbox-gl'
-import MapboxLanguage from '@mapbox/mapbox-gl-language'
+import AMapLoader from '@amap/amap-jsapi-loader'
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useProgressStore } from '../stores/progress'
 import { apiClient } from '../api'
@@ -194,11 +193,6 @@ import { eventBus } from '../utils/bus'
 import { calculateDistance, calculateBounds } from '../utils/geo'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
 import ErrorMessage from '../components/ErrorMessage.vue'
-
-// 设置RTL文本插件（确保只调用一次）
-if (!mapboxgl.getRTLTextPluginStatus || mapboxgl.getRTLTextPluginStatus() === 'unavailable') {
-  mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js')
-}
 
 /**
  * 地图视图组件
@@ -234,9 +228,12 @@ const emit = defineEmits([
 
 // 响应式数据
 const mapContainer = ref(null)
-const map = ref(null)
+const map = ref(null) // 高德地图实例
+const AMap = ref(null) // 高德地图类引用
 const isLoading = ref(true)
 const selectedNode = ref(null)
+const hoveredNode = ref(null) // 当前悬停的节点
+const showNodeInfo = ref(false) // 是否显示节点信息弹窗
 const showRoute = ref(props.showRouteByDefault)
 const isSatelliteView = ref(false)
 const nodes = ref([])
@@ -279,99 +276,78 @@ const mapStyles = {
 }
 
 /**
- * 初始化Mapbox地图
+ * 初始化高德地图
  */
 const initializeMap = async () => {
   try {
     isLoading.value = true
     error.value = null
     
-    // 动态导入Mapbox GL JS
-    const mapboxgl = await import('mapbox-gl')
+    // 验证高德地图API key
+    const apiKey = import.meta.env.VITE_AMAP_KEY
+    const securityCode = import.meta.env.VITE_AMAP_SECURITY_CODE
     
-    // 获取并验证访问令牌
-    const token = import.meta.env.VITE_MAPBOX_TOKEN
-    console.log('Mapbox Token:', token ? `${token.substring(0, 20)}...` : 'undefined')
-    console.log('Token length:', token ? token.length : 0)
-    
-    if (!token) {
-      throw new Error('Mapbox access token is not configured. Please check your .env file and ensure VITE_MAPBOX_TOKEN is set.')
+    if (!apiKey) {
+      throw new Error('高德地图API Key未配置，请在.env文件中设置VITE_AMAP_KEY')
     }
     
-    // 验证 token 格式
-    if (!token.startsWith('pk.')) {
-      throw new Error(`Invalid Mapbox token format. Token should start with "pk." but got: ${token.substring(0, 10)}...`)
-    }
-    
-    // 验证 token 长度（Mapbox tokens 通常很长）
-    if (token.length < 50) {
-      throw new Error(`Mapbox token seems too short (${token.length} characters). Please check if the token is complete.`)
-    }
-    
-    // 设置访问令牌 - 确保在创建地图之前设置
-    mapboxgl.default.accessToken = token
-    
-    // 也设置传统方式以确保兼容性
-    if (mapboxgl.accessToken !== undefined) {
-      mapboxgl.accessToken = token
-    }
-    
-    console.log('Mapbox GL version:', mapboxgl.version || 'unknown')
-    console.log('Access token set:', mapboxgl.default.accessToken ? 'yes' : 'no')
-    
-    // 创建地图实例并立即设置中文语言
-    map.value = new mapboxgl.default.Map({
-      container: mapContainer.value,
-      style: mapStyles.street,
-      center: props.center,
-      zoom: props.zoom,
-      attributionControl: false,
-      accessToken: token, // 直接在构造函数中传递 token
-      locale: {
-        'NavigationControl.ResetBearing': '重置方向',
-        'NavigationControl.ZoomIn': '放大',
-        'NavigationControl.ZoomOut': '缩小'
+    // 加载高德地图API
+    const AMapClass = await AMapLoader.load({
+      key: apiKey,
+      version: '2.0',
+      plugins: [
+        'AMap.Scale',
+        'AMap.ToolBar', 
+        'AMap.Marker',
+        'AMap.InfoWindow',
+        'AMap.Polyline',
+        'AMap.Polygon',
+        'AMap.CircleMarker'
+      ],
+      AMapUI: {
+        version: '1.1',
+        plugins: []
+      },
+      Loca: {
+        version: '2.0'
       }
     })
     
+    AMap.value = AMapClass
+    
+    // 设置安全密钥
+    if (securityCode) {
+      AMapClass._securityConfig = {
+        securityJsCode: securityCode
+      }
+    }
+    
+    // 创建地图实例
+    const mapInstance = new AMapClass.Map(mapContainer.value, {
+      zoom: props.zoom,
+      center: props.center,
+      mapStyle: isSatelliteView.value ? 'amap://styles/satellite' : 'amap://styles/normal',
+      viewMode: '2D',
+      lang: 'zh_cn'
+    })
+    
+    // 添加比例尺控件
+    const scale = new AMapClass.Scale({
+      position: 'LB'
+    })
+    mapInstance.addControl(scale)
+    
+    // 添加工具条控件
+    const toolbar = new AMapClass.ToolBar({
+      position: 'RT'
+    })
+    mapInstance.addControl(toolbar)
+    
+    map.value = mapInstance
+    
     // 地图加载完成事件
-    map.value.on('load', async () => {
+    mapInstance.on('complete', async () => {
       try {
-        // 地图加载完成后立即添加中文语言控制器
-        try {
-          const languageControl = new MapboxLanguage({ 
-            defaultLanguage: 'zh'
-          })
-          map.value.addControl(languageControl)
-        } catch (langErr) {
-          console.warn('添加中文语言控制器失败：', langErr)
-        }
-        
-        // 确保地图样式加载后强制设置中文标签
-        try {
-          // 手动设置所有标签图层为中文，确保完全中文显示
-          const style = map.value.getStyle()
-          if (style && style.layers) {
-            style.layers.forEach(layer => {
-              if (layer.type === 'symbol' && layer.layout && layer.layout['text-field']) {
-                // 针对所有包含文本的图层设置中文字段
-                try {
-                  map.value.setLayoutProperty(layer.id, 'text-field', [
-                    'coalesce',
-                    ['get', 'name_zh-Hans'],
-                    ['get', 'name_zh'],
-                    ['get', 'name']
-                  ])
-                } catch (err) {
-                  console.warn(`设置图层 ${layer.id} 中文失败:`, err)
-                }
-              }
-            })
-          }
-        } catch (langErr) {
-          console.warn('强制设置地图中文标签失败：', langErr)
-        }
-
         await loadMapData()
         setupMapEvents()
         isLoading.value = false
@@ -387,25 +363,16 @@ const initializeMap = async () => {
       }
     })
     
-    // 地图加载错误处理
-    map.value.on('error', (e) => {
-      console.error('地图加载错误:', e)
-      error.value = {
-        title: '地图加载失败',
-        message: '无法加载地图，请检查网络连接或稍后重试。',
-        details: e.error?.message || '未知错误'
-      }
-      isLoading.value = false
-    })
-    
     // 视图变化事件
-    map.value.on('moveend', () => {
+    mapInstance.on('moveend', () => {
       emit('view-change', {
-        center: map.value.getCenter(),
-        zoom: map.value.getZoom(),
-        bounds: map.value.getBounds()
+        center: mapInstance.getCenter(),
+        zoom: mapInstance.getZoom(),
+        bounds: mapInstance.getBounds()
       })
     })
+    
+    console.log('高德地图初始化成功')
     
   } catch (err) {
     console.error('地图初始化失败:', err)
@@ -420,21 +387,39 @@ const initializeMap = async () => {
 
 /**
  * 加载地图数据
+ * 从API获取路线和节点数据并添加到地图
  */
 const loadMapData = async () => {
   try {
-    // 并行加载节点和路线数据
-    const [nodesData, routeGeoJSON] = await Promise.all([
-      apiClient.getNodes(),
-      apiClient.getRoute()
-    ])
+    console.log('开始加载地图数据...')
     
-    nodes.value = nodesData
-    routeData.value = routeGeoJSON
+    // 获取路线数据
+    const routeDataResponse = await apiClient.getRoute()
     
-    // 添加数据源和图层
-    addRouteLayer()
-    addNodesLayer()
+    if (routeDataResponse && routeDataResponse.coordinates && routeDataResponse.coordinates.length > 0) {
+      console.log('路线数据加载成功，坐标点数量:', routeDataResponse.coordinates.length)
+      routeData.value = routeDataResponse
+      
+      // 添加路线图层
+      addRouteLayer()
+    } else {
+      console.warn('路线数据为空或格式不正确')
+    }
+    
+    // 获取节点数据
+    const nodesDataResponse = await apiClient.getNodes()
+    
+    if (nodesDataResponse && Array.isArray(nodesDataResponse) && nodesDataResponse.length > 0) {
+      console.log('节点数据加载成功，节点数量:', nodesDataResponse.length)
+      nodes.value = nodesDataResponse
+      
+      // 添加节点图层
+      addNodesLayer()
+    } else {
+      console.warn('节点数据为空或格式不正确')
+    }
+    
+    console.log('地图数据加载完成')
     
   } catch (err) {
     console.error('加载地图数据失败:', err)
@@ -443,66 +428,43 @@ const loadMapData = async () => {
 }
 
 /**
- * 添加路线图层
+ * 添加路线图层到地图
+ * 使用高德地图Polyline创建路线可视化
  */
+const routePolyline = ref(null) // 路线折线对象
+
 const addRouteLayer = () => {
   try {
-    if (!map.value || !routeData.value) return
+    if (!map.value || !routeData.value || !routeData.value.coordinates || routeData.value.coordinates.length === 0) {
+      console.warn('地图实例或路线数据无效，无法添加路线图层')
+      return
+    }
     
-    // 添加路线数据源
-    map.value.addSource('route', {
-      type: 'geojson',
-      data: routeData.value
+    // 转换坐标格式为高德地图格式 [lng, lat]
+    const path = routeData.value.coordinates.map(coord => [coord[0], coord[1]])
+    
+    // 如果已存在路线，先移除
+    if (routePolyline.value) {
+      map.value.remove(routePolyline.value)
+    }
+    
+    // 创建路线折线
+    routePolyline.value = new AMap.value.Polyline({
+      path: path,
+      strokeColor: '#dc2626', // 线条颜色
+      strokeWeight: 4, // 线条宽度
+      strokeOpacity: 0.8, // 线条透明度
+      strokeStyle: 'solid', // 线条样式
+      lineJoin: 'round', // 折线拐点连接处样式
+      lineCap: 'round', // 折线两端线帽的绘制样式
+      zIndex: 50
     })
     
-    // 添加主路线图层
-    map.value.addLayer({
-      id: 'route-main',
-      type: 'line',
-      source: 'route',
-      filter: ['==', ['get', 'id'], 'main_route'],
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round'
-      },
-      paint: {
-        'line-color': '#dc2626',
-        'line-width': [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          5, 3,
-          10, 6,
-          15, 10
-        ],
-        'line-opacity': 0.8
-      }
-    })
+    // 添加到地图
+    map.value.add(routePolyline.value)
     
-    // 添加备选路线图层
-    map.value.addLayer({
-      id: 'route-alternative',
-      type: 'line',
-      source: 'route',
-      filter: ['!=', ['get', 'id'], 'main_route'],
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round'
-      },
-      paint: {
-        'line-color': '#f59e0b',
-        'line-width': [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          5, 2,
-          10, 4,
-          15, 6
-        ],
-        'line-opacity': 0.6,
-        'line-dasharray': [2, 2]
-      }
-    })
+    console.log('路线图层添加成功')
+    
   } catch (err) {
     console.error('添加路线图层失败:', err)
     throw new Error(`路线图层添加失败: ${err.message}`)
@@ -511,89 +473,120 @@ const addRouteLayer = () => {
 
 /**
  * 添加节点图层
+ * 使用高德地图Marker创建节点标记
  */
+const nodeMarkers = ref([]) // 节点标记数组
+
 const addNodesLayer = () => {
   try {
     if (!map.value || !nodes.value.length) return
     
-    // 创建节点GeoJSON数据
-    const nodesGeoJSON = {
-      type: 'FeatureCollection',
-      features: nodes.value.map(node => {
-        // 安全地获取坐标数据
-        let coordinates
-        if (node.coordinates && Array.isArray(node.coordinates)) {
-          coordinates = node.coordinates
-        } else if (node.lng !== undefined && node.lat !== undefined) {
-          coordinates = [node.lng, node.lat]
-        } else {
-          console.warn(`节点 ${node.id} 缺少有效的坐标数据`, node)
-          coordinates = [0, 0] // 默认坐标
-        }
-        
-        return {
-          type: 'Feature',
-          properties: {
-            ...node,
-            visited: progressStore.isNodeVisited(node.id),
-            current: progressStore.currentNodeId === node.id
-          },
-          geometry: {
-            type: 'Point',
-            coordinates: coordinates
-          }
-        }
+    // 清除已存在的标记
+    nodeMarkers.value.forEach(marker => {
+      map.value.remove(marker)
+    })
+    nodeMarkers.value = []
+    
+    // 为每个节点创建标记
+    nodes.value.forEach(node => {
+      // 安全地获取坐标数据
+      let coordinates
+      if (node.coordinates && Array.isArray(node.coordinates)) {
+        coordinates = node.coordinates
+      } else if (node.lng !== undefined && node.lat !== undefined) {
+        coordinates = [node.lng, node.lat]
+      } else {
+        console.warn(`节点 ${node.id} 缺少有效的坐标数据`, node)
+        coordinates = [0, 0] // 默认坐标
+      }
+      
+      // 根据节点状态确定标记样式
+      const isVisited = progressStore.isNodeVisited(node.id)
+      const isCurrent = progressStore.currentNodeId === node.id
+      
+      let markerColor = '#6b7280' // 默认灰色
+      let markerSize = 12
+      
+      if (isCurrent) {
+        markerColor = '#dc2626' // 当前节点红色
+        markerSize = 16
+      } else if (isVisited) {
+        markerColor = '#059669' // 已访问节点绿色
+        markerSize = 14
+      }
+      
+      // 创建标记点
+      const marker = new AMap.value.Marker({
+        position: coordinates,
+        title: node.name,
+        content: `<div style="
+          width: ${markerSize}px;
+          height: ${markerSize}px;
+          background-color: ${markerColor};
+          border: 2px solid #ffffff;
+          border-radius: 50%;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+          cursor: pointer;
+        "></div>`,
+        anchor: 'center',
+        zIndex: 100
       })
-    }
-    
-    // 添加节点数据源
-    map.value.addSource('nodes', {
-      type: 'geojson',
-      data: nodesGeoJSON
+      
+      // 创建信息窗体
+      const infoWindow = new AMap.value.InfoWindow({
+        content: `
+          <div style="padding: 12px; min-width: 200px; font-family: 'Inter', sans-serif;">
+            <h3 style="margin: 0 0 8px 0; color: #1f2937; font-size: 16px; font-weight: 600;">${node.name}</h3>
+            <p style="margin: 4px 0; color: #6b7280; font-size: 14px;">日期: ${node.date || '未知'}</p>
+            <p style="margin: 8px 0 0 0; color: #374151; font-size: 14px; line-height: 1.4;">${node.description || '暂无描述'}</p>
+          </div>
+        `,
+        anchor: 'bottom-center',
+        offset: [0, -10]
+      })
+      
+      // 添加点击事件
+      marker.on('click', () => {
+        selectedNode.value = node
+        infoWindow.open(map.value, marker.getPosition())
+        emit('node-click', node)
+      })
+      
+      // 添加鼠标悬停事件
+      marker.on('mouseover', () => {
+        hoveredNode.value = node
+        marker.setContent(`<div style="
+          width: ${markerSize + 4}px;
+          height: ${markerSize + 4}px;
+          background-color: ${markerColor};
+          border: 3px solid #ffffff;
+          border-radius: 50%;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+          cursor: pointer;
+          transform: scale(1.1);
+        "></div>`)
+        emit('node-hover', node)
+      })
+      
+      marker.on('mouseout', () => {
+        hoveredNode.value = null
+        marker.setContent(`<div style="
+          width: ${markerSize}px;
+          height: ${markerSize}px;
+          background-color: ${markerColor};
+          border: 2px solid #ffffff;
+          border-radius: 50%;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+          cursor: pointer;
+        "></div>`)
+      })
+      
+      // 添加到地图
+      map.value.add(marker)
+      nodeMarkers.value.push(marker)
     })
     
-    // 添加节点图层
-    map.value.addLayer({
-      id: 'nodes',
-      type: 'circle',
-      source: 'nodes',
-      paint: {
-        'circle-radius': [
-          'case',
-          ['get', 'current'], 12,
-          ['get', 'visited'], 8,
-          6
-        ],
-        'circle-color': [
-          'case',
-          ['get', 'current'], '#dc2626',
-          ['get', 'visited'], '#059669',
-          '#6b7280'
-        ],
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#ffffff',
-        'circle-opacity': 0.9
-      }
-    })
-    
-    // 添加节点标签图层
-    map.value.addLayer({
-      id: 'nodes-labels',
-      type: 'symbol',
-      source: 'nodes',
-      layout: {
-        'text-field': ['get', 'name'],
-        'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
-        'text-size': 12,
-        'text-offset': [0, 2],
-        'text-anchor': 'top'
-      },
-      paint: {
-        'text-color': '#374151',
-        'text-halo-color': '#ffffff',
-        'text-halo-width': 1
-      }
-    })
+    console.log('节点图层添加成功，节点数量:', nodeMarkers.value.length)
     
   } catch (err) {
     console.error('添加节点图层失败:', err)
@@ -603,35 +596,55 @@ const addNodesLayer = () => {
 
 /**
  * 设置地图事件监听
+ * 包括地图点击、拖拽等基础交互事件
  */
 const setupMapEvents = () => {
   if (!map.value) return
   
-  // 节点点击事件
-  map.value.on('click', 'nodes', (e) => {
-    const feature = e.features[0]
-    if (feature) {
-      selectedNode.value = feature.properties
-      emit('node-click', feature.properties)
-    }
+  // 地图点击事件（点击空白区域关闭信息窗体）
+  map.value.on('click', (e) => {
+    // 检查是否点击在标记上，如果不是则关闭所有信息窗体
+    selectedNode.value = null
+    showNodeInfo.value = false
+    
+    emit('map-click', {
+      lngLat: e.lnglat,
+      pixel: e.pixel
+    })
   })
   
-  // 节点悬停事件
-  map.value.on('mouseenter', 'nodes', (e) => {
-    map.value.getCanvas().style.cursor = 'pointer'
-    if (e.features[0]) {
-      emit('node-hover', e.features[0].properties)
-    }
+  // 地图拖拽开始事件
+  map.value.on('dragstart', () => {
+    emit('map-drag-start')
   })
   
-  map.value.on('mouseleave', 'nodes', () => {
-    map.value.getCanvas().style.cursor = ''
+  // 地图拖拽结束事件
+  map.value.on('dragend', () => {
+    emit('map-drag-end', {
+      center: map.value.getCenter(),
+      zoom: map.value.getZoom(),
+      bounds: map.value.getBounds()
+    })
   })
   
-  // 路线点击事件
-  map.value.on('click', 'route-main', (e) => {
-    console.log('路线点击:', e.lngLat)
+  // 地图缩放事件
+  map.value.on('zoomend', () => {
+    emit('map-zoom', {
+      zoom: map.value.getZoom(),
+      center: map.value.getCenter()
+    })
   })
+  
+  // 地图移动结束事件
+  map.value.on('moveend', () => {
+    emit('view-change', {
+      center: map.value.getCenter(),
+      zoom: map.value.getZoom(),
+      bounds: map.value.getBounds()
+    })
+  })
+  
+  console.log('地图事件监听设置完成')
 }
 
 /**
@@ -694,11 +707,8 @@ const flyToNode = (nodeId) => {
     return
   }
   
-  map.value.flyTo({
-    center: coordinates,
-    zoom: 12,
-    duration: 2000
-  })
+  // 使用高德地图的平滑移动
+  map.value.setZoomAndCenter(12, coordinates, false, 2000)
 }
 
 /**
@@ -707,11 +717,13 @@ const flyToNode = (nodeId) => {
 const flyToBounds = (bounds, options = {}) => {
   if (!map.value || !bounds) return
   
-  map.value.fitBounds(bounds, {
-    padding: 50,
-    duration: 2000,
-    ...options
-  })
+  // 转换边界格式为高德地图格式
+  const amapBounds = new AMap.value.Bounds(
+    [bounds[0], bounds[1]], // 西南角
+    [bounds[2], bounds[3]]  // 东北角
+  )
+  
+  map.value.setBounds(amapBounds, false, [20, 20, 20, 20], 2000)
 }
 
 /**
@@ -720,11 +732,8 @@ const flyToBounds = (bounds, options = {}) => {
 const resetView = () => {
   if (!map.value) return
   
-  map.value.flyTo({
-    center: props.center,
-    zoom: props.zoom,
-    duration: 2000
-  })
+  // 使用高德地图的平滑移动到初始位置
+  map.value.setZoomAndCenter(props.zoom, props.center, false, 1500)
 }
 
 /**
@@ -761,51 +770,85 @@ const toggleAnimationPanel = () => {
 }
 
 /**
+ * 显示路线图层
+ */
+const showRouteLayer = () => {
+  if (!map.value || !routePolyline.value) return
+  
+  try {
+    routePolyline.value.show()
+    showRoute.value = true
+    emit('route-visibility-change', true)
+  } catch (err) {
+    console.error('显示路线图层失败:', err)
+  }
+}
+
+/**
+ * 隐藏路线图层
+ */
+const hideRouteLayer = () => {
+  if (!map.value || !routePolyline.value) return
+  
+  try {
+    routePolyline.value.hide()
+    showRoute.value = false
+    emit('route-visibility-change', false)
+  } catch (err) {
+    console.error('隐藏路线图层失败:', err)
+  }
+}
+
+/**
  * 切换路线显示
  */
 const toggleRouteVisibility = () => {
+  if (showRoute.value) {
+    hideRouteLayer()
+  } else {
+    showRouteLayer()
+  }
+}
+
+/**
+ * 切换地图样式
+ * 在不同的地图样式之间切换
+ */
+const toggleMapStyle = (styleName) => {
   if (!map.value) return
   
-  showRoute.value = !showRoute.value
+  let mapStyle = 'amap://styles/normal' // 默认标准样式
   
-  const visibility = showRoute.value ? 'visible' : 'none'
-  map.value.setLayoutProperty('route-main', 'visibility', visibility)
-  map.value.setLayoutProperty('route-alternative', 'visibility', visibility)
+  switch (styleName) {
+    case 'satellite':
+      mapStyle = 'amap://styles/satellite'
+      break
+    case 'dark':
+      mapStyle = 'amap://styles/dark'
+      break
+    case 'light':
+      mapStyle = 'amap://styles/light'
+      break
+    case 'fresh':
+      mapStyle = 'amap://styles/fresh'
+      break
+    default:
+      mapStyle = 'amap://styles/normal'
+  }
+  
+  map.value.setMapStyle(mapStyle)
+  emit('style-change', styleName)
 }
 
 /**
  * 切换卫星视图
+ * 在标准地图和卫星地图之间切换
  */
 const toggleSatelliteView = () => {
-  if (!map.value) return
-  
   isSatelliteView.value = !isSatelliteView.value
-  
-  const style = isSatelliteView.value ? mapStyles.satellite : mapStyles.street
-  map.value.setStyle(style)
-  
-  // 样式切换后重新添加数据
-  map.value.once('styledata', () => {
-    setTimeout(() => {
-      try {
-        // 在样式切换后重新应用简体中文语言
-        try {
-          const languageControl = new MapboxLanguage({ defaultLanguage: 'zh-Hans' })
-          map.value.addControl(languageControl)
-          if (typeof languageControl.setLanguage === 'function') {
-            languageControl.setLanguage('zh-Hans')
-          }
-        } catch (langErr) {
-          console.warn('样式切换后应用地图中文语言失败：', langErr)
-        }
-        
-        addRouteLayer()
-        addNodesLayer()
-      } catch (err) {
-        console.error('样式切换后重新添加图层失败:', err)
-      }
-    }, 100)
-  })
+  const styleName = isSatelliteView.value ? 'satellite' : 'normal'
+  toggleMapStyle(styleName)
+  emit('satellite-toggle', isSatelliteView.value)
 }
 
 /**
@@ -1001,12 +1044,39 @@ onMounted(async () => {
 
 // 组件卸载
 onUnmounted(() => {
-  // 停止动画
-  stopAnimation()
-  
-  // 销毁地图实例
-  if (map.value) {
-    map.value.remove()
+  try {
+    // 停止动画
+    stopAnimation()
+    
+    // 清理节点标记
+    if (nodeMarkers.value && nodeMarkers.value.length > 0) {
+      nodeMarkers.value.forEach(marker => {
+        if (map.value) {
+          map.value.remove(marker)
+        }
+      })
+      nodeMarkers.value = []
+    }
+    
+    // 清理路线
+    if (routePolyline.value && map.value) {
+      map.value.remove(routePolyline.value)
+      routePolyline.value = null
+    }
+    
+    // 销毁地图实例
+    if (map.value) {
+      map.value.destroy()
+      map.value = null
+    }
+    
+    // 清理AMap引用
+    AMap.value = null
+    
+    console.log('地图组件清理完成')
+    
+  } catch (err) {
+    console.error('地图组件清理失败:', err)
   }
   
   // 清理事件监听
@@ -1019,10 +1089,25 @@ defineExpose({
   flyToNode,
   flyToBounds,
   resetView,
+  toggleSatelliteView,
+  toggleRouteVisibility,
+  toggleMapStyle,
+  showRouteLayer,
+  hideRouteLayer,
+  addNodesLayer,
+  addRouteLayer,
   updateNodesLayer,
   retry,
   closeError,
-  map: () => map.value
+  getMapInstance: () => map.value,
+  getAMapClass: () => AMap.value,
+  getCurrentView: () => ({
+    center: map.value?.getCenter(),
+    zoom: map.value?.getZoom(),
+    bounds: map.value?.getBounds()
+  }),
+  getSelectedNode: () => selectedNode.value,
+  getHoveredNode: () => hoveredNode.value
 })
 </script>
 
