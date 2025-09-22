@@ -1,304 +1,186 @@
 <template>
   <div class="map-container relative w-full h-full">
     <!-- 地图容器 -->
-    <div 
-      ref="mapContainer" 
-      class="w-full h-full"
-      @contextmenu.prevent
-    ></div>
-    
+    <div ref="mapContainer" class="w-full h-full" @contextmenu.prevent></div>
+
     <!-- 地图控制面板 -->
     <div class="absolute top-4 right-4 z-10">
       <!-- 主控制按钮组 -->
       <div class="flex flex-col gap-2 mb-4">
-        <button 
-          @click="resetView"
-          class="map-control-btn"
-          title="重置视图"
-        >
+        <button @click="resetView" class="map-control-btn" title="重置视图">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+              clip-rule="evenodd" />
           </svg>
         </button>
-        
-        <button 
-          @click="toggleControlPanel"
-          class="map-control-btn"
-          :class="{ 'active': showControlPanel }"
-          title="地图控制"
-        >
+
+        <button @click="toggleControlPanel" class="map-control-btn" :class="{ 'active': showControlPanel }"
+          title="地图控制">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd" />
           </svg>
         </button>
-        
-        <button 
-          @click="toggleLayerPanel"
-          class="map-control-btn"
-          :class="{ 'active': showLayerPanel }"
-          title="图层管理"
-        >
+
+        <button @click="toggleLayerPanel" class="map-control-btn" :class="{ 'active': showLayerPanel }" title="图层管理">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+            <path
+              d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
           </svg>
         </button>
-        
-        <button 
-          @click="toggleAnimationPanel"
-          class="map-control-btn"
-          :class="{ 'active': showAnimationPanel }"
-          title="动画控制"
-        >
+
+        <button @click="toggleAnimationPanel" class="map-control-btn" :class="{ 'active': showAnimationPanel }"
+          title="动画控制">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+              clip-rule="evenodd" />
           </svg>
         </button>
       </div>
-      
+
       <!-- 控制面板 -->
       <div v-if="showControlPanel" class="control-panel">
         <h4 class="panel-title">地图控制</h4>
         <div class="control-group">
-          <button 
-            @click="toggleRouteVisibility"
-            class="control-item"
-            :class="{ 'active': showRoute }"
-          >
+          <button @click="toggleRouteVisibility" class="control-item" :class="{ 'active': showRoute }">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+              <path fill-rule="evenodd"
+                d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                clip-rule="evenodd" />
             </svg>
             <span>显示路线</span>
           </button>
-          
-          <button 
-            @click="toggleSatelliteView"
-            class="control-item"
-            :class="{ 'active': isSatelliteView }"
-          >
+
+          <button @click="toggleSatelliteView" class="control-item" :class="{ 'active': isSatelliteView }">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+              <path fill-rule="evenodd"
+                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                clip-rule="evenodd" />
             </svg>
             <span>卫星视图</span>
           </button>
-          
-          <button 
-            @click="toggle3DView"
-            class="control-item"
-            :class="{ 'active': is3DView }"
-          >
+
+          <button @click="toggle3DView" class="control-item" :class="{ 'active': is3DView }">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>3D视图</span>
           </button>
-          
-          <button 
-            @click="toggleTerrainView"
-            class="control-item"
-            :class="{ 'active': showTerrain }"
-          >
+
+          <button @click="toggleTerrainView" class="control-item" :class="{ 'active': showTerrain }">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              <path fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd" />
             </svg>
             <span>地形图</span>
           </button>
         </div>
       </div>
-      
+
       <!-- 图层管理面板 -->
       <div v-if="showLayerPanel" class="control-panel">
         <h4 class="panel-title">图层管理</h4>
         <div class="layer-group">
           <div class="layer-item">
             <label class="layer-label">
-              <input 
-                type="checkbox" 
-                v-model="layers.route.visible"
-                @change="toggleLayer('route')"
-              >
+              <input type="checkbox" v-model="layers.route.visible" @change="toggleLayer('route')">
               <span>长征路线</span>
             </label>
             <div class="layer-opacity">
-              <input 
-                type="range" 
-                min="0" 
-                max="1" 
-                step="0.1"
-                v-model="layers.route.opacity"
-                @input="updateLayerOpacity('route')"
-              >
+              <input type="range" min="0" max="1" step="0.1" v-model="layers.route.opacity"
+                @input="updateLayerOpacity('route')">
             </div>
           </div>
-          
+
           <div class="layer-item">
             <label class="layer-label">
-              <input 
-                type="checkbox" 
-                v-model="layers.nodes.visible"
-                @change="toggleLayer('nodes')"
-              >
+              <input type="checkbox" v-model="layers.nodes.visible" @change="toggleLayer('nodes')">
               <span>历史节点</span>
             </label>
             <div class="layer-opacity">
-              <input 
-                type="range" 
-                min="0" 
-                max="1" 
-                step="0.1"
-                v-model="layers.nodes.opacity"
-                @input="updateLayerOpacity('nodes')"
-              >
+              <input type="range" min="0" max="1" step="0.1" v-model="layers.nodes.opacity"
+                @input="updateLayerOpacity('nodes')">
             </div>
           </div>
-          
+
           <div class="layer-item">
             <label class="layer-label">
-              <input 
-                type="checkbox" 
-                v-model="layers.labels.visible"
-                @change="toggleLayer('labels')"
-              >
+              <input type="checkbox" v-model="layers.labels.visible" @change="toggleLayer('labels')">
               <span>地名标签</span>
             </label>
             <div class="layer-opacity">
-              <input 
-                type="range" 
-                min="0" 
-                max="1" 
-                step="0.1"
-                v-model="layers.labels.opacity"
-                @input="updateLayerOpacity('labels')"
-              >
+              <input type="range" min="0" max="1" step="0.1" v-model="layers.labels.opacity"
+                @input="updateLayerOpacity('labels')">
             </div>
           </div>
-          
+
           <div class="layer-item">
             <label class="layer-label">
-              <input 
-                type="checkbox" 
-                v-model="layers.historical.visible"
-                @change="toggleLayer('historical')"
-              >
+              <input type="checkbox" v-model="layers.historical.visible" @change="toggleLayer('historical')">
               <span>历史边界</span>
             </label>
             <div class="layer-opacity">
-              <input 
-                type="range" 
-                min="0" 
-                max="1" 
-                step="0.1"
-                v-model="layers.historical.opacity"
-                @input="updateLayerOpacity('historical')"
-              >
+              <input type="range" min="0" max="1" step="0.1" v-model="layers.historical.opacity"
+                @input="updateLayerOpacity('historical')">
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- 动画控制面板 -->
       <div v-if="showAnimationPanel" class="control-panel">
         <h4 class="panel-title">动画控制</h4>
         <div class="animation-group">
-          <button 
-            @click="startRouteAnimation"
-            class="animation-btn"
-            :disabled="isAnimating"
-          >
+          <button @click="startRouteAnimation" class="animation-btn" :disabled="isAnimating">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                clip-rule="evenodd" />
             </svg>
             <span>播放路线</span>
           </button>
-          
-          <button 
-            @click="stopAnimation"
-            class="animation-btn"
-            :disabled="!isAnimating"
-          >
+
+          <button @click="stopAnimation" class="animation-btn" :disabled="!isAnimating">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+              <path fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+                clip-rule="evenodd" />
             </svg>
             <span>停止动画</span>
           </button>
-          
+
           <div class="speed-control">
             <label>动画速度</label>
-            <input 
-              type="range" 
-              min="0.5" 
-              max="3" 
-              step="0.5"
-              v-model="animationSpeed"
-            >
+            <input type="range" min="0.5" max="3" step="0.5" v-model="animationSpeed">
             <span>{{ animationSpeed }}x</span>
           </div>
-          
+
           <div class="progress-control" v-if="isAnimating">
             <label>进度</label>
             <div class="progress-bar">
-              <div 
-                class="progress-fill" 
-                :style="{ width: animationProgress + '%' }"
-              ></div>
+              <div class="progress-fill" :style="{ width: animationProgress + '%' }"></div>
             </div>
             <span>{{ Math.round(animationProgress) }}%</span>
           </div>
         </div>
       </div>
     </div>
-    
+  
     <!-- 节点信息弹窗 -->
-    <div 
-      v-if="selectedNode" 
-      class="absolute bottom-4 left-4 right-4 bg-white rounded-lg shadow-xl p-4 z-20 max-w-md mx-auto"
-    >
-      <div class="flex justify-between items-start mb-2">
-        <h3 class="text-lg font-bold text-gray-800">{{ selectedNode.name }}</h3>
-        <button 
-          @click="closeNodeInfo"
-          class="text-gray-500 hover:text-gray-700"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-        </button>
-      </div>
-      
-      <p class="text-sm text-gray-600 mb-3">{{ selectedNode.summary }}</p>
-      
-      <div class="flex gap-2">
-        <button 
-          @click="visitNode(selectedNode)"
-          class="btn-primary flex-1 py-2 text-sm"
-        >
-          前往此地
-        </button>
-        <button 
-          @click="showNodeStory(selectedNode)"
-          class="btn-secondary flex-1 py-2 text-sm"
-        >
-          查看故事
-        </button>
-      </div>
+    <div v-if="selectedNode">
     </div>
-    
+
     <!-- 加载状态 -->
-    <LoadingSpinner 
-      v-if="isLoading" 
-      :message="'加载地图中...'"
-      class="absolute inset-0 z-30"
-    />
-    
+    <LoadingSpinner v-if="isLoading" :message="'加载地图中...'" class="absolute inset-0 z-30" />
+
     <!-- 错误状态 -->
-    <ErrorMessage
-      v-if="error"
-      :error="error"
-      :retrying="retrying"
-      @retry="retry"
-      @close="closeError"
-      class="absolute inset-0 z-30"
-    />
+    <ErrorMessage v-if="error" :error="error" :retrying="retrying" @retry="retry" @close="closeError"
+      class="absolute inset-0 z-30" />
   </div>
 </template>
 

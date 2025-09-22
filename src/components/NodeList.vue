@@ -173,7 +173,7 @@
               <!-- 节点信息 -->
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-1">
-                  <h3 class="font-semibold text-gray-900 truncate group-hover:text-primary transition-colors">{{ node.name }}</h3>
+                  <h3 class="font-semibold text-gray-900 truncate group-hover:text-primary transition-colors">{{ node.name_zh || node.name }}</h3>
                   <span 
                     v-if="isCurrentNode(node.id)"
                     class="px-2 py-0.5 text-xs bg-primary text-white rounded-full animate-pulse"
@@ -191,12 +191,12 @@
                   </div>
                 </div>
                 
-                <p class="text-sm text-gray-600 line-clamp-2 mb-2">{{ node.summary }}</p>
+                <p class="text-sm text-gray-600 line-clamp-2 mb-2">{{ node.summary_zh || node.summary }}</p>
                 
                 <!-- 节点标签 -->
                 <div class="flex flex-wrap gap-1 mb-2">
                   <span 
-                    v-for="tag in node.tags"
+                    v-for="tag in getNodeTags(node)"
                     :key="tag"
                     class="px-2 py-0.5 text-xs bg-gray-100 text-gray-600 rounded"
                   >
@@ -311,22 +311,22 @@
             </div>
             
             <!-- 节点描述 -->
-            <p class="text-sm text-gray-600 line-clamp-3 mb-3">{{ node.summary }}</p>
+            <p class="text-sm text-gray-600 line-clamp-3 mb-3">{{ node.summary_zh || node.summary }}</p>
             
             <!-- 节点标签 -->
             <div class="flex flex-wrap gap-1 mb-3">
               <span 
-                v-for="tag in node.tags?.slice(0, 3)"
+                v-for="tag in getNodeTags(node).slice(0, 3)"
                 :key="tag"
                 class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-full"
               >
                 {{ tag }}
               </span>
               <span 
-                v-if="node.tags && node.tags.length > 3"
+                v-if="getNodeTags(node).length > 3"
                 class="px-2 py-1 text-xs bg-gray-100 text-gray-500 rounded-full"
               >
-                +{{ node.tags.length - 3 }}
+                +{{ getNodeTags(node).length - 3 }}
               </span>
             </div>
             
@@ -422,7 +422,7 @@
               <div v-else-if="isCurrentNode(selectedNode.id)" class="w-3 h-3 bg-white rounded-full animate-pulse"></div>
             </div>
             <div>
-              <h2 class="text-xl font-bold text-gray-900">{{ selectedNode.name }}</h2>
+              <h2 class="text-xl font-bold text-gray-900">{{ selectedNode.name_zh || selectedNode.name }}</h2>
               <p class="text-sm text-gray-500">节点详细信息</p>
             </div>
           </div>
@@ -460,12 +460,12 @@
                 <span>{{ hasNodeStory(selectedNode.id) ? '有故事' : '无故事' }}</span>
               </div>
               <div class="flex items-center gap-2">
-                <div class="w-3 h-3 rounded-full" :class="selectedNode.poem ? 'bg-purple-500' : 'bg-gray-300'"></div>
-                <span>{{ selectedNode.poem ? '有诗词' : '无诗词' }}</span>
+                <div class="w-3 h-3 rounded-full" :class="(selectedNode.poem_zh || selectedNode.poem) ? 'bg-purple-500' : 'bg-gray-300'"></div>
+                <span>{{ (selectedNode.poem_zh || selectedNode.poem) ? '有诗词' : '无诗词' }}</span>
               </div>
               <div class="flex items-center gap-2">
-                <div class="w-3 h-3 rounded-full" :class="selectedNode.tags?.length ? 'bg-orange-500' : 'bg-gray-300'"></div>
-                <span>{{ selectedNode.tags?.length || 0 }} 个标签</span>
+                <div class="w-3 h-3 rounded-full" :class="getNodeTags(selectedNode).length ? 'bg-orange-500' : 'bg-gray-300'"></div>
+                <span>{{ getNodeTags(selectedNode).length || 0 }} 个标签</span>
               </div>
             </div>
           </div>
@@ -473,23 +473,27 @@
           <!-- 节点描述 -->
           <div class="mb-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-3">节点描述</h3>
-            <p class="text-gray-700 leading-relaxed">{{ selectedNode.summary }}</p>
+            <p class="text-gray-700 leading-relaxed">{{ selectedNode.summary_zh || selectedNode.summary }}</p>
+            <div v-if="selectedNode.description_zh || selectedNode.description" class="mt-4">
+              <h4 class="text-md font-medium text-gray-800 mb-2">详细描述</h4>
+              <p class="text-gray-600 leading-relaxed text-sm">{{ selectedNode.description_zh || selectedNode.description }}</p>
+            </div>
           </div>
           
           <!-- 诗词内容 -->
-          <div v-if="selectedNode.poem" class="mb-6">
+          <div v-if="selectedNode.poem_zh || selectedNode.poem" class="mb-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-3">相关诗词</h3>
             <div class="bg-gray-50 rounded-lg p-4">
-              <p class="text-gray-800 italic leading-relaxed whitespace-pre-line">{{ selectedNode.poem }}</p>
+              <p class="text-gray-800 italic leading-relaxed whitespace-pre-line">{{ selectedNode.poem_zh || selectedNode.poem }}</p>
             </div>
           </div>
           
           <!-- 节点标签 -->
-          <div v-if="selectedNode.tags?.length" class="mb-6">
+          <div v-if="getNodeTags(selectedNode).length" class="mb-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-3">节点标签</h3>
             <div class="flex flex-wrap gap-2">
               <span 
-                v-for="tag in selectedNode.tags"
+                v-for="tag in getNodeTags(selectedNode)"
                 :key="tag"
                 class="px-3 py-1 text-sm bg-primary bg-opacity-10 text-primary rounded-full border border-primary border-opacity-20"
               >
@@ -498,22 +502,62 @@
             </div>
           </div>
           
+          <!-- 时间信息 -->
+          <div v-if="selectedNode.time_zh || selectedNode.time" class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">时间信息</h3>
+            <div class="bg-blue-50 rounded-lg p-4">
+              <p class="text-blue-800 font-medium">{{ selectedNode.time_zh || selectedNode.time }}</p>
+            </div>
+          </div>
+
+          <!-- 历史意义 -->
+          <div v-if="selectedNode.historical_significance" class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">历史意义</h3>
+            <div class="bg-yellow-50 rounded-lg p-4">
+              <p class="text-yellow-800 leading-relaxed">{{ selectedNode.historical_significance }}</p>
+            </div>
+          </div>
+
+          <!-- 伤亡情况 -->
+          <div v-if="selectedNode.casualties" class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">伤亡情况</h3>
+            <div class="bg-red-50 rounded-lg p-4">
+              <p class="text-red-800 leading-relaxed">{{ selectedNode.casualties }}</p>
+            </div>
+          </div>
+
+          <!-- 环境信息 -->
+          <div v-if="selectedNode.weather || selectedNode.terrain" class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">环境信息</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div v-if="selectedNode.weather" class="bg-gray-50 rounded-lg p-3">
+                <h4 class="text-sm font-medium text-gray-700 mb-1">天气情况</h4>
+                <p class="text-gray-600 text-sm">{{ selectedNode.weather }}</p>
+              </div>
+              <div v-if="selectedNode.terrain" class="bg-gray-50 rounded-lg p-3">
+                <h4 class="text-sm font-medium text-gray-700 mb-1">地形特点</h4>
+                <p class="text-gray-600 text-sm">{{ selectedNode.terrain }}</p>
+              </div>
+            </div>
+          </div>
+
           <!-- 位置和距离信息 -->
           <div class="mb-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-3">位置信息</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div v-if="selectedNode.coordinates" class="flex items-center gap-2 text-sm text-gray-600">
-                <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                </svg>
-                <span>坐标: {{ selectedNode.coordinates[1].toFixed(4) }}, {{ selectedNode.coordinates[0].toFixed(4) }}</span>
-              </div>
-              <div v-if="selectedNode.distance" class="flex items-center gap-2 text-sm text-gray-600">
-                <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
-                </svg>
-                <span>距离: {{ formatDistance(selectedNode.distance) }}</span>
-              </div>
+              <div v-if="selectedNode.lng && selectedNode.lat" class="flex items-center gap-2 text-sm text-gray-600">
+                 <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                   <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                 </svg>
+                 <span>经度: {{ selectedNode.lng.toFixed(3) }}, 纬度: {{ selectedNode.lat.toFixed(3) }}</span>
+               </div>
+               
+               <div v-if="selectedNode.distance" class="flex items-center gap-2 text-sm text-gray-600">
+                 <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                   <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                 </svg>
+                 <span>距离: {{ formatDistance(selectedNode.distance) }}</span>
+               </div>
               <div v-if="selectedNode.duration" class="flex items-center gap-2 text-sm text-gray-600">
                 <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
@@ -910,6 +954,43 @@ const closeNodeDetail = () => {
 }
 
 /**
+ * 获取节点标签
+ * @param {Object} node - 节点对象
+ * @returns {Array} 标签数组
+ */
+const getNodeTags = (node) => {
+  if (!node) return []
+  
+  const tags = []
+  
+  // 根据节点名称生成标签
+  if (node.name_zh || node.name) {
+    const name = node.name_zh || node.name
+    if (name.includes('战役') || name.includes('战斗')) tags.push('战斗')
+    if (name.includes('会议') || name.includes('会师')) tags.push('会议')
+    if (name.includes('渡') || name.includes('江') || name.includes('河')) tags.push('渡河')
+    if (name.includes('山') || name.includes('岭') || name.includes('峰')) tags.push('翻山')
+    if (name.includes('出发') || name.includes('开始')) tags.push('起点')
+    if (name.includes('到达') || name.includes('结束')) tags.push('终点')
+  }
+  
+  // 根据时间生成标签
+  if (node.time_zh || node.time) {
+    const time = node.time_zh || node.time
+    if (time.includes('1934')) tags.push('1934年')
+    if (time.includes('1935')) tags.push('1935年')
+    if (time.includes('1936')) tags.push('1936年')
+  }
+  
+  // 如果没有生成任何标签，添加默认标签
+  if (tags.length === 0) {
+    tags.push('长征节点')
+  }
+  
+  return tags
+}
+
+/**
  * 获取节点完成度
  */
 const getNodeCompletionRate = (node) => {
@@ -917,8 +998,8 @@ const getNodeCompletionRate = (node) => {
   let completion = 0
   if (isNodeVisited(node.id)) completion += 40
   if (hasNodeStory(node.id)) completion += 30
-  if (node.poem) completion += 20
-  if (node.tags && node.tags.length > 0) completion += 10
+  if (node.poem_zh || node.poem) completion += 20
+  if (getNodeTags(node).length > 0) completion += 10
   return Math.min(completion, 100)
 }
 
