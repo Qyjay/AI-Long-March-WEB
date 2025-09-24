@@ -13,7 +13,7 @@
     "description_en": "During the fifth counter-encirclement campaign, due to the erroneous leadership of the 'Left' opportunism within the Party and the heavy encirclement and economic blockade by the Kuomintang army, the Central Red Army fought bravely in the base area for a year but still could not break the enemy's encirclement. The base area was shrinking day by day, and the Red Army was forced to transfer.",
     "poem_zh": "雄关漫道真如铁，而今迈步从头越。",
     "poem_en": "The pass is like iron, yet we stride anew from the beginning.",
-    "image": "/assets/nodes/ruijin.webp",
+    "image": "ruijin.png",
     "gallery": [
       "/assets/gallery/ruijin_1.webp",
       "/assets/gallery/ruijin_2.webp",
@@ -27,7 +27,17 @@
     "historical_significance": "瑞金是中华苏维埃共和国临时中央政府所在地，被誉为'共和国摇篮'。长征从这里开始，标志着中国革命进入了一个新的历史阶段。",
     "casualties": "约8.6万人开始长征",
     "weather": "秋季，天气转凉",
-    "terrain": "丘陵地带，河流众多"
+    "terrain": "丘陵地带，河流众多",
+     "interactive_decision": {
+      "question": "出发前需要精简物资，你会优先保留哪些物品？",
+      "options": [
+        "武器弹药和药品",
+        "粮食和衣物",
+        "文件资料和电台设备"
+      ],
+      "correct_answer": 0,
+      "explanation": "历史上红军在长征中优先保证武器弹药和药品供应，这是保持战斗力和生存能力的关键。同时也尽可能携带了重要文件和通讯设备，体现了革命的长远考虑。"
+    }
   },
   {
     "id": "xiangjiang",
@@ -43,7 +53,17 @@
     "description_en": "The Battle of Xiangjiang was the most heroic and crucial battle since the Central Red Army's breakout. The Central Red Army fought bitterly against superior enemies and finally forced their way across the Xiangjiang River between Quanzhou and Xing'an, breaking through the fourth blockade line of the Kuomintang army.",
     "poem_zh": "三十万人过大江，不见一人还故乡。",
     "poem_en": "Three hundred thousand crossed the great river, none returned to their homeland.",
-    "image": "/assets/nodes/xiangjiang.webp",
+    "image": "xiangjiang.png",
+    "interactive_decision": {
+      "question": "面对敌军重兵封锁，你会如何部署渡江？",
+      "options": [
+        "集中保护中央纵队，强行正面突破",
+        "分兵多路，佯攻牵制敌人主力",
+        "暂停渡江，原路返回寻找其他路线"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军因采用正面强攻付出惨重代价，正确策略应是分兵佯攻，分散敌人注意力，为主力部队创造渡江机会，这也为后来遵义会议后的战术转变提供了教训。"
+    },
     "gallery": [
       "/assets/gallery/xiangjiang_1.webp",
       "/assets/gallery/xiangjiang_2.webp",
@@ -76,7 +96,7 @@
     "description_en": "To summarize the experience and lessons of military command in the fifth counter-encirclement campaign, according to the decision of the Liping Politburo meeting, under the efforts of leading comrades such as Mao Zedong, Zhang Wentian, and Wang Jiaxiang, after the Red Army occupied Zunyi, an enlarged meeting of the CPC Central Committee Politburo was held in Zunyi from January 15 to 17, 1935.",
     "poem_zh": "雄关漫道真如铁，而今迈步从头越。从头越，苍山如海，残阳如血。",
     "poem_en": "The pass is truly like iron, yet we stride anew from the beginning. From the beginning, mountains like seas, setting sun like blood.",
-    "image": "/assets/nodes/zunyi.webp",
+    "image": "zunyi.jpg",
     "gallery": [
       "/assets/gallery/zunyi_conference_room.webp",
       "/assets/gallery/zunyi_memorial.webp",
@@ -93,7 +113,13 @@
     "weather": "冬季，天气寒冷",
     "terrain": "黔北山区，地势险要",
     "meeting_duration": "3天",
-    "key_decisions": "确立毛泽东军事领导地位，批判左倾错误路线"
+    "key_decisions": "确立毛泽东军事领导地位，批判左倾错误路线",
+    "interactive_decision": {
+    "question": "遵义会议确立了谁的领导地位？",
+    "options": ["毛泽东", "周恩来", "朱德", "林彪"],
+    "correct_answer": 0,
+    "explanation": "遵义会议确立了毛泽东在党内的领导地位。"
+  }
   },
   {
     "id": "chishui",
@@ -109,13 +135,14 @@
     "description_en": "Mao Zedong commanded the Central Red Army to cross three rivers six times in three months, fighting across Sichuan, Guizhou, and Yunnan provinces, skillfully maneuvering between the heavy encirclement of Kuomintang troops, constantly creating opportunities, annihilating large numbers of enemies in movement, and firmly grasping the initiative on the battlefield.",
     "poem_zh": "横断山，路难行。天如火，水似银。",
     "poem_en": "Across the mountains, the road is hard. Sky like fire, water like silver.",
-    "image": "/assets/nodes/chishui.webp",
+    "image": "chishui.png",
     "gallery": [
       "/assets/gallery/chishui_river.webp",
       "/assets/gallery/chishui_crossing.webp",
       "/assets/gallery/chishui_terrain.webp",
       "/assets/gallery/chishui_memorial.webp"
     ],
+    
     "assets": {
       "broll": "/assets/broll/chishui.mp4",
       "sfx": "/assets/sfx/river.mp3",
@@ -126,6 +153,16 @@
     "weather": "春季，多雨潮湿",
     "terrain": "山高谷深，河流湍急，道路崎岖",
     "enemy_forces": "国民党军40万人围追堵截",
+    "interactive_decision": {
+      "question": "成功摆脱敌军后，你会选择什么方向继续前进？",
+      "options": [
+        "按原计划北渡长江与红四方面军会合",
+        "乘虚进军敌军防御薄弱的云南",
+        "返回遵义地区建立根据地"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军选择进军防御薄弱的云南，不仅彻底摆脱了敌军包围，还为巧渡金沙江创造了条件，体现了\"避实击虚\"的军事原则。"
+    },
     "campaign_duration": "4个月",
     "crossings": "一渡：1935年1月19日；二渡：1935年1月20日；三渡：1935年3月16日；四渡：1935年3月21日"
   },
@@ -143,7 +180,7 @@
     "description_en": "On May 3, 1935, during the Long March, the Central Red Army Military Commission cadre regiment received the task of seizing Jiaoping Ferry. They found a boat that the enemy had sent scouts to the south bank to investigate the situation by the Jinsha River, and with the help of local farmers, they salvaged a broken boat from the water.",
     "poem_zh": "金沙水拍云崖暖，大渡桥横铁索寒。",
     "poem_en": "Golden sands beat warm against cloud cliffs, Dadu Bridge spans with iron chains cold.",
-    "image": "/assets/nodes/jinsha.webp",
+    "image": "jinshajiang.png",
     "gallery": [
       "/assets/gallery/jinsha_ferry.webp",
       "/assets/gallery/jinsha_boats.webp",
@@ -161,7 +198,17 @@
     "terrain": "金沙江水深流急，两岸峭壁林立",
     "crossing_duration": "7天7夜",
     "ferry_location": "皎平渡",
-    "boatmen": "36名当地艄公协助"
+    "boatmen": "36名当地艄公协助" ,
+    "interactive_decision": {
+      "question": "面对江面宽阔、船只有限的情况，你会如何组织渡江？",
+      "options": [
+        "分多路从不同渡口同时渡江",
+        "集中所有船只从一个渡口昼夜抢渡",
+        "等待后续部队运送更多船只"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军集中船只从皎平渡昼夜抢渡，既避免了兵力分散，又提高了渡江效率，仅用7天就完成全军渡江，体现了集中力量办大事的组织优势。"
+    }
   },
   {
     "id": "dadu",
@@ -177,7 +224,7 @@
     "description_en": "On May 29, 1935, 22 assault team members of the Red Fourth Regiment, led by regiment commander Wang Kaixiang and political commissar Yang Chengwu, braved enemy gunfire and climbed the suspended iron chain links toward the opposite shore.",
     "poem_zh": "大渡桥横铁索寒，更喜岷山千里雪。",
     "poem_en": "Dadu Bridge spans with iron chains cold, more joy at Minshan's thousand li of snow.",
-    "image": "/assets/nodes/dadu.webp",
+    "image": "ludingqiao.png",
     "gallery": [
       "/assets/gallery/luding_bridge.webp",
       "/assets/gallery/luding_chains.webp",
@@ -196,7 +243,17 @@
     "terrain": "大渡河水流湍急，泸定桥为铁索桥",
     "bridge_length": "103米",
     "chain_count": "13根铁链",
-    "battle_duration": "2小时"
+    "battle_duration": "2小时",
+    "interactive_decision": {
+      "question": "面对没有桥面木板的铁索桥和敌军火力封锁，你会如何进攻？",
+      "options": [
+        "组织火力掩护，强攻铁索桥",
+        "寻找船只从其他地点渡河",
+        "夜间偷袭，减少伤亡"
+      ],
+      "correct_answer": 0,
+      "explanation": "历史上红军正是在火力掩护下强攻铁索桥，这种英勇无畏的进攻精神和周密的战术配合，最终赢得了战斗胜利，创造了军事史上的奇迹。"
+    }
   },
   {
     "id": "jiajin",
@@ -212,7 +269,7 @@
     "description_en": "Jiajin Mountain is 4,930 meters above sea level, with year-round snow, thin air, and unpredictable weather. Red Army soldiers wore thin clothes, many still in straw sandals, struggling to advance on the snow mountain.",
     "poem_zh": "更喜岷山千里雪，三军过后尽开颜。",
     "poem_en": "More joy at Minshan's thousand li of snow, the three armies smile after crossing.",
-    "image": "/assets/nodes/jiajin.webp",
+    "image": "jiajinshan.png",
     "gallery": [
       "/assets/gallery/jiajin_peak.webp",
       "/assets/gallery/jiajin_snow.webp",
@@ -231,7 +288,17 @@
     "challenges": "高原反应、严寒、缺氧、装备不足",
     "local_name": "神山",
     "crossing_duration": "1天",
-    "casualties": "部分战士因高原反应和严寒牺牲"
+    "casualties": "部分战士因高原反应和严寒牺牲",
+    "interactive_decision": {
+      "question": "面对雪山恶劣环境和物资匮乏，你会如何组织翻越？",
+      "options": [
+        "等待天气好转再翻越",
+        "派先遣队探路，主力分批翻越",
+        "放弃翻越，选择其他路线"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军正是采用先遣队探路、主力分批翻越的方式，同时总结出\"走路不观景，观景不走路\"等翻越雪山的经验，最大限度减少了伤亡，体现了科学组织和团结互助的精神。"
+    }
   },
   {
     "id": "maogai",
@@ -247,7 +314,7 @@
     "description_en": "On June 12, 1935, the advance troops of the Central Red Army's First Army Corps Second Division Fourth Regiment successfully met with the Fourth Front Army's Ninth Army Twenty-fifth Division Seventy-fourth Regiment in Dawei Town, Maogong County.",
     "poem_zh": "红军不怕远征难，万水千山只等闲。",
     "poem_en": "The Red Army fears not the trials of distant march, ten thousand waters and mountains are nothing.",
-    "image": "/assets/nodes/maogai.webp",
+    "image": "gong.png",
     "gallery": [
       "/assets/gallery/maogai_meeting.webp",
       "/assets/gallery/maogai_celebration.webp",
@@ -265,7 +332,17 @@
     "weather": "初夏，高原气候",
     "terrain": "川西高原，海拔较高",
     "troop_strength": "中央红军约3万人，红四方面军约8万人",
-    "celebration_activities": "联欢会、经验交流、物资补给"
+    "celebration_activities": "联欢会、经验交流、物资补给",
+    "interactive_decision": {
+      "question": "面对北上与南下的战略分歧，你会如何处理？",
+      "options": [
+        "坚持中央北上主张，同时做好团结教育工作",
+        "接受张国焘南下意见，避免内部矛盾",
+        "分兵两路，各自按不同方向前进"
+      ],
+      "correct_answer": 0,
+      "explanation": "历史上中央坚持北上的正确战略，同时尽力维护红军团结，这种既坚持原则又讲究策略的做法，最终保证了长征的胜利和革命力量的保存。"
+    }
   },
   {
     "id": "lazikou",
@@ -281,7 +358,7 @@
     "description_en": "Lazikou is an important pass in the Minshan Mountains, with dangerous terrain that is easy to defend but difficult to attack. The Kuomintang army stationed heavy troops here, attempting to prevent the Red Army from advancing north.",
     "poem_zh": "雄关漫道真如铁，而今迈步从头越。",
     "poem_en": "The pass is truly like iron, yet we stride anew from the beginning.",
-    "image": "/assets/nodes/lazikou.webp",
+    "image": "lazikou.png",
     "gallery": [
       "/assets/gallery/lazikou_pass.webp",
       "/assets/gallery/lazikou_battle.webp",
@@ -300,7 +377,17 @@
     "terrain": "岷山隘口，地势险要，一夫当关万夫莫开",
     "enemy_forces": "国民党军鲁大昌部",
     "battle_duration": "2天1夜",
-    "strategic_importance": "打开北上通道的关键隘口"
+    "strategic_importance": "打开北上通道的关键隘口",
+    "interactive_decision": {
+      "question": "面对易守难攻的天险，你会采取什么战术？",
+      "options": [
+        "集中火力正面强攻，突破敌人防线",
+        "组织突击队从侧面险要处迂回敌后",
+        "暂时围困，等待敌军弹尽粮绝"
+      ],
+      "correct_answer": 1,
+      "explanation": "攻克腊子口正是采用了侧面迂回与正面强攻相结合的战术，这种\"以奇制胜\"的打法，既减少了正面强攻的伤亡，又达到了出奇制胜的效果，是红军战术灵活性的生动体现。"
+    }
   },
   {
     "id": "wuqizheng",
@@ -316,7 +403,7 @@
     "description_en": "On October 19, 1935, after the 25,000-li Long March, the Central Red Army finally reached Wuqi Town in northern Shaanxi and successfully met with the northern Shaanxi Red Army led by Liu Zhidan and Xie Zichang. This marked the victorious end of the Central Red Army's Long March, preserving important forces for the Chinese revolution.",
     "poem_zh": "三军过后尽开颜，胜利会师在吴起。",
     "poem_en": "The three armies smile after crossing, victorious reunion at Wuqi.",
-    "image": "/assets/nodes/wuqizheng.webp",
+    "image": "wuqizhen.png",
     "gallery": [
       "/assets/gallery/wuqi_arrival.webp",
       "/assets/gallery/wuqi_meeting.webp",
@@ -336,6 +423,16 @@
     "terrain": "陕北黄土高原",
     "remaining_troops": "约7000人",
     "political_significance": "确立抗日民族统一战线方针",
-    "mao_speech": "《论反对日本帝国主义的策略》"
+    "mao_speech": "《论反对日本帝国主义的策略》",
+    "interactive_decision": {
+      "question": "长征胜利到达陕北后，你会如何部署下一步工作？",
+      "options": [
+        "立即休整补充，恢复红军战斗力",
+        "主动出击，扩大陕北革命根据地",
+        "开展群众工作，巩固根据地基础"
+      ],
+      "correct_answer": 0,
+      "explanation": "红军到达陕北后首先进行休整补充是正确选择，经过长途跋涉的红军急需恢复战斗力，这为后来巩固和扩大陕北根据地、迎接抗日战争奠定了基础，体现了实事求是的工作方法。"
+    }
   }
 ]
