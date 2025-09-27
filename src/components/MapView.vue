@@ -2,7 +2,26 @@
   <div class="map-container relative w-full h-full">
     <!-- 地图容器 -->
     <div ref="mapContainer" class="w-full h-full" @contextmenu.prevent></div>
+    <div class="relative w-full h-[600px]">
+    <!-- 节点显示 -->
+    <div
+      v-for="node in nodes"
+      :key="node.id"
+      class="absolute w-6 h-6 rounded-full bg-red-500 cursor-pointer"
+      :style="`left:${(node.lng - lngOffset) * scale}px; top:${(node.lat - latOffset) * scale}px;`"
+      @click="openNode(node)"
+      :title="node.name_zh"
+    ></div>
 
+    <!-- 剧情弹窗 -->
+    <NodeDialog 
+      v-if="selectedNode"
+      :node="selectedNode"
+      :userId="userId"
+   
+      @close="selectedNode = null"
+    />
+  </div>
     <!-- 地图控制面板 -->
     <div class="absolute top-4 right-4 z-10">
       <!-- 主控制按钮组 -->
@@ -193,7 +212,8 @@ import { eventBus } from '../utils/bus'
 import { calculateDistance, calculateBounds } from '../utils/geo'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
 import ErrorMessage from '../components/ErrorMessage.vue'
-
+import { getNodes } from '../api';
+import NodeDialog from './NodeDialog.vue';
 /**
  * 地图视图组件
  * 负责显示Mapbox地图、长征路线和节点标记
@@ -240,7 +260,18 @@ const nodes = ref([])
 const routeData = ref(null)
 const error = ref(null)
 const retrying = ref(false)
+const scale = 5000; // 地图坐标缩放
+const lngOffset = 116.4;
+const latOffset = 39.91;
 
+const openNode = (node) => {
+  selectedNode.value = node;
+};
+
+onMounted(async () => {
+  const res = await getNodes();
+  nodes.value = res.data;
+});
 // 控制面板状态
 const showControlPanel = ref(false)
 const showLayerPanel = ref(false)
