@@ -212,7 +212,6 @@ import { eventBus } from '../utils/bus'
 import { calculateDistance, calculateBounds } from '../utils/geo'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
 import ErrorMessage from '../components/ErrorMessage.vue'
-import { getNodes } from '../api';
 import NodeDialog from './NodeDialog.vue';
 /**
  * 地图视图组件
@@ -269,8 +268,18 @@ const openNode = (node) => {
 };
 
 onMounted(async () => {
-  const res = await getNodes();
-  nodes.value = res.data;
+  try {
+    const res = await apiClient.getNodes();
+    nodes.value = res.data;
+  } catch (error) {
+    console.error('获取节点数据失败:', error);
+    // 设置错误状态
+    error.value = {
+      title: '数据加载失败',
+      message: '无法获取节点数据，请检查网络连接后重试。',
+      details: error.message
+    };
+  }
 });
 // 控制面板状态
 const showControlPanel = ref(false)
@@ -587,23 +596,9 @@ const addNodesLayer = () => {
         zIndex: 100
       })
       
-      // 创建信息窗体
-      const infoWindow = new AMap.value.InfoWindow({
-        content: `
-          <div style="padding: 12px; min-width: 200px; font-family: 'Inter', sans-serif;">
-            <h3 style="margin: 0 0 8px 0; color: #1f2937; font-size: 16px; font-weight: 600;">${node.name}</h3>
-            <p style="margin: 4px 0; color: #6b7280; font-size: 14px;">日期: ${node.date || '未知'}</p>
-            <p style="margin: 8px 0 0 0; color: #374151; font-size: 14px; line-height: 1.4;">${node.description || '暂无描述'}</p>
-          </div>
-        `,
-        anchor: 'bottom-center',
-        offset: [0, -10]
-      })
-      
       // 添加点击事件
       marker.on('click', () => {
         selectedNode.value = node
-        infoWindow.open(map.value, marker.getPosition())
         emit('node-click', node)
       })
       
@@ -656,9 +651,9 @@ const addNodesLayer = () => {
 const setupMapEvents = () => {
   if (!map.value) return
   
-  // 地图点击事件（点击空白区域关闭信息窗体）
+  // 地图点击事件（点击空白区域关闭节点选择）
   map.value.on('click', (e) => {
-    // 检查是否点击在标记上，如果不是则关闭所有信息窗体
+    // 检查是否点击在标记上，如果不是则清除选中的节点
     selectedNode.value = null
     showNodeInfo.value = false
     

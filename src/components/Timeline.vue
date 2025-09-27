@@ -3,17 +3,11 @@
     <transition name="slide-up">
       <div v-show="isVisible" class="timeline-wrapper">
         <div class="timeline-steps">
-          <div 
-            v-for="(node, index) in timelineNodes" 
-            :key="node.id"
-            class="timeline-step"
-            :class="{ 
-              'active': index === activeStep,
-              'completed': progressStore.isNodeVisited(node.id),
-              'current': progressStore.currentNodeId === node.id
-            }"
-            @click="handleStepClick(node, index)"
-          >
+          <div v-for="(node, index) in timelineNodes" :key="node.id" class="timeline-step" :class="{
+            'active': index === activeStep,
+            'completed': progressStore.isNodeVisited(node.id),
+            'current': progressStore.currentNodeId === node.id
+          }" @click="handleStepClick(node, index)">
             <div class="step-icon">
               <i v-if="progressStore.isNodeVisited(node.id)" class="icon-check">✓</i>
               <i v-else-if="progressStore.currentNodeId === node.id" class="icon-current">●</i>
@@ -25,7 +19,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- 关闭按钮 -->
         <button class="close-btn" @click="hide" title="关闭时间轴">
           <i class="icon-close">×</i>
@@ -104,10 +98,10 @@ function getNodeTime(nodeId) {
  */
 function handleStepClick(node, index) {
   activeStep.value = index
-  
+
   // 发射节点选择事件
   emit('node-select', node)
-  
+
   // 如果在地图页面，直接飞行到节点
   if (router.currentRoute.value.path === '/map') {
     // 通过事件总线或直接调用地图组件的方法
@@ -308,9 +302,12 @@ defineExpose({
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.1);
   }
@@ -321,26 +318,26 @@ defineExpose({
   .timeline-wrapper {
     padding: 16px 50px 16px 16px;
   }
-  
+
   .timeline-steps {
     gap: 12px;
   }
-  
+
   .timeline-step {
     min-width: 80px;
     padding: 6px;
   }
-  
+
   .step-icon {
     width: 30px;
     height: 30px;
     font-size: 12px;
   }
-  
+
   .step-title {
     font-size: 11px;
   }
-  
+
   .step-subtitle {
     font-size: 9px;
   }
