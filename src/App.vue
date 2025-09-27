@@ -2,10 +2,7 @@
   <div id="app" class="min-h-screen bg-gray-50">
     <!-- 全局加载状态 -->
     <Transition name="fade">
-      <div 
-        v-if="isLoading || globalLoading" 
-        class="fixed inset-0 bg-white z-50 flex items-center justify-center"
-      >
+      <div v-if="isLoading || globalLoading" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
         <div class="text-center">
           <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
           <p class="text-gray-600">{{ loadingMessage || '正在加载长征之路...' }}</p>
@@ -34,18 +31,16 @@
 
     <!-- 成就解锁提示 -->
     <AchievementToast />
-    
+
     <!-- 全局错误提示 -->
     <Transition name="fade">
-      <div 
-        v-if="globalError" 
-        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
-      >
+      <div v-if="globalError" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
           <div class="text-center">
             <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
               <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
               </svg>
             </div>
             <h3 class="text-lg font-medium text-gray-900 mb-2">{{ errorTitle || '出现错误' }}</h3>
@@ -54,17 +49,12 @@
               {{ errorDetails }}
             </div>
             <div class="flex space-x-3">
-              <button 
-                @click="handleRetry" 
-                :disabled="retrying"
-                class="flex-1 bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 disabled:opacity-50"
-              >
+              <button @click="handleRetry" :disabled="retrying"
+                class="flex-1 bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 disabled:opacity-50">
                 {{ retrying ? '重试中...' : '重试' }}
               </button>
-              <button 
-                @click="handleCloseError" 
-                class="flex-1 bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-              >
+              <button @click="handleCloseError"
+                class="flex-1 bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400">
                 关闭
               </button>
             </div>
@@ -72,15 +62,15 @@
         </div>
       </div>
     </Transition>
-    
+
     <!-- 离线模式提示 -->
-    <div 
-      v-if="isOfflineMode" 
-      class="fixed top-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-2 rounded-lg shadow-lg z-40"
-    >
+    <div v-if="isOfflineMode"
+      class="fixed top-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-2 rounded-lg shadow-lg z-40">
       <div class="flex items-center">
         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          <path fill-rule="evenodd"
+            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+            clip-rule="evenodd" />
         </svg>
         离线内容
       </div>
@@ -101,7 +91,7 @@ export default {
   setup() {
     const isLoading = ref(true)
     const settingsStore = useSettings()
-    
+
     // 全局状态管理
     const globalLoading = ref(false)
     const loadingMessage = ref('')
@@ -110,7 +100,7 @@ export default {
     const errorMessage = ref('')
     const errorDetails = ref('')
     const retrying = ref(false)
-    
+
     /**
      * 检查是否为离线模式
      */
@@ -191,10 +181,10 @@ export default {
       try {
         // 模拟加载时间，确保资源准备就绪
         await new Promise(resolve => setTimeout(resolve, 1000))
-        
+
         // 初始化设置
         await settingsStore.initialize()
-        
+
       } catch (error) {
         console.error('应用初始化失败:', error)
         showGlobalError(
