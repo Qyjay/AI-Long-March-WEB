@@ -103,6 +103,17 @@
       <!-- 功能控制 -->
       <div class="control-group">
         <button 
+          @click="toggleTimeline"
+          class="control-btn hover-lift"
+          :class="{ active: showTimeline }"
+          title="时间轴"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        
+        <button 
           @click="showCurrentStory"
           :disabled="!currentNode"
           class="control-btn"
@@ -204,10 +215,11 @@
     
     <!-- 时间轴组件 -->
     <Timeline 
+      ref="timelineRef"
       :nodes="nodes"
-      :current-node-id="progressStore.currentNodeId"
-      :visited-nodes="progressStore.visited"
+      :visible="showTimeline"
       @node-select="handleTimelineNodeSelect"
+      @close="handleTimelineClose"
     />
     
     <!-- 加载状态 -->
@@ -244,6 +256,7 @@ const progressStore = useProgressStore()
 // 组件引用
 const mapViewRef = ref(null)
 const nodeListRef = ref(null)
+const timelineRef = ref(null)
 
 // 响应式数据
 const nodes = ref([])
@@ -254,6 +267,7 @@ const isRouteAnimating = ref(false)
 const isLoading = ref(true)
 const popupPosition = ref({ top: '0px', left: '0px' })
 const currentMapStyle = ref('satellite')
+const showTimeline = ref(false)
 
 // 计算属性
 const totalNodes = computed(() => nodes.value.length)
@@ -496,23 +510,36 @@ const goHome = () => {
 /**
  * 处理时间轴节点选择
  */
-const handleTimelineNodeSelect = (nodeId) => {
-  const node = nodes.value.find(n => n.id === nodeId)
+const handleTimelineNodeSelect = (node) => {
   if (node) {
     // 更新当前节点
-    progressStore.goto(nodeId)
+    progressStore.goto(node.id)
     currentNode.value = node
     
     // 在地图上飞行到该节点
     if (mapViewRef.value) {
-      mapViewRef.value.flyToNode(nodeId)
+      mapViewRef.value.flyToNode(node.id)
     }
     
     // 更新节点列表选中状态
     if (nodeListRef.value) {
-      nodeListRef.value.selectNode(nodeId)
+      nodeListRef.value.selectNode(node.id)
     }
   }
+}
+
+/**
+ * 处理时间轴关闭事件
+ */
+const handleTimelineClose = () => {
+  showTimeline.value = false
+}
+
+/**
+ * 切换时间轴显示状态
+ */
+const toggleTimeline = () => {
+  showTimeline.value = !showTimeline.value
 }
 
 /**
@@ -521,7 +548,11 @@ const handleTimelineNodeSelect = (nodeId) => {
 const handleKeydown = (event) => {
   switch (event.key) {
     case 'Escape':
-      closeNodePopup()
+      if (showTimeline.value) {
+        showTimeline.value = false
+      } else {
+        closeNodePopup()
+      }
       break
     case 'ArrowLeft':
       if (hasPreviousNode.value) {
@@ -536,6 +567,11 @@ const handleKeydown = (event) => {
     case ' ':
       event.preventDefault()
       toggleRouteAnimation()
+      break
+    case 't':
+    case 'T':
+      event.preventDefault()
+      toggleTimeline()
       break
   }
 }
@@ -841,17 +877,9 @@ onUnmounted(() => {
   background: #4b5563;
 }
 
-/* 时间轴样式 */
+/* Timeline组件样式调整 */
 .map-page-container :deep(.timeline-container) {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid #e5e7eb;
-  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 30; /* 确保在地图之上，但在弹窗之下 */
 }
 
 /* 加载状态 */
