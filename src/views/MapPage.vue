@@ -11,7 +11,7 @@
     </div>
     
     <!-- 侧边栏 -->
-    <div class="sidebar animate-fade-in-left" :class="{ collapsed: sidebarCollapsed }">
+    <div v-if="showNodeList" class="sidebar animate-fade-in-left" :class="{ collapsed: sidebarCollapsed }">
       <!-- 侧边栏头部 -->
       <div class="sidebar-header">
         <h2 v-if="!sidebarCollapsed" class="sidebar-title">长征节点</h2>
@@ -40,40 +40,6 @@
     
     <!-- 浮动控制面板 -->
     <div class="floating-controls">
-      <!-- 地图控制 -->
-      <div class="control-group">
-        <button 
-          @click="resetMapView"
-          class="control-btn hover-lift"
-          title="重置视图"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
-          </svg>
-        </button>
-        
-        <button 
-          @click="toggleRouteAnimation"
-          class="control-btn hover-lift"
-          :class="{ active: isRouteAnimating }"
-          title="路线动画"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path v-if="isRouteAnimating" fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-            <path v-else fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-          </svg>
-        </button>
-        
-        <button 
-          @click="toggleMapStyle"
-          class="control-btn hover-lift"
-          title="切换地图样式"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 11-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd" />
-          </svg>
-        </button>
-      </div>
       
       <!-- 导航控制 -->
       <div class="control-group">
@@ -102,6 +68,17 @@
       
       <!-- 功能控制 -->
       <div class="control-group">
+        <button 
+          @click="toggleNodeList"
+          class="control-btn hover-lift"
+          :class="{ active: showNodeList }"
+          title="节点列表"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 4a1 1 0 000 2h14a1 1 0 100-2H3zm0 4a1 1 0 000 2h14a1 1 0 100-2H3zm0 4a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        
         <button 
           @click="toggleTimeline"
           class="control-btn hover-lift"
@@ -263,10 +240,9 @@ const nodes = ref([])
 const selectedNode = ref(null)
 const currentNode = ref(null)
 const sidebarCollapsed = ref(false)
-const isRouteAnimating = ref(false)
+const showNodeList = ref(true)
 const isLoading = ref(true)
 const popupPosition = ref({ top: '0px', left: '0px' })
-const currentMapStyle = ref('satellite')
 const showTimeline = ref(false)
 
 // 计算属性
@@ -423,43 +399,11 @@ const toggleSidebar = () => {
   sidebarCollapsed.value = !sidebarCollapsed.value
 }
 
-/**
- * 重置地图视图
- */
-const resetMapView = () => {
-  if (mapViewRef.value) {
-    mapViewRef.value.resetView()
-  }
-}
 
-/**
- * 切换路线动画
- */
-const toggleRouteAnimation = () => {
-  isRouteAnimating.value = !isRouteAnimating.value
-  
-  if (mapViewRef.value) {
-    if (isRouteAnimating.value) {
-      mapViewRef.value.startRouteAnimation()
-    } else {
-      mapViewRef.value.stopRouteAnimation()
-    }
-  }
-}
 
-/**
- * 切换地图样式
- */
-const toggleMapStyle = () => {
-  const styles = ['satellite', 'streets', 'outdoors']
-  const currentIndex = styles.indexOf(currentMapStyle.value)
-  const nextIndex = (currentIndex + 1) % styles.length
-  currentMapStyle.value = styles[nextIndex]
-  
-  if (mapViewRef.value) {
-    mapViewRef.value.setMapStyle(currentMapStyle.value)
-  }
-}
+
+
+
 
 /**
  * 前往上一个节点
@@ -543,6 +487,13 @@ const toggleTimeline = () => {
 }
 
 /**
+ * 切换节点列表显示状态
+ */
+const toggleNodeList = () => {
+  showNodeList.value = !showNodeList.value
+}
+
+/**
  * 处理键盘事件
  */
 const handleKeydown = (event) => {
@@ -564,14 +515,16 @@ const handleKeydown = (event) => {
         goToNextNode()
       }
       break
-    case ' ':
-      event.preventDefault()
-      toggleRouteAnimation()
-      break
+
     case 't':
     case 'T':
       event.preventDefault()
       toggleTimeline()
+      break
+    case 'n':
+    case 'N':
+      event.preventDefault()
+      toggleNodeList()
       break
   }
 }
