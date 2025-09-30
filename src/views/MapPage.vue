@@ -144,9 +144,9 @@
       </div>
     </div> -->
     
-    <!-- 节点信息弹窗 -->
+    <!-- 节点信息弹窗 - 已禁用，使用NodeDialog替代 -->
     <div 
-      v-if="selectedNode"
+      v-if="false"
       class="node-popup"
       :style="popupPosition"
     >
@@ -199,6 +199,13 @@
       @close="handleTimelineClose"
     />
     
+    <!-- 节点对话框 -->
+    <NodeDialog 
+      v-if="selectedNode"
+      :node="selectedNode"
+      @close="closeNodePopup"
+    />
+    
     <!-- 加载状态 -->
     <div v-if="isLoading" class="loading-overlay">
       <div class="loading-spinner">
@@ -210,7 +217,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProgressStore } from '../stores/progress'
 import { apiClient } from '../api'
@@ -218,6 +225,7 @@ import { eventBus } from '../utils/bus'
 import MapView from '../components/MapView.vue'
 import NodeList from '../components/NodeList.vue'
 import Timeline from '../components/Timeline.vue'
+import NodeDialog from '../components/NodeDialog.vue'
 
 /**
  * 地图页面组件
@@ -244,6 +252,7 @@ const showNodeList = ref(true)
 const isLoading = ref(true)
 const popupPosition = ref({ top: '0px', left: '0px' })
 const showTimeline = ref(false)
+const nodeClickInProgress = ref(false) // 标记是否正在处理节点点击
 
 // 计算属性
 const totalNodes = computed(() => nodes.value.length)
@@ -296,12 +305,22 @@ const handleMapReady = () => {
 }
 
 /**
- * 处理节点点击
+ * 处理节点点击事件
+ * @param {Object} node - 被点击的节点对象
+ * @param {Object} event - 点击事件对象
  */
-const handleNodeClick = (nodeId, event) => {
-  const node = nodes.value.find(n => n.id === nodeId)
+const handleNodeClick = (node, event) => {
+  console.log('MapPage: handleNodeClick called with:', node, event)
+  console.log('MapPage: selectedNode before setting:', selectedNode.value?.name_zh || 'null')
+  
+  // 设置标记，防止handleClickOutside立即关闭
+  nodeClickInProgress.value = true
+  
   if (node) {
+    console.log('MapPage: Setting selectedNode to:', node.name_zh)
     selectedNode.value = node
+    console.log('MapPage: selectedNode after setting:', selectedNode.value)
+    console.log('MapPage: selectedNode.value === node:', selectedNode.value === node)
     
     // 设置弹窗位置
     if (event) {
@@ -310,7 +329,14 @@ const handleNodeClick = (nodeId, event) => {
         left: event.clientX + 10 + 'px'
       }
     }
+  } else {
+    console.log('MapPage: handleNodeClick called with null/undefined node')
   }
+  
+  // 短暂延迟后重置标记
+  setTimeout(() => {
+    nodeClickInProgress.value = false
+  }, 100)
 }
 
 /**
@@ -533,10 +559,39 @@ const handleKeydown = (event) => {
  * 处理点击外部关闭弹窗
  */
 const handleClickOutside = (event) => {
-  if (selectedNode.value && !event.target.closest('.node-popup')) {
+  // 如果正在处理节点点击，不要关闭弹窗
+  if (nodeClickInProgress.value) {
+    console.log('handleClickOutside: nodeClickInProgress is true, skipping');
+    return
+  }
+  
+  const nodePopup = event.target.closest('.node-popup');
+  console.log('handleClickOutside:', {
+    hasSelectedNode: !!selectedNode.value,
+    clickTarget: event.target.tagName + (event.target.className ? '.' + event.target.className : ''),
+    nodePopup: !!nodePopup,
+    willClose: selectedNode.value && !nodePopup
+  });
+  
+  if (selectedNode.value && !nodePopup) {
+    console.log('handleClickOutside: closing node popup');
     closeNodePopup()
   }
 }
+
+// 调试信息
+watch(selectedNode, (newNode, oldNode) => {
+  console.log('MapPage selectedNode changed:', {
+    old: oldNode?.name_zh || 'null',
+    new: newNode?.name_zh || 'null',
+    newNodeData: newNode
+  });
+  
+  // 添加堆栈追踪来查看是谁清空了selectedNode
+  if (newNode === null && oldNode !== null) {
+    console.trace('selectedNode was cleared, stack trace:');
+  }
+}, { immediate: true });
 
 // 生命周期
 onMounted(() => {

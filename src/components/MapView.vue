@@ -67,6 +67,7 @@ const nodes = ref([])
 const routeData = ref(null)
 const error = ref(null)
 const retrying = ref(false)
+const markerClicked = ref(false) // 标记是否点击了标记
 const scale = 5000; // 地图坐标缩放
 const lngOffset = 116.4;
 const latOffset = 39.91;
@@ -383,9 +384,10 @@ const addNodesLayer = () => {
       })
       
       // 添加点击事件
-      marker.on('click', () => {
-        selectedNode.value = node
-        emit('node-click', node)
+      marker.on('click', (e) => {
+        console.log('MapView: marker clicked for node:', node.name)
+        markerClicked.value = true
+        emit('node-click', node, e)
       })
       
       // 添加鼠标悬停事件
@@ -440,8 +442,15 @@ const setupMapEvents = () => {
   // 地图点击事件（点击空白区域关闭节点选择）
   map.value.on('click', (e) => {
     // 检查是否点击在标记上，如果不是则清除选中的节点
-    selectedNode.value = null
-    showNodeInfo.value = false
+    if (!markerClicked.value) {
+      selectedNode.value = null
+      showNodeInfo.value = false
+    }
+    
+    // 延迟重置标记点击状态，确保标记点击事件完全处理完毕
+    setTimeout(() => {
+      markerClicked.value = false
+    }, 10)
     
     emit('map-click', {
       lngLat: e.lnglat,

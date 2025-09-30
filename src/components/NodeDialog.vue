@@ -1,13 +1,13 @@
 <template>
-  <div v-if="node" class="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+  <div v-if="props.node" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[200]" @click.self="close">
   <!-- 中心弹窗 -->
-<div class="bg-white rounded-2xl shadow-xl w-[850px] max-h-[90vh] flex flex-col overflow-hidden transform -translate-x-40">
+<div class="node-popup bg-white rounded-2xl shadow-xl w-[850px] max-h-[90vh] flex flex-col overflow-hidden">
   
   <!-- 头部 -->
   <div class="flex items-start justify-between p-4">
     <div>
-      <h3 class="text-lg font-semibold">{{ node.name_zh }}</h3>
-      <p class="text-sm text-gray-500">{{ node.time || '' }}</p>
+      <h3 class="text-lg font-semibold">{{ props.node.name_zh }}</h3>
+      <p class="text-sm text-gray-500">{{ props.node.time || '' }}</p>
     </div>
     <button @click="close" class="text-gray-500 hover:text-gray-800">✕</button>
   </div>
@@ -17,26 +17,26 @@
     
     <!-- 页 1：描述 + 诗词 + 图片 -->
     <div v-if="currentPage === 1">
-      <div class="mb-4" v-if="node.image">
+      <div class="mb-4" v-if="props.node.image">
         <img
-          :src="`/assets/${node.image}`"
+          :src="`/assets/${props.node.image}`"
           alt="node image"
           class="w-full max-h-[380px] object-contain rounded-lg"
         />
       </div>
 
       <p class="text-gray-700 leading-snug whitespace-pre-wrap mb-2">
-        {{ node.description_zh }}
+        {{ props.node.description_zh }}
       </p>
 
-      <div v-if="node.poem_zh" class="mb-2">
-        <p class="italic text-sm text-red-700 whitespace-pre-wrap">{{ node.poem_zh }}</p>
+      <div v-if="props.node.poem_zh" class="mb-2">
+        <p class="italic text-sm text-red-700 whitespace-pre-wrap">{{ props.node.poem_zh }}</p>
       </div>
 
       <div class="text-sm text-gray-600">
-        <p><strong>地形：</strong>{{ node.terrain || '—' }}</p>
-        <p><strong>气候：</strong>{{ node.weather || '—' }}</p>
-        <p><strong>参与：</strong>{{ node.participants || '—' }}</p>
+        <p><strong>地形：</strong>{{ props.node.terrain || '—' }}</p>
+        <p><strong>气候：</strong>{{ props.node.weather || '—' }}</p>
+        <p><strong>参与：</strong>{{ props.node.participants || '—' }}</p>
       </div>
     </div>
 
@@ -132,12 +132,25 @@ const props = defineProps({
 });
 const emit = defineEmits(['close']);
 
+// 创建一个computed属性来简化模板中的引用
 // pagination
 const currentPage = ref(1);
 const totalPages = 2;
 
 // decision computed
 const decision = computed(() => props.node?.interactive_decision ?? null);
+
+// 调试信息
+watch(() => props.node, (newNode, oldNode) => {
+  console.log('NodeDialog: props.node changed from', oldNode?.name_zh, 'to', newNode?.name_zh);
+  console.log('NodeDialog: new node data:', newNode);
+}, { immediate: true });
+
+// 监控页面变化
+watch(currentPage, (newPage, oldPage) => {
+  console.log('NodeDialog: currentPage changed from', oldPage, 'to', newPage);
+  console.log('NodeDialog: decision available:', !!decision.value);
+}, { immediate: true });
 
 // selection state
 const submitted = ref(false);
@@ -211,9 +224,20 @@ const prevPage = () => {
     // keep prior answer
   }
 };
-const nextPage = () => {
+const nextPage = (event) => {
+  console.log('NodeDialog: nextPage called, currentPage:', currentPage.value, 'totalPages:', totalPages);
+  console.log('NodeDialog: nextPage event:', event);
+  
+  // 阻止事件冒泡
+  if (event) {
+    event.stopPropagation();
+  }
+  
   if (currentPage.value < totalPages) {
     currentPage.value++;
+    console.log('NodeDialog: currentPage updated to:', currentPage.value);
+    console.log('NodeDialog: decision value:', decision.value);
+    console.log('NodeDialog: condition for page 2:', currentPage.value === 2 && decision.value);
     // reset state for new page
     submitted.value = false;
     selectedIndex.value = null;
