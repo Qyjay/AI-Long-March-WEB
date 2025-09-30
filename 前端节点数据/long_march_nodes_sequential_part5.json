@@ -1,0 +1,254 @@
+[
+  {
+    "id": "lianghekou",
+    "name_zh": "两河口会议",
+    "name_en": "Lianghekou Conference",
+    "lng": 102.7,
+    "lat": 31.7,
+    "time": "1935年6月26日",
+    "time_en": "June 26, 1935",
+    "summary_zh": "两河口会议确立北上建立川陕甘革命根据地的战略方针，为红军指明方向",
+    "summary_en": "Lianghekou Conference established the strategic policy of marching north to establish Sichuan-Shaanxi-Gansu revolutionary base",
+    "description_zh": "1935年6月26日，中共中央在四川懋功以北的两河口召开政治局扩大会议，集中讨论红一、四方面军会师后的战略方针问题。会议批评了张国焘\"南下四川、西康\"的错误主张，通过了《中央政治局关于一、四方面军会合后的战略方针的决定》，确定了北上建立川陕甘革命根据地的战略方针。会议还决定红军继续北上，攻占松潘，突破国民党军的封锁线。两河口会议为红军指明了正确的前进方向，但张国焘表面接受决议，实则仍坚持南下主张。",
+    "description_en": "On June 26, 1935, the CPC Central Committee held an expanded Political Bureau meeting in Lianghekou north of Maogong, focusing on the strategic policy after the meeting of the 1st and 4th Front Armies. The meeting criticized Zhang Guotao's wrong proposition of \"marching south to Sichuan and Xikang\", adopted the \"Decision on Strategic Policy after the Meeting of 1st and 4th Front Armies\", confirming the strategy of marching north to establish Sichuan-Shaanxi-Gansu revolutionary base. The meeting decided to continue north to capture Songpan and break through Kuomintang blockades. Although Zhang Guotao superficially accepted the resolution, he still insisted on marching south.",
+    "poem_zh": "两河口头聚贤良，战略方针定北疆。同心协力开新路，革命征途志如钢。——《两河口会议颂》",
+    "poem_en": "Gathering of virtuous at Lianghekou, strategic policy set for northern border. Working together to open new roads, revolutionary journey with will of steel. ——'Ode to Lianghekou Conference'",
+    "poem_appreciation_zh": "首句“两河口头聚贤良”以“贤良”尊称参会的革命领导者，既点明会议地点，又凸显参会者的历史分量。“战略方针定北疆”直击会议核心成果——确立北上建立川陕甘根据地的战略，“定”字彰显决策的坚定性。后两句“同心协力开新路，革命征途志如钢”则升华至精神层面，既强调团结协作的重要性，又以“志如钢”比喻红军在革命道路上的坚定意志，全诗凝练地展现了会议的历史意义与精神价值。",
+    "poem_appreciation_en": "The first line \"Gathering of virtuous at Lianghekou\" honors the revolutionary leaders with \"virtuous\", indicating both the meeting place and the historical weight of participants. \"Strategic policy set for northern border\" directly hits the core achievement - establishing the strategy of marching north to build Sichuan-Shaanxi-Gansu base, with \"set\" highlighting the firmness of the decision. The last two lines \"Working together to open new roads, revolutionary journey with will of steel\" elevate to the spiritual level, emphasizing the importance of unity and cooperation, and comparing the Red Army's firm will on the revolutionary road with \"will of steel\". The poem concisely shows the historical significance and spiritual value of the conference.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "两河口会议及时确立了北上建立川陕甘革命根据地的正确战略方针，统一了红军的前进方向，对于粉碎国民党军的围追堵截、推动革命形势发展具有重要意义。但会议未能彻底解决张国焘的错误思想，为后来的红军分裂埋下隐患。",
+    "core_issues": "解决红军会师后的战略方向问题，反对张国焘的南下主张",
+    "meeting_decisions": [
+      "通过《中央政治局关于一、四方面军会合后的战略方针的决定》",
+      "确定北上建立川陕甘革命根据地的战略方针",
+      "决定集中红军主力北上攻打松潘"
+    ],
+    "interactive_decision": {
+      "question": "面对战略方向分歧，你会如何确保决议执行？",
+      "options": [
+        "加强思想教育，统一认识",
+        "采取组织措施，强化集中统一领导",
+        "暂时妥协以维持表面团结"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史证明，两河口会议后由于未能采取坚决的组织措施，导致张国焘继续坚持错误主张，最终造成红军分裂。坚强的组织领导是确保正确路线执行的重要保证。"
+    }
+  },
+  {
+    "id": "songpan",
+    "name_zh": "松潘战役",
+    "name_en": "Battle of Songpan",
+    "lng": 103.6,
+    "lat": 32.6,
+    "time": "1935年7月-8月",
+    "time_en": "July-August 1935",
+    "summary_zh": "松潘战役因张国焘拖延而失利，红军被迫改走自然条件恶劣的草地",
+    "summary_en": "Battle of Songpan failed due to Zhang Guotao's delay, forcing Red Army to take harsh grassland route",
+    "description_zh": "1935年7月，根据两河口会议决定，中革军委部署松潘战役，计划集中红一、四方面军主力夺取松潘，打开北上通道。但张国焘故意拖延部队行动，阻挠战役实施，导致国民党军胡宗南部趁机在松潘完成布防，红军失去战机。8月，中央被迫放弃松潘战役计划，决定改道经自然条件极为恶劣的草地北上。这一改变使红军面临前所未有的艰难险阻，但也避免了与国民党军主力的正面决战。",
+    "description_en": "In July 1935, following Lianghekou Conference decisions, the Military Commission planned the Songpan Campaign, aiming to concentrate main forces of 1st and 4th Front Armies to capture Songpan and open the northward passage. However, Zhang Guotao deliberately delayed troop movements, obstructing the campaign, allowing Hu Zongnan's Kuomintang forces to complete defenses in Songpan, causing the Red Army to lose the opportunity. In August, the Central Committee was forced to abandon the plan, deciding to detour through extremely harsh grasslands northward. This change confronted the Red Army with unprecedented difficulties but avoided direct confrontation with Kuomintang main forces.",
+    "poem_zh": "松潘受阻改征途，草地茫茫入画图。饥寒交迫志不改，红军精神励千古。——《松潘道上》",
+    "poem_en": "Blocked at Songpan, changing journey; vast grasslands enter the picture. Hunger and cold cannot change will; Red Army spirit inspires for millennia. ——'On Songpan Road'",
+    "poem_appreciation_zh": "首句“松潘受阻改征途”平实叙述了战役失利后被迫改道的历史事实，暗含无奈却不失坚韧。“草地茫茫入画图”以“画图”喻实景，既写出草地的辽阔苍茫，又赋予艰难环境以诗意的想象空间。后两句“饥寒交迫志不改，红军精神励千古”是全诗主旨所在，通过“饥寒交迫”与“志不改”的强烈对比，凸显红军精神的崇高，“励千古”则断言这种精神的永恒价值，体现了对红军不屈意志的由衷赞美。",
+    "poem_appreciation_en": "The first line \"Blocked at Songpan, changing journey\" plainly narrates the historical fact of being forced to change route after the campaign failure, implying helplessness but not losing tenacity. \"Vast grasslands enter the picture\" uses \"picture\" to metaphorize the real scene, both describing the vastness of the grasslands and endowing the difficult environment with poetic imagination. The last two lines \"Hunger and cold cannot change will; Red Army spirit inspires for millennia\" are the main theme of the poem. Through the strong contrast between \"hunger and cold\" and \"cannot change will\", they highlight the nobility of the Red Army spirit, and \"inspires for millennia\" asserts the eternal value of this spirit, reflecting sincere admiration for the Red Army's unyielding will.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "松潘战役的失利是张国焘分裂主义造成的直接后果，迫使红军改走自然条件恶劣的草地，增加了长征的艰难程度。但这一战略调整也使红军避开了国民党军主力，为后续北上创造了条件，同时进一步暴露了张国焘的错误。",
+    "campaign_planning": "集中10万红军主力，分三路围攻松潘，打开北上通道",
+    "failure_causes": [
+      "张国焘故意拖延，阻挠部队行动",
+      "国民党军胡宗南部提前完成布防",
+      "红军缺乏攻城重武器"
+    ],
+    "strategic_impact": "被迫改走草地，增加了长征的艰难程度",
+    "interactive_decision": {
+      "question": "松潘战役计划受阻，你会采取什么对策？",
+      "options": [
+        "继续等待时机，坚持原定战役计划",
+        "改走草地等困难路线北上",
+        "接受张国焘主张，掉头南下"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上中央选择改走草地北上，虽然增加了行军困难，但坚持了正确的战略方向，避免了红军在错误路线上越走越远，体现了坚持原则与灵活应变相结合的智慧。"
+    }
+  },
+  {
+    "id": "沙窝会议",
+    "name_zh": "沙窝会议",
+    "name_en": "Shawo Conference",
+    "lng": 103.3,
+    "lat": 32.4,
+    "time": "1935年8月4日-6日",
+    "time_en": "August 4-6, 1935",
+    "summary_zh": "沙窝会议重申北上战略方针，批判张国焘分裂主义，加强红军团结",
+    "summary_en": "Shawo Conference reaffirmed northward strategy, criticized Zhang Guotao's separatism, strengthened Red Army unity",
+    "description_zh": "1935年8月4日至6日，中共中央在四川松潘沙窝召开政治局扩大会议。会议针对张国焘的分裂活动和南下主张，进一步批判了其错误思想，重申了两河口会议确定的北上战略方针。会议通过了《中央关于一、四方面军会合后的政治形势与任务的决议》，强调加强党对红军的绝对领导和一、四方面军团结的重要性。会议还增补了四方面军干部进入中央政治局，在组织上作出适当调整。沙窝会议进一步维护了中央的正确路线，但未能彻底解决张国焘的分裂问题。",
+    "description_en": "From August 4-6, 1935, the CPC Central Committee held an expanded Political Bureau meeting in Shawo, Songpan, Sichuan. Targeting Zhang Guotao's separatist activities and southward proposition, the meeting further criticized his wrong thinking and reaffirmed the northward strategy determined at Lianghekou. It adopted the \"Resolution on Political Situation and Tasks after the Meeting of 1st and 4th Front Armies\", emphasizing strengthening the Party's absolute leadership over the Red Army and the importance of unity. The meeting added 4th Front Army cadres to the Political Bureau, making appropriate organizational adjustments, but failed to completely resolve Zhang Guotao's separatism.",
+    "poem_zh": "沙窝会议明是非，团结奋斗志不摧。北上道路虽艰险，红旗指处必胜归。——《沙窝颂》",
+    "poem_en": "Shawo Conference clarifies right and wrong, united struggle with unyielding will. Northward road though dangerous, where the red flag points, victory will return. ——'Ode to Shawo'",
+    "poem_appreciation_zh": "“沙窝会议明是非”点出会议的核心作用——辨明战略方向的正确与错误，批判分裂主义。“团结奋斗志不摧”强调会议对巩固团结的重要意义，“志不摧”展现红军意志的坚定。后两句“北上道路虽艰险，红旗指处必胜归”以转折句式，先承认北上征程的艰难，再以“红旗指处必胜归”的豪迈宣言，彰显对正确路线的坚定信念和革命必胜的乐观精神，全诗立场鲜明，充满力量。",
+    "poem_appreciation_en": "“Shawo Conference clarifies right and wrong” points out the core role of the conference - distinguishing the correctness and error of the strategic direction and criticizing separatism. “United struggle with unyielding will” emphasizes the significance of the conference in consolidating unity, with “unyielding will” showing the firmness of the Red Army's will. The last two lines “Northward road though dangerous, where the red flag points, victory will return” use a transitional sentence pattern, first acknowledging the difficulty of the northward journey, then declaring with pride “where the red flag points, victory will return”, demonstrating firm belief in the correct line and optimistic spirit of certain revolutionary victory. The poem has a clear stand and is full of strength.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "沙窝会议进一步明确了北上的正确战略方针，批判了张国焘的分裂主义错误，维护了党和红军的团结，在组织上对中央领导机构进行了必要调整，为红军北上穿越草地、继续长征提供了重要的政治保证。",
+    "meeting_achievements": [
+      "重申北上建立川陕甘革命根据地的战略方针",
+      "批判张国焘的分裂主义错误",
+      "增补四方面军干部进入中央领导机构"
+    ],
+    "unity_measures": "强调一、四方面军都是中国共产党领导的红军，都是中国革命的力量",
+    "interactive_decision": {
+      "question": "面对内部团结问题，你会如何平衡原则与团结？",
+      "options": [
+        "坚持原则不让步，彻底批判错误思想",
+        "在坚持正确路线的同时，采取适当让步维护团结",
+        "为维持团结暂时放弃原则"
+      ],
+      "correct_answer": 1,
+      "explanation": "沙窝会议采取了既坚持北上战略原则，又在组织上适当调整的方式，体现了原则性与灵活性的统一，这种处理方式在维护团结的同时保证了正确路线的执行。"
+    }
+  },
+  {
+    "id": "maoergai",
+    "name_zh": "毛儿盖会议",
+    "name_en": "Mao'ergai Conference",
+    "lng": 103.5,
+    "lat": 32.3,
+    "time": "1935年8月20日",
+    "time_en": "August 20, 1935",
+    "summary_zh": "毛儿盖会议进一步明确北上战略，决定红军分左右两路军穿越草地",
+    "summary_en": "Mao'ergai Conference further clarified northward strategy, deciding Red Army split into left and right columns to cross grasslands",
+    "description_zh": "1935年8月20日，中共中央在四川松潘毛儿盖召开政治局扩大会议，继续讨论红军的战略方针和行动计划。会议批评了张国焘企图使红军主力西渡黄河、向青海、甘肃、新疆地区退却的错误主张，通过了《中央政治局关于目前战略方针之补充决定》，进一步明确了北上建立川陕甘革命根据地的战略方针，强调这是\"中国苏维埃运动发展的有利方向\"。会议决定红军分左右两路军北上：左路军由红四方面军主力和红一方面军五、九军团组成，由张国焘、朱德率领；右路军由红一方面军主力和红四方面军一部组成，由徐向前、陈昌浩率领，党中央随右路军行动。",
+    "description_en": "On August 20, 1935, the CPC Central Committee held an expanded Political Bureau meeting in Mao'ergai, Songpan, Sichuan, continuing discussions on the Red Army's strategic policy and action plan. The meeting criticized Zhang Guotao's wrong proposition of making main Red Army forces cross the Yellow River westward to retreat to Qinghai, Gansu and Xinjiang. It adopted the \"Supplementary Decision on Current Strategic Policy\", further clarifying the strategy of establishing Sichuan-Shaanxi-Gansu revolutionary base. The meeting decided to split the Red Army into left and right columns: Left Column led by Zhang Guotao and Zhu De; Right Column led by Xu Xiangqian and Chen Changhao, with the Party Central Committee accompanying the Right Column.",
+    "poem_zh": "毛儿盖下定决策，大军分路向甘陕。草地茫茫何所惧，革命理想高于天。——《毛儿盖会议》",
+    "poem_en": "Decisions made in Mao'ergai, army divided marching toward Gansu-Shaanxi. Vast grasslands hold no fear, revolutionary ideals higher than heaven. ——'Mao'ergai Conference'",
+    "poem_appreciation_zh": "“毛儿盖下定决策”直接点明会议的核心功能——作出分路北上的战略决断。“大军分路向甘陕”清晰概括会议确定的具体行动计划。后两句“草地茫茫何所惧，革命理想高于天”是全诗的灵魂，以“何所惧”的反问句式强化红军面对草地艰险的无畏态度，“革命理想高于天”则将这种勇气升华为对理想信念的坚守，展现了红军在艰难抉择中对革命信仰的绝对忠诚。",
+    "poem_appreciation_en": "“Decisions made in Mao'ergai” directly points out the core function of the conference - making the strategic decision to march north in separate routes. “Army divided marching toward Gansu-Shaanxi” clearly summarizes the specific action plan determined by the conference. The last two lines “Vast grasslands hold no fear, revolutionary ideals higher than heaven” are the soul of the poem. Using the rhetorical question “hold no fear” to strengthen the Red Army's fearless attitude in the face of grassland dangers, “revolutionary ideals higher than heaven” elevates this courage into adherence to ideals and beliefs, showing the Red Army's absolute loyalty to revolutionary beliefs in difficult choices.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "毛儿盖会议进一步统一了红军的战略思想，明确了北上的具体行动计划，为红军穿越草地、继续长征制定了切实可行的方案。但会议后，张国焘仍坚持分裂主义，拒绝执行中央决定，给红军造成了新的困难。",
+    "meeting_decisions": [
+      "通过《中央政治局关于目前战略方针之补充决定》",
+      "明确红军主力应向甘肃南部前进，建立川陕甘根据地",
+      "决定红军分左右两路军穿越草地北上"
+    ],
+    "military_arrangement": {
+      "右路军": "红一方面军一、三军团和红四方面军四军、三十军，党中央随右路军行动",
+      "左路军": "红四方面军九军、三十一军、三十三军和红一方面军五、九军团，由张国焘、朱德率领"
+    },
+    "interactive_decision": {
+      "question": "在恶劣自然环境中行军，你会如何安排兵力？",
+      "options": [
+        "集中兵力一路前进，相互照应",
+        "分兵多路，同时出发，约定会合地点",
+        "主力先行，后卫跟进，保持距离"
+      ],
+      "correct_answer": 0,
+      "explanation": "历史上红军分左右两路军前进的方式，虽然有其客观原因，但也为张国焘分裂活动提供了条件。集中兵力前进更有利于保持部队团结和统一指挥，这是后来革命实践总结的经验。"
+    }
+  },
+  {
+    "id": "caodi",
+    "name_zh": "过草地",
+    "name_en": "Crossing the Grasslands",
+    "lng": 103.8,
+    "lat": 32.7,
+    "time": "1935年8月21日-27日",
+    "time_en": "August 21-27, 1935",
+    "summary_zh": "红军战胜极端恶劣的自然环境，胜利穿越松潘草地，创造人类奇迹",
+    "summary_en": "Red Army overcame extremely harsh natural environment, successfully crossing Songpan Grasslands, creating human miracle",
+    "description_zh": "1935年8月21日，红一方面军主力组成的右路军开始穿越松潘草地。松潘草地位于四川西北，面积约1.52万平方公里，海拔3500米以上，气候恶劣，沼泽密布，荒无人烟。红军战士们踩着草甸前进，稍有不慎就会陷入泥潭牺牲。他们以野菜、草根、皮带充饥，在严寒中露营，许多战士因饥饿、寒冷、疾病倒在草地上。经过7天艰苦跋涉，右路军于8月27日胜利走出草地，到达班佑地区。随后，左路军先头部队也穿越了草地，但张国焘命令主力南下，再次破坏了红军的统一行动。",
+    "description_en": "On August 21, 1935, the Right Column composed of main forces of the 1st Front Army began crossing the Songpan Grasslands. Located in northwestern Sichuan, covering about 15,200 square kilometers at over 3,500 meters above sea level, the grasslands had harsh climate, dense swamps and no human habitation. Red Army soldiers marched on meadows, risking sinking into swamps. They ate wild vegetables, grass roots and belts for food, camped in severe cold, with many sacrificing from hunger, cold and disease. After 7 days of arduous trek, the Right Column successfully exited the grasslands on August 27, reaching Banyou area. Later, the vanguard of the Left Column also crossed, but Zhang Guotao ordered main forces to march south, again disrupting unified action.",
+    "poem_zh": "红军不怕远征难，万水千山只等闲。五岭逶迤腾细浪，乌蒙磅礴走泥丸。金沙水拍云崖暖，大渡桥横铁索寒。更喜岷山千里雪，三军过后尽开颜。——《七律·长征》毛泽东",
+    "poem_en": "The Red Army fears not the trials of the Long March; thousands of rivers and mountains are mere trifles. Five Ridges wind like gentle waves; Wumeng Mountains loom like rolling balls of clay. Golden Sand River's waves clap warm on cloud-kissed cliffs; Dadu Bridge's iron chains stretch cold across. Even more joyful are Minshan's thousand li of snow; after the three armies pass, all faces bloom with smiles. ——'Seven-character regulated verse·The Long March' by Mao Zedong",
+    "poem_appreciation_zh": "毛泽东此诗以全景式视角概括长征历程，其中“五岭逶迤腾细浪，乌蒙磅礴走泥丸”以夸张手法将崇山峻岭比作“细浪”“泥丸”，凸显红军蔑视艰难的豪迈；“金沙水拍云崖暖，大渡桥横铁索寒”浓缩两次关键战役的不同体验；而“更喜岷山千里雪，三军过后尽开颜”则将过草地后的喜悦推向高潮。全诗通过“不怕”“只等闲”“更喜”“尽开颜”等词，构建起革命乐观主义的情感主线，展现了红军征服自然天险的英雄气概和对革命胜利的坚定信念。",
+    "poem_appreciation_en": "Mao Zedong's poem summarizes the Long March from a panoramic perspective. Among them, \"Five Ridges wind like gentle waves; Wumeng Mountains loom like rolling balls of clay\" uses exaggeration to compare lofty mountains to \"gentle waves\" and \"clay balls\", highlighting the Red Army's heroism in despising difficulties. \"Golden Sand River's waves clap warm on cloud-kissed cliffs; Dadu Bridge's iron chains stretch cold across\" condenses different experiences of two key battles. \"Even more joyful are Minshan's thousand li of snow; after the three armies pass, all faces bloom with smiles\" pushes the joy after crossing the grasslands to a climax. Through words like \"fears not\", \"mere trifles\", \"even more joyful\" and \"all faces bloom with smiles\", the poem constructs an emotional main line of revolutionary optimism, showing the Red Army's heroic spirit in conquering natural barriers and firm belief in revolutionary victory.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "过草地是红军长征中最艰苦的历程之一，充分展现了红军战士不怕牺牲、顽强不屈的革命意志和团结互助的集体主义精神，是人类历史上征服自然的伟大壮举。这一胜利进一步坚定了红军北上的决心，为后续长征胜利奠定了精神基础。",
+    "grassland_conditions": "海拔3500米以上，沼泽密布，气候变化无常，昼夜温差极大",
+    "survival_challenges": [
+      "缺乏食物，许多战士因饥饿牺牲",
+      "沼泽陷阱，稍有不慎就会沉没",
+      "恶劣气候，时而烈日炎炎，时而风雪交加"
+    ],
+    "heroic_stories": [
+      "老班长用缝衣针钓鱼救伤员，自己却饿死在草地上",
+      "炊事班战士为保护粮食全部牺牲，铜锅成为唯一遗物",
+      "战士们相互搀扶，不让一个战友掉队"
+    ],
+    "interactive_decision": {
+      "question": "面对食物极度匮乏的情况，你会如何分配仅有的物资？",
+      "options": [
+        "优先保障指挥员，确保指挥系统运转",
+        "平均分配，同时组织人员寻找可食用植物",
+        "集中物资给战斗部队，保证战斗力"
+      ],
+      "correct_answer": 1,
+      "explanation": "红军在过草地时坚持平均分配原则，同时积极寻找食物来源，这种做法既体现了官兵一致的平等精神，又通过集体努力最大限度提高了生存几率，是团结互助精神的生动体现。"
+    }
+  },
+  {
+    "id": "banyou",
+    "name_zh": "班佑胜利",
+    "name_en": "Victory at Banyou",
+    "lng": 104.0,
+    "lat": 33.0,
+    "time": "1935年8月29日-31日",
+    "time_en": "August 29-31, 1935",
+    "summary_zh": "红军走出草地后在班佑地区痛击国民党军，巩固了北上阵地",
+    "summary_en": "After exiting grasslands, Red Army defeated Kuomintang forces in Banyou area, consolidating northward position",
+    "description_zh": "1935年8月27日，右路军胜利走出草地抵达班佑地区。为打破国民党军的封锁，保障红军北上通道，红三十军和红一军于8月29日发起班佑战斗。红军采取突袭战术，迅速包围国民党军胡宗南部第49师，经过3天激战，歼灭敌军一个团，击溃两个团，缴获大批武器弹药和物资。班佑胜利是红军走出草地后的首次重大军事胜利，不仅补充了部队给养，更极大鼓舞了全军士气，为红军继续北上创造了有利条件。",
+    "description_en": "On August 27, 1935, the Right Column successfully exited the grasslands and arrived in Banyou area. To break Kuomintang blockades and secure the northward passage, the 30th and 1st Corps launched the Battle of Banyou on August 29. Employing surprise tactics, the Red Army quickly surrounded the 49th Division of Hu Zongnan's Kuomintang forces. After 3 days of fierce fighting, they annihilated one regiment, routed two regiments, capturing large quantities of weapons, ammunition and supplies. The victory at Banyou was the first major military success after exiting the grasslands, replenishing supplies and greatly boosting morale.",
+    "poem_zh": "班佑河畔奏凯歌，草地过来士气高。痛击胡匪破封锁，北上道路更宽阔。——《班佑大捷》",
+    "poem_en": "Victory songs echo by Banyou River, morale high after crossing grasslands. Crushing Hu bandits to break blockades, northward road becomes wider. ——'Great Victory at Banyou'",
+    "poem_appreciation_zh": "“班佑河畔奏凯歌”以“凯歌”起笔，直接渲染胜利的喜悦氛围，点出战斗地点与性质。“草地过来士气高”将胜利置于过草地的艰难背景下，凸显红军在极度疲惫后仍保持高昂斗志的精神状态。后两句“痛击胡匪破封锁，北上道路更宽阔”具体描述战斗成果（痛击敌军、打破封锁）及其战略意义（北上道路畅通），全诗节奏明快，充满胜利后的豪情与对未来的乐观展望。",
+    "poem_appreciation_en": "“Victory songs echo by Banyou River” starts with “victory songs”, directly rendering the joyous atmosphere of victory, pointing out the battle location and nature. “Morale high after crossing grasslands” places the victory against the difficult background of crossing the grasslands, highlighting the Red Army's high morale despite extreme exhaustion. The last two lines “Crushing Hu bandits to break blockades, northward road becomes wider” specifically describe the battle achievements (defeating the enemy, breaking the blockade) and their strategic significance (unblocked northward road). The poem has a lively rhythm, full of pride after victory and optimistic prospects for the future.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "班佑胜利是红军走出草地后的首次重大军事胜利，打破了国民党军企图在草地边缘消灭红军的计划，补充了部队急需的物资给养，极大鼓舞了红军士气，巩固了红军北上的阵地，为继续长征、创建川陕甘革命根据地创造了有利条件。",
+    "battle_results": "歼灭国民党军1个团，击溃2个团，缴获步枪1000余支，机枪30余挺，粮食数万斤",
+    "tactical_features": "利用敌军分散部署的弱点，集中优势兵力各个击破",
+    "strategic_value": "打开了通往甘南的通道，为红军北上创造了有利条件",
+    "interactive_decision": {
+      "question": "部队刚走出草地，极度疲惫，面对敌军你会如何决策？",
+      "options": [
+        "立即休整，恢复体力后再行动",
+        "抓住战机，趁敌不备主动出击",
+        "避开敌军，继续向北快速前进"
+      ],
+      "correct_answer": 1,
+      "explanation": "班佑战斗正是抓住敌军尚未完成部署的有利时机主动出击，不仅取得了胜利，还获得了急需的物资，这种“趁敌之虚、果断出击”的战术决策，体现了高超的军事指挥艺术。"
+    }
+  }
+]

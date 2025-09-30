@@ -1,0 +1,236 @@
+[
+  {
+    "id": "yiliang",
+    "name_zh": "会理会议",
+    "name_en": "Huili Conference",
+    "lng": 102.2,
+    "lat": 26.6,
+    "time": "1935年5月12日",
+    "time_en": "May 12, 1935",
+    "summary_zh": "会理会议统一红军思想，巩固毛泽东领导地位，确定北上与红四方面军会合的战略方针",
+    "summary_en": "Huili Conference unified Red Army thinking, consolidated Mao Zedong's leadership, and confirmed the strategy of marching north to join the 4th Front Army",
+    "description_zh": "1935年5月，红军巧渡金沙江后抵达四川会理。由于连续行军作战，部分指战员对四渡赤水等机动战术产生误解，出现埋怨情绪。5月12日，中共中央在会理城郊召开政治局扩大会议，毛泽东在会上批评了这种错误思想，阐明了四渡赤水机动战术的必要性和正确性。会议统一了认识，巩固了遵义会议以来确立的军事领导体制，决定继续北上，同红四方面军会合，创建新的革命根据地。",
+    "description_en": "In May 1935, after cleverly crossing the Jinsha River, the Red Army arrived in Huili, Sichuan. Due to continuous marching and fighting, some commanders and fighters misunderstood the mobile tactics like the four crossings of Chishui, showing resentment. On May 12, the CPC Central Committee held an expanded Political Bureau meeting on the outskirts of Huili. Mao Zedong criticized this wrong thinking and explained the necessity and correctness of mobile tactics. The meeting unified understanding, consolidated the military leadership established since the Zunyi Conference, and decided to continue north to join the 4th Front Army.",
+    "poem_zh": "会理城头聚群英，思想统一方向明。北上会师定大计，长征万里续征程。——《会理会议》",
+    "poem_en": "Gathering of heroes at Huili city wall, unified thinking and clear direction. Deciding major plans to march north for convergence, continuing the journey of ten thousand miles. ——'Huili Conference'",
+    "poem_appreciation_zh": "诗歌以“会理城头聚群英”起笔，点明会议召开的地点与参会人员的重要性，“群英”凸显了与会者的卓越领导力。“思想统一方向明”直接点出会议核心成果，简洁有力。后两句“北上会师定大计，长征万里续征程”则清晰勾勒出会议确定的战略方向及对长征后续进程的意义，全诗语言质朴却气势昂扬，展现了会议后红军团结一心、继续前行的坚定信念。",
+    "poem_appreciation_en": "The poem begins with 'Gathering of heroes at Huili city wall', highlighting the location of the meeting and the importance of the participants, with 'heroes' emphasizing their outstanding leadership. 'Unified thinking and clear direction' directly points out the core achievement of the conference, concise and powerful. The last two lines 'Deciding major plans to march north for convergence, continuing the journey of ten thousand miles' clearly outline the strategic direction determined by the conference and its significance for the subsequent Long March. The poem's simple yet vigorous language shows the Red Army's firm belief in uniting as one and moving forward after the conference.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "会理会议及时统一了红军思想，驳斥了对毛泽东军事指挥的怀疑和不满，巩固了遵义会议确立的正确领导，明确了继续北上与红四方面军会合的战略方向，为红军顺利通过彝区、强渡大渡河奠定了思想基础。",
+    "meeting_issues": "解决部分指战员对机动战术的误解，统一战略思想",
+    "key_outcomes": "肯定毛泽东军事指挥的正确性，决定继续北上与红四方面军会合",
+    "interactive_decision": {
+      "question": "面对部队中出现的思想分歧，你会如何处理？",
+      "options": [
+        "压制不同意见，强制执行命令",
+        "召开会议充分讨论，统一思想认识",
+        "暂时搁置争议，先执行当前任务"
+      ],
+      "correct_answer": 1,
+      "explanation": "会理会议通过充分讨论统一思想的方式，既解决了分歧，又增强了部队凝聚力，这种民主集中制的做法是中国共产党领导革命取得胜利的重要保证。"
+    }
+  },
+  {
+    "id": "yizu",
+    "name_zh": "彝海结盟",
+    "name_en": "Yihai Alliance",
+    "lng": 102.2,
+    "lat": 27.7,
+    "time": "1935年5月22日",
+    "time_en": "May 22, 1935",
+    "summary_zh": "红军与彝族首领小叶丹在彝海结盟，顺利通过彝区，为强渡大渡河创造条件",
+    "summary_en": "Red Army allied with Yi leader Xia Yedan at Yihai, smoothly passing through Yi area, creating conditions for forcing Dadu River crossing",
+    "description_zh": "1935年5月，红军北上途中经过四川大凉山彝族聚居区。由于历史上遭受民族压迫，彝族群众对汉族军队充满敌意。红军严格执行民族政策，尊重彝族风俗习惯，提出"中国工农红军解放弱小民族"的主张。红军先遣队司令员刘伯承与彝族果基部落首领小叶丹在彝海举行结盟仪式，以水代酒，歃血为盟，结为兄弟。小叶丹派向导护送红军顺利通过彝区，为红军抢渡大渡河赢得了宝贵时间。这一事件成为民族团结的典范。",
+    "description_en": "In May 1935, the Red Army passed through the Yi nationality area in Daliang Mountains, Sichuan on their northward march. Due to historical ethnic oppression, Yi people were hostile to Han armies. The Red Army strictly implemented ethnic policies, respecting Yi customs, advocating "Chinese Workers' and Peasants' Red Army liberates small and weak nationalities". Commander of the advance team Liu Bocheng and Yi leader Xia Yedan held an alliance ceremony at Yihai, taking an oath of brotherhood with water as wine. Xia Yedan sent guides to escort the Red Army through Yi area, winning precious time for crossing Dadu River. This became a model of ethnic unity.",
+    "poem_zh": "彝海结盟传佳话，民族团结绽新花。汉彝兄弟手携手，长征路上谱芳华。——《彝海结盟颂》",
+    "poem_en": "Yihai alliance spreads as a good story, ethnic unity blooms like new flowers. Han and Yi brothers hand in hand, composing glory on the Long March road. ——'Ode to Yihai Alliance'",
+    "poem_appreciation_zh": "首句“彝海结盟传佳话”点明事件及其深远影响，“佳话”二字体现了这一事件的积极意义和流传价值。“民族团结绽新花”以比喻手法，将民族团结比作绽放的新花，生动形象地展现了结盟后民族关系的和谐景象。后两句“汉彝兄弟手携手，长征路上谱芳华”描绘出汉彝两族亲密无间、共同为长征事业奋斗的画面，全诗充满温情与力量，歌颂了民族平等、团结互助的伟大精神。",
+    "poem_appreciation_en": "The first line 'Yihai alliance spreads as a good story' points out the event and its far-reaching influence, with 'good story' reflecting its positive significance and spreading value. 'Ethnic unity blooms like new flowers' uses a metaphor to vividly show the harmonious ethnic relations after the alliance. The last two lines 'Han and Yi brothers hand in hand, composing glory on the Long March road' depict the intimate cooperation between Han and Yi peoples in the Long March. The poem is full of warmth and strength, eulogizing the great spirit of ethnic equality and mutual assistance.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "彝海结盟是中国共产党民族政策的光辉实践，打破了国民党军利用民族矛盾阻止红军前进的企图，保障了红军顺利通过彝区，为强渡大渡河、飞夺泸定桥赢得了宝贵时间，开创了民族团结的先河，对后来的民族工作产生了深远影响。",
+    "ethnic_policy": "尊重民族风俗习惯，主张民族平等，反对民族压迫",
+    "alliance_content": "刘伯承与小叶丹结为兄弟，红军帮助彝族建立武装，彝族保障红军过境安全",
+    "historical_influence": "成为中国共产党处理民族关系的典范，奠定了新型民族关系的基础",
+    "interactive_decision": {
+      "question": "面对少数民族的敌意，你会采取什么策略通过其聚居区？",
+      "options": [
+        "武力强行通过",
+        "派人与首领谈判，建立友好关系",
+        "绕行其他路线，避免冲突"
+      ],
+      "correct_answer": 2,
+      "explanation": "彝海结盟正是通过平等谈判建立友好关系的成功范例，体现了中国共产党民族平等、民族团结的政策，不仅顺利通过彝区，更赢得了少数民族的信任和支持。"
+    }
+  },
+  {
+    "id": "anzhou",
+    "name_zh": "强渡大渡河",
+    "name_en": "Forcing Dadu River Crossing",
+    "lng": 102.3,
+    "lat": 28.1,
+    "time": "1935年5月25日",
+    "time_en": "May 25, 1935",
+    "summary_zh": "红军勇士强渡大渡河安顺场，打破蒋介石让红军成为"石达开第二"的美梦",
+    "summary_en": "Red Army warriors forced crossing at Anshunchang on Dadu River, breaking Chiang Kai-shek's dream of making Red Army "second Shi Dakai",
+    "description_zh": "1935年5月，红军抵达大渡河畔安顺场。大渡河水深流急，两岸悬崖峭壁，当年太平天国石达开部在此全军覆没。蒋介石调集重兵，扬言要让红军成为"石达开第二"。5月25日，红一军团一师一团挑选17名勇士组成突击队，由连长熊尚林率领，乘一只木船在枪林弹雨中强渡成功，击溃对岸守敌。但由于渡船有限，大军难以迅速渡过。中革军委决定兵分两路，一部由安顺场继续渡河，主力沿河北上夺取泸定桥，形成夹江而上的态势。",
+    "description_en": "In May 1935, the Red Army arrived at Anshunchang on the banks of Dadu River. With deep, rapid currents and steep cliffs on both sides, this was where Shi Dakai's Taiping Heavenly Kingdom forces were completely annihilated. Chiang Kai-shek deployed heavy troops, vowing to make the Red Army "second Shi Dakai". On May 25, 17 warriors from the 1st Regiment formed an assault team, led by Company Commander Xiong Shanglin, crossing successfully in a wooden boat under heavy fire, defeating defenders. Due to limited boats, the Military Commission decided to split forces: one part continued crossing at Anshunchang, main forces marched north to capture Luding Bridge.",
+    "poem_zh": "安顺场边孤舟勇，踩波踏浪歼敌凶。大渡河畔英雄多，红军威名天下扬。——《强渡大渡河》",
+    "poem_en": "Brave single boat at Anshunchang, treading waves to annihilate fierce enemies. Many heroes by Dadu River, Red Army's fame spreads worldwide. ——'Forcing Dadu River Crossing'",
+    "poem_appreciation_zh": "“安顺场边孤舟勇”聚焦于战斗场景的关键元素，“孤舟”凸显了作战条件的艰险，“勇”字直接赞美了红军战士的无畏精神。“踩波踏浪歼敌凶”以动态的描写，展现了红军勇士在惊涛骇浪中奋勇杀敌的英勇姿态。后两句“大渡河畔英雄多，红军威名天下扬”由点及面，从具体的战斗场景升华到对红军群体英雄气概的歌颂，以及此战对红军威名远播的重要意义，全诗气势雄浑，充满豪情。",
+    "poem_appreciation_en": "“Brave single boat at Anshunchang” focuses on the key element of the battle scene, with "single boat" highlighting the danger of the combat conditions, and "brave" directly praising the fearlessness of the Red Army soldiers. "Treading waves to annihilate fierce enemies" depicts the heroic posture of the Red Army warriors fighting bravely in the rough waves with dynamic description. The last two lines "Many heroes by Dadu River, Red Army's fame spreads worldwide" expand from the specific battle scene to eulogize the heroic spirit of the Red Army as a whole and the significance of this battle in spreading the Red Army's fame. The poem is majestic and full of pride.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "强渡大渡河打破了蒋介石企图让红军重蹈石达开覆辙的美梦，展现了红军战士不怕牺牲、英勇顽强的战斗精神，为红军主力北上开辟了道路，是长征中具有标志性意义的军事行动。",
+    "river_conditions": "河面宽300余米，水流速度每秒4米，漩涡密布",
+    "enemy_disposition": "国民党军一个团驻守安顺场，上游泸定桥有一个旅防守",
+    "heroic_stories": "17勇士在枪林弹雨中强渡成功，其中2人牺牲，15人负伤仍坚持战斗",
+    "interactive_decision": {
+      "question": "渡船有限无法快速全军渡河，你会采取什么措施？",
+      "options": [
+        "等待后续筹集更多船只",
+        "兵分两路，一部继续渡河，主力夺取上游桥梁",
+        "原路返回，寻找其他渡河点"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军正是采取兵分两路的策略，既保证了部队继续前进，又形成了相互配合的态势，最终成功突破大渡河天险，体现了灵活机动的战术思想。"
+    }
+  },
+  {
+    "id": "luding",
+    "name_zh": "飞夺泸定桥",
+    "name_en": "Storming Luding Bridge",
+    "lng": 102.2,
+    "lat": 29.9,
+    "time": "1935年5月29日",
+    "time_en": "May 29, 1935",
+    "summary_zh": "红军勇士飞夺泸定桥，创造了世界军事史上的奇迹",
+    "summary_en": "Red Army warriors stormed Luding Bridge, creating a miracle in world military history",
+    "description_zh": "1935年5月，根据中革军委命令，红一军团二师四团从安顺场沿大渡河北上，昼夜奔袭240里，于5月29日晨抵达泸定桥西岸。泸定桥由13根铁索组成，全长100余米，桥面木板已被敌军拆除，仅剩悬空的铁索，东岸桥头有敌军重兵防守。下午4时，22名突击队员在连长廖大珠带领下，冒着敌人的枪林弹雨，手攀铁索，脚踩铁链，向对岸发起冲击。后续部队紧跟其后铺设木板，最终夺取了泸定桥。与此同时，安顺场渡河部队也击溃敌人阻击，沿河东岸北上，两岸部队胜利会合。",
+    "description_en": "In May 1935, following the Military Commission's order, the 4th Regiment marched north along Dadu River from Anshunchang, traveling 240 li day and night, arriving at Luding Bridge's west bank on the morning of May 29. Luding Bridge consists of 13 iron chains, over 100 meters long, with planks removed by enemy, leaving only hanging iron chains, heavily defended on the east bank. At 4 pm, 22突击队员 led by Company Commander Liao Dazhu, braving enemy fire, climbed iron chains to assault the opposite bank. Subsequent troops followed laying planks, finally capturing the bridge. Meanwhile, crossing forces from Anshunchang defeated enemy resistance, marching north along east bank, with forces from both banks successfully converging.",
+    "poem_zh": "金沙水拍云崖暖，大渡桥横铁索寒。——《七律·长征》毛泽东",
+    "poem_en": "Golden Sand River's waves clap warm on cloud-kissed cliffs; Dadu Bridge's iron chains stretch cold across. ——'Seven-character regulated verse·The Long March' by Mao Zedong",
+    "poem_appreciation_zh": "此句为毛泽东《七律·长征》中的经典名句，以“金沙水拍云崖暖”与“大渡桥横铁索寒”形成对比。“暖”字既写出金沙江水流拍打云崖的壮阔，也暗含巧渡金沙江后的喜悦与暖意；“寒”字则不仅描绘出泸定桥铁索悬空的险峻景象，更传递出飞夺泸定桥战斗的惊险与严酷。两句诗对仗工整，意境深远，通过一“暖”一“寒”的鲜明对比，浓缩了红军长征中两次重要战役的不同境遇，展现了红军面对艰难险阻时的豪迈气概。",
+    "poem_appreciation_en": "This line is a classic from Mao Zedong's 'Seven-character regulated verse·The Long March', contrasting 'Golden Sand River's waves clap warm on cloud-kissed cliffs' with 'Dadu Bridge's iron chains stretch cold across'. The word 'warm' not only describes the magnificent scene of Jinsha River's waves hitting the cloud-kissed cliffs but also implies the joy after cleverly crossing the Jinsha River. The word 'cold' not only depicts the dangerous scene of Luding Bridge's iron chains hanging in the air but also conveys the thrill and harshness of storming Luding Bridge. The two lines are neatly antithetical with profound artistic conception, condensing the different situations of two important battles in the Long March through the distinct contrast of 'warm' and 'cold', showing the Red Army's heroic spirit in the face of difficulties and dangers.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "飞夺泸定桥是中国工农红军战争史上的英雄壮举，打破了国民党军企图凭借大渡河天险消灭红军的美梦，粉碎了蒋介石让红军成为"石达开第二"的幻想，为红军主力北上开辟了道路，充分体现了红军战士不怕牺牲、一往无前的革命英雄主义精神。",
+    "bridge_features": "全长103.67米，宽3米，由13根碗口粗的铁索组成",
+    "battle_course": "昼夜奔袭240里→抢占桥西头→22勇士强夺铁索→后续部队跟进→攻克东岸阵地",
+    "casualties": "红军牺牲4人，伤18人；歼灭国民党军2个营",
+    "interactive_decision": {
+      "question": "面对没有桥面木板的铁索桥和敌军火力封锁，你会如何进攻？",
+      "options": [
+        "组织火力掩护，强攻铁索桥",
+        "寻找船只从其他地点渡河",
+        "夜间偷袭，减少伤亡"
+      ],
+      "correct_answer": 0,
+      "explanation": "历史上红军正是在火力掩护下强攻铁索桥，这种英勇无畏的进攻精神和周密的战术配合，最终赢得了战斗胜利，创造了军事史上的奇迹。"
+    }
+  },
+  {
+    "id": "dawu",
+    "name_zh": "翻越夹金山",
+    "name_en": "Crossing Jiajin Mountain",
+    "lng": 102.4,
+    "lat": 30.7,
+    "time": "1935年6月12日",
+    "time_en": "June 12, 1935",
+    "summary_zh": "红军翻越长征途中第一座大雪山夹金山，创造了人类奇迹",
+    "summary_en": "Red Army crossed Jiajin Mountain, the first major snow mountain on the Long March, creating a human miracle",
+    "description_zh": "1935年6月，中央红军抵达四川宝兴县，面前横亘着长征途中的第一座大雪山——夹金山。夹金山海拔4114米，终年积雪，空气稀薄，气候恶劣，当地人称之为"神山"，说凡人不可翻越。6月12日，红一方面军先头部队在师长杨得志率领下开始翻越夹金山。红军战士穿着单衣，顶着风雪，互相搀扶，许多人因为缺氧、严寒而牺牲在雪山上。经过艰苦跋涉，红军终于征服了这座雪山，与前来迎接的红四方面军先头部队在达维镇胜利会师。",
+    "description_en": "In June 1935, the Central Red Army arrived in Baoxing County, Sichuan, facing Jiajin Mountain, the first major snow mountain on the Long March. 4114 meters above sea level, perpetually snow-covered with thin air and harsh climate, locals called it "sacred mountain" that mortals couldn't cross. On June 12, the vanguard of the 1st Front Army, led by Division Commander Yang Dezhi, began crossing. Red Army soldiers in single-layer clothing, braving snowstorms, supporting each other, many sacrificing due to oxygen deprivation and cold. After arduous trek, the Red Army finally conquered the mountain, meeting the vanguard of the 4th Front Army at Dawei Town.",
+    "poem_zh": "更喜岷山千里雪，三军过后尽开颜。——《七律·长征》毛泽东",
+    "poem_en": "Even more joyful are Minshan's thousand li of snow; after the three armies pass, all faces bloom with smiles. ——'Seven-character regulated verse·The Long March' by Mao Zedong",
+    "poem_appreciation_zh": "这两句诗出自毛泽东《七律·长征》，展现了红军翻越雪山后的豪迈情怀。“更喜岷山千里雪”中，“喜”字堪称点睛之笔，将翻越雪山这一极其艰难的历程转化为令人喜悦的成就，体现了红军战士革命乐观主义精神。“三军过后尽开颜”则以全景式的描写，描绘出红军部队翻越雪山后欢欣鼓舞的场景，“尽开颜”三字生动刻画了战士们战胜自然险阻后的喜悦与自豪，全诗洋溢着革命必胜的坚定信念。",
+    "poem_appreciation_en": "These two lines from Mao Zedong's 'Seven-character regulated verse·The Long March' show the heroic feelings of the Red Army after crossing the snow-capped mountains. In 'Even more joyful are Minshan's thousand li of snow', the word 'joyful' is the finishing touch, transforming the extremely difficult journey of crossing the snow-capped mountains into a joyful achievement, reflecting the revolutionary optimism of the Red Army soldiers. 'After the three armies pass, all faces bloom with smiles' depicts the joyous scene of the Red Army after crossing the snow-capped mountains with a panoramic description. The phrase 'all faces bloom with smiles' vividly portrays the soldiers' joy and pride after overcoming natural obstacles, and the whole poem is filled with the firm belief in revolutionary victory.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "翻越夹金山是红军长征中征服自然险阻的标志性事件，展现了红军战士不怕艰难困苦、勇于牺牲的革命英雄主义精神，为红一、四方面军会师创造了条件，是人类历史上罕见的壮举。",
+    "mountain_conditions": "海拔4114米，终年积雪，气温低至零下20度，氧气含量仅为平原的60%",
+    "crossing_difficulties": [
+      "严寒缺氧导致许多战士牺牲",
+      "冰雪覆盖导致路径难辨，容易失足坠落",
+      "缺乏御寒衣物和高原经验"
+    ],
+    "heroic_stories": [
+      "炊事员为保护铜锅（全连唯一的炊具）牺牲在雪山上",
+      "老班长用体温温暖冻僵的小战士，自己却永远留在了雪山上"
+    ],
+    "interactive_decision": {
+      "question": "面对雪山恶劣环境和物资匮乏，你会如何组织翻越？",
+      "options": [
+        "等待天气好转再翻越",
+        "派先遣队探路，主力分批翻越",
+        "放弃翻越，选择其他路线"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军正是采用先遣队探路、主力分批翻越的方式，同时总结出"走路不观景，观景不走路"等翻越雪山的经验，最大限度减少了伤亡，体现了科学组织和团结互助的精神。"
+    }
+  },
+  {
+    "id": "dajin",
+    "name_zh": "懋功会师",
+    "name_en": "Maogong Meeting",
+    "lng": 102.6,
+    "lat": 31.4,
+    "time": "1935年6月18日",
+    "time_en": "June 18, 1935",
+    "summary_zh": "红一、四方面军在四川懋功胜利会师，壮大了红军力量",
+    "summary_en": "Successful meeting of the 1st and 4th Front Armies in Maogong, Sichuan, strengthening Red Army forces",
+    "description_zh": "1935年6月12日，红一方面军先头部队翻越夹金山后，在达维镇与红四方面军先头部队胜利会师。6月18日，中共中央、中革军委和红一方面军主力抵达懋功（今小金县），与红四方面军主力胜利会师。两支红军部队举行了盛大的会师庆祝大会，朱德、张国焘、毛泽东等分别讲话，号召两军亲密团结，携手共进。会师后，红军总兵力达到10万余人，士气大振。但会师后不久，在北上还是南下的战略方针上，中央与张国焘产生了严重分歧。",
+    "description_en": "On June 12, 1935, after crossing Jiajin Mountain, the vanguard of the 1st Front Army successfully met the vanguard of the 4th Front Army at Dawei Town. On June 18, the CPC Central Committee, Military Commission and main forces of the 1st Front Army arrived in Maogong (now Xiaojin County), successfully meeting the main forces of the 4th Front Army. A grand celebration was held, with Zhu De, Zhang Guotao, Mao Zedong delivering speeches, calling for close unity. After the meeting, total Red Army strength reached over 100,000, boosting morale. However, soon after, serious differences arose between the Central Committee and Zhang Guotao on the strategic direction of marching north or south.",
+    "poem_zh": "两军会师懋功城，欢庆胜利喜气扬。团结一心向前进，革命前途放光芒。——《会师歌》",
+    "poem_en": "Two armies meet in Maogong city, celebrating victory with joy. Uniting as one moving forward, revolutionary future shines bright. ——'Meeting Song'",
+    "poem_appreciation_zh": "诗歌开篇“两军会师懋功城”直接点明事件的核心要素——会师的双方与地点，简洁明了。“欢庆胜利喜气扬”则描绘出会师后的热烈氛围，“喜气扬”三字生动传递出红军战士的喜悦之情。后两句“团结一心向前进，革命前途放光芒”由眼前的欢庆场景升华到对未来的展望，强调了团结的重要性，展现了红军对革命前途的坚定信心，全诗节奏明快，充满积极向上的力量。",
+    "poem_appreciation_en": "The opening line 'Two armies meet in Maogong city' directly points out the core elements of the event - the two sides and the location of the meeting, concise and clear. 'Celebrating victory with joy' depicts the warm atmosphere after the meeting, and the phrase 'with joy' vividly conveys the joy of the Red Army soldiers. The last two lines 'Uniting as one moving forward, revolutionary future shines bright' elevate from the current celebration scene to the prospect of the future, emphasizing the importance of unity and showing the Red Army's firm confidence in the revolutionary future. The poem has a lively rhythm and is full of positive energy.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "懋功会师是红军长征中的重大事件，壮大了红军力量，鼓舞了全军士气，为红军继续长征创造了有利条件。但同时，会师也暴露出红军内部在战略方针上的分歧，为后来的分裂埋下伏笔，是长征中一个具有转折意义的节点。",
+    "troop_strength": "红一方面军约2万人，红四方面军约8万人，总计10万余人",
+    "meeting_events": "举行盛大庆祝大会，交换慰问品，互相学习经验",
+    "strategic_divergence": "中央主张继续北上建立川陕甘根据地，张国焘主张南下四川、西康",
+    "interactive_decision": {
+      "question": "面对北上与南下的战略分歧，你会如何处理？",
+      "options": [
+        "坚持中央北上主张，同时做好团结教育工作",
+        "接受张国焘南下意见，避免内部矛盾",
+        "分兵两路，各自按不同方向前进"
+      ],
+      "correct_answer": 0,
+      "explanation": "历史上中央坚持北上的正确战略，同时尽力维护红军团结，这种既坚持原则又讲究策略的做法，最终保证了长征的胜利和革命力量的保存。"
+    }
+  }
+]

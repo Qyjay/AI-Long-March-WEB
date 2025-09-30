@@ -1,0 +1,223 @@
+[
+  {
+    "id": "tongdao",
+    "name_zh": "通道会议",
+    "name_en": "Tongdao Conference",
+    "lng": 109.7,
+    "lat": 26.1,
+    "time": "1934年12月12日",
+    "time_en": "December 12, 1934",
+    "summary_zh": "通道会议紧急讨论红军进军方向，决定转向敌军薄弱的贵州，避免全军覆没。",
+    "summary_en": "The Tongdao Conference urgently discussed the Red Army's marching direction and decided to turn to Guizhou where enemy forces were weak, avoiding total annihilation.",
+    "description_zh": "1934年12月，红军突破湘江后元气大伤，按原计划准备前往湘西与红二、六军团会合，但蒋介石已调集15万兵力在湘西布下口袋阵。12月12日，中共中央在湖南通道召开紧急会议，毛泽东在会上力主放弃原定计划，改向敌军兵力薄弱的贵州进军，以摆脱敌人围歼。这一建议得到周恩来、张闻天、王稼祥等多数同志支持，红军随即转向贵州，攻占黎平，取得长征以来的首次胜利，为后来遵义会议的召开创造了条件。",
+    "description_en": "In December 1934, after breaking through the Xiangjiang River, the Red Army was severely weakened. They planned to go to western Hunan to join the 2nd and 6th Corps, but Chiang Kai-shek had deployed 150,000 troops there in an ambush. On December 12, the CPC Central Committee held an emergency meeting in Tongdao, Hunan. Mao Zedong advocated abandoning the original plan and marching to Guizhou where enemy forces were weak. Supported by Zhou Enlai, Zhang Wentian and Wang Jiaxiang, the Red Army turned to Guizhou and captured Liping, achieving their first victory since the Long March, creating conditions for the Zunyi Conference.",
+    "poem_zh": "审时度势定方向，避实就虚脱重围。——《通道转兵》",
+    "poem_en": "Assess the situation to determine direction, avoid the strong and attack the weak to break the siege. ——'Tongdao Diversion'",
+    "poem_appreciation_zh": "诗句精准概括了通道会议的核心决策：立足实际研判局势，以灵活机动的战略思维避开敌军主力，选择薄弱环节突破包围。短短两句既体现了毛泽东军事思想中"实事求是"的精髓，也凸显了我党在危急时刻果断调整策略的智慧，为红军绝境求生指明了关键方向。",
+    "poem_appreciation_en": "The verse accurately summarizes the core decision of the Tongdao Conference: based on reality to assess the situation, using flexible strategic thinking to avoid the main enemy forces and choose weak links to break the siege. These two short lines reflect the essence of Mao Zedong's military thought of "seeking truth from facts" and highlight the Party's wisdom in decisively adjusting strategies in critical moments, pointing out a key direction for the Red Army's survival in desperate situations.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "通道会议是红军长征中的第一次重要战略转折，打破了蒋介石在湘西围歼红军的企图，避免了红军可能遭受的灭顶之灾，是毛泽东正确军事思想开始得到采纳的重要标志，为遵义会议确立正确的军事路线奠定了基础。",
+    "meeting_attendants": "毛泽东、周恩来、朱德、博古、张闻天、王稼祥等",
+    "decision_significance": "首次否定\"左\"倾军事路线，为后续战略调整开辟道路",
+    "interactive_decision": {
+      "question": "面对敌军在湘西设下的埋伏，会议上出现路线分歧，你会支持哪种方案？",
+      "options": [
+        "坚持原定计划，与红二、六军团会师",
+        "改变方向，向敌军薄弱的贵州进军",
+        "原地待命，等待敌军动向变化"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上的通道会议正是做出了转向贵州的正确决策，这一灵活机动的战略调整，体现了\"避实击虚\"的军事思想，为红军争取了生机。"
+    }
+  },
+  {
+    "id": "liping",
+    "name_zh": "黎平会议",
+    "name_en": "Liping Conference",
+    "lng": 109.117,
+    "lat": 26.233,
+    "time": "1934年12月18日",
+    "time_en": "December 18, 1934",
+    "summary_zh": "黎平会议正式决定放弃前往湘西的计划，确立向贵州北部进军的战略方针。",
+    "summary_en": "The Liping Conference formally decided to abandon the plan to go to western Hunan and established the strategic policy of marching to northern Guizhou.",
+    "description_zh": "1934年12月18日，中共中央在贵州黎平召开政治局会议，专门讨论红军进军方向问题。会议经过激烈争论，最终接受毛泽东的正确主张，决定放弃到湘西与红二、六军团会合的计划，确立向贵州北部进军，在川黔边区建立新的革命根据地。会议还通过了《中央政治局关于战略方针之决定》，为红军指明了正确的前进方向，摆脱了被动局面，是遵义会议的重要预备会议。",
+    "description_en": "On December 18, 1934, the Political Bureau of the CPC Central Committee held a meeting in Liping, Guizhou, specifically discussing the Red Army's marching direction. After heated debate, the meeting finally accepted Mao Zedong's correct proposition, deciding to abandon the plan to join the 2nd and 6th Corps in western Hunan, and established the policy of marching to northern Guizhou to establish a new revolutionary base in the Sichuan-Guizhou border area. The meeting adopted the 'Decision of the Political Bureau on Strategic Policy', pointing out the correct direction for the Red Army.",
+    "poem_zh": "东方欲晓，莫道君行早。踏遍青山人未老，风景这边独好。——《清平乐·会昌》毛泽东",
+    "poem_en": "The east is turning bright; don't say you started early. Traversed green mountains, yet not old; the scenery here is uniquely fine. ——'Qingpingle·Huichang' by Mao Zedong",
+    "poem_appreciation_zh": "此句虽出自毛泽东此前创作的《清平乐·会昌》，却与黎平会议后的历史情境高度契合。\"东方欲晓\"象征革命曙光初现，\"踏遍青山人未老\"体现红军历经转战仍斗志昂扬，\"风景这边独好\"则暗喻转向黔北的战略选择带来了新的生机，展现了共产党人在困境中对革命前途的坚定信念。",
+    "poem_appreciation_en": "Although this line comes from Mao Zedong's earlier work 'Qingpingle·Huichang', it highly fits the historical context after the Liping Conference. 'The east is turning bright' symbolizes the dawn of revolution, 'Traversed green mountains, yet not old' reflects the Red Army's high morale after long marches, and 'the scenery here is uniquely fine' implicitly metaphorizes the new vitality brought by the strategic choice to turn to northern Guizhou, showing the Communists' firm belief in the revolutionary future in difficult situations.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "黎平会议是红军长征中的重要转折点，它从组织上否定了\"左\"倾错误军事路线，肯定了毛泽东的正确主张，为红军指明了正确的战略方向，避免了红军可能覆灭的危险，为遵义会议的召开创造了重要条件。",
+    "meeting_outcome": "通过《中央政治局关于战略方针之决定》，确立向黔北进军的战略",
+    "strategic_change": "从被动转移转向主动开辟新根据地",
+    "interactive_decision": {
+      "question": "会议上对进军方向有重大分歧，你会如何推动达成共识？",
+      "options": [
+        "坚持原定计划，执行上级命令",
+        "通过充分讨论，采纳正确意见",
+        "暂时休会，等待局势明朗"
+      ],
+      "correct_answer": 1,
+      "explanation": "黎平会议通过充分讨论最终达成共识，体现了民主集中制原则，这种通过集体讨论做出正确决策的方式，是中国共产党不断走向成熟的重要标志。"
+    }
+  },
+  {
+    "id": "jiangkou",
+    "name_zh": "强渡乌江",
+    "name_en": "Forcing Wujiang River Crossing",
+    "lng": 108.85,
+    "lat": 27.717,
+    "time": "1935年1月1日-6日",
+    "time_en": "January 1-6, 1935",
+    "summary_zh": "红军强渡乌江天险，打开了前往遵义的通道，为遵义会议召开创造了条件。",
+    "summary_en": "The Red Army forced a crossing of the dangerous Wujiang River, opening the passage to Zunyi and creating conditions for the Zunyi Conference.",
+    "description_zh": "1935年1月初，红军抵达乌江畔，乌江是贵州第一大河，江面宽阔，水流湍急，两岸悬崖峭壁，素有\"天险\"之称。国民党军在对岸构筑了坚固防御工事，妄图凭借乌江天险阻挡红军。1月1日，红一军团一师一团在龙溪回龙场渡口强渡成功；1月3日，红一军团二师四团在江界河渡口采用\"竹筏强渡+浮桥抢渡\"的方式突破防线；1月6日，红九军团在瓮安茶山关渡口渡过乌江。红军三天内在三个渡口成功突破乌江防线，为占领遵义创造了有利条件。",
+    "description_en": "In early January 1935, the Red Army arrived at the Wujiang River, Guizhou's largest river, known as a \"natural barrier\" with wide surface, rapid current and steep cliffs. The Kuomintang army built solid defensive works on the opposite bank. On January 1, the 1st Regiment crossed successfully at Longxi; on January 3, the 4th Regiment broke through at Jiangjiehe using bamboo rafts and floating bridges; on January 6, the 9th Corps crossed at Chashanguan. The Red Army broke through the Wujiang defense line at three ferries within three days.",
+    "poem_zh": "乌江天险重飞渡，兵临遵义逼贵阳。——《长征组歌》",
+    "poem_en": "Re-crossing the dangerous Wujiang River, troops approach Zunyi and press Guiyang. ——'Long March Suite'",
+    "poem_appreciation_zh": "诗句以精炼的语言展现了红军强渡乌江的壮举，\"重飞渡\"既凸显了乌江天险的艰难险阻，也赞扬了红军不畏强敌、攻坚克难的英雄气概。\"兵临遵义逼贵阳\"则点明了这一胜利的战略意义——不仅打开了通往遵义的关键通道，更对国民党统治核心区域形成威慑，为后续革命进程奠定了重要基础。",
+    "poem_appreciation_en": "The verse shows the feat of the Red Army forcing the Wujiang River crossing in concise language. 'Re-crossing' not only highlights the danger of the Wujiang natural barrier but also praises the Red Army's heroic spirit of defying strong enemies and overcoming difficulties. 'Troops approach Zunyi and press Guiyang' points out the strategic significance of this victory—not only opening the key passage to Zunyi but also deterring the core area of Kuomintang rule, laying an important foundation for the subsequent revolutionary process.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "强渡乌江是红军转向贵州后的首次重大军事胜利，打破了国民党军凭借天险阻挡红军的企图，为红军占领遵义、进行休整和召开遵义会议创造了有利条件，是红军军事战略转变后的第一个胜利成果。",
+    "river_conditions": "江面宽100-200米，水流速度每秒1.8米，两岸悬崖峭壁",
+    "crossing_methods": "竹筏强渡、浮桥抢渡、夜间偷渡相结合",
+    "heroic_stories": [
+      "红军战士毛振华带领4名勇士乘竹筏强渡，在江中被巨浪打翻仍坚持战斗",
+      "工兵连战士在严寒中跳入江中搭建浮桥，许多人冻僵仍坚持作业"
+    ],
+    "interactive_decision": {
+      "question": "面对乌江天险和敌军防守，你会选择什么渡河方式？",
+      "options": [
+        "集中兵力从一个渡口强行突破",
+        "分兵多路同时从多个渡口进攻",
+        "夜间偷渡避免正面冲突"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军正是采用分兵多路进攻的方式，分散了敌军兵力，在三个渡口同时突破，体现了\"声东击西、多点突破\"的战术思想，最终成功渡过乌江。"
+    }
+  },
+  {
+    "id": "zunyi",
+    "name_zh": "遵义会议",
+    "name_en": "Zunyi Conference",
+    "lng": 106.917,
+    "lat": 27.717,
+    "time": "1935年1月15日-17日",
+    "time_en": "January 15-17, 1935",
+    "summary_zh": "遵义会议确立了毛泽东在党中央和红军的领导地位，是中国革命生死攸关的转折点。",
+    "summary_en": "The Zunyi Conference established Mao Zedong's leadership in the Party Central Committee and the Red Army, a crucial turning point in China's revolution.",
+    "description_zh": "1935年1月15日至17日，中共中央在贵州遵义召开政治局扩大会议，集中解决当时具有决定意义的军事和组织问题。会议批判了\"左\"倾错误军事路线，肯定了毛泽东的正确军事主张；选举毛泽东为中央政治局常委，取消博古、李德的最高军事指挥权。遵义会议在极端危急的历史关头，挽救了党，挽救了红军，挽救了中国革命，是中国共产党从幼稚走向成熟的标志，标志着中国共产党开始独立自主地运用马克思主义基本原理解决自己的路线、方针和政策问题。",
+    "description_en": "From January 15 to 17, 1935, the CPC Central Committee held an expanded Political Bureau meeting in Zunyi, Guizhou, focusing on resolving crucial military and organizational issues. The meeting criticized the \"Left\" deviationist military line, affirmed Mao Zedong's correct military propositions, elected Mao Zedong as a member of the Standing Committee of the Political Bureau, and abolished Bo Gu and Li De's supreme military command. The Zunyi Conference saved the Party, the Red Army and the Chinese revolution at an extremely critical historical juncture.",
+    "poem_zh": "雄关漫道真如铁，而今迈步从头越。——《忆秦娥·娄山关》毛泽东",
+    "poem_en": "The majestic pass is truly like iron, yet now we stride forward anew. ——'Memory of Qin'e·Loushan Pass' by Mao Zedong",
+    "poem_appreciation_zh": "词句以\"雄关漫道真如铁\"比喻革命道路的艰难险阻和此前遭遇的挫折，而\"而今迈步从头越\"则彰显了遵义会议后红军重整旗鼓、奋勇前进的坚定决心。全诗气势磅礴，既体现了对革命征程艰巨性的清醒认知，更展现了中国共产党人在历史转折关头的豪迈气概和必胜信念。",
+    "poem_appreciation_en": "The line uses \"the majestic pass is truly like iron\" to metaphorize the hardships of the revolutionary road and the setbacks encountered before, while \"yet now we stride forward anew\" demonstrates the Red Army's firm determination to regroup and forge ahead after the Zunyi Conference. The whole poem is majestic, reflecting both a clear understanding of the arduousness of the revolutionary journey and the heroic spirit and必胜信念 of the Chinese Communists at the historical turning point.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "遵义会议是中国共产党历史上一个生死攸关的转折点，它确立了毛泽东在党中央和红军的领导地位，结束了\"左\"倾教条主义错误在中央的统治，使中国革命转危为安，为红军胜利完成长征、开创中国革命新局面奠定了重要基础。",
+    "meeting_attendants": "中央政治局委员、候补委员及各军团主要负责人共20人",
+    "key_decisions": "批判\"左\"倾错误军事路线，选举毛泽东为中央政治局常委，改组中央军事指挥机构",
+    "interactive_elements": {
+      "meeting_scene": "遵义会议会址原为贵州军阀柏辉章的公馆，会议在二楼小客厅举行",
+      "debate_highlights": "毛泽东作长篇发言，系统批判\"左\"倾错误军事路线，阐述正确军事思想"
+    }
+  },
+  {
+    "id": "loushan",
+    "name_zh": "娄山关大捷",
+    "name_en": "Victory at Loushan Pass",
+    "lng": 106.817,
+    "lat": 27.883,
+    "time": "1935年2月25日-26日",
+    "time_en": "February 25-26, 1935",
+    "summary_zh": "遵义会议后红军取得的首次重大胜利，彻底打破了蒋介石的围歼计划",
+    "summary_en": "The first major victory after the Zunyi Conference, completely breaking Chiang Kai-shek's encirclement plan",
+    "description_zh": "娄山关是贵州北部的重要关隘，海拔1440米，地势险要，有\"一夫当关，万夫莫开\"之称，是遵义通往桐梓的必经之路。1935年2月，红军二渡赤水后，为夺回遵义城，必须攻克娄山关。彭德怀率领红三军团担任主攻，仰攻陡峭山壁，与国民党军展开白刃战。经过两天激战，红军攻克娄山关，歼灭敌军600余人，缴获大量物资。此次胜利是遵义会议后的首次大捷，极大鼓舞了全军士气。",
+    "description_en": "Loushan Pass, 1440 meters above sea level, is a strategic pass in northern Guizhou, known as \"one man guarding the pass, ten thousand cannot pass\". In February 1935, after the Red Army's second crossing of Chishui, they needed to capture Loushan Pass to retake Zunyi. Peng Dehuai led the 3rd Corps in a frontal attack, engaging in hand-to-hand combat. After two days of fierce fighting, the Red Army captured the pass, annihilating over 600 enemy soldiers. This was the first major victory after the Zunyi Conference, greatly boosting morale.",
+    "poem_zh": "雄关漫道真如铁，而今迈步从头越。从头越，苍山如海，残阳如血。——《忆秦娥·娄山关》毛泽东",
+    "poem_en": "The majestic pass is truly like iron, yet now we stride forward anew. Striding forward anew, green mountains like the sea, setting sun like blood. ——'Memory of Qin'e·Loushan Pass' by Mao Zedong",
+    "poem_appreciation_zh": "毛泽东在此词中以\"雄关漫道真如铁\"极写娄山关的险峻难攻，\"而今迈步从头越\"则刻画了红军攻克天险后的豪迈气概。下阕\"苍山如海，残阳如血\"以壮阔而凝重的意象，既描绘了战斗后的战场景象，也隐喻了革命胜利的来之不易，字里行间洋溢着共产党人不畏牺牲、勇往直前的英雄主义精神。",
+    "poem_appreciation_en": "In this ci-poem, Mao Zedong uses \"the majestic pass is truly like iron\" to vividly describe the danger and difficulty of capturing Loushan Pass, while \"yet now we stride forward anew\" portrays the heroic spirit of the Red Army after conquering the natural barrier. The second stanza \"green mountains like the sea, setting sun like blood\" uses magnificent and solemn images to depict the battlefield scene after the battle and metaphorize the hard-won revolutionary victory, permeated with the communist spirit of heroism, defying sacrifice and forging ahead courageously.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "娄山关大捷是遵义会议确立毛泽东领导地位后取得的首次重大军事胜利，打破了\"左\"倾错误军事路线的束缚，证明了毛泽东军事思想的正确性，为红军重振旗鼓奠定了基础。",
+    "military_strategy": "正面佯攻与侧翼迂回相结合，集中优势兵力突破关键点",
+    "terrain_features": "两侧悬崖峭壁，中间仅有一条石阶路通行",
+    "battle_results": "歼敌600余人，缴获步枪800余支，轻重机枪20余挺",
+    "interactive_decision": {
+      "question": "进攻娄山关时，面对敌军坚固防守，你会选择：",
+      "options": [
+        "组织敢死队正面强攻",
+        "派小部队从山后小路攀岩偷袭",
+        "围而不攻等待敌军弹尽粮绝"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军正是采用了侧翼迂回战术，派部队从悬崖峭壁攀援而上，配合正面进攻取得胜利，体现了灵活机动的战术思想。"
+    }
+  },
+  {
+    "id": "zunyi2",
+    "name_zh": "二占遵义城",
+    "name_en": "Recapturing Zunyi City",
+    "lng": 106.917,
+    "lat": 27.717,
+    "time": "1935年2月28日",
+    "time_en": "February 28, 1935",
+    "summary_zh": "红军在娄山关大捷后乘胜追击，收复遵义城并歼敌数千",
+    "summary_en": "After victory at Loushan Pass, the Red Army pursued the enemy and recaptured Zunyi City",
+    "description_zh": "1935年2月，红军攻克娄山关后，乘胜向遵义城发起进攻。彭德怀率红三军团沿公路向遵义追击，林彪率红一军团从侧翼包抄。红军先头部队伪装成国民党军溃兵，智取遵义城南门，主力部队随即涌入城内。经过激战，红军歼灭国民党军两个师又八个团，俘敌3000余人，缴获大批武器弹药和物资。这是中央红军长征以来取得的最大一次胜利，被称为\"遵义大捷\"，极大鼓舞了红军士气。",
+    "description_en": "In February 1935, after capturing Loushan Pass, the Red Army launched an attack on Zunyi City. Peng Dehuai led the 3rd Corps in pursuit along the highway, while Lin Biao led the 1st Corps to outflank. The vanguard disguised themselves as Kuomintang routed soldiers, cleverly capturing the south gate. After fierce fighting, the Red Army annihilated two divisions and eight regiments, capturing over 3,000 enemies. This was the largest victory since the Long March began, known as the \"Zunyi Great Victory\".",
+    "poem_zh": "遵义城头竖红旗，军民欢呼庆胜利。——民间歌谣",
+    "poem_en": "Red flags raised over Zunyi city walls, soldiers and civilians cheer victory. ——Folk ballad",
+    "poem_appreciation_zh": "这首民间歌谣以朴素直白的语言，记录了二占遵义城的历史场景。\"遵义城头竖红旗\"象征着革命力量的胜利回归，\"军民欢呼庆胜利\"则生动描绘了红军与百姓共庆胜利的热烈场面，既体现了战役的重大成果，也反映了红军与人民群众的鱼水深情，是革命胜利依靠人民、为了人民的生动写照。",
+    "poem_appreciation_en": "This folk ballad records the historical scene of recapturing Zunyi City with simple and straightforward language. \"Red flags raised over Zunyi city walls\" symbolizes the victorious return of revolutionary forces, and \"soldiers and civilians cheer victory\" vividly depicts the warm scene of the Red Army and people celebrating together, reflecting both the significant achievements of the battle and the deep bond between the Red Army and the people, which is a vivid portrayal of revolutionary victory relying on and for the people.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "二占遵义城是红军长征以来取得的最大胜利，沉重打击了国民党军的嚣张气焰，极大提升了红军士气，充分验证了遵义会议确立的军事路线的正确性，为红军摆脱被动局面创造了条件。",
+    "battle_results": "歼敌3000余人，缴获步枪2000余支、机枪50余挺、子弹10万余发",
+    "civilian_support": "遵义群众为红军提供粮食、药品和情报支持，许多青年参加红军",
+    "interactive_decision": {
+      "question": "进入遵义城后，面对缴获的大量物资，你会：",
+      "options": [
+        "全部归为军用，快速撤离",
+        "留下部分物资给贫困百姓，并开仓放粮",
+        "向商户强制征购更多物资以备后用"
+      ],
+      "correct_answer": 2,
+      "explanation": "红军始终执行\"三大纪律八项注意\"，进入遵义后不仅秋毫无犯，还开仓放粮救济百姓，赢得了群众衷心拥护，这正是革命胜利的重要基础。"
+    }
+  }
+]

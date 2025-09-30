@@ -1,0 +1,246 @@
+[
+  {
+    "id": "jiuquan",
+    "name_zh": "俄界会议",
+    "name_en": "Ejie Conference",
+    "lng": 103.8,
+    "lat": 33.9,
+    "time": "1935年9月12日",
+    "time_en": "September 12, 1935",
+    "summary_zh": "俄界会议批判张国焘分裂主义，决定继续北上建立陕甘根据地",
+    "summary_en": "Ejie Conference criticized Zhang Guotao's separatism, deciding to continue north to establish Shaanxi-Gansu base",
+    "description_zh": "1935年9月，张国焘拒绝执行中央北上命令，强令左路军南下，并企图危害中央。中央被迫率红一方面军一、三军团及军委纵队继续北上，于9月12日在甘肃迭部县俄界召开政治局紧急扩大会议。会议听取毛泽东关于与红四方面军分歧及今后战略方针的报告，通过《关于张国焘同志的错误的决定》，批判其分裂红军、反对中央的错误。会议决定将红一方面军主力改编为中国工农红军陕甘支队，彭德怀任司令员，毛泽东任政治委员，继续北上，以游击战争打通前往苏联的通道，在陕甘广大地区创建根据地。",
+    "description_en": "In September 1935, Zhang Guotao refused to implement the Central Committee's northward order, forcing the Left Column to march south and attempting to harm the Central Committee. The Central Committee was forced to continue north with the 1st and 3rd Corps of the 1st Front Army and the Military Commission Column, holding an emergency expanded Political Bureau meeting in Ejie, Diebu County, Gansu on September 12. The meeting heard Mao Zedong's report on differences with the 4th Front Army and future strategic policy, adopted the "Decision on Comrade Zhang Guotao's Errors", criticizing his separatism. It decided to reorganize the main forces into the Shaanxi-Gansu Detachment, continuing north to establish base areas in the vast Shaanxi-Gansu region.",
+    "poem_zh": "俄界会议辨真伪，痛斥分裂志更坚。孤军北上何所惧，红旗直指陕甘边。——《俄界会议感怀》",
+    "poem_en": "Ejie Conference distinguishes truth from falsehood, denouncing separatism with stronger will. Undaunted by isolated northward march, red flag points directly to Shaanxi-Gansu border. ——'Reflections on Ejie Conference'",
+    "poem_appreciation_zh": "诗歌以简练的语言概括了俄界会议的核心意义，首句点出会议在复杂局势中明辨是非的关键作用；次句凸显了批判分裂主义后红军意志更加坚定的精神状态；后两句则展现了红军在孤立无援的困境中依然无所畏惧、坚定北上的革命豪情，红旗意象象征着革命方向的不可动摇，整体洋溢着对正确路线的坚定信念。",
+    "poem_appreciation_en": "The poem concisely summarizes the core significance of the Ejie Conference. The first line points out the conference's key role in distinguishing right from wrong in a complex situation; the second line highlights the Red Army's stronger will after criticizing separatism; the last two lines show the Red Army's fearlessness and firm revolutionary spirit of marching north despite isolation. The red flag symbolizes the unshakable revolutionary direction, with the whole poem filled with firm belief in the correct line.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "俄界会议在关键时刻坚持了正确的北上战略方针，批判了张国焘的分裂主义错误，统一了北上部队的思想认识，为红军继续北上、创建陕甘革命根据地奠定了重要的政治和组织基础，在党和红军历史上具有重要的转折意义。",
+    "meeting_decisions": [
+      "通过《关于张国焘同志的错误的决定》",
+      "将红一方面军主力改编为中国工农红军陕甘支队",
+      "确定继续北上，在陕甘地区创建革命根据地的战略方针"
+    ],
+    "military_reorganization": "全军改编为陕甘支队，下辖3个纵队，共约7000人",
+    "interactive_decision": {
+      "question": "面对严重的分裂危机，你会如何处理？",
+      "options": [
+        "采取果断措施，率正确路线部队继续北上",
+        "做出重大让步，争取与张国焘达成妥协",
+        "公开批判张国焘，号召红四方面军官兵回归正确路线"
+      ],
+      "correct_answer": 0,
+      "explanation": "俄界会议后中央采取的果断北上措施，既坚持了正确的革命方向，又保存了革命的骨干力量，这一决策在关键时刻挽救了红军、挽救了革命，体现了党中央的坚定原则和高超智慧。"
+    }
+  },
+  {
+    "id": "腊子口",
+    "name_zh": "攻克腊子口",
+    "name_en": "Capturing Lazikou Pass",
+    "lng": 103.8,
+    "lat": 34.0,
+    "time": "1935年9月17日",
+    "time_en": "September 17, 1935",
+    "summary_zh": "红军攻克天险腊子口，打开北上陕甘的最后通道",
+    "summary_en": "Red Army captured natural barrier Lazikou Pass, opening final passage to northern Shaanxi-Gansu",
+    "description_zh": "1935年9月，陕甘支队抵达甘肃迭部县腊子口。腊子口是四川通往甘肃的重要隘口，两侧是悬崖峭壁，中间只有一条宽30余米的峡谷，河上架有一座木桥，地势极为险要，有"一夫当关，万夫莫开"之称，国民党军鲁大昌部在此重兵把守。9月16日晚，红军向腊子口发起进攻，经过多次冲锋未能突破。17日凌晨，红军采取正面强攻与侧面迂回相结合的战术，由第二连指导员胡炳云率领突击队员攀爬悬崖峭壁，迂回到敌军侧后，与正面部队协同作战，最终攻克腊子口。这一胜利为红军北上打开了最后一道天险。",
+    "description_en": "In September 1935, the Shaanxi-Gansu Detachment arrived at Lazikou in Diebu County, Gansu. Lazikou was a vital pass from Sichuan to Gansu, with cliffs on both sides and a 30-meter-wide canyon in the middle, crossed by a wooden bridge, extremely strategically located. Kuomintang Lu Dachang's forces heavily defended it. On the night of September 16, the Red Army launched an attack, failing to break through after multiple charges. In the early morning of September 17, using combined tactics of frontal assault and flanking maneuver, Commissar Hu Bingyun led assault team members climbing cliffs to outflank the enemy, cooperating with frontal forces to finally capture Lazikou, opening the last natural barrier for the Red Army's northward march.",
+    "poem_zh": "腊子口上降神兵，百丈悬崖当云梯。天险固若金汤地，怎挡红军英雄气。——《攻克腊子口》",
+    "poem_en": "Divine troops descend on Lazikou, hundred-zhang cliffs used as scaling ladders. Natural barrier as strong as impregnable fortress, cannot stop the heroic spirit of Red Army. ——'Capturing Lazikou'",
+    "poem_appreciation_zh": "诗歌以"神兵"喻指红军的英勇善战，将"百丈悬崖"比作"云梯"的意象，生动展现了红军突破天险的非凡壮举；后两句通过对比腊子口的"固若金汤"与红军"英雄气"的不可阻挡，凸显了革命军队不畏艰难、敢于胜利的豪迈气概，字里行间充满对红军战士的赞美与崇敬。",
+    "poem_appreciation_en": "The poem uses "divine troops" to metaphorize the Red Army's bravery and combat skill. The image of "hundred-zhang cliffs" as "scaling ladders" vividly shows the Red Army's extraordinary feat of breaking through natural barriers; the last two lines contrast Lazikou's "impregnable" defense with the unstoppable "heroic spirit" of the Red Army, highlighting the revolutionary army's fearless and victory-determined spirit, filled with praise and respect for Red Army soldiers.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "攻克腊子口是红军长征中具有决定性意义的战斗，打破了国民党军企图凭借天险消灭红军的最后幻想，打开了红军北上陕甘的通道，为红军胜利到达陕甘革命根据地创造了重要条件，充分展现了红军战士不怕牺牲、勇于胜利的革命英雄主义精神。",
+    "terrain_features": "两侧悬崖高500余米，隘口宽仅30余米，中间有腊子河，唯一通道是河上木桥",
+    "battle_tactics": "正面佯攻吸引敌军注意力，侧面攀爬悬崖迂回敌后，前后夹击",
+    "heroic_stories": "17名突击队员在枪林弹雨中攀爬悬崖，其中5人牺牲，最终成功迂回到敌军阵地后方",
+    "interactive_decision": {
+      "question": "面对易守难攻的天险，你会采取什么战术？",
+      "options": [
+        "集中火力正面强攻，突破敌人防线",
+        "组织突击队从侧面险要处迂回敌后",
+        "暂时围困，等待敌军弹尽粮绝"
+      ],
+      "correct_answer": 1,
+      "explanation": "攻克腊子口正是采用了侧面迂回与正面强攻相结合的战术，这种"以奇制胜"的打法，既减少了正面强攻的伤亡，又达到了出奇制胜的效果，是红军战术灵活性的生动体现。"
+    }
+  },
+  {
+    "id": "minshan",
+    "name_zh": "翻越岷山",
+    "name_en": "Crossing Minshan Mountains",
+    "lng": 104.1,
+    "lat": 34.2,
+    "time": "1935年9月",
+    "time_en": "September 1935",
+    "summary_zh": "红军翻越长征最后一座大雪山岷山，即将到达陕北根据地",
+    "summary_en": "Red Army crossed Minshan Mountains, the last major snow mountains of the Long March, approaching northern Shaanxi base",
+    "description_zh": "1935年9月，陕甘支队攻克腊子口后，继续北上，面临长征途中的最后一座大雪山——岷山。岷山山脉平均海拔4000米以上，主峰雪宝顶海拔5588米，终年积雪，气候寒冷，空气稀薄。经历了无数艰难险阻的红军战士，虽然衣衫褴褛、疲惫不堪，但想到即将到达陕北革命根据地，士气格外高昂。他们互相帮助，克服严寒缺氧等困难，终于翻越了这座横亘在长征路上的最后一座大雪山。站在山顶，毛泽东豪情满怀，写下"更喜岷山千里雪，三军过后尽开颜"的壮丽诗句。",
+    "description_en": "In September 1935, after capturing Lazikou, the Shaanxi-Gansu Detachment continued north, facing the last major snow mountains of the Long March - Minshan Mountains. With an average altitude of over 4,000 meters and main peak Xuebaoding at 5,588 meters, Minshan had perpetual snow, cold climate and thin air. Though ragged and exhausted after countless hardships, Red Army soldiers were especially morale-high thinking of approaching the northern Shaanxi revolutionary base. They helped each other, overcoming cold and oxygen deprivation, finally crossing these last snow mountains on the Long March route. Standing on the mountain top, Mao Zedong wrote the magnificent line: "Even more joyful are Minshan's thousand li of snow; after the three armies pass, all faces bloom with smiles".",
+    "poem_zh": "更喜岷山千里雪，三军过后尽开颜。——《七律·长征》毛泽东",
+    "poem_en": "Even more joyful are Minshan's thousand li of snow; after the three armies pass, all faces bloom with smiles. ——'Seven-character regulated verse·The Long March' by Mao Zedong",
+    "poem_appreciation_zh": "此句以"千里雪"的壮阔景象为背景，却着笔于"喜"与"开颜"的情感表达，将翻越雪山的艰难转化为胜利后的豪迈喜悦。"更喜"二字凸显了红军战士在经历千难万险后的乐观主义精神，"三军尽开颜"则展现了革命队伍团结一致、对胜利充满信心的精神面貌，体现了无产阶级革命者的博大胸怀与革命乐观主义情怀。",
+    "poem_appreciation_en": "Against the backdrop of "thousand li of snow" on Minshan, the line focuses on expressing emotions of "joy" and "smiles", transforming the hardship of crossing snow mountains into heroic joy after victory. The words "even more joyful" highlight the Red Army soldiers' optimism after countless hardships, while "all faces bloom with smiles" shows the revolutionary team's unity and confidence in victory, embodying the broad mind and revolutionary optimism of proletarian revolutionaries.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "翻越岷山是红军长征中征服的最后一座大雪山，标志着红军彻底摆脱了雪山草地等极端自然环境的考验，即将完成战略转移，到达陕北革命根据地。这一胜利极大鼓舞了全军士气，为长征最终胜利奠定了基础，充分体现了红军战士不畏艰难、乐观向上的革命精神。",
+    "mountain_conditions": "平均海拔4000米以上，部分地段积雪终年不化，氧气含量低",
+    "crossing_features": "这是红军长征中翻越的最后一座大雪山，距离陕北根据地已不远",
+    "spiritual_significance": "象征着红军即将摆脱自然险阻，看到革命胜利的曙光",
+    "interactive_decision": {
+      "question": "面对最后一座雪山和即将到来的胜利，你会如何鼓舞士气？",
+      "options": [
+        "强调胜利就在眼前，激发前进动力",
+        "适当休整，恢复体力后再继续前进",
+        "表彰先进，树立榜样激励大家"
+      ],
+      "correct_answer": 0,
+      "explanation": "面对岷山这最后一座雪山，红军正是通过展望即将到达根据地的胜利前景来鼓舞士气，这种对未来的坚定信念产生了强大的精神动力，帮助红军最终战胜了困难。"
+    }
+  },
+  {
+    "id": "huiquanzi",
+    "name_zh": "哈达铺会议",
+    "name_en": "Hadapu Conference",
+    "lng": 104.3,
+    "lat": 34.4,
+    "time": "1935年9月22日",
+    "time_en": "September 22, 1935",
+    "summary_zh": "哈达铺会议确定向陕北进军的战略方针，红军获得重要休整",
+    "summary_en": "Hadapu Conference confirmed strategic policy of marching to northern Shaanxi, Red Army gained important rest",
+    "description_zh": "1935年9月20日，陕甘支队抵达甘肃宕昌县哈达铺。在这里，红军获得了难得的休整机会，并从当地找到的报纸上了解到陕北有刘志丹领导的红军和大块革命根据地的消息。9月22日，中央在哈达铺召开政治局常委会议和团以上干部会议，毛泽东在会上作报告，正式决定红军向陕北进军，与当地红军会合，在陕北建立革命根据地。会议还决定将陕甘支队正式改编为中国工农红军陕甘支队第一、二、三纵队。哈达铺成为红军长征途中的"加油站"，为红军继续北上提供了重要的物资补充和精神动力。",
+    "description_en": "On September 20, 1935, the Shaanxi-Gansu Detachment arrived at Hadapu in Dangchang County, Gansu. Here, the Red Army gained a rare rest opportunity and learned from local newspapers about the Red Army led by Liu Zhidan in northern Shaanxi and large revolutionary base areas. On September 22, the Central Committee held a Political Bureau Standing Committee meeting and a meeting of cadres at and above regiment level in Hadapu. Mao Zedong delivered a report, formally deciding that the Red Army would march to northern Shaanxi to join local Red Army forces and establish revolutionary base areas there. The meeting also decided to formally reorganize the Shaanxi-Gansu Detachment into the 1st, 2nd and 3rd Columns of the Chinese Workers' and Peasants' Red Army Shaanxi-Gansu Detachment. Hadapu became a "gas station" on the Long March, providing important material supplements and spiritual motivation.",
+    "poem_zh": "哈达铺里传佳讯，陕北苏区有红军。万里长征方向定，红旗直指延安城。——《哈达铺感怀》",
+    "poem_en": "Good news spreads in Hadapu, there are Red Army in northern Shaanxi Soviet area. Direction of ten-thousand-mile Long March determined, red flag points directly to Yan'an city. ——'Reflections on Hadapu'",
+    "poem_appreciation_zh": "诗歌以"佳讯"起笔，点明哈达铺带来的关键信息对长征的转折意义；"方向定"三字精准概括了会议的核心成果，简洁有力；末句"红旗直指延安城"以鲜明的意象，既展现了红军明确的进军目标，又象征着革命力量的坚定走向，全诗洋溢着拨云见日的喜悦与对未来的坚定信念。",
+    "poem_appreciation_en": "Starting with "good news", the poem highlights the pivotal significance of key information from Hadapu for the Long March's turning point; the three characters "direction determined" accurately summarize the conference's core achievement, concise and powerful; the last line "red flag points directly to Yan'an city" uses vivid imagery to show both the Red Army's clear marching target and the firm direction of revolutionary forces, with the whole poem filled with joy of seeing the light and firm belief in the future.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "哈达铺会议是红军长征中的重要转折点，明确了向陕北进军的战略方向，使红军有了明确的目的地，结束了长期以来的无固定目标的转移状态。哈达铺作为红军的"加油站"，为疲惫的红军提供了难得的休整和补充机会，为红军胜利到达陕北奠定了物质和精神基础。",
+    "key_information": "从《大公报》等报纸上得知陕北有红军和革命根据地的重要消息",
+    "meeting_decisions": [
+      "确定向陕北进军，与当地红军会合的战略方针",
+      "对陕甘支队进行整编补充",
+      "开展群众工作，筹集物资"
+    ],
+    "rest_situation": "红军在哈达铺休整7天，补充粮食、衣物，许多伤员得到治疗",
+    "interactive_decision": {
+      "question": "得知陕北有革命根据地的消息，你会如何决策？",
+      "options": [
+        "立即向陕北进军，与当地红军会合",
+        "先巩固现有地区，再相机向陕北发展",
+        "分兵几路，一部分去陕北，一部分留在当地"
+      ],
+      "correct_answer": 0,
+      "explanation": "哈达铺会议决定立即向陕北进军，这一决策使红军有了明确的目标，避免了漫无目的地流动，为长征胜利结束找到了正确方向，体现了党中央把握时机、果断决策的能力。"
+    }
+  },
+  {
+    "id": "liangdang",
+    "name_zh": "榜罗镇会议",
+    "name_en": "Bangluo Town Conference",
+    "lng": 105.0,
+    "lat": 35.1,
+    "time": "1935年9月27日",
+    "time_en": "September 27, 1935",
+    "summary_zh": "榜罗镇会议最终确定以陕北为中国革命的大本营",
+    "summary_en": "Bangluo Town Conference finally confirmed northern Shaanxi as the base camp of Chinese revolution",
+    "description_zh": "1935年9月27日，陕甘支队抵达甘肃通渭县榜罗镇。中央在这里召开政治局常委会议，进一步研究陕北革命根据地的情况，分析全国革命形势。会议根据从哈达铺获得的更多关于陕北根据地的信息，正式决定放弃前往苏联边境的计划，确定以陕北作为中国革命的大本营，到陕北去会合红二十五军、二十六军，巩固和发展陕北革命根据地。会议还决定派一支部队先行侦察，为主力部队开往陕北做准备。榜罗镇会议为红军长征找到了最终的落脚点，是长征胜利的重要标志。",
+    "description_en": "On September 27, 1935, the Shaanxi-Gansu Detachment arrived at Bangluo Town in Tongwei County, Gansu. The Central Committee held a Political Bureau Standing Committee meeting here, further studying the situation of the northern Shaanxi revolutionary base and analyzing the national revolutionary situation. Based on more information about the northern Shaanxi base obtained from Hadapu, the meeting formally decided to abandon the plan to go to the Soviet border, confirming northern Shaanxi as the base camp of the Chinese revolution, to join the 25th and 26th Corps in northern Shaanxi and consolidate and develop the revolutionary base there. The meeting also decided to send a detachment for advance reconnaissance, preparing for the main forces to march to northern Shaanxi. Bangluo Town Conference found the final destination for the Long March, an important symbol of its victory.",
+    "poem_zh": "榜罗镇上定乾坤，陕北苏区扎深根。革命洪流从此起，红旗漫卷映昆仑。——《榜罗镇会议》",
+    "poem_en": "Deciding destiny in Bangluo Town, taking deep roots in northern Shaanxi Soviet area. Revolutionary torrent starts from here, red flags fluttering reflecting Kunlun Mountains. ——'Bangluo Town Conference'",
+    "poem_appreciation_zh": "首句"定乾坤"以宏大的笔触凸显了榜罗镇会议决定中国革命走向的重大意义；"扎深根"形象地表达了革命力量在陕北立足发展的坚实基础；后两句以"革命洪流"和"红旗漫卷"的壮阔意象，预示了中国革命从此走向复兴的历史趋势，"昆仑"的意象更赋予诗歌雄浑的气魄，展现了革命事业的广阔前景。",
+    "poem_appreciation_en": "The first line "deciding destiny" highlights the great significance of Bangluo Town Conference in determining the direction of the Chinese revolution with a grand brushstroke; "taking deep roots" vividly expresses the solid foundation for revolutionary forces to establish and develop in northern Shaanxi; the last two lines use the magnificent images of "revolutionary torrent" and "fluttering red flags" to predict the historical trend of the Chinese revolution moving towards rejuvenation, with the "Kunlun Mountains" image endowing the poem with majestic spirit and showing the broad prospects of the revolutionary cause.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "榜罗镇会议最终确定了以陕北为革命大本营的战略决策，使红军长征有了明确的最终目的地，结束了长期以来的战略转移状态，为中国革命找到了新的立足点。这一决策对中国革命的发展产生了深远影响，陕北从此成为中国革命的圣地，为抗日战争和解放战争的胜利奠定了基础。",
+    "meeting_achievements": [
+      "最终确定以陕北为中国革命的大本营",
+      "放弃前往苏联边境建立根据地的计划",
+      "决定与陕北红军会合，巩固和发展陕北根据地"
+    ],
+    "strategic_significance": "为红军找到了最终落脚点，使中国革命有了新的大本营",
+    "interactive_decision": {
+      "question": "面对多种发展方向的选择，你会如何确定革命大本营？",
+      "options": [
+        "选择靠近苏联的边境地区，便于获得支援",
+        "选择已有一定基础的陕北根据地，便于发展",
+        "选择国民党统治薄弱的地区，重新创建根据地"
+      ],
+      "correct_answer": 1,
+      "explanation": "榜罗镇会议选择陕北作为革命大本营，正是基于其已有一定革命基础的优势，这种利用现有基础发展革命力量的决策，被历史证明是正确的，为中国革命的复兴提供了重要保障。"
+    }
+  },
+  {
+    "id": "jiangtaibao",
+    "name_zh": "吴起镇会师",
+    "name_en": "Meeting at Wuqi Town",
+    "lng": 108.1,
+    "lat": 36.9,
+    "time": "1935年10月19日",
+    "time_en": "October 19, 1935",
+    "summary_zh": "中央红军抵达陕北吴起镇，与陕北红军胜利会师，标志着中央红军长征胜利结束",
+    "summary_en": "Central Red Army arrived at Wuqi Town in northern Shaanxi, successfully meeting northern Shaanxi Red Army, marking end of Central Red Army's Long March",
+    "description_zh": "1935年10月19日，中共中央和陕甘支队抵达陕西吴起镇（今吴起县），与陕北红军胜利会师。至此，中央红军（红一方面军）历时一年，途经11个省，行程二万五千里的长征胜利结束。在吴起镇，红军击溃了尾追的国民党军骑兵部队，取得"切尾巴"战斗的胜利。当地群众热烈欢迎红军的到来，为红军提供了物资支持。毛泽东在吴起镇向全军宣布："从现在起，我们进入了陕北根据地，到了家了！"吴起镇会师标志着中央红军长征的胜利结束，中国革命从此翻开新的一页。",
+    "description_en": "On October 19, 1935, the CPC Central Committee and the Shaanxi-Gansu Detachment arrived at Wuqi Town (now Wuqi County) in Shaanxi, successfully meeting the northern Shaanxi Red Army. Thus, the Central Red Army (1st Front Army) completed the Long March after one year, passing through 11 provinces with a journey of 25,000 li. In Wuqi Town, the Red Army defeated the pursuing Kuomintang cavalry units, winning the "cutting off the tail" battle. Local people warmly welcomed the Red Army and provided material support. Mao Zedong announced to the whole army in Wuqi Town: "From now on, we have entered the northern Shaanxi base area, we are home!" The meeting at Wuqi Town marked the successful conclusion of the Central Red Army's Long March, opening a new chapter in the Chinese revolution.",
+    "poem_zh": "红军不怕远征难，万水千山只等闲。——《七律·长征》毛泽东",
+    "poem_en": "The Red Army fears not the trials of the Long March; thousands of rivers and mountains are mere trifles. ——'Seven-character regulated verse·The Long March' by Mao Zedong",
+    "poem_appreciation_zh": "此句开篇点题，以"不怕"二字奠定全诗豪迈基调，"远征难"概括了长征途中的千难万险，而"只等闲"则将这些艰难险阻视若平常，生动展现了红军战士蔑视困难、勇往直前的革命英雄主义气概和革命乐观主义精神，短短十四字，尽显无产阶级革命者的豪迈胸襟与坚定信念。",
+    "poem_appreciation_en": "This line gets to the point at the beginning, with "fears not" setting the heroic tone of the whole poem. "Trials of the Long March" summarizes the countless hardships on the journey, while "mere trifles" treats these difficulties as ordinary, vividly showing the Red Army soldiers' revolutionary heroism and optimism of defying difficulties and forging ahead. In just fourteen characters, it fully reveals the heroic mind and firm belief of proletarian revolutionaries.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "吴起镇会师标志着中央红军长征的胜利结束，是中国革命史上的重大事件。它实现了红军主力的战略转移，保存了党和红军的骨干力量，为中国革命保留了珍贵的火种。陕北成为中国革命的新大本营，为抗日战争和中国革命的最终胜利奠定了基础，具有不可磨灭的历史功绩。",
+    "long_march_stats": {
+      "duration": "1年",
+      "distance": "二万五千里（约12500公里）",
+      "passing_provinces": "11个省",
+      "major_battles": "380余次",
+      "starting_strength": "约8.6万人",
+      "arriving_strength": "约7000人"
+    },
+    "meeting_significance": "中央红军与陕北红军会师，壮大了陕北革命根据地的力量",
+    "interactive_decision": {
+      "question": "长征胜利到达陕北后，你会如何部署下一步工作？",
+      "options": [
+        "立即休整补充，恢复红军战斗力",
+        "主动出击，扩大陕北革命根据地",
+        "开展群众工作，巩固根据地基础"
+      ],
+      "correct_answer": 0,
+      "explanation": "红军到达陕北后首先进行休整补充是正确选择，经过长途跋涉的红军急需恢复战斗力，这为后来巩固和扩大陕北根据地、迎接抗日战争奠定了基础，体现了实事求是的工作方法。"
+    }
+  }
+]

@@ -1,0 +1,240 @@
+[
+  {
+    "id": "chishui1",
+    "name_zh": "一渡赤水",
+    "name_en": "First Crossing of Chishui River",
+    "lng": 105.6,
+    "lat": 28.4,
+    "time": "1935年1月29日",
+    "time_en": "January 29, 1935",
+    "summary_zh": "红军一渡赤水，跳出国民党军包围圈，实现战略转移",
+    "summary_en": "The Red Army's first crossing of Chishui River, breaking out of the Kuomintang encirclement",
+    "description_zh": "1935年1月，遵义会议后，蒋介石调集40万兵力围剿红军。为摆脱敌军包围，毛泽东指挥红军向川南转移。1月29日，红军分三路从猿猴场（今元厚）、土城南北地区西渡赤水河（一渡赤水），进入川南古蔺、叙永地区，准备北渡长江与红四方面军会合。但因川军重兵布防长江，红军随即改变计划，转向敌军兵力薄弱的云南扎西地区集结休整，为后续机动创造条件。",
+    "description_en": "In January 1935, after the Zunyi Conference, Chiang Kai-shek deployed 400,000 troops to encircle the Red Army. To break out, Mao Zedong directed the Red Army to move south of Sichuan. On January 29, the Red Army crossed the Chishui River in three routes from Yuanhou and Tucheng areas, entering southern Sichuan, preparing to cross the Yangtze River to join the 4th Front Army. Due to heavy Sichuan army defenses along the Yangtze, the Red Army changed plans and moved to southern Yunnan for rest.",
+    "poem_zh": "四渡赤水出奇兵，毛主席用兵真如神。——《长征组歌》",
+    "poem_en": "Four crossings of Chishui with surprise troops, Chairman Mao's military strategy is divine. ——'Long March Suite'",
+    "poem_appreciation_zh": "诗句以"出奇兵"三字精准概括了四渡赤水的战术精髓，一渡赤水作为这场经典战役的开端，已展现出"避实击虚"的军事智慧。"真如神"的赞叹不仅是对毛泽东指挥艺术的推崇，更体现了红军在被动局面中主动创造战机的革命自信，为后续三次渡河的战略机动奠定了精神基调。",
+    "poem_appreciation_en": "The line "surprise troops" accurately captures the tactical essence of the four Chishui crossings. The first crossing, as the start of this classic campaign, already demonstrated the military wisdom of "avoiding the strong and attacking the weak". The praise "divine" not only honors Mao Zedong's command art but also reflects the Red Army's revolutionary confidence in creating opportunities from a passive position, laying the spiritual foundation for the subsequent three crossings.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "一渡赤水是遵义会议后红军实施的首次大规模机动，摆脱了国民党军的围追堵截，初步体现了毛泽东灵活机动的军事指挥艺术，为后续的二渡、三渡、四渡赤水奠定了基础。",
+    "crossing_points": "猿猴场（元厚）、土城等渡口",
+    "military_strategy": "避实击虚，摆脱敌军主力，寻求有利战机",
+    "river_conditions": "赤水河水流湍急，河岸陡峭，当时正值枯水期",
+    "interactive_decision": {
+      "question": "发现敌军在长江沿岸重兵布防，你会如何调整计划？",
+      "options": [
+        "强攻突破长江防线",
+        "改变方向，向敌军薄弱地区转移",
+        "原地待命，等待敌军调动"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军正是灵活调整计划，转向敌军薄弱的扎西地区，体现了"打得赢就打，打不赢就走"的机动灵活战术原则。"
+    }
+  },
+  {
+    "id": "zhaxi",
+    "name_zh": "扎西会议",
+    "name_en": "Zhaxi Conference",
+    "lng": 105.3,
+    "lat": 28.0,
+    "time": "1935年2月5日-9日",
+    "time_en": "February 5-9, 1935",
+    "summary_zh": "扎西会议完善了遵义会议决议，确定了新的战略方针和军事部署",
+    "summary_en": "Zhaxi Conference improved the Zunyi Conference resolutions, establishing new strategic policies",
+    "description_zh": "1935年2月，红军一渡赤水后抵达云南扎西地区。中共中央在此连续召开政治局会议（扎西会议），讨论军事战略和部队整编问题。会议通过了《中央关于反对敌人五次"围剿"的总结的决议》，进一步肯定了毛泽东的正确军事路线；决定对红军进行精简整编，充实基层战斗力；确立了"回师东进、再渡赤水、重占遵义"的战略方针。扎西会议是遵义会议的继续和完善，为红军二渡赤水、重占遵义奠定了重要基础。",
+    "description_en": "In February 1935, after the first crossing of Chishui, the Red Army arrived in Zhaxi, Yunnan. The CPC Central Committee held successive Political Bureau meetings, discussing military strategy and troop reorganization. The meeting adopted resolutions further affirming Mao Zedong's correct military line, decided to streamline the Red Army, and established the strategic policy of "returning east, recrossing Chishui, and recapturing Zunyi".",
+    "poem_zh": "扎西整编军威振，再渡赤水出奇兵。——《扎西感怀》",
+    "poem_en": "Zhaxi reorganization boosts military morale, recrossing Chishui with surprise troops. ——'Reflections on Zhaxi'",
+    "poem_appreciation_zh": "前句"扎西整编军威振"点出会议的重要成果：通过精简整编使红军战斗力得到提升，精神面貌焕然一新；后句"再渡赤水出奇兵"则预示了会议确定的战略方向将带来的辉煌胜利。全诗以简练语言勾勒出从整顿到出击的转折，体现了党和红军在逆境中自我革新、重燃斗志的革命精神。",
+    "poem_appreciation_en": "The first line highlights the conference's key achievement: troop reorganization in Zhaxi boosted military morale and combat effectiveness. The second line foreshadows the brilliant victories from the strategic direction set by the conference. The poem concisely outlines the transition from reorganization to attack, reflecting the Party and Red Army's revolutionary spirit of self-renewal and renewed determination in adversity.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "扎西会议是遵义会议的继续和完成，它贯彻落实了遵义会议精神，进一步巩固了毛泽东在党中央和红军的领导地位，为红军实施灵活机动的战略战术、取得长征胜利提供了重要保证。",
+    "meeting_decisions": [
+      "通过遵义会议决议的正式文本",
+      "对红军进行精简整编，撤销部分师级建制",
+      "确立回师东进、再渡赤水的战略方针"
+    ],
+    "troop_reorganization": "全军从3万余人精简至2万余人，充实基层作战单位",
+    "interactive_decision": {
+      "question": "面对兵力不足的情况，你会如何整编部队？",
+      "options": [
+        "保留原有编制，减少每个单位的人员数量",
+        "撤销部分高级建制，充实基层战斗力量",
+        "将非战斗人员全部遣散，保留战斗部队"
+      ],
+      "correct_answer": 1,
+      "explanation": "扎西会议采取了撤销部分高级建制、充实基层的整编方式，提高了部队的机动性和战斗力，这一做法在后来的战争中被证明是正确有效的。"
+    }
+  },
+  {
+    "id": "chishui2",
+    "name_zh": "二渡赤水",
+    "name_en": "Second Crossing of Chishui River",
+    "lng": 105.7,
+    "lat": 28.2,
+    "time": "1935年2月18日-21日",
+    "time_en": "February 18-21, 1935",
+    "summary_zh": "红军二渡赤水，回师黔北，为娄山关大捷和重占遵义创造条件",
+    "summary_en": "Red Army's second crossing of Chishui, returning to northern Guizhou, creating conditions for Loushan Pass victory",
+    "description_zh": "1935年2月，根据扎西会议决定，红军趁国民党军主力被吸引到川南、黔北兵力空虚之机，突然掉头东进，于2月18日至21日从太平渡、二郎滩等渡口二渡赤水河，迅速占领桐梓，揭开了遵义战役的序幕。此次行动出敌不意，打乱了蒋介石的部署，使红军从被动转为主动，为随后取得娄山关大捷和重占遵义奠定了基础。",
+    "description_en": "In February 1935, following the Zhaxi Conference decisions, the Red Army took advantage of the emptiness in northern Guizhou as Kuomintang main forces were drawn to southern Sichuan. They suddenly turned east, crossing Chishui again from February 18-21, quickly capturing Tongzi. This unexpected move disrupted Chiang Kai-shek's plans, turning passive into active, laying groundwork for Loushan Pass victory and recapturing Zunyi.",
+    "poem_zh": "赤水河上摆战场，毛主席指挥不寻常。声东击西出奇兵，要把敌人消灭光。——红军歌谣",
+    "poem_en": "Battlefield set on Chishui River, Chairman Mao's command is extraordinary. Making a feint to the east and attacking in the west with surprise troops, determined to eliminate all enemies. ——Red Army ballad",
+    "poem_appreciation_zh": "歌谣以朴素语言生动再现了二渡赤水的战术特点："声东击西"准确概括了红军利用敌军判断失误、突然回师黔北的机动策略；"指挥不寻常"则直白表达了红军战士对毛泽东打破常规、灵活用兵的由衷赞叹，字里行间充满对胜利的坚定信念和革命乐观主义精神。",
+    "poem_appreciation_en": "The ballad vividly depicts the tactical features of the second crossing with simple language: "feint east, attack west" accurately summarizes the Red Army's mobile strategy of using the enemy's miscalculation to suddenly return to northern Guizhou. "Extraordinary command" straightforwardly expresses the Red Army soldiers' admiration for Mao Zedong's unconventional and flexible command, filled with firm belief in victory and revolutionary optimism.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "二渡赤水是四渡赤水中的关键一役，体现了毛泽东"声东击西"的军事指挥艺术，使红军重新掌握了战略主动权，为取得遵义战役胜利创造了条件，是中国军事史上以少胜多的经典战例。",
+    "tactical_features": "出敌不意，快速机动，从被动转为主动",
+    "crossing_situation": "太平渡、二郎滩等渡口同时强渡，三天内完成全军渡河",
+    "enemy_response": "国民党军猝不及防，被迫仓促应战",
+    "interactive_decision": {
+      "question": "发现敌军后方空虚，你会采取什么行动？",
+      "options": [
+        "按原计划继续前进",
+        "果断回师，突袭敌军薄弱地区",
+        "原地隐蔽，观察敌军动向"
+      ],
+      "correct_answer": 1,
+      "explanation": "二渡赤水正是采取了果断回师的战术，抓住敌军兵力部署的空隙，取得了战略主动，体现了毛泽东"灵活机动、不拘一格"的军事思想。"
+    }
+  },
+  {
+    "id": "chishui3",
+    "name_zh": "三渡赤水",
+    "name_en": "Third Crossing of Chishui River",
+    "lng": 105.6,
+    "lat": 28.3,
+    "time": "1935年3月16日-17日",
+    "time_en": "March 16-17, 1935",
+    "summary_zh": "红军三渡赤水，佯攻川南，迷惑敌军，为四渡赤水创造条件",
+    "summary_en": "Red Army's third crossing of Chishui, feinting attack on southern Sichuan to confuse enemies",
+    "description_zh": "1935年3月，红军二渡赤水取得遵义大捷后，蒋介石急忙飞抵重庆指挥，调集重兵企图围歼红军于遵义地区。毛泽东指挥红军于3月16日至17日从茅台镇附近三渡赤水河，再次进入川南，佯作北渡长江姿态。此举成功迷惑了蒋介石，使其误以为红军仍要北渡长江，急调大军向川南集结，为红军四渡赤水、突破重围创造了有利条件。",
+    "description_en": "In March 1935, after victory at Zunyi following the second crossing, Chiang Kai-shek rushed to Chongqing to command, deploying heavy forces to encircle the Red Army. Mao Zedong directed the Red Army to cross Chishui a third time from March 16-17 near Maotai Town, re-entering southern Sichuan, feigning a posture of crossing the Yangtze north. This successfully confused Chiang, who dispatched large forces to southern Sichuan, creating favorable conditions for the fourth crossing.",
+    "poem_zh": "赤水河水流湍急，红军四渡显神奇。调虎离山施妙计，蒋军疲于奔命急。——民间歌谣",
+    "poem_en": "Chishui River flows rapidly, Red Army's four crossings show magic. Luring the tiger away from the mountain with clever schemes, Chiang's army rushes about exhausted. ——Folk ballad",
+    "poem_appreciation_zh": "歌谣以"调虎离山"精准概括三渡赤水的核心策略——通过佯装北渡长江，成功将国民党军主力诱至川南。"显神奇"的赞叹既指四渡赤水的整体精妙，也特别凸显了此次渡河在战略欺骗上的高超之处，"疲于奔命"则生动描绘了敌军被牵着鼻子走的被动局面，体现了人民群众对红军战术智慧的深刻理解。",
+    "poem_appreciation_en": "The ballad uses "luring the tiger away" to accurately summarize the core strategy of the third crossing—successfully luring Kuomintang main forces to southern Sichuan by feigning a Yangtze crossing. "Show magic" praises both the overall brilliance of the four crossings and the superb strategic deception of this particular crossing. "Rushes about exhausted" vividly depicts the enemy's passive situation of being led by the nose, reflecting the people's deep understanding of the Red Army's tactical wisdom.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "三渡赤水是毛泽东军事指挥艺术的经典之作，通过佯攻迷惑敌军，成功调动了国民党军，为红军彻底摆脱包围创造了条件，充分体现了中国工农红军机动灵活的战略战术。",
+    "tactical_purpose": "迷惑敌军，使其误判红军战略意图，分散敌军兵力",
+    "crossing_characteristics": "公开渡河，故意暴露行踪，强化佯攻效果",
+    "enemy_deployment": "蒋介石急调10万兵力向川南集结，形成新的包围圈",
+    "interactive_decision": {
+      "question": "为迷惑敌军，你会采取什么措施？",
+      "options": [
+        "隐蔽行动，避免被敌军发现",
+        "故意暴露行踪，制造假象",
+        "分兵多路，让敌军无法判断主力方向"
+      ],
+      "correct_answer": 1,
+      "explanation": "三渡赤水时红军故意公开渡河，制造北渡长江的假象，成功迷惑了蒋介石，体现了"虚虚实实"的军事谋略，为后续行动创造了有利条件。"
+    }
+  },
+  {
+    "id": "chishui4",
+    "name_zh": "四渡赤水",
+    "name_en": "Fourth Crossing of Chishui River",
+    "lng": 105.8,
+    "lat": 28.1,
+    "time": "1935年3月21日-22日",
+    "time_en": "March 21-22, 1935",
+    "summary_zh": "红军四渡赤水，彻底摆脱国民党军围追堵截，成为军事史上的经典战例",
+    "summary_en": "Red Army's fourth crossing of Chishui, completely breaking free from Kuomintang pursuit, a classic in military history",
+    "description_zh": "1935年3月，当国民党军主力被红军三渡赤水的行动吸引到川南时，毛泽东抓住战机，指挥红军秘密掉头东进，于3月21日至22日从太平渡、二郎滩等渡口四渡赤水河，迅速南下渡过乌江，直逼贵阳。此时蒋介石正在贵阳督战，急调云南军阀部队驰援，红军却虚晃一枪，乘虚进军云南，顺利渡过金沙江，彻底摆脱了国民党军的围追堵截。四渡赤水被认为是毛泽东军事指挥艺术的"神来之笔"。",
+    "description_en": "In March 1935, when Kuomintang main forces were drawn to southern Sichuan by the third crossing, Mao Zedong seized the opportunity, directing the Red Army to secretly turn east, crossing Chishui a fourth time from March 21-22. They quickly moved south across the Wujiang River, approaching Guiyang. With Chiang Kai-shek in Guiyang, he urgently deployed Yunnan warlord troops for reinforcement, but the Red Army made a feint and marched into Yunnan, successfully crossing the Jinsha River, completely breaking free from pursuit. This is considered a masterpiece of Mao's military command.",
+    "poem_zh": "四渡赤水出奇兵，毛主席用兵真如神。——《长征组歌》",
+    "poem_en": "Four crossings of Chishui with surprise troops, Chairman Mao's military strategy is divine. ——'Long March Suite'",
+    "poem_appreciation_zh": "此句是对四渡赤水战役的经典评价，"出奇兵"高度概括了红军四次渡河中"虚中有实、实中有虚"的战术特点，尤其是四渡赤水时"秘密掉头、直逼贵阳"的神来之笔。"真如神"不仅是对毛泽东指挥艺术的赞颂，更体现了这场战役所蕴含的"灵活机动、掌握主动"的军事哲学，成为中国革命战争史上的精神符号。",
+    "poem_appreciation_en": "This classic evaluation of the four crossings highlights the tactical feature of "real within fake, fake within real" in the Red Army's maneuvers. "Surprise troops" particularly embodies the brilliant stroke of "secretly turning around and approaching Guiyang" in the fourth crossing. "Divine" not only praises Mao Zedong's command art but also reflects the military philosophy of "flexibility and initiative" embodied in this campaign, becoming a spiritual symbol in China's revolutionary war history.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "四渡赤水是中国工农红军战争史上以少胜多、灵活机动的经典战例，是毛泽东军事思想的光辉典范。这一战役彻底粉碎了蒋介石围歼红军于川黔滇边境的企图，使红军摆脱了长征以来的被动局面，掌握了战略主动权，为长征胜利奠定了重要基础。",
+    "military_evaluation": "被中外军事家誉为"战争史上的奇迹"，是毛泽东军事思想的经典之作",
+    "strategic_results": "彻底摆脱国民党军40万兵力的围追堵截，实现战略转移",
+    "tactical_features": "声东击西，灵活机动，牵着敌人鼻子走",
+    "interactive_decision": {
+      "question": "成功摆脱敌军后，你会选择什么方向继续前进？",
+      "options": [
+        "按原计划北渡长江与红四方面军会合",
+        "乘虚进军敌军防御薄弱的云南",
+        "返回遵义地区建立根据地"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军选择进军防御薄弱的云南，不仅彻底摆脱了敌军包围，还为巧渡金沙江创造了条件，体现了"避实击虚"的军事原则。"
+    }
+  },
+  {
+    "id": "jinsha",
+    "name_zh": "巧渡金沙江",
+    "name_en": "Clever Crossing of Jinsha River",
+    "lng": 104.2,
+    "lat": 27.1,
+    "time": "1935年5月3日-9日",
+    "time_en": "May 3-9, 1935",
+    "summary_zh": "红军巧渡金沙江，彻底跳出国民党军包围圈，取得战略转移决定性胜利",
+    "summary_en": "Red Army's clever crossing of Jinsha River, completely breaking out of Kuomintang encirclement",
+    "description_zh": "1935年4月，红军四渡赤水后，佯攻贵阳，逼蒋介石调云南军阀部队驰援，随后乘虚进军云南。5月3日晚，红军先头部队在禄劝县皎平渡偷渡成功，控制了渡口。由于船只有限，红军采取"昼夜抢渡、船不停划"的办法，在当地船工支援下，用7只小船在皎平渡昼夜不停地摆渡。至5月9日，中央红军主力全部渡过金沙江，未损一兵一卒。等国民党军追兵赶到时，红军已远走高飞，彻底摆脱了数十万敌军的围追堵截。",
+    "description_en": "In April 1935, after four crossings of Chishui, the Red Army feinted at Guiyang, forcing Chiang Kai-shek to deploy Yunnan warlord troops, then marched into Yunnan. On the night of May 3, the vanguard secretly crossed at Jiaopingdu, controlling the ferry. With limited boats, the Red Army ferried day and night using 7 small boats with local boatmen's support. By May 9, all main forces crossed the Jinsha River without losing a single soldier. When Kuomintang pursuers arrived, the Red Army had long gone, completely escaping hundreds of thousands of enemy troops.",
+    "poem_zh": "金沙水拍云崖暖，大渡桥横铁索寒。——《七律·长征》毛泽东",
+    "poem_en": "Golden Sand River's waves clap warm on cloud-kissed cliffs; Dadu Bridge's iron chains stretch cold across. ——'Seven-character regulated verse·The Long March' by Mao Zedong",
+    "poem_appreciation_zh": "毛泽东以"暖"字赋予金沙江战役独特意境——既指红军巧渡成功后的温暖心境，也暗含"兵不血刃"的战略智慧带来的欣慰。"水拍云崖"的壮阔景象与"暖"的主观感受形成对比，既展现了自然天险的雄奇，更凸显了红军征服天险后的豪迈与从容，成为长征中"巧胜"的诗意写照。",
+    "poem_appreciation_en": "Mao Zedong uses "warm" to endow the Jinsha River campaign with a unique mood—not only referring to the Red Army's warm feelings after the clever crossing success but also implying the comfort from the strategic wisdom of "winning without bloodshed". The contrast between the magnificent "waves clap cloud-kissed cliffs" and the subjective "warm" feeling shows both the majesty of natural barriers and the heroism and calmness of the Red Army after conquering them, becoming a poetic portrayal of "clever victory" in the Long March.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "巧渡金沙江是红军长征中具有决定性意义的胜利，它使红军彻底摆脱了国民党军的围追堵截，粉碎了蒋介石企图将红军消灭在川黔滇边境的计划，实现了战略转移中具有决定意义的胜利，为长征胜利奠定了重要基础。",
+    "crossing_conditions": "金沙江江面宽阔，水流湍急，两岸悬崖峭壁",
+    "key_factors": [
+      "成功迷惑敌军，赢得渡江时间",
+      "当地船工的大力支援",
+      "严密组织，昼夜抢渡"
+    ],
+    "heroic_stories": [
+      "红军干部刘伯承与彝族船工亲切交谈，赢得信任和支持",
+      "船工们连续7天7夜不休息，轮流摆渡红军过江"
+    ],
+    "interactive_decision": {
+      "question": "面对江面宽阔、船只有限的情况，你会如何组织渡江？",
+      "options": [
+        "分多路从不同渡口同时渡江",
+        "集中所有船只从一个渡口昼夜抢渡",
+        "等待后续部队运送更多船只"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军集中船只从皎平渡昼夜抢渡，既避免了兵力分散，又提高了渡江效率，仅用7天就完成全军渡江，体现了集中力量办大事的组织优势。"
+    }
+  }
+]

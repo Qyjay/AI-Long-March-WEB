@@ -1,0 +1,233 @@
+[
+  {
+    "id": "ruijin",
+    "name_zh": "瑞金出发",
+    "name_en": "Departure from Ruijin",
+    "lng": 116.028,
+    "lat": 25.837,
+    "time": "1934年10月10日",
+    "time_en": "October 10, 1934",
+    "summary_zh": "中央红军从江西瑞金出发，开始举世闻名的二万五千里长征。",
+    "summary_en": "The Central Red Army set off from Ruijin, Jiangxi, starting the world-famous 25,000-li Long March.",
+    "description_zh": "1934年10月10日，中共中央、中革军委率中央红军主力红一、三、五、八、九军团及中央、军委机关和直属部队共8.6万余人，从江西瑞金等地出发，被迫实行战略大转移，开始长征。出发前，红军进行了紧张的准备工作，包括精简机构、补充兵员和物资。当晚，各部队分别从瑞金的梅坑、田心等地出发，向于都河集结。这一行动标志着人类历史上最伟大的战略转移正式开始。",
+    "description_en": "On October 10, 1934, the CPC Central Committee and the Central Revolutionary Military Commission led the main forces of the Central Red Army (the 1st, 3rd, 5th, 8th, 9th Corps) and central organs with a total of 86,000 people, starting from Ruijin, Jiangxi and other places, forced to implement a strategic transfer, starting the Long March. Before departure, the Red Army made intensive preparations, including streamlining organizations and supplementing troops and materials. That night, various units set off from Meikeng, Tianxin and other places in Ruijin to gather at Yudu River. This action marked the official start of the greatest strategic transfer in human history.",
+    "poem_zh": "红旗卷起农奴戟，黑手高悬霸主鞭。为有牺牲多壮志，敢教日月换新天。——《七律·到韶山》毛泽东",
+    "poem_en": "Red flags rouse the serfs, brandishing their spears; black hands hold high the tyrant's whip. Only because of sacrifices do we have lofty aspirations; daring to make the sun and moon shine on a new sky. ——'Seven-character regulated verse·To Shaoshan' by Mao Zedong",
+    "poem_appreciation_zh": "前两句以“红旗”与“黑手”的鲜明对比，勾勒出阶级斗争的尖锐图景——革命旗帜唤醒被压迫的农奴奋起反抗，而反动势力仍挥舞着压迫的皮鞭。后两句笔锋一转，升华至革命牺牲与理想追求的高度，正是无数先烈的牺牲铸就了改天换地的壮志豪情，恰与红军从瑞金出发时肩负的革命使命相呼应，体现了在绝境中开辟新道路的坚定信念。",
+    "poem_appreciation_en": "The first two lines use the sharp contrast between 'red flags' and 'black hands' to depict the intense class struggle: the revolutionary flag awakens the oppressed serfs to rise up, while the reactionary forces still wield the whip of oppression. The latter two lines turn to the height of revolutionary sacrifice and ideal pursuit. It is the sacrifice of countless martyrs that forged the lofty aspiration to change the world, which echoes the revolutionary mission of the Red Army when they set off from Ruijin, embodying the firm belief in opening up a new path in desperation.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "瑞金出发是长征的历史起点，标志着中国工农红军开始了人类历史上最伟大的战略转移。这一行动不仅保存了革命的火种，更为中国革命开辟了新的道路，是中国革命史上的重要里程碑。",
+    "troop_composition": "中央红军主力五个军团及中央机关共8.6万余人",
+    "preparations": "精简机构、补充兵员、筹集物资、进行政治动员",
+    "weather": "秋季，晴朗",
+    "interactive_decision": {
+      "question": "出发前需要精简物资，你会优先保留哪些物品？",
+      "options": [
+        "武器弹药和药品",
+        "粮食和衣物",
+        "文件资料和电台设备"
+      ],
+      "correct_answer": 0,
+      "explanation": "历史上红军在长征中优先保证武器弹药和药品供应，这是保持战斗力和生存能力的关键。同时也尽可能携带了重要文件和通讯设备，体现了革命的长远考虑。"
+    }
+  },
+  {
+    "id": "yudu",
+    "name_zh": "于都河告别",
+    "name_en": "Farewell at Yudu River",
+    "lng": 115.392,
+    "lat": 25.968,
+    "time": "1934年10月17日",
+    "time_en": "October 17, 1934",
+    "summary_zh": "中央红军主力从于都河出发，开始战略转移，苏区群众依依不舍送别红军。",
+    "summary_en": "The main force of the Central Red Army set off from Yudu River to start the strategic transfer, with the Soviet area masses reluctantly seeing them off.",
+    "description_zh": "1934年10月17日至20日，中央红军主力8.6万人分别从于都县的8个渡口渡过于都河，踏上长征征程。为保障红军顺利渡河，于都群众拆下自家门板、床板甚至棺木支援架设浮桥。夜间渡河时，群众主动熄灭家中灯火，以防暴露目标。红军战士与群众相拥而别，许多父母送子、妻子送夫参加长征，留下了无数感人故事。",
+    "description_en": "From October 17 to 20, 1934, 86,000 main forces of the Central Red Army crossed the Yudu River from 8 ferries in Yudu County, embarking on the Long March. To ensure the Red Army crossed smoothly, Yudu people dismantled their own door panels, bed boards and even coffins to support the construction of floating bridges. When crossing the river at night, the masses took the initiative to put out the lights in their homes to prevent exposure. Red Army soldiers bid farewell to the masses with embraces, and many parents sent their sons and wives sent their husbands to join the Long March, leaving countless touching stories.",
+    "poem_zh": "于都河水深千尺，不及军民鱼水情。——民间流传诗句",
+    "poem_en": "Yudu River is a thousand feet deep, but not as deep as the feelings between soldiers and civilians. ——Folk poem",
+    "poem_appreciation_zh": "诗句以于都河的“水深千尺”作比，却强调这份深度远不及军民之间的情谊，运用夸张手法凸显了苏区群众与红军生死相依的紧密联系。朴实的语言中蕴含着真挚情感，既呼应了于都群众拆门板、送亲人支援长征的史实，也诠释了“人民是革命的根基”这一深刻内涵，成为军民团结的生动写照。",
+    "poem_appreciation_en": "The poem uses the 'thousand-foot depth' of Yudu River as a comparison, but emphasizes that this depth is far less than the feelings between soldiers and civilians. It uses exaggeration to highlight the close bond between the Soviet area masses and the Red Army, who depend on each other for life and death. The simple language contains sincere emotions, echoing the historical facts of Yudu people dismantling door panels and sending relatives to support the Long March, and interpreting the profound connotation that 'the people are the foundation of the revolution', becoming a vivid portrayal of military-civilian unity.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "于都河告别是长征的正式起点，体现了深厚的军民鱼水情，展现了苏区群众对革命的无私支持，为长征精神增添了军民团结的重要内涵。",
+    "ferries": "8个渡口同时渡河",
+    "bridge_materials": "门板、床板、船只、绳索等",
+    "local_support": "群众提供粮食、物资、向导和渡河器材",
+    "crossing_duration": "4天",
+    "interactive_decision": {
+      "question": "渡河需要大量船只，你会如何解决？",
+      "options": [
+        "强行征用百姓船只",
+        "向群众说明情况，请求支援",
+        "只使用军队现有船只分批渡河"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军正是通过向群众说明情况，赢得了自愿支持，体现了人民军队"三大纪律八项注意"的优良传统，这是革命胜利的重要基础。"
+    }
+  },
+  {
+    "id": "xinfeng",
+    "name_zh": "突破第一道封锁线",
+    "name_en": "Breaking the First Blockade",
+    "lng": 114.917,
+    "lat": 25.3,
+    "time": "1934年10月21日",
+    "time_en": "October 21, 1934",
+    "summary_zh": "红军在江西信丰至广东南雄间突破国民党军设置的第一道封锁线。",
+    "summary_en": "The Red Army broke through the first blockade set by the Kuomintang army between Xinfeng (Jiangxi) and Nanxiong (Guangdong).",
+    "description_zh": "1934年10月21日，中央红军开始向国民党军的第一道封锁线发起进攻。该封锁线位于江西信丰与广东南雄之间，由国民党军粤军陈济棠部负责防守，设有大量碉堡、铁丝网和战壕。红军兵分三路，红一军团攻歼新田、固陂之敌，红三军团攻占韩坊，红九军团向古陂方向前进。经过三天激战，红军突破了敌人的第一道封锁线，缴获了一批武器弹药和物资，掩护中央纵队顺利通过。这是红军长征途中突破的第一个敌人封锁线。",
+    "description_en": "On October 21, 1934, the Central Red Army began to attack the first blockade line of the Kuomintang army. The blockade line, located between Xinfeng (Jiangxi) and Nanxiong (Guangdong), was defended by Chen Jitang's troops of the Kuomintang army, with a large number of blockhouses, barbed wire and trenches. The Red Army divided into three routes: the 1st Corps attacked Xintian and Gupi, the 3rd Corps captured Hanfang, and the 9th Corps advanced to Gubei. After three days of fierce fighting, the Red Army broke through the enemy's first blockade line, captured a batch of weapons, ammunition and materials, and covered the smooth passage of the central column. This was the first enemy blockade line broken during the Long March of the Red Army.",
+    "poem_zh": "枪林弹雨何所惧，冲破封锁向前进。——红军歌谣",
+    "poem_en": "Fearless of bullets and artillery fire, break through the blockade and march forward. ——Red Army ballad",
+    "poem_appreciation_zh": "歌谣以直白铿锵的语言，展现了红军战士面对枪林弹雨时的无畏气概。“何所惧”三字掷地有声，彰显了革命军队在强敌面前的勇气；“向前进”则点明了突破封锁线的坚定目标。简短两句既还原了突破第一道封锁线时的激战场景，也浓缩了红军不怕牺牲、奋勇向前的战斗精神，具有强烈的感染力和号召力。",
+    "poem_appreciation_en": "With straightforward and forceful language, the ballad shows the fearless spirit of the Red Army soldiers in the face of bullets and artillery fire. The three characters '何所惧 (fearless)' are powerful, demonstrating the courage of the revolutionary army in the face of strong enemies; '向前进 (march forward)' points out the firm goal of breaking through the blockade. The short two lines not only restore the fierce battle scene when breaking through the first blockade, but also concentrate the Red Army's fighting spirit of fearing no sacrifice and forging ahead, with strong appeal and call.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "突破第一道封锁线是红军长征以来的首次大规模军事行动，初步检验了红军的战斗力和战略部署，为后续突破其他封锁线积累了经验，也标志着长征战略转移的正式展开。",
+    "enemy_forces": "国民党军粤军陈济棠部约4个师",
+    "battle_results": "击溃敌军2个师，缴获步枪2000余支，机枪50余挺",
+    "terrain_features": "山地丘陵地带，多河流峡谷",
+    "interactive_decision": {
+      "question": "面对敌人的碉堡群，你会选择什么进攻方式？",
+      "options": [
+        "集中火力正面强攻",
+        "夜间偷袭结合正面佯攻",
+        "迂回包抄切断敌军后路"
+      ],
+      "correct_answer": 2,
+      "explanation": "历史上红军采用了迂回包抄战术，不仅突破了封锁线，还缴获了大量物资，这种灵活机动的战术避免了正面强攻造成的重大伤亡。"
+    }
+  },
+  {
+    "id": "renhua",
+    "name_zh": "突破第二道封锁线",
+    "name_en": "Breaking the Second Blockade",
+    "lng": 113.717,
+    "lat": 25.05,
+    "time": "1934年11月5日",
+    "time_en": "November 5, 1934",
+    "summary_zh": "红军在广东仁化至湖南城口间突破国民党军设置的第二道封锁线。",
+    "summary_en": "The Red Army broke through the second blockade set by the Kuomintang army between Renhua (Guangdong) and Chengkou (Hunan).",
+    "description_zh": "1934年11月初，中央红军抵达广东仁化至湖南城口间的国民党军第二道封锁线。该封锁线由粤军和湘军共同防守，沿山脉构筑了连绵的碉堡群和防御工事。红军以红一军团为左路，红三军团为右路，中央纵队居中，向封锁线发起进攻。11月5日至8日，红军先后攻占城口、仁化等地，突破了敌人的第二道封锁线，缴获了大批粮食、布匹等物资。由于敌军防守较为薄弱且内部矛盾重重，红军此次突破较为顺利，损失较小。",
+    "description_en": "In early November 1934, the Central Red Army arrived at the second blockade line of the Kuomintang army between Renhua (Guangdong) and Chengkou (Hunan). The blockade line, jointly defended by the Guangdong and Hunan armies, had continuous blockhouses and defensive works along the mountains. With the 1st Corps as the left route, the 3rd Corps as the right route, and the central column in the middle, the Red Army launched an attack on the blockade line. From November 5 to 8, the Red Army successively captured Chengkou, Renhua and other places, broke through the enemy's second blockade line, and captured a large number of grain, cloth and other materials. Due to the relatively weak defense of the enemy and serious internal contradictions, the Red Army's breakthrough was relatively smooth with small losses.",
+    "poem_zh": "红旗指处乌云散，红军到处人民欢。——红军歌谣",
+    "poem_en": "Where the red flag points, dark clouds disperse; wherever the Red Army goes, people rejoice. ——Red Army ballad",
+    "poem_appreciation_zh": "“红旗”象征革命力量与希望，“乌云”暗喻反动势力的压迫，前半句以象征手法写出革命对黑暗势力的驱散；后半句则聚焦红军与人民的关系，展现了革命军队所到之处受到群众拥护的场景。诗句充满乐观主义色彩，既呼应了突破第二道封锁线时的顺利态势，也揭示了“得民心者得天下”的革命真理。",
+    "poem_appreciation_en": "The 'red flag' symbolizes revolutionary strength and hope, and 'dark clouds' metaphorically refer to the oppression of reactionary forces. The first half uses symbolic techniques to describe the dispelling of dark forces by the revolution; the second half focuses on the relationship between the Red Army and the people, showing the scene where the revolutionary army is supported by the masses wherever it goes. The poem is full of optimism, echoing the smooth situation when breaking through the second blockade, and revealing the revolutionary truth that 'those who win the people's hearts win the world'.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "突破第二道封锁线进一步扩大了红军长征的战略空间，缴获的大量物资缓解了红军的补给困难，同时也暴露了国民党军内部的矛盾，为红军后续行动提供了有利条件。",
+    "defense_features": "沿湘粤边境山脉构筑的碉堡群和防御工事",
+    "enemy_situation": "粤军和湘军约3个师，防守松散，协同性差",
+    "material_gains": "缴获粮食3000余担，布匹2000余匹，药品一批",
+    "interactive_decision": {
+      "question": "发现敌军防守存在空隙，你会如何行动？",
+      "options": [
+        "立即发起全面进攻",
+        "派小部队渗透侦察后再行动",
+        "利用空隙迂回穿插绕过防线"
+      ],
+      "correct_answer": 2,
+      "explanation": "历史上红军正是利用敌军防守空隙，以最小代价突破了第二道封锁线，这种灵活机动的战术体现了红军"避实击虚"的作战原则。"
+    }
+  },
+  {
+    "id": "chenzhou",
+    "name_zh": "突破第三道封锁线",
+    "name_en": "Breaking the Third Blockade",
+    "lng": 113.017,
+    "lat": 25.783,
+    "time": "1934年11月15日",
+    "time_en": "November 15, 1934",
+    "summary_zh": "红军在湖南郴县至宜章间突破国民党军设置的第三道封锁线。",
+    "summary_en": "The Red Army broke through the third blockade set by the Kuomintang army between Chenxian and Yizhang (Hunan).",
+    "description_zh": "1934年11月中旬，中央红军抵达湖南郴县至宜章间的国民党军第三道封锁线。该封锁线是国民党军在湘南地区构筑的重要防线，由湘军何键部负责防守，防线绵长，工事坚固。红军兵分三路，红一军团攻歼宜章之敌，红三军团进攻郴县，红九军团负责掩护侧翼。经过数日激战，红军于11月15日突破第三道封锁线，占领宜章、郴县等地，缴获了大量军用物资和粮食。此次突破使红军摆脱了国民党军的紧逼，为向湘江方向进军创造了条件。",
+    "description_en": "In mid-November 1934, the Central Red Army arrived at the third blockade line of the Kuomintang army between Chenxian and Yizhang (Hunan). The blockade line, an important defense line built by the Kuomintang army in southern Hunan, was defended by He Jian's Hunan army, with a long defense line and solid fortifications. The Red Army divided into three routes: the 1st Corps attacked Yizhang, the 3rd Corps attacked Chenxian, and the 9th Corps was responsible for covering the flank. After several days of fierce fighting, the Red Army broke through the third blockade line on November 15, occupied Yizhang, Chenxian and other places, and captured a large amount of military materials and grain. This breakthrough enabled the Red Army to get rid of the Kuomintang army's close pursuit and created conditions for marching towards the Xiangjiang River.",
+    "poem_zh": "战士双脚走天下，四渡赤水出奇兵。——《长征组歌》",
+    "poem_en": "Warriors travel the world on their feet, crossing Chishui four times with surprise troops. ——'Long March Suite'",
+    "poem_appreciation_zh": "前句“战士双脚走天下”以朴素语言勾勒出红军战士依靠双脚完成万里长征的壮举，凸显了革命意志的坚韧；后句虽聚焦“四渡赤水”的经典战例，却与突破第三道封锁线时的机动战术形成呼应，体现了红军在运动战中灵活歼敌的军事智慧。两句结合，既赞美了战士的顽强毅力，也歌颂了革命军队的战术灵活，是长征精神的生动缩影。",
+    "poem_appreciation_en": "The first line 'Warriors travel the world on their feet' outlines the feat of the Red Army soldiers completing the Long March with their feet in simple language, highlighting the tenacity of revolutionary will. Although the latter line focuses on the classic battle example of 'crossing Chishui four times', it echoes the mobile tactics when breaking through the third blockade, reflecting the Red Army's military wisdom in flexibly annihilating enemies in mobile warfare. The combination of the two lines not only praises the soldiers' tenacious perseverance, but also eulogizes the tactical flexibility of the revolutionary army, which is a vivid epitome of the Long March spirit.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "突破第三道封锁线使红军成功进入湘南地区，进一步远离了国民党军的核心控制区，为后续突破湘江防线创造了条件，同时也锻炼了红军在运动中歼敌的能力。",
+    "battle_process": "分三路进攻，钳形攻势突破敌军防线",
+    "local_response": "当地群众积极支援红军，提供粮食和向导",
+    "interactive_decision": {
+      "question": "突破封锁线后发现敌军正在集结反扑，你会：",
+      "options": [
+        "原地待命，准备迎击敌军",
+        "快速前进，摆脱敌军纠缠",
+        "分兵伏击，打击敌军先头部队"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军在突破第三道封锁线后迅速前进，避免与敌军主力纠缠，这种以机动转移为主要目标的战略选择，符合长征初期战略转移的总体要求。"
+    }
+  },
+  {
+    "id": "xiangjiang",
+    "name_zh": "湘江战役（突破第四道封锁线）",
+    "name_en": "Battle of Xiangjiang River (Breaking the Fourth Blockade)",
+    "lng": 110.761,
+    "lat": 25.642,
+    "time": "1934年11月27日-12月1日",
+    "time_en": "November 27 - December 1, 1934",
+    "summary_zh": "湘江战役是长征中最惨烈的战斗，红军以巨大牺牲突破国民党军第四道封锁线。",
+    "summary_en": "The Battle of Xiangjiang River was the most tragic battle in the Long March, where the Red Army broke through the Kuomintang's fourth blockade line with huge sacrifices.",
+    "description_zh": "1934年11月下旬，红军抵达湘江流域，遭遇国民党军30万兵力的围追堵截。为保护中央纵队安全渡江，红军将士在新圩、脚山铺、光华铺等阵地展开殊死搏斗。战斗持续五昼夜，红军以血肉之躯抵挡敌军飞机大炮的猛烈进攻，最终突破封锁线，但兵力从出发时的8.6万人锐减至3万余人。此次战役让红军认识到"左"倾错误的危害，为后来遵义会议的召开埋下伏笔。红五军团34师师长陈树湘腹部中弹被俘后，亲手扯断肠子壮烈牺牲，年仅29岁，展现了红军战士的英雄气节。",
+    "description_en": "In late November 1934, the Red Army arrived at the Xiangjiang River basin and encountered 300,000 Kuomintang troops pursuing and blocking them. To protect the central column's safe crossing, Red Army soldiers fought fiercely at positions such as Xinxu, Jiaoshapu, and Guanghuapu. The battle lasted five days and nights. The Red Army withstood the fierce attack of enemy planes and artillery with their flesh and blood, and finally broke through the blockade, but their strength sharply decreased from 86,000 to more than 30,000. This battle made the Red Army realize the harm of "Left" deviations, laying the groundwork for the later Zunyi Conference. Division Commander Chen Shuxiang of the 34th Division was wounded in the abdomen and captured, then sacrificed heroically at age 29, showing the heroic spirit of Red Army soldiers.",
+    "poem_zh": "血染湘江渡，魂萦岭上松。三年游击战，一旅捷音浓。——《缅怀陈树湘烈士》",
+    "poem_en": "Blood dyed Xiangjiang crossing, soul lingers on pine trees. Three years of guerrilla warfare, a brigade's victory sounds loud. ——'In Memory of Martyr Chen Shuxiang'",
+    "poem_appreciation_zh": "首句“血染湘江渡”以凝重笔触直击湘江战役的惨烈，鲜红的血与碧绿的江水形成强烈视觉冲击，定格了红军将士以命相搏的悲壮瞬间。次句“魂萦岭上松”将烈士英魂与苍劲青松相联结，既呼应了陈树湘等烈士的牺牲精神，又赋予其永恒的象征意义——青松的坚韧恰是革命精神的写照。后两句虽延伸至三年游击战的胜利，却以“捷音浓”反衬牺牲的价值，凸显了湘江战役中先烈用生命为革命铺路的深刻内涵。",
+    "poem_appreciation_en": "The first line 'Blood dyed Xiangjiang crossing' directly hits the tragedy of the Battle of Xiangjiang River with a dignified brushstroke. The strong visual impact between the bright red blood and the green river water freezes the tragic moment when the Red Army soldiers fought with their lives. The second line 'soul lingers on pine trees' connects the heroic souls of the martyrs with the vigorous pine trees, which not only echoes the sacrificing spirit of martyrs like Chen Shuxiang, but also endows them with eternal symbolic significance - the tenacity of pine trees is exactly the portrayal of the revolutionary spirit. Although the last two lines extend to the victory of the three-year guerrilla war, they use 'a brigade's victory sounds loud' to set off the value of sacrifice, highlighting the profound connotation that the martyrs paved the way for the revolution with their lives in the Battle of Xiangjiang River.",
+    "image": "",
+    "gallery": [],
+    "assets": {
+      "broll": "",
+      "sfx": "",
+      "video": ""
+    },
+    "historical_significance": "湘江战役是长征中最惨烈的战斗，它让红军深刻认识到"左"倾错误的危害，为遵义会议确立毛泽东领导地位奠定了思想基础，成为中国革命生死攸关的转折点之一。",
+    "participants": "中央红军（红一方面军）8.6万人；国民党军30万人",
+    "battle_casualties": "红军牺牲约5.6万人，师长级指挥员牺牲5人",
+    "heroic_stories": [
+      "红五军团34师师长陈树湘腹部中弹被俘，亲手扯断肠子壮烈牺牲",
+      "红三军团某部指导员在阵地失守前拉响最后一颗手榴弹与敌人同归于尽"
+    ],
+    "interactive_decision": {
+      "question": "面对敌军重兵封锁，你会如何部署渡江？",
+      "options": [
+        "集中保护中央纵队，强行正面突破",
+        "分兵多路，佯攻牵制敌人主力",
+        "暂停渡江，原路返回寻找其他路线"
+      ],
+      "correct_answer": 1,
+      "explanation": "历史上红军因采用正面强攻付出惨重代价，正确策略应是分兵佯攻，分散敌人注意力，为主力部队创造渡江机会，这也为后来遵义会议后的战术转变提供了教训。"
+    }
+  }
+]
