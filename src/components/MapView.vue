@@ -3,9 +3,18 @@
     <!-- 地图容器 -->
     <div ref="mapContainer" class="w-full h-full" @contextmenu.prevent></div>
 
+    <!-- 左下角小精灵 -->
+    <SpriteAssistant />
+    
     <!-- 加载状态 -->
     <LoadingSpinner v-if="isLoading" :message="'加载地图中...'" class="absolute inset-0 z-30" />
 
+    <div>
+    <!-- 地图和剧情节点 -->
+    <button @click="finishAllNodes">完成所有节点</button>
+
+    <!-- 成就弹窗：始终挂载，靠事件控制显示 -->
+<Achievement ref="achievementRef" /></div>
     <!-- 错误状态 -->
     <ErrorMessage v-if="error" :error="error" :retrying="retrying" @retry="retry" @close="closeError"
       class="absolute inset-0 z-30" />
@@ -22,11 +31,24 @@ import { calculateDistance, calculateBounds } from '../utils/geo'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
 import ErrorMessage from '../components/ErrorMessage.vue'
 import NodeDialog from './NodeDialog.vue';
+import AchievementPopup from './AchievementPopup.vue';
+import SpriteAssistant from './SpriteAssistant.vue'
+import Achievement from './Achievement.vue'
+
+const achievementData = ref({ title: '', description: '' });
+
 /**
  * 地图视图组件
  * 负责显示Mapbox地图、长征路线和节点标记
  */
 
+
+const showAchievement = ref(false);
+
+const finishAllNodes = () => {
+  // 所有剧情节点完成后显示成就
+  showAchievement.value = true;
+};
 // Props
 const props = defineProps({
   // 初始中心点
@@ -71,10 +93,12 @@ const markerClicked = ref(false) // 标记是否点击了标记
 const scale = 5000; // 地图坐标缩放
 const lngOffset = 116.4;
 const latOffset = 39.91;
-
+const nodeMarkers = ref([]) // 节点标记数组
 const openNode = (node) => {
   selectedNode.value = node;
 };
+
+
 
 onMounted(async () => {
   try {
@@ -326,47 +350,25 @@ const addRouteLayer = () => {
  * 添加节点图层
  * 使用高德地图Marker创建节点标记
  */
-const nodeMarkers = ref([]) // 节点标记数组
 
 const addNodesLayer = () => {
   try {
     if (!map.value || !nodes.value.length) return
-    
+
     // 清除已存在的标记
-    nodeMarkers.value.forEach(marker => {
-      map.value.remove(marker)
-    })
+    nodeMarkers.value.forEach(marker => map.value.remove(marker))
     nodeMarkers.value = []
-    
-    // 为每个节点创建标记
+
     nodes.value.forEach(node => {
-      // 安全地获取坐标数据
-      let coordinates
-      if (node.coordinates && Array.isArray(node.coordinates)) {
-        coordinates = node.coordinates
-      } else if (node.lng !== undefined && node.lat !== undefined) {
-        coordinates = [node.lng, node.lat]
-      } else {
-        console.warn(`节点 ${node.id} 缺少有效的坐标数据`, node)
-        coordinates = [0, 0] // 默认坐标
-      }
-      
-      // 根据节点状态确定标记样式
+      let coordinates = node.coordinates?.length ? node.coordinates : [node.lng || 0, node.lat || 0]
+
       const isVisited = progressStore.isNodeVisited(node.id)
-      const isCurrent = progressStore.currentNodeId === node.id
-      
-      let markerColor = '#6b7280' // 默认灰色
-      let markerSize = 12
-      
-      if (isCurrent) {
-        markerColor = '#dc2626' // 当前节点红色
-        markerSize = 16
-      } else if (isVisited) {
-        markerColor = '#059669' // 已访问节点绿色
-        markerSize = 14
-      }
-      
-      // 创建标记点
+      const isCurrent = progressStore.currentNodeId === node.id && !isVisited
+
+      // 状态判定
+      let markerColor = isVisited ? '#059669' : isCurrent ? '#dc2626' : '#6b7280'
+      let markerSize = isVisited ? 14 : isCurrent ? 16 : 12
+
       const marker = new AMap.value.Marker({
         position: coordinates,
         title: node.name,
@@ -374,7 +376,7 @@ const addNodesLayer = () => {
           width: ${markerSize}px;
           height: ${markerSize}px;
           background-color: ${markerColor};
-          border: 2px solid #ffffff;
+          border: 2px solid #fff;
           border-radius: 50%;
           box-shadow: 0 2px 4px rgba(0,0,0,0.3);
           cursor: pointer;
@@ -382,22 +384,32 @@ const addNodesLayer = () => {
         anchor: 'center',
         zIndex: 100
       })
-      
-      // 添加点击事件
+
+      // 点击事件
       marker.on('click', (e) => {
-        console.log('MapView: marker clicked for node:', node.name)
-        markerClicked.value = true
-        emit('node-click', node, e)
-      })
-      
-      // 添加鼠标悬停事件
+  markerClicked.value = true
+  emit('node-click', node, e)
+
+  marker.on('click', () => {
+  if (node.id === 'wuqizheng') {
+    progressStore.markNodeVisited(node.id)
+    progressStore.currentNodeId = null
+    addNodesLayer() // 更新颜色
+
+    // 触发成就弹窗
+    eventBus.emit('show-achievement', { title: '吴起镇会师', description: '完成吴起镇节点互动！' })
+  }
+})
+})
+
+      // 鼠标悬停效果
       marker.on('mouseover', () => {
         hoveredNode.value = node
         marker.setContent(`<div style="
           width: ${markerSize + 4}px;
           height: ${markerSize + 4}px;
           background-color: ${markerColor};
-          border: 3px solid #ffffff;
+          border: 3px solid #fff;
           border-radius: 50%;
           box-shadow: 0 4px 8px rgba(0,0,0,0.4);
           cursor: pointer;
@@ -405,33 +417,27 @@ const addNodesLayer = () => {
         "></div>`)
         emit('node-hover', node)
       })
-      
       marker.on('mouseout', () => {
         hoveredNode.value = null
         marker.setContent(`<div style="
           width: ${markerSize}px;
           height: ${markerSize}px;
           background-color: ${markerColor};
-          border: 2px solid #ffffff;
+          border: 2px solid #fff;
           border-radius: 50%;
           box-shadow: 0 2px 4px rgba(0,0,0,0.3);
           cursor: pointer;
         "></div>`)
       })
-      
-      // 添加到地图
+
       map.value.add(marker)
       nodeMarkers.value.push(marker)
     })
-    
-    console.log('节点图层添加成功，节点数量:', nodeMarkers.value.length)
-    
   } catch (err) {
     console.error('添加节点图层失败:', err)
     throw new Error(`节点图层添加失败: ${err.message}`)
   }
 }
-
 /**
  * 设置地图事件监听
  * 包括地图点击、拖拽等基础交互事件

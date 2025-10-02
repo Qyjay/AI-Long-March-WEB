@@ -34,20 +34,22 @@ const routes = [
       requiresProgress: true
     }
   },
-  {
-    path: '/achievements',
-    name: 'Achievements',
-    component: () => import('@/views/Achievements.vue'),
-    meta: {
-      title: '成就徽章'
-    }
-  },
+
+  
   {
     path: '/settings',
     name: 'Settings',
     component: () => import('@/views/Settings.vue'),
     meta: {
       title: '设置'
+    }
+  },
+  {
+    path: '/achievements',
+    name: 'Achievements',
+    component: () => import('@/components/Achievement.vue'),
+    meta: {
+      title: '成就徽章'
     }
   },
   {
@@ -86,7 +88,6 @@ router.beforeEach((to, from, next) => {
   
   // 检查是否需要进度验证
   if (to.meta.requiresProgress) {
-    // 如果访问故事页面但没有当前进度，重定向到地图页面
     if (to.name === 'Story' && !progressStore.currentNodeId) {
       next('/map')
       return
@@ -105,7 +106,6 @@ router.beforeEach((to, from, next) => {
  * 路由后置守卫 - 处理页面加载完成后的逻辑
  */
 router.afterEach((to, from) => {
-  // 可以在这里添加页面访问统计等逻辑
   console.log(`导航到: ${to.path}`)
 })
 

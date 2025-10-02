@@ -45,7 +45,7 @@
           <div class="flex items-start gap-4">
             <!-- 小精灵头像（固定宽度，不会撑开弹窗） -->
             <img
-              :src="spriteUrl"
+              src="/assets/1.png"
               alt="sprite"
               class="w-16 h-16 rounded-full flex-shrink-0"
             />
@@ -121,10 +121,10 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, computed, watch, nextTick } from 'vue';
 import { saveProgress } from '../api';
+import { eventBus } from '../utils/bus'; // ✅ 引入事件总线
 
 const props = defineProps({
   node: { type: Object, required: true },
@@ -132,7 +132,6 @@ const props = defineProps({
 });
 const emit = defineEmits(['close']);
 
-// 创建一个computed属性来简化模板中的引用
 // pagination
 const currentPage = ref(1);
 const totalPages = 2;
@@ -140,39 +139,19 @@ const totalPages = 2;
 // decision computed
 const decision = computed(() => props.node?.interactive_decision ?? null);
 
-// 调试信息
-watch(() => props.node, (newNode, oldNode) => {
-  console.log('NodeDialog: props.node changed from', oldNode?.name_zh, 'to', newNode?.name_zh);
-  console.log('NodeDialog: new node data:', newNode);
-}, { immediate: true });
-
-// 监控页面变化
-watch(currentPage, (newPage, oldPage) => {
-  console.log('NodeDialog: currentPage changed from', oldPage, 'to', newPage);
-  console.log('NodeDialog: decision available:', !!decision.value);
-}, { immediate: true });
-
 // selection state
 const submitted = ref(false);
 const selectedIndex = ref(null);
 const isCorrect = ref(false);
 
-// small sprite url (放 public/assets/sprite.png)
+// small sprite url
 const spriteUrl = '/assets/sprite.png';
+const contentArea = ref(null);
 
-// helper to build image url (支持绝对 URL 或 public/assets/ 文件名)
-const imageUrl = (img) => {
-  if (!img) return '';
-  if (img.startsWith('http') || img.startsWith('//')) return img;
-  return `/assets/${img}`;
-};
-
-// expose for template
+// class helper
 const optionClass = (idx) => {
-  // base
   let base = 'border ';
   if (!submitted.value) return base + 'border-gray-200 bg-white hover:bg-gray-50';
-  // already submitted: mark selected and correct
   if (idx === selectedIndex.value) {
     return base + (isCorrect.value ? 'border-green-400 bg-green-50' : 'border-red-400 bg-red-50');
   }
@@ -182,14 +161,14 @@ const optionClass = (idx) => {
   return base + 'border-gray-200 bg-white/90';
 };
 
+// ✅ 核心改动：选择答案
 const onSelect = async (idx) => {
   if (!decision.value || submitted.value) return;
+
   selectedIndex.value = idx;
   submitted.value = true;
   isCorrect.value = idx === decision.value.correct_answer;
 
-  // show explanation inside modal (we already show it via template)
-  // 保存进度：仅在正确时把节点加入 unlocked_nodes（根据后端实现可调整为合并）
   try {
     if (isCorrect.value) {
       await saveProgress({
@@ -198,47 +177,34 @@ const onSelect = async (idx) => {
         achievements: ['correct-choice']
       });
     } else {
-      // 选择错误也可以记录（可选）
       await saveProgress({
         user_id: props.userId,
         achievements: ['answered-wrong']
+      });
+    }
+
+    // ✅ 如果是 wuqizheng 节点并回答正确，触发成就弹窗
+    if (props.node.id === 'wuqizheng' && isCorrect.value) {
+      eventBus.emit('show-achievement', {
+        title: '吴起镇会师',
+        description: '完成吴起镇节点互动！'
       });
     }
   } catch (err) {
     console.warn('saveProgress failed', err);
   }
 
-  // 确保解释可见，滚动到顶部或气泡位置（若内容过长）
   await nextTick();
-  const area = contentArea.value;
-  if (area) {
-    // 将气泡顶部滚到可见区域
-    area.scrollTop = area.scrollTop; // keep current; you can refine to scroll to top or specific offset
-  }
+  if (contentArea.value) contentArea.value.scrollTop = contentArea.value.scrollTop;
 };
 
 const prevPage = () => {
   if (currentPage.value > 1) currentPage.value--;
-  // reset selection when going back to question page (可按需保留)
-  if (currentPage.value === 2) {
-    // keep prior answer
-  }
 };
 const nextPage = (event) => {
-  console.log('NodeDialog: nextPage called, currentPage:', currentPage.value, 'totalPages:', totalPages);
-  console.log('NodeDialog: nextPage event:', event);
-  
-  // 阻止事件冒泡
-  if (event) {
-    event.stopPropagation();
-  }
-  
+  if (event) event.stopPropagation();
   if (currentPage.value < totalPages) {
     currentPage.value++;
-    console.log('NodeDialog: currentPage updated to:', currentPage.value);
-    console.log('NodeDialog: decision value:', decision.value);
-    console.log('NodeDialog: condition for page 2:', currentPage.value === 2 && decision.value);
-    // reset state for new page
     submitted.value = false;
     selectedIndex.value = null;
     isCorrect.value = false;
@@ -248,12 +214,4 @@ const nextPage = (event) => {
 const close = () => {
   emit('close');
 };
-
-// refs
-const contentArea = ref(null);
 </script>
-
-<style scoped>
-/* 微调，防止绿色背景类不存在时颜色看起来怪 */
-.bg-green-25 { background-color: rgba(16, 185, 129, 0.06); } /* tailwind-like */
-</style>
