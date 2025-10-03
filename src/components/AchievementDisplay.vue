@@ -204,21 +204,20 @@ const filters = [
 ]
 
 // 计算属性
-const totalCount = computed(() => achievements.value.length)
-const unlockedCount = computed(() => achievementsStore.unlockedAchievements.length)
+const totalCount = computed(() => achievements.value?.length || 0)
+const unlockedCount = computed(() => achievementsStore.earnedCount)
 const completionPercentage = computed(() => {
   return totalCount.value > 0 ? Math.round((unlockedCount.value / totalCount.value) * 100) : 0
 })
 
 const totalPoints = computed(() => {
-  return achievementsStore.unlockedAchievements.reduce((total, achievementId) => {
-    const achievement = achievements.value.find(a => a.id === achievementId)
+  return achievementsStore.earnedAchievements.reduce((total, achievement) => {
     return total + (achievement?.points || 0)
   }, 0)
 })
 
 const displayedAchievements = computed(() => {
-  let result = achievements.value
+  let result = achievements.value || []
   
   // 筛选
   if (activeFilter.value !== 'all') {
@@ -321,7 +320,7 @@ const getFilterCount = (filterKey) => {
     case 'locked':
       return totalCount.value - unlockedCount.value
     default:
-      return achievements.value.filter(a => a.category === filterKey).length
+      return achievements.value?.filter(a => a.category === filterKey).length || 0
   }
 }
 

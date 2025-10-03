@@ -262,8 +262,9 @@ const selectedRarity = ref('all')
 const sortBy = ref('unlock_time')
 
 // 计算属性
-const totalCount = computed(() => achievements.value.length)
+const totalCount = computed(() => achievements.value?.length || 0)
 const unlockedCount = computed(() => {
+  if (!achievements.value || !Array.isArray(achievements.value)) return 0
   return achievements.value.filter(achievement => 
     isAchievementUnlocked(achievement.id)
   ).length
@@ -274,6 +275,7 @@ const completionPercentage = computed(() => {
 })
 
 const filteredAchievements = computed(() => {
+  if (!achievements.value || !Array.isArray(achievements.value)) return []
   let filtered = achievements.value
   
   // 分类筛选
@@ -331,9 +333,11 @@ const filteredAchievements = computed(() => {
 const loadAchievements = async () => {
   try {
     isLoading.value = true
-    achievements.value = await apiClient.getAchievements()
+    const data = await apiClient.getAchievements()
+    achievements.value = Array.isArray(data) ? data : []
   } catch (error) {
     console.error('加载成就数据失败:', error)
+    achievements.value = [] // 确保在错误情况下设置为空数组
   } finally {
     isLoading.value = false
   }
@@ -343,14 +347,14 @@ const loadAchievements = async () => {
  * 检查成就是否已解锁
  */
 const isAchievementUnlocked = (achievementId) => {
-  return progressStore.unlockedAchievements.includes(achievementId)
+  return progressStore.unlockedAchievements?.includes(achievementId) || false
 }
 
 /**
  * 获取成就解锁时间
  */
 const getUnlockTime = (achievementId) => {
-  const achievement = progressStore.achievementProgress.find(a => a.id === achievementId)
+  const achievement = progressStore.achievementProgress?.find(a => a.id === achievementId)
   return achievement ? achievement.unlockedAt : 0
 }
 
@@ -375,7 +379,7 @@ const formatUnlockTime = (achievementId) => {
  * 获取成就进度
  */
 const getAchievementProgress = (achievementId) => {
-  const achievement = progressStore.achievementProgress.find(a => a.id === achievementId)
+  const achievement = progressStore.achievementProgress?.find(a => a.id === achievementId)
   return achievement ? achievement.progress : 0
 }
 

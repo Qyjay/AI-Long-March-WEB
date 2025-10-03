@@ -17,27 +17,29 @@ export const useAchievementsStore = defineStore('achievements', () => {
   })
   
   const totalCount = computed(() => {
-    return availableAchievements.value.length
+    return availableAchievements.value?.length || 0
   })
-  
+
   const completionRate = computed(() => {
     if (totalCount.value === 0) return 0
     return Math.round((earnedCount.value / totalCount.value) * 100)
   })
-  
+
   const isEarned = computed(() => {
-    return (achievementKey) => Boolean(earned.value[achievementKey])
+    return (achievementKey) => Boolean(earned.value?.[achievementKey])
   })
-  
+
   const earnedAchievements = computed(() => {
+    if (!availableAchievements.value || !Array.isArray(availableAchievements.value)) return []
     return availableAchievements.value.filter(achievement => 
-      earned.value[achievement.key]
+      earned.value?.[achievement.key]
     )
   })
-  
+
   const lockedAchievements = computed(() => {
+    if (!availableAchievements.value || !Array.isArray(availableAchievements.value)) return []
     return availableAchievements.value.filter(achievement => 
-      !earned.value[achievement.key]
+      !earned.value?.[achievement.key]
     )
   })
   
@@ -63,7 +65,7 @@ export const useAchievementsStore = defineStore('achievements', () => {
     saveToStorage()
     
     // 查找成就信息
-    const achievement = availableAchievements.value.find(a => a.key === achievementKey)
+    const achievement = availableAchievements.value?.find(a => a.key === achievementKey)
     
     if (achievement && showNotification) {
       // 显示成就解锁通知
@@ -88,7 +90,7 @@ export const useAchievementsStore = defineStore('achievements', () => {
     
     // 显示批量解锁通知
     const newAchievements = achievementKeys
-      .map(key => availableAchievements.value.find(a => a.key === key))
+      .map(key => availableAchievements.value?.find(a => a.key === key))
       .filter(Boolean)
     
     if (newAchievements.length > 0) {
@@ -121,11 +123,13 @@ export const useAchievementsStore = defineStore('achievements', () => {
     availableAchievements.value = achievements || []
     
     // 确保earned对象包含所有成就的键
-    achievements.forEach(achievement => {
-      if (!(achievement.key in earned.value)) {
-        earned.value[achievement.key] = false
-      }
-    })
+    if (Array.isArray(achievements)) {
+      achievements.forEach(achievement => {
+        if (!(achievement.key in earned.value)) {
+          earned.value[achievement.key] = false
+        }
+      })
+    }
   }
   
   /**
@@ -176,6 +180,8 @@ export const useAchievementsStore = defineStore('achievements', () => {
    * @param {object} conditions - 检查条件
    */
   const checkAndAward = (conditions) => {
+    if (!availableAchievements.value || !Array.isArray(availableAchievements.value)) return
+    
     availableAchievements.value.forEach(achievement => {
       if (earned.value[achievement.key]) return // 已获得的跳过
       

@@ -10,6 +10,8 @@ export const useProgressStore = defineStore('progress', () => {
   const currentNodeId = ref(null)
   const visited = ref([])
   const choicesTrail = ref([])
+  const unlockedAchievements = ref([])
+  const achievementProgress = ref([])
   
   // 计算属性
   const hasAnyProgress = computed(() => {
@@ -85,6 +87,8 @@ export const useProgressStore = defineStore('progress', () => {
     currentNodeId.value = null
     visited.value = []
     choicesTrail.value = []
+    unlockedAchievements.value = []
+    achievementProgress.value = []
     
     // 清除本地存储
     localStorage.removeItem('longmarch_progress')
@@ -100,6 +104,8 @@ export const useProgressStore = defineStore('progress', () => {
       currentNodeId: currentNodeId.value,
       visited: visited.value,
       choicesTrail: choicesTrail.value,
+      unlockedAchievements: unlockedAchievements.value,
+      achievementProgress: achievementProgress.value,
       lastUpdated: Date.now()
     }
     
@@ -118,6 +124,8 @@ export const useProgressStore = defineStore('progress', () => {
         currentNodeId.value = progressData.currentNodeId || null
         visited.value = progressData.visited || []
         choicesTrail.value = progressData.choicesTrail || []
+        unlockedAchievements.value = progressData.unlockedAchievements || []
+        achievementProgress.value = progressData.achievementProgress || []
         
         console.log('已加载本地进度数据')
       }
@@ -167,6 +175,8 @@ export const useProgressStore = defineStore('progress', () => {
     currentNodeId,
     visited,
     choicesTrail,
+    unlockedAchievements,
+    achievementProgress,
     
     // 计算属性
     hasAnyProgress,

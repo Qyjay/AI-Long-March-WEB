@@ -47,7 +47,7 @@ const routes = [
   {
     path: '/achievements',
     name: 'Achievements',
-    component: () => import('@/components/Achievement.vue'),
+    component: () => import('@/views/Achievements.vue'),
     meta: {
       title: '成就徽章'
     }

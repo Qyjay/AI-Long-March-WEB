@@ -253,7 +253,7 @@ const isLoading = ref(true)
 // 计算属性
 const hasProgress = computed(() => progressStore.hasProgress)
 const visitedNodes = computed(() => progressStore.visited.length)
-const unlockedAchievements = computed(() => achievementsStore.unlockedCount)
+const unlockedAchievements = computed(() => achievementsStore.earnedCount)
 const completionPercentage = computed(() => {
   // 这里需要根据实际的总节点数计算
   const totalNodes = 10 // 从API获取
