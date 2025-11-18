@@ -19,7 +19,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['vue', 'vue-router', 'pinia'],
-          mapbox: ['mapbox-gl'],
           animation: ['gsap'],
         },
       },

@@ -307,6 +307,7 @@ const loadMapData = async () => {
  * 使用高德地图Polyline创建路线可视化
  */
 const routePolyline = ref(null) // 路线折线对象
+const routeGlowPolyline = ref(null) // 路线外发光折线对象
 
 const addRouteLayer = () => {
   try {
@@ -323,7 +324,7 @@ const addRouteLayer = () => {
       map.value.remove(routePolyline.value)
     }
     
-    // 创建路线折线
+    // 创建路线折线（主体）
     routePolyline.value = new AMap.value.Polyline({
       path: path,
       strokeColor: '#dc2626', // 线条颜色
@@ -335,7 +336,20 @@ const addRouteLayer = () => {
       zIndex: 50
     })
     
+    // 创建路线外发光折线（加粗低透明度，形成红色光晕）
+    routeGlowPolyline.value = new AMap.value.Polyline({
+      path: path,
+      strokeColor: '#b91c1c',
+      strokeWeight: 10,
+      strokeOpacity: 0.25,
+      strokeStyle: 'solid',
+      lineJoin: 'round',
+      lineCap: 'round',
+      zIndex: 30
+    })
+
     // 添加到地图
+    map.value.add(routeGlowPolyline.value)
     map.value.add(routePolyline.value)
     
     console.log('路线图层添加成功')
@@ -366,13 +380,13 @@ const addNodesLayer = () => {
       const isCurrent = progressStore.currentNodeId === node.id && !isVisited
 
       // 状态判定
-      let markerColor = isVisited ? '#059669' : isCurrent ? '#dc2626' : '#6b7280'
+      let markerColor = isVisited ? '#f59e0b' : isCurrent ? '#dc2626' : '#6b7280'
       let markerSize = isVisited ? 14 : isCurrent ? 16 : 12
 
       const marker = new AMap.value.Marker({
         position: coordinates,
         title: node.name,
-        content: `<div style="
+        content: `<div class="${isCurrent ? 'pulse-ring' : ''}" style="
           width: ${markerSize}px;
           height: ${markerSize}px;
           background-color: ${markerColor};
@@ -405,7 +419,7 @@ const addNodesLayer = () => {
       // 鼠标悬停效果
       marker.on('mouseover', () => {
         hoveredNode.value = node
-        marker.setContent(`<div style="
+        marker.setContent(`<div class="${isCurrent ? 'pulse-ring' : ''}" style="
           width: ${markerSize + 4}px;
           height: ${markerSize + 4}px;
           background-color: ${markerColor};
@@ -419,7 +433,7 @@ const addNodesLayer = () => {
       })
       marker.on('mouseout', () => {
         hoveredNode.value = null
-        marker.setContent(`<div style="
+        marker.setContent(`<div class="${isCurrent ? 'pulse-ring' : ''}" style="
           width: ${markerSize}px;
           height: ${markerSize}px;
           background-color: ${markerColor};
@@ -735,11 +749,15 @@ onUnmounted(() => {
       nodeMarkers.value = []
     }
     
-    // 清理路线
-    if (routePolyline.value && map.value) {
-      map.value.remove(routePolyline.value)
-      routePolyline.value = null
-    }
+  // 清理路线
+  if (routePolyline.value && map.value) {
+    map.value.remove(routePolyline.value)
+    routePolyline.value = null
+  }
+  if (routeGlowPolyline.value && map.value) {
+    map.value.remove(routeGlowPolyline.value)
+    routeGlowPolyline.value = null
+  }
     
     // 销毁地图实例
     if (map.value) {

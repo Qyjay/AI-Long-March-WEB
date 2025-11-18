@@ -1,0 +1,66 @@
+{
+  "people": [
+    {
+      "id": "mao",
+      "name": "毛泽东",
+      "avatar": "/assets/characters/mao.png",
+      "summary": "中国共产党主要领导人之一，遵义会议后确立在党和红军中的领导地位。",
+      "contribution": "确立正确的军事路线，指挥四渡赤水、巧渡金沙江等著名战役。"
+    },
+    {
+      "id": "zhou",
+      "name": "周恩来",
+      "avatar": "/assets/characters/commander.png",
+      "summary": "党和红军的重要领导人，在长征中负责总体协调与指挥工作。",
+      "contribution": "在遵义会议上支持正确路线，组织指挥多次关键战役。"
+    },
+    {
+      "id": "zhude",
+      "name": "朱德",
+      "avatar": "/assets/characters/hero.png",
+      "summary": "中国人民解放军主要创建人之一，长征中担任重要军事领导职务。",
+      "contribution": "统一指挥红军作战，保障部队纪律与作战效率。"
+    }
+  ],
+  "stories": [
+    {
+      "id": "overview",
+      "title": "长征历史概述",
+      "content": "1934年10月，中央红军被迫开始战略转移，自瑞金出发，途经湘江血战、遵义会议、四渡赤水、巧渡金沙江、飞夺泸定桥、翻越夹金山与腊子口天险，最终于1935年10月到达陕北吴起镇胜利会师。长征是中国革命的伟大转折，是宣言书、宣传队和播种机。"
+    },
+    {
+      "id": "milestones",
+      "title": "重要里程碑",
+      "content": "遵义会议确立正确领导；四渡赤水展现运动战艺术；巧渡金沙江彻底摆脱围追堵截；飞夺泸定桥书写军事史奇迹；腊子口打开北上通道；吴起镇会师长征胜利结束。"
+    }
+  ],
+  "tourism": [
+    {
+      "id": "zunyi_memorial",
+      "name": "遵义会议会址纪念馆",
+      "city": "贵州 遵义",
+      "image": "/assets/gallery/zunyi_memorial.webp",
+      "description": "展示遵义会议史料与文物，回顾中国革命的历史转折。",
+      "relatedNodeId": "zunyi",
+      "url": "https://example.com/zunyi"
+    },
+    {
+      "id": "luding_bridge_scenic",
+      "name": "泸定桥景区",
+      "city": "四川 泸定",
+      "image": "/assets/gallery/luding_memorial.webp",
+      "description": "体验铁索桥历史现场，纪念飞夺泸定桥的英勇壮举。",
+      "relatedNodeId": "dadu",
+      "url": "https://example.com/luding"
+    },
+    {
+      "id": "wuqi_memorial",
+      "name": "吴起镇革命纪念地",
+      "city": "陕西 吴起",
+      "image": "/assets/gallery/wuqi_memorial.webp",
+      "description": "长征胜利会师地，展示陕北根据地建设与抗战史料。",
+      "relatedNodeId": "wuqizheng",
+      "url": "https://example.com/wuqi"
+    }
+  ]
+}

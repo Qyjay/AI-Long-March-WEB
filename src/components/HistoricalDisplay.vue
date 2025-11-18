@@ -64,7 +64,7 @@
           <button 
             class="carousel-btn next"
             @click="nextImage"
-            :disabled="currentImageIndex === currentMedia.items.length - 1"
+            :disabled="currentImageIndex === (Array.isArray(currentMedia.items) ? currentMedia.items.length : 0) - 1"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
@@ -294,7 +294,13 @@ const controlsTimer = ref(null)
 
 // 计算属性
 const currentMedia = computed(() => {
-  return props.mediaList[currentMediaIndex.value] || {}
+  const media = props.mediaList[currentMediaIndex.value] || {}
+  const items = Array.isArray(media.items) ? media.items : []
+  return { ...media, items }
+})
+
+const currentItemsLength = computed(() => {
+  return Array.isArray(currentMedia.value.items) ? currentMedia.value.items.length : 0
 })
 
 const progressPercentage = computed(() => {
@@ -335,7 +341,8 @@ const previousImage = () => {
 }
 
 const nextImage = () => {
-  if (currentImageIndex.value < currentMedia.value.items.length - 1) {
+  const len = Array.isArray(currentMedia.value.items) ? currentMedia.value.items.length : 0
+  if (currentImageIndex.value < len - 1) {
     currentImageIndex.value++
   }
 }

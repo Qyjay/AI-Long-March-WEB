@@ -9,6 +9,7 @@ import routeData from '../data/route.mock.json'
 import scenesData from '../data/scenes.mock.json'
 import achievementsData from '../data/achievements.mock.json'
 import demoScriptData from '../data/demo-script.mock.json'
+import historyContent from '../data/history.mock.json'
 
 /**
  * 模拟网络延迟
@@ -54,6 +55,7 @@ class MockApi {
     this.scenes = scenesData
     this.achievements = achievementsData
     this.demoScript = demoScriptData
+    this.history = historyContent
     
     // 模拟用户数据存储
     this.userProgress = new Map()
@@ -121,11 +123,23 @@ class MockApi {
   async getScenes(sceneId = null) {
     try {
       if (sceneId) {
+        // 优先按场景ID匹配
         const scene = this.scenes.find(s => s.id === sceneId)
-        if (!scene) {
-          await mockError(`场景 ${sceneId} 不存在`, 404)
-        }
+      if (scene) {
         const response = await mockResponse(scene, 90)
+        return response.data
+      }
+
+        // 兼容：如果传入的是节点ID（如 'ruijin' 或 'node_ruijin'），返回该节点的场景列表
+        const normalized = sceneId.startsWith('node_') ? sceneId : `node_${sceneId}`
+        const nodeScenes = this.scenes.filter(s => s.nodeId === sceneId || s.nodeId === normalized)
+        if (nodeScenes.length > 0) {
+          const response = await mockResponse(nodeScenes, 120)
+          return response.data
+        }
+
+        // 返回空数组以避免上层抛错（由调用方决定空数据处理）
+        const response = await mockResponse([], 80)
         return response.data
       } else {
         const response = await mockResponse(this.scenes, 200)
@@ -143,7 +157,8 @@ class MockApi {
    */
   async getScenesByNode(nodeId) {
     try {
-      const nodeScenes = this.scenes.filter(s => s.nodeId === nodeId)
+      const normalized = nodeId?.startsWith('node_') ? nodeId : `node_${nodeId}`
+      const nodeScenes = this.scenes.filter(s => s.nodeId === nodeId || s.nodeId === normalized)
       const response = await mockResponse(nodeScenes, 100)
       return response.data
     } catch (error) {
@@ -162,6 +177,20 @@ class MockApi {
     } catch (error) {
       console.error('Mock API getAchievements error:', error)
       throw new Error('无法获取成就数据')
+    }
+  }
+
+  /**
+   * 获取历史内容（人物、故事、文旅）
+   * @returns {Promise<Object>} 历史内容对象
+   */
+  async getHistoricalContent() {
+    try {
+      const response = await mockResponse(this.history, 120)
+      return response.data
+    } catch (error) {
+      console.error('Mock API getHistoricalContent error:', error)
+      throw new Error('无法获取历史内容')
     }
   }
 

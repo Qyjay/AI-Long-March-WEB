@@ -1,5 +1,5 @@
 <template>
-  <div class="achievements-page">
+  <div class="achievements-page bg-red-radial bg-red-noise">
     <!-- 页面头部 -->
     <div class="page-header">
       <div class="header-content">
@@ -22,11 +22,11 @@
         </div>
         
         <div class="header-right">
-          <div class="achievement-stats">
-            <div class="stat-item">
-              <span class="stat-value">{{ unlockedCount }}</span>
-              <span class="stat-label">已解锁</span>
-            </div>
+        <div class="achievement-stats">
+          <div class="stat-item">
+            <span class="stat-value">{{ unlockedCount }}</span>
+            <span class="stat-label">已解锁</span>
+          </div>
             <div class="stat-divider">/</div>
             <div class="stat-item">
               <span class="stat-value">{{ totalCount }}</span>
@@ -466,7 +466,6 @@ onMounted(() => {
 <style scoped>
 .achievements-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: 'Inter', sans-serif;
 }
 
@@ -589,7 +588,7 @@ onMounted(() => {
 
 .rate-fill {
   fill: none;
-  stroke: #10b981;
+  stroke: #dc2626;
   stroke-width: 2;
   stroke-linecap: round;
   transition: stroke-dasharray 0.6s ease;
@@ -742,7 +741,7 @@ onMounted(() => {
 .modal-header {
   position: relative;
   padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -897,7 +896,7 @@ onMounted(() => {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #10b981, #059669);
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
   transition: width 0.3s ease;
 }
 

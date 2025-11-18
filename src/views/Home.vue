@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <!-- 英雄区域 -->
-    <section class="hero-section">
+    <section class="hero-section bg-red-radial bg-flag-wave">
       <div class="hero-background">
         <div class="hero-overlay"></div>
         <img 
@@ -15,7 +15,7 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title">
-            <span class="title-main">重走长征路</span>
+            <span class="title-main brush-underline">重走长征路</span>
             <span class="title-sub">Interactive Long March Journey</span>
           </h1>
           
@@ -27,7 +27,7 @@
           <div class="hero-actions">
             <button 
               @click="startJourney"
-              class="btn-primary btn-large pulse-glow hover-lift"
+              class="btn btn-primary btn-large pulse-glow hover-lift red-glow"
             >
               <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
@@ -38,7 +38,7 @@
             <button 
               @click="continueJourney"
               v-if="hasProgress"
-              class="btn-secondary btn-large hover-lift"
+              class="btn btn-secondary btn-large hover-lift"
             >
               <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
@@ -48,7 +48,7 @@
             
             <button 
               @click="watchDemo"
-              class="btn-outline btn-large hover-lift"
+              class="btn btn-outline btn-large hover-lift"
             >
               <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
@@ -91,13 +91,13 @@
     <!-- 特色功能 -->
     <section class="features-section">
       <div class="container">
-        <h2 class="section-title">探索长征历史</h2>
+        <h2 class="section-title brush-underline">探索长征历史</h2>
         <p class="section-description">
           通过交互式地图、历史故事和成就系统，深入了解这段波澜壮阔的历史
         </p>
         
         <div class="features-grid">
-          <div class="feature-card hover-lift animate-fade-in-up" @click="navigateToMap" style="animation-delay: 0.1s;">
+          <div class="feature-card hover-lift animate-fade-in-up red-glow" @click="navigateToMap" style="animation-delay: 0.1s;">
             <div class="feature-icon">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z" clip-rule="evenodd" />
@@ -115,7 +115,7 @@
             </div>
           </div>
           
-          <div class="feature-card hover-lift animate-fade-in-up" @click="navigateToStory" style="animation-delay: 0.2s;">
+          <div class="feature-card hover-lift animate-fade-in-up red-glow" @click="navigateToStory" style="animation-delay: 0.2s;">
             <div class="feature-icon">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -133,7 +133,7 @@
             </div>
           </div>
           
-          <div class="feature-card hover-lift animate-fade-in-up" @click="navigateToAchievements" style="animation-delay: 0.3s;">
+          <div class="feature-card hover-lift animate-fade-in-up red-glow" @click="navigateToAchievements" style="animation-delay: 0.3s;">
             <div class="feature-icon">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -157,7 +157,7 @@
     <!-- 历史时间线 -->
     <section class="timeline-section">
       <div class="container">
-        <h2 class="section-title">长征历程</h2>
+        <h2 class="section-title brush-underline">长征历程</h2>
         <p class="section-description">
           1934年10月至1936年10月，历时两年的伟大征程
         </p>
@@ -227,6 +227,8 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useRouter } from 'vue-router'
 import { useProgressStore } from '../stores/progress'
 import { useAchievementsStore } from '../stores/achievements'
@@ -267,13 +269,14 @@ const loadHomeData = async () => {
   try {
     isLoading.value = true
     
-    // 加载时间线事件
+    // 加载时间线事件（完整长征历程）
+    // 兼容不同字段命名（*_zh / 无后缀）并展示时间与摘要
     const nodes = await apiClient.getNodes()
-    timelineEvents.value = nodes.slice(0, 6).map(node => ({
+    timelineEvents.value = nodes.map(node => ({
       id: node.id,
-      date: node.date || '1934年',
-      title: node.name,
-      description: node.summary
+      date: node.time || node.date || '1934年',
+      title: node.name_zh || node.name || '未知事件',
+      description: node.summary_zh || node.summary || ''
     }))
     
     // 加载最新成就
@@ -374,9 +377,46 @@ const handleImageError = (event) => {
   event.target.style.display = 'none'
 }
 
+/**
+ * 初始化英雄区视差与红旗波纹
+ * 根据滚动调整背景与覆盖层的轻微位移，增强沉浸感
+ */
+const initHeroParallax = () => {
+  const bg = document.querySelector('.hero-background')
+  const overlay = document.querySelector('.hero-overlay')
+  if (!bg || !overlay) return
+
+  const onScroll = () => {
+    const y = window.scrollY || 0
+    const translate = Math.min(y * 0.15, 40)
+    bg.style.transform = `translate3d(0, ${translate}px, 0)`
+    overlay.style.opacity = String(Math.max(0.3, 0.6 - y * 0.0008))
+  }
+  window.addEventListener('scroll', onScroll, { passive: true })
+}
+
+/**
+ * 初始化滚动动效（特性卡片与时间线逐项上浮）
+ * 使用 IntersectionObserver 为进入视口的元素添加动画类
+ */
+const initScrollAnimations = () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in-up')
+        observer.unobserve(entry.target)
+      }
+    })
+  }, { threshold: 0.15 })
+
+  document.querySelectorAll('.feature-card, .timeline-item').forEach(el => observer.observe(el))
+}
+
 // 生命周期
 onMounted(() => {
   loadHomeData()
+  initHeroParallax()
+  initScrollAnimations()
 })
 </script>
 
@@ -488,38 +528,7 @@ onMounted(() => {
   cursor: pointer;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  color: white;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
-}
-
-.btn-secondary {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white;
-}
-
-.btn-secondary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
-}
-
-.btn-outline {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
-}
+/* 使用全局按钮样式（移除本地配色，避免与红色主题冲突） */
 
 /* 进度概览 */
 .progress-overview {
@@ -573,7 +582,7 @@ onMounted(() => {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #10b981, #059669);
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
   transition: width 0.3s ease;
 }
 
@@ -631,7 +640,7 @@ onMounted(() => {
 .feature-icon {
   width: 4rem;
   height: 4rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   border-radius: 1rem;
   display: flex;
   align-items: center;
@@ -679,7 +688,7 @@ onMounted(() => {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #e5e7eb;
+  background: linear-gradient(180deg, rgba(220, 38, 38, 0.35), rgba(220, 38, 38, 0.1));
 }
 
 .timeline-item {
@@ -750,8 +759,8 @@ onMounted(() => {
 
 .visited-badge {
   padding: 0.25rem 0.75rem;
-  background: #dcfce7;
-  color: #166534;
+  background: #fee2e2;
+  color: #b91c1c;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -969,3 +978,37 @@ onMounted(() => {
   }
 }
 </style>
+/**
+ * 初始化英雄区视差与红旗波纹
+ * 根据滚动调整背景与覆盖层的轻微位移，增强沉浸感
+ */
+const initHeroParallax = () => {
+  const bg = document.querySelector('.hero-background')
+  const overlay = document.querySelector('.hero-overlay')
+  if (!bg || !overlay) return
+
+  const onScroll = () => {
+    const y = window.scrollY || 0
+    const translate = Math.min(y * 0.15, 40)
+    bg.style.transform = `translate3d(0, ${translate}px, 0)`
+    overlay.style.opacity = String(Math.max(0.3, 0.6 - y * 0.0008))
+  }
+  window.addEventListener('scroll', onScroll, { passive: true })
+}
+
+/**
+ * 初始化滚动动效（特性卡片与时间线逐项上浮）
+ * 使用 IntersectionObserver 为进入视口的元素添加动画类
+ */
+const initScrollAnimations = () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in-up')
+        observer.unobserve(entry.target)
+      }
+    })
+  }, { threshold: 0.15 })
+
+  document.querySelectorAll('.feature-card, .timeline-item').forEach(el => observer.observe(el))
+}

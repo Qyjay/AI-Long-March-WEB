@@ -237,6 +237,21 @@ class RealApi {
   }
 
   /**
+   * 获取历史内容（人物、故事、文旅）
+   * 后端预留接口：GET /history
+   * @returns {Promise<Object>} 历史内容对象
+   */
+  async getHistoricalContent() {
+    try {
+      const response = await this.http.get('/history')
+      return response.data || response
+    } catch (error) {
+      console.error('获取历史内容失败:', error)
+      throw new Error('无法获取历史内容')
+    }
+  }
+
+  /**
    * 获取演示脚本
    * @returns {Promise<Object>} 演示脚本对象
    */

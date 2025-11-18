@@ -101,6 +101,20 @@ class ApiClient {
   }
 
   /**
+   * 获取历史内容（人物、故事、文旅）
+   * 预留后端接口，Mock模式下读取本地JSON
+   * @returns {Promise<Object>} 历史内容对象
+   */
+  async getHistoricalContent() {
+    try {
+      return await this.client.getHistoricalContent()
+    } catch (error) {
+      console.error('获取历史内容失败:', error)
+      throw error
+    }
+  }
+
+  /**
    * 获取演示脚本
    * @returns {Promise<Object>} 演示脚本对象
    */
@@ -214,6 +228,7 @@ export const {
   getScenes,
   getScenesByNode,
   getAchievements,
+  getHistoricalContent,
   getDemoScript,
   saveProgress,
   loadProgress,

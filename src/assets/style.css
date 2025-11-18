@@ -149,6 +149,94 @@
 }
 
 @layer utilities {
+  /* 红色径向渐变背景（主视觉） */
+  .bg-red-radial {
+    background: radial-gradient(circle at 30% 20%, rgba(220, 38, 38, 0.25), transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(185, 28, 28, 0.25), transparent 45%),
+                linear-gradient(135deg, #7f1d1d 0%, #b91c1c 50%, #dc2626 100%);
+  }
+
+  /* 红色噪声纹理覆盖（轻纹理） */
+  .bg-red-noise {
+    background-image:
+      linear-gradient(135deg, rgba(0,0,0,0.15), rgba(0,0,0,0.05)),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 2px);
+    background-blend-mode: overlay;
+  }
+
+  /* 红旗波纹遮罩（用于英雄区） */
+  .bg-flag-wave {
+    position: relative;
+    overflow: hidden;
+  }
+  .bg-flag-wave::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.06) 75%);
+    background-size: 200% 100%;
+    animation: flag-wave 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes flag-wave {
+    0%, 100% { transform: translate3d(0,0,0); }
+    50% { transform: translate3d(0,-2%,0); }
+  }
+
+  /* 红色外发光通用类 */
+  .red-glow {
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.35), 0 12px 24px rgba(220, 38, 38, 0.25);
+  }
+
+  /* 扫光效果（用于按钮/徽章） */
+  .shine-sweep {
+    background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%);
+    background-size: 200% 100%;
+    animation: shineSweep 1.2s ease-out;
+  }
+  @keyframes shineSweep {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* 节点脉冲环效果（用于地图标记） */
+  .pulse-ring {
+    position: relative;
+  }
+  .pulse-ring::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    animation: pulseRing 2s ease-out infinite;
+  }
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+    70% { box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+  }
+
+  /* 虚线流动（可用于边框或伪元素） */
+  .animate-dash-flow {
+    background-image: repeating-linear-gradient(90deg, rgba(220,38,38,0.6) 0 8px, transparent 8px 16px);
+    background-size: 200% 100%;
+    animation: dashFlow 1.5s linear infinite;
+  }
+  @keyframes dashFlow {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+  }
+
+  /* 刷底线标题装饰（使用背景渐变模拟毛笔效果） */
+  .brush-underline {
+    background: linear-gradient(transparent 85%, rgba(220, 38, 38, 0.25) 86%, rgba(220, 38, 38, 0.6) 95%, transparent 96%);
+    background-size: 100% 100%;
+  }
   /* 文本省略 */
   .text-ellipsis-2 {
     display: -webkit-box;
@@ -230,6 +318,19 @@
       opacity: 1;
       transform: translateX(0);
     }
+  }
+}
+
+/* 动画降级：减少动效环境下仅保留淡入 */
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift,
+  .pulse-glow,
+  .shine-sweep,
+  .pulse-ring::after,
+  .animate-fade-in-up,
+  .animate-fade-in-left {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

@@ -27,7 +27,7 @@
         </button>
         
         <div class="node-info" v-if="currentNode">
-          <h1 class="node-title">{{ currentNode.name }}</h1>
+          <h1 class="node-title brush-underline">{{ currentNode.name }}</h1>
           <p class="node-subtitle">{{ currentNode.summary }}</p>
         </div>
       </div>
@@ -779,8 +779,8 @@ onUnmounted(() => {
 }
 
 .nav-btn.active {
-  background: rgba(59, 130, 246, 0.8);
-  border-color: rgba(59, 130, 246, 1);
+  background: rgba(220, 38, 38, 0.8);
+  border-color: rgba(220, 38, 38, 1);
 }
 
 .node-info {
@@ -862,7 +862,7 @@ onUnmounted(() => {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
   transition: width 0.3s ease;
 }
 
@@ -891,8 +891,8 @@ onUnmounted(() => {
 }
 
 .control-btn-primary {
-  background: rgba(59, 130, 246, 0.8);
-  border-color: rgba(59, 130, 246, 1);
+  background: rgba(220, 38, 38, 0.9);
+  border-color: rgba(220, 38, 38, 1);
   padding: 1rem;
 }
 
