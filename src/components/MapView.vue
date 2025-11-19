@@ -1,23 +1,40 @@
 <template>
   <div class="map-container relative w-full h-full">
     <!-- 地图容器 -->
-    <div ref="mapContainer" class="w-full h-full" @contextmenu.prevent></div>
+    <div
+      ref="mapContainer"
+      class="w-full h-full"
+      @contextmenu.prevent
+    />
 
     <!-- 左下角小精灵 -->
     <SpriteAssistant />
     
     <!-- 加载状态 -->
-    <LoadingSpinner v-if="isLoading" :message="'加载地图中...'" class="absolute inset-0 z-30" />
+    <LoadingSpinner
+      v-if="isLoading"
+      :message="'加载地图中...'"
+      class="absolute inset-0 z-30"
+    />
 
     <div>
-    <!-- 地图和剧情节点 -->
-    <button @click="finishAllNodes">完成所有节点</button>
+      <!-- 地图和剧情节点 -->
+      <button @click="finishAllNodes">
+        完成所有节点
+      </button>
 
-    <!-- 成就弹窗：始终挂载，靠事件控制显示 -->
-<Achievement ref="achievementRef" /></div>
+      <!-- 成就弹窗：始终挂载，靠事件控制显示 -->
+      <Achievement ref="achievementRef" />
+    </div>
     <!-- 错误状态 -->
-    <ErrorMessage v-if="error" :error="error" :retrying="retrying" @retry="retry" @close="closeError"
-      class="absolute inset-0 z-30" />
+    <ErrorMessage
+      v-if="error"
+      :error="error"
+      :retrying="retrying"
+      class="absolute inset-0 z-30"
+      @retry="retry"
+      @close="closeError"
+    />
   </div>
 </template>
 
@@ -103,7 +120,16 @@ const openNode = (node) => {
 onMounted(async () => {
   try {
     const res = await apiClient.getNodes();
-    nodes.value = res.data;
+    // 确保数据是数组格式
+    if (res && Array.isArray(res.data)) {
+      nodes.value = res.data;
+    } else if (res && Array.isArray(res)) {
+      // 如果返回的是数组本身
+      nodes.value = res;
+    } else {
+      console.warn('节点数据格式不正确，使用空数组');
+      nodes.value = [];
+    }
   } catch (error) {
     console.error('获取节点数据失败:', error);
     // 设置错误状态
@@ -112,6 +138,8 @@ onMounted(async () => {
       message: '无法获取节点数据，请检查网络连接后重试。',
       details: error.message
     };
+    // 确保nodes是空数组而不是undefined
+    nodes.value = [];
   }
 });
 
@@ -367,7 +395,7 @@ const addRouteLayer = () => {
 
 const addNodesLayer = () => {
   try {
-    if (!map.value || !nodes.value.length) return
+    if (!map.value || !nodes.value || !Array.isArray(nodes.value) || nodes.value.length === 0) return
 
     // 清除已存在的标记
     nodeMarkers.value.forEach(marker => map.value.remove(marker))
@@ -516,7 +544,7 @@ const setupMapEvents = () => {
  * 更新节点图层数据
  */
 const updateNodesLayer = () => {
-  if (!map.value || !nodes.value.length) return
+  if (!map.value || !nodes.value || !Array.isArray(nodes.value) || nodes.value.length === 0) return
   
   try {
     const nodesGeoJSON = {

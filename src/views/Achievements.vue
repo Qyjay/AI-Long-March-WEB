@@ -5,29 +5,43 @@
       <div class="header-content">
         <div class="header-left">
           <button 
-            @click="goBack"
             class="back-btn"
             title="返回"
+            @click="goBack"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              />
             </svg>
             <span>返回</span>
           </button>
           
           <div class="page-title-section">
-            <h1 class="page-title">长征成就</h1>
-            <p class="page-subtitle">记录您的长征历程中的重要里程碑</p>
+            <h1 class="page-title">
+              长征成就
+            </h1>
+            <p class="page-subtitle">
+              记录您的长征历程中的重要里程碑
+            </p>
           </div>
         </div>
         
         <div class="header-right">
-        <div class="achievement-stats">
-          <div class="stat-item">
-            <span class="stat-value">{{ unlockedCount }}</span>
-            <span class="stat-label">已解锁</span>
-          </div>
-            <div class="stat-divider">/</div>
+          <div class="achievement-stats">
+            <div class="stat-item">
+              <span class="stat-value">{{ unlockedCount }}</span>
+              <span class="stat-label">已解锁</span>
+            </div>
+            <div class="stat-divider">
+              /
+            </div>
             <div class="stat-item">
               <span class="stat-value">{{ totalCount }}</span>
               <span class="stat-label">总计</span>
@@ -36,7 +50,10 @@
           
           <div class="completion-rate">
             <div class="rate-circle">
-              <svg class="rate-svg" viewBox="0 0 36 36">
+              <svg
+                class="rate-svg"
+                viewBox="0 0 36 36"
+              >
                 <path
                   class="rate-bg"
                   d="M18 2.0845
@@ -63,52 +80,106 @@
       <div class="filters-content">
         <div class="filter-group">
           <label class="filter-label">分类筛选</label>
-          <select v-model="selectedCategory" class="filter-select">
-            <option value="all">全部分类</option>
-            <option value="exploration">探索发现</option>
-            <option value="story">故事体验</option>
-            <option value="collection">收集成就</option>
-            <option value="special">特殊成就</option>
+          <select
+            v-model="selectedCategory"
+            class="filter-select"
+          >
+            <option value="all">
+              全部分类
+            </option>
+            <option value="exploration">
+              探索发现
+            </option>
+            <option value="story">
+              故事体验
+            </option>
+            <option value="collection">
+              收集成就
+            </option>
+            <option value="special">
+              特殊成就
+            </option>
           </select>
         </div>
         
         <div class="filter-group">
           <label class="filter-label">状态筛选</label>
-          <select v-model="selectedStatus" class="filter-select">
-            <option value="all">全部状态</option>
-            <option value="unlocked">已解锁</option>
-            <option value="locked">未解锁</option>
+          <select
+            v-model="selectedStatus"
+            class="filter-select"
+          >
+            <option value="all">
+              全部状态
+            </option>
+            <option value="unlocked">
+              已解锁
+            </option>
+            <option value="locked">
+              未解锁
+            </option>
           </select>
         </div>
         
         <div class="filter-group">
           <label class="filter-label">稀有度</label>
-          <select v-model="selectedRarity" class="filter-select">
-            <option value="all">全部稀有度</option>
-            <option value="common">普通</option>
-            <option value="rare">稀有</option>
-            <option value="epic">史诗</option>
-            <option value="legendary">传说</option>
+          <select
+            v-model="selectedRarity"
+            class="filter-select"
+          >
+            <option value="all">
+              全部稀有度
+            </option>
+            <option value="common">
+              普通
+            </option>
+            <option value="rare">
+              稀有
+            </option>
+            <option value="epic">
+              史诗
+            </option>
+            <option value="legendary">
+              传说
+            </option>
           </select>
         </div>
         
         <div class="filter-group">
           <label class="filter-label">排序方式</label>
-          <select v-model="sortBy" class="filter-select">
-            <option value="unlock_time">解锁时间</option>
-            <option value="rarity">稀有度</option>
-            <option value="points">成就点数</option>
-            <option value="name">名称</option>
+          <select
+            v-model="sortBy"
+            class="filter-select"
+          >
+            <option value="unlock_time">
+              解锁时间
+            </option>
+            <option value="rarity">
+              稀有度
+            </option>
+            <option value="points">
+              成就点数
+            </option>
+            <option value="name">
+              名称
+            </option>
           </select>
         </div>
         
         <button 
-          @click="resetFilters"
           class="reset-btn"
           title="重置筛选"
+          @click="resetFilters"
         >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+          <svg
+            class="w-4 h-4"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+              clip-rule="evenodd"
+            />
           </svg>
           重置
         </button>
@@ -127,20 +198,37 @@
       </div>
       
       <!-- 空状态 -->
-      <div v-if="filteredAchievements.length === 0" class="empty-state">
+      <div
+        v-if="filteredAchievements.length === 0"
+        class="empty-state"
+      >
         <div class="empty-icon">
-          <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            class="w-16 h-16"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
         </div>
-        <h3 class="empty-title">暂无匹配的成就</h3>
-        <p class="empty-description">尝试调整筛选条件或开始您的长征之旅</p>
+        <h3 class="empty-title">
+          暂无匹配的成就
+        </h3>
+        <p class="empty-description">
+          尝试调整筛选条件或开始您的长征之旅
+        </p>
       </div>
     </div>
     
     <!-- 成就详情弹窗 -->
-    <div v-if="selectedAchievement" class="achievement-modal">
-      <div class="modal-overlay" @click="closeAchievementModal"></div>
+    <div
+      v-if="selectedAchievement"
+      class="achievement-modal"
+    >
+      <div
+        class="modal-overlay"
+        @click="closeAchievementModal"
+      />
       <div class="modal-content">
         <div class="modal-header">
           <div class="achievement-icon-large">
@@ -148,20 +236,27 @@
               :src="selectedAchievement.icon"
               :alt="selectedAchievement.name"
               class="icon-image"
-            />
+            >
             <div 
               class="rarity-glow"
               :class="`rarity-${selectedAchievement.rarity}`"
-            ></div>
+            />
           </div>
           
           <div class="achievement-info">
-            <h2 class="achievement-name">{{ selectedAchievement.name }}</h2>
-            <p class="achievement-description">{{ selectedAchievement.description }}</p>
+            <h2 class="achievement-name">
+              {{ selectedAchievement.name }}
+            </h2>
+            <p class="achievement-description">
+              {{ selectedAchievement.description }}
+            </p>
             
             <div class="achievement-meta">
               <span class="achievement-category">{{ getCategoryName(selectedAchievement.category) }}</span>
-              <span class="achievement-rarity" :class="`rarity-${selectedAchievement.rarity}`">
+              <span
+                class="achievement-rarity"
+                :class="`rarity-${selectedAchievement.rarity}`"
+              >
                 {{ getRarityName(selectedAchievement.rarity) }}
               </span>
               <span class="achievement-points">{{ selectedAchievement.points }} 点</span>
@@ -169,23 +264,40 @@
           </div>
           
           <button 
-            @click="closeAchievementModal"
             class="modal-close"
+            @click="closeAchievementModal"
           >
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
             </svg>
           </button>
         </div>
         
         <div class="modal-body">
           <div class="unlock-condition">
-            <h3 class="condition-title">解锁条件</h3>
-            <p class="condition-text">{{ selectedAchievement.unlockCondition }}</p>
+            <h3 class="condition-title">
+              解锁条件
+            </h3>
+            <p class="condition-text">
+              {{ selectedAchievement.unlockCondition }}
+            </p>
           </div>
           
-          <div v-if="isAchievementUnlocked(selectedAchievement.id)" class="unlock-info">
-            <h3 class="unlock-title">解锁信息</h3>
+          <div
+            v-if="isAchievementUnlocked(selectedAchievement.id)"
+            class="unlock-info"
+          >
+            <h3 class="unlock-title">
+              解锁信息
+            </h3>
             <div class="unlock-details">
               <div class="unlock-time">
                 <span class="unlock-label">解锁时间：</span>
@@ -198,21 +310,28 @@
             </div>
           </div>
           
-          <div v-else class="progress-info">
-            <h3 class="progress-title">进度信息</h3>
+          <div
+            v-else
+            class="progress-info"
+          >
+            <h3 class="progress-title">
+              进度信息
+            </h3>
             <div class="progress-details">
               <div class="progress-bar-container">
                 <div class="progress-bar">
                   <div 
                     class="progress-fill"
                     :style="{ width: getAchievementProgress(selectedAchievement.id) + '%' }"
-                  ></div>
+                  />
                 </div>
                 <span class="progress-text">
                   {{ getAchievementProgress(selectedAchievement.id) }}%
                 </span>
               </div>
-              <p class="progress-hint">{{ getProgressHint(selectedAchievement) }}</p>
+              <p class="progress-hint">
+                {{ getProgressHint(selectedAchievement) }}
+              </p>
             </div>
           </div>
         </div>
@@ -220,9 +339,12 @@
     </div>
     
     <!-- 加载状态 -->
-    <div v-if="isLoading" class="loading-overlay">
+    <div
+      v-if="isLoading"
+      class="loading-overlay"
+    >
       <div class="loading-spinner">
-        <div class="spinner"></div>
+        <div class="spinner" />
         <p>加载成就数据...</p>
       </div>
     </div>

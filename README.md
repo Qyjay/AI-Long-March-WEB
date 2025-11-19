@@ -1,278 +1,132 @@
-# 长征路 - 沉浸式互动历史体验应用
+# 重走长征路 · 前端应用（Vue 3 + Vite）
 
-一个基于Vue 3的现代化互动式历史教育应用，通过Mapbox地图导航和沉浸式故事剧情，让用户深度体验中国工农红军长征的伟大历程。
+一个以“重走长征路”为主题的沉浸式互动前端应用。基于 Vue 3、Vite、Pinia、Vue Router、Tailwind CSS 构建，集成 GSAP 动效与高德地图 JSAPI，实现地图游历、故事互动与成就收集等体验。
 
-## 🌟 项目特色
+## 技术栈
+- 框架：Vue 3 (`vue@^3.4.0`)
+- 路由：Vue Router (`vue-router@^4.2.5`)
+- 状态管理：Pinia (`pinia@^2.1.7`)
+- 构建工具：Vite 5 (`vite@^5.0.8`)
+- 样式：Tailwind CSS 3 (`tailwindcss@^3.3.6`)、PostCSS、Autoprefixer
+- 动效：GSAP (`gsap@^3.12.2`)
+- 地图：高德地图 JSAPI (`@amap/amap-jsapi-loader@^1.0.1`)
+- 其他：Axios、Mitt（事件总线）、Prettier、ESLint（Vue 3 推荐规则）
 
-- **高精度地图体验**: 基于Mapbox GL JS的真实地理数据长征路线图
-- **沉浸式剧情系统**: 丰富的历史故事、人物对话和选择分支
-- **智能成就系统**: 完成历史节点解锁相应成就徽章
-- **响应式设计**: 完美适配桌面端、平板和移动设备
-- **现代化UI**: 基于GSAP的流畅动画效果和优雅视觉设计
-- **MCP集成**: 支持Model Context Protocol的智能交互
+## 环境要求
+- Node.js ≥ 18（Vite 5 需要）
+- npm ≥ 9 或兼容的包管理器（pnpm/yarn 亦可）
 
-## 🚀 技术栈
-
-- **前端框架**: Vue 3 + Composition API
-- **路由管理**: Vue Router 4
-- **状态管理**: Pinia
-- **样式框架**: Tailwind CSS + @tailwindcss/forms
-- **地图组件**: Mapbox GL JS + @mapbox/mapbox-gl-language
-- **动画库**: GSAP
-- **构建工具**: Vite 5
-- **HTTP客户端**: Axios
-- **事件总线**: Mitt
-- **开发语言**: JavaScript/ES6+
-- **代码规范**: ESLint + Prettier
-
-## 📦 项目结构
-
-```
-LongMarch/
-├── public/                    # 静态资源目录
-│   ├── assets/               # 媒体资源
-│   │   ├── achv/            # 成就图标
-│   │   ├── broll/           # 背景音乐
-│   │   ├── nodes/           # 节点图片
-│   │   └── sfx/             # 音效文件
-│   └── images/              # 图片资源
-│       └── hero-bg.svg      # 首页背景图
-├── src/                      # 源代码目录
-│   ├── components/          # 可复用组件
-│   │   ├── AchievementDisplay.vue  # 成就展示组件
-│   │   ├── AchievementToast.vue    # 成就提示组件
-│   │   ├── ErrorMessage.vue        # 错误提示组件
-│   │   ├── HistoricalDisplay.vue   # 历史展示组件
-│   │   ├── LoadingSpinner.vue      # 加载动画组件
-│   │   ├── MapView.vue             # 地图组件
-│   │   ├── NodeList.vue            # 节点列表组件
-│   │   ├── StoryRunner.vue         # 故事播放器
-│   │   └── Timeline.vue            # 时间线组件
-│   ├── views/               # 页面组件
-│   │   ├── Home.vue         # 首页
-│   │   ├── MapPage.vue      # 地图页面
-│   │   ├── StoryPage.vue    # 故事页面
-│   │   ├── Achievements.vue # 成就页面
-│   │   ├── Settings.vue     # 设置页面
-│   │   └── MapboxTest.vue   # Mapbox测试页面
-│   ├── stores/              # Pinia状态管理
-│   │   ├── progress.js      # 进度状态
-│   │   ├── achievements.js  # 成就状态
-│   │   └── settings.js      # 设置状态
-│   ├── data/                # 模拟数据
-│   │   ├── achievements.mock.json   # 成就数据
-│   │   ├── demo-script.mock.json    # 演示脚本
-│   │   ├── historical-media.mock.json # 历史媒体
-│   │   ├── nodes.mock.json          # 节点数据
-│   │   ├── route.mock.json          # 路线数据
-│   │   ├── scenes.mock.json         # 场景数据
-│   │   └── scenes/                  # 场景文件夹
-│   ├── api/                 # API接口层
-│   │   ├── index.js         # API入口
-│   │   ├── mock.js          # 模拟API
-│   │   └── real.js          # 真实API
-│   ├── utils/               # 工具函数
-│   │   ├── bus.js           # 事件总线
-│   │   └── geo.js           # 地理工具
-│   ├── router/              # 路由配置
-│   │   └── index.js         # 路由定义
-│   ├── assets/              # 样式资源
-│   │   └── style.css        # 全局样式
-│   ├── pages/               # 页面目录(预留)
-│   ├── App.vue              # 根组件
-│   └── main.js              # 应用入口
-├── index.html               # HTML模板
-├── mapbox-token-debug.html  # Mapbox调试页面
-├── mapbox-token-test.html   # Mapbox测试页面
-├── package.json             # 项目配置
-├── vite.config.js           # Vite配置
-├── tailwind.config.js       # Tailwind配置
-├── postcss.config.js        # PostCSS配置
-├── .gitignore               # Git忽略文件
-└── Frontend_prompt          # 前端提示文件
-```
-
-## 🛠️ 安装与运行
-
-### 环境要求
-
-- Node.js >= 16.0.0
-- npm >= 8.0.0
-- Mapbox Access Token (用于地图功能)
-
-### 安装依赖
-
-```bash
-npm install
-```
-
-### 开发环境运行
-
-```bash
-npm run dev
-```
-
-应用将在 `http://localhost:3000` 启动并自动打开浏览器
-
-### 生产环境构建
-
-```bash
-npm run build
-```
-
-### 预览生产构建
-
-```bash
-npm run preview
-```
-
-### 代码规范
-
-```bash
-# 代码检查和修复
-npm run lint
-
-# 代码格式化
-npm run format
-```
-
-### MCP (Model Context Protocol) 相关
-
-```bash
-# 启动MCP服务器
-npm run mcp:start
-
-# 测试MCP连接
-npm run mcp:test
-
-# 查看MCP配置
-npm run mcp:config
-
-# 设置Trae MCP
-npm run trae:setup
-
-# 测试Trae MCP
-npm run trae:test
-```
-
-## 🎮 功能介绍
-
-### 核心功能模块
-
-1. **首页导航 (Home.vue)**
-   - 项目介绍和功能概览
-   - 快速进入地图或查看成就
-   - 响应式布局适配各种设备
-   - 英雄背景图和动画效果
-
-2. **互动地图 (MapPage.vue + MapView.vue)**
-   - 基于Mapbox GL JS的高精度地图
-   - 显示完整的长征路线和历史节点
-   - 点击节点查看详细信息和历史背景
-   - 进度追踪和路线导航
-   - 支持缩放、平移和多语言显示
-   - 节点列表组件 (NodeList.vue) 提供快速导航
-
-3. **故事剧情系统 (StoryPage.vue + StoryRunner.vue)**
-   - 沉浸式历史故事体验
-   - 角色对话和选择分支
-   - 背景音乐和音效支持
-   - 自动保存进度功能
-   - 历史展示组件 (HistoricalDisplay.vue)
-   - 时间线组件 (Timeline.vue) 展示历史进程
-
-4. **成就系统 (Achievements.vue)**
-   - 完成节点解锁成就徽章
-   - 成就展示组件 (AchievementDisplay.vue)
-   - 成就提示组件 (AchievementToast.vue)
-   - 进度统计和分类浏览
-   - 成就解锁动画效果
-
-5. **设置中心 (Settings.vue)**
-   - 音效和音乐控制
-   - 显示偏好设置
-   - 数据管理功能
-   - 用户体验个性化配置
-
-6. **开发工具**
-   - Mapbox测试页面 (MapboxTest.vue)
-   - Token调试功能
-   - MCP协议集成测试
-
-### 技术特性
-
-- **现代化架构**: Vue 3 Composition API + Vite 5构建
-- **响应式设计**: Tailwind CSS自定义断点和动画
-- **状态管理**: Pinia模块化状态管理 (progress.js, achievements.js, settings.js)
-- **错误处理**: 全局错误捕获和用户友好的错误提示 (ErrorMessage.vue)
-- **加载状态**: 统一的加载指示器 (LoadingSpinner.vue) 和Suspense支持
-- **性能优化**: 
-  - Vite代码分割 (vendor, mapbox, animation chunks)
-  - 组件懒加载和路由级别的代码分割
-  - 资源优化和缓存策略
-- **移动端适配**: 触摸友好的交互体验和自适应布局
-- **开发体验**: ESLint + Prettier代码规范，热重载开发服务器
-
-## 🎨 设计理念
-
-- **历史教育**: 通过沉浸式互动体验传承红色文化和长征精神
-- **用户体验**: 直观易用的界面设计，流畅的动画交互
-- **技术创新**: 现代Web技术的最佳实践，前沿技术栈应用
-- **跨平台**: 一次开发，多端适配，响应式设计
-- **性能优先**: 优化加载速度，提升用户体验
-- **可维护性**: 模块化架构，清晰的代码组织
-
-## 📱 浏览器支持
-
-- **Chrome** >= 90 (推荐)
-- **Firefox** >= 88
-- **Safari** >= 14
-- **Edge** >= 90
-- **移动端**: iOS Safari >= 14, Android Chrome >= 90
-
-> 注意：由于使用了Mapbox GL JS，需要支持WebGL的现代浏览器
-
-## 🤝 贡献指南
-
-### 开发流程
-
-1. **Fork 本仓库**
-2. **创建特性分支**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **安装依赖并开发**
+## 快速开始
+1. 安装依赖
    ```bash
    npm install
+   ```
+2. 启动开发服务器（默认 `http://localhost:3000` 并自动打开浏览器）
+   ```bash
    npm run dev
    ```
-4. **代码规范检查**
+3. 生产构建与本地预览
    ```bash
-   npm run lint
-   npm run format
+   npm run build
+   npm run preview
    ```
-5. **提交更改**
-   ```bash
-   git commit -m 'feat: add amazing feature'
-   ```
-6. **推送到分支**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-7. **开启 Pull Request**
 
-### 代码规范
+## 常用脚本
+- `npm run dev`：本地开发（Vite 开发服务器）
+- `npm run build`：生产构建（输出到 `dist/`）
+- `npm run preview`：本地预览构建产物
+- `npm run lint`：ESLint 校验并自动修复
+- `npm run format`：Prettier 格式化 `src/` 目录代码
 
-- 遵循 ESLint 和 Prettier 配置
-- 使用语义化的 commit 信息
-- 为新功能添加适当的注释
-- 确保代码通过所有检查
+## 环境变量与模式切换
+应用通过环境变量控制 Mock/真实接口模式与地图密钥等配置：
+请注意在项目中添加一个.env文件，内容如下：
 
-## 📄 许可证
+```env
+# 应用标题（路由处用于拼接页面标题）
+VITE_APP_TITLE=重走长征路
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+# 是否使用 Mock 数据：1 或 true 使用本地 JSON；0 使用后端接口
+VITE_USE_MOCK=1
 
+# 后端 API 基地址（真实模式下生效）
+VITE_API_BASE_URL=http://localhost:8000
 
-**让我们一起重走长征路，感受那段波澜壮阔的历史，传承不朽的长征精神！** 🚩✨
+# 高德地图 JSAPI 配置（真实地图功能需要）
+VITE_AMAP_KEY=你的高德Key
+VITE_AMAP_SECURITY_CODE=你的安全码
+```
 
-*"雄关漫道真如铁，而今迈步从头越"* - 通过现代科技重现历史，让长征精神薪火相传。
+- Mock 切换：`src/api/index.js` 通过 `VITE_USE_MOCK` 自动选择 `mockApi` / `realApi`（参见 `src/api/index.js:10`）。
+- 离线提示：`App.vue` 中基于 `VITE_USE_MOCK` 的计算属性显示“离线模式”提示（参见 `src/App.vue:148` 附近）。
+- 地图密钥：`MapView.vue` 在初始化时读取 `VITE_AMAP_KEY` 与 `VITE_AMAP_SECURITY_CODE`（参见 `src/components/MapView.vue:165-201`）。
+
+建议在开发环境使用 `.env.local` 存放密钥，避免提交到版本库。
+
+## 目录结构
+```
+front-end/
+├─ public/
+├─ src/
+│  ├─ api/                # API 客户端（Mock/真实实现）
+│  ├─ assets/             # 全局样式等
+│  ├─ components/         # 复用组件（地图、时间线、弹窗等）
+│  ├─ data/               # 本地 Mock 数据 JSON 与图片
+│  ├─ router/             # 路由配置
+│  ├─ stores/             # Pinia 状态（进度、设置、成就）
+│  ├─ utils/              # 工具与事件总线
+│  ├─ views/              # 页面（首页/地图/故事/英雄/纪念馆/设置/成就）
+│  ├─ App.vue             # 入口组件（全局错误/加载）
+│  └─ main.js             # 应用入口，注册 Pinia 与 Router
+├─ index.html             # SPA 宿主页
+├─ vite.config.js         # Vite 配置（端口 3000，别名 @ -> src）
+├─ tailwind.config.js     # Tailwind 配置与主题扩展
+├─ postcss.config.js      # PostCSS 插件配置
+├─ .eslintrc.cjs          # ESLint 配置（Vue3 推荐）
+└─ package.json           # 依赖与脚本
+```
+
+## 功能模块概览
+- 地图游历（`views/MapPage.vue` + `components/MapView.vue`）
+  - 高德地图加载与控件配置、长征主路线绘制、节点标记与交互（参见 `src/components/MapView.vue:160` 起）。
+  - 飞行到节点、切换地图样式、显示/隐藏路线等操作。
+- 故事互动（`views/StoryPage.vue` + `components/StoryRunner.vue`）
+  - 本地故事列表与轮播、故事详情弹窗；键盘交互与自动播放（参见 `src/components/StoryRunner.vue:892` 起）。
+- 成就系统（`views/Achievements.vue` + `stores/achievements.js`）
+  - 成就列表展示、筛选与详情弹窗；本地解锁记录与统计。
+- 进度管理（`stores/progress.js`）
+  - 当前节点、访问记录、选择轨迹，本地存储持久化（参见 `src/stores/progress.js:40` 起）。
+- 设置中心（`views/Settings.vue` + `stores/settings.js`）
+  - 语言切换、演示模式、音效/语音、地图样式与动效速率等（参见 `src/stores/settings.js:35` 起）。
+- 事件总线（`utils/bus.js`）
+  - 使用 `mitt` 提供全局事件：飞行到节点、打开场景、成就提示、全局 Toast 等（参见 `src/utils/bus.js:12-34`）。
+
+## API 与数据
+- 统一客户端：`src/api/index.js` 暴露 `getNodes/getRoute/getScenes/...` 等方法，并支持模式切换。
+- Mock 数据：位于 `src/data/*.mock.json`，便于前端自测与演示。
+- 真实接口：`src/api/real.js` 使用 `fetch` 封装重试/超时，基地址由 `VITE_API_BASE_URL` 控制。
+
+## 样式与动效
+- 全局样式：`src/assets/style.css`，基于 Tailwind 设计，并提供红色主题与常用动效工具类。
+- 动效：时间线、节点脉冲、波纹与扫光等视觉效果，兼顾移动端与无障碍偏好（降级 `prefers-reduced-motion`）。
+
+## 路由与页面标题
+- 路由定义参见 `src/router/index.js`，包含首页 `/`、地图 `/map`、故事 `/stories`、英雄 `/heroes`、纪念馆 `/memorials`、设置 `/settings`、成就 `/achievements` 等。
+- 页面标题由路由 `meta.title` 与 `VITE_APP_TITLE` 拼接设置（参见 `src/router/index.js:109-111`）。
+
+## 构建与部署
+- 运行 `npm run build` 生成 `dist/` 产物，可使用 Nginx/静态服务器托管。
+- 如启用真实 API，请在部署环境提供正确的 `VITE_API_BASE_URL` 与高德地图密钥。
+
+## 常见问题（FAQ）
+- 开发端口占用：默认端口为 3000（`vite.config.js`），修改后需同步文档或环境。
+- 地图无法初始化：检查 `.env` 是否配置了 `VITE_AMAP_KEY` 与 `VITE_AMAP_SECURITY_CODE`，以及网络可用性。
+- 数据加载失败：Mock 模式下读取本地 JSON；真实模式需后端接口可达且返回格式兼容。
+- 页面标题不生效：确认已设置 `VITE_APP_TITLE`，并检查路由 `meta` 字段。
+
+## 代码质量
+- ESLint：`npm run lint`（使用 `plugin:vue/vue3-recommended`）
+- 格式化：`npm run format`（Prettier）
+
+---
+如需扩展新页面或数据类型，可参考现有模块的组织方式（视图 + 组件 + Store + API），并遵循 `@` 别名与统一事件总线的使用约定。

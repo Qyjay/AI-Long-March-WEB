@@ -7,7 +7,7 @@
  * API配置
  */
 const API_CONFIG = {
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000',
   timeout: 10000,
   retryAttempts: 3,
   retryDelay: 1000
@@ -272,9 +272,7 @@ class RealApi {
    */
   async saveProgress(progressData) {
     try {
-      const response = await this.http.post('/user/progress', progressData, {
-        headers: this.getAuthHeaders()
-      })
+      const response = await this.http.post('/progress', progressData)
       return response.data || response
     } catch (error) {
       console.error('保存进度失败:', error)
@@ -401,7 +399,7 @@ class RealApi {
    */
   async healthCheck() {
     try {
-      const response = await this.http.get('/health')
+      const response = await this.http.get('/')
       return response.data || response
     } catch (error) {
       console.error('健康检查失败:', error)

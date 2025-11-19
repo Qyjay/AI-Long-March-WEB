@@ -2,79 +2,122 @@
   <div class="historical-display">
     <!-- 历史资料展示头部 -->
     <div class="display-header">
-      <h2 class="display-title">{{ title || '历史资料' }}</h2>
+      <h2 class="display-title">
+        {{ title || '历史资料' }}
+      </h2>
       <div class="display-controls">
-        <button 
+        <button
           class="control-btn"
-          @click="toggleFullscreen"
           :title="isFullscreen ? '退出全屏' : '全屏显示'"
+          @click="toggleFullscreen"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path v-if="!isFullscreen" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
-            <path v-else d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              v-if="!isFullscreen"
+              d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+            />
+            <path
+              v-else
+              d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"
+            />
           </svg>
         </button>
-        <button class="control-btn" @click="$emit('close')" title="关闭">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        <button
+          class="control-btn"
+          title="关闭"
+          @click="$emit('close')"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
           </svg>
         </button>
       </div>
     </div>
 
     <!-- 媒体内容区域 -->
-    <div class="media-container" ref="mediaContainer">
+    <div
+      ref="mediaContainer"
+      class="media-container"
+    >
       <!-- 图片轮播 -->
-      <div v-if="currentMedia.type === 'images'" class="image-carousel">
+      <div
+        v-if="currentMedia.type === 'images'"
+        class="image-carousel"
+      >
         <div class="carousel-container">
-          <div 
-            class="carousel-track" 
+          <div
+            class="carousel-track"
             :style="{ transform: `translateX(-${currentImageIndex * 100}%)` }"
           >
-            <div 
-              v-for="(image, index) in currentMedia.items" 
+            <div
+              v-for="(image, index) in currentMedia.items"
               :key="index"
               class="carousel-slide"
             >
-              <img 
-                :src="image.url" 
+              <img
+                :src="image.url"
                 :alt="image.caption || `历史图片 ${index + 1}`"
                 class="carousel-image"
                 @load="onImageLoad"
                 @error="onImageError"
-              />
-              <div v-if="image.caption" class="image-caption">
+              >
+              <div
+                v-if="image.caption"
+                class="image-caption"
+              >
                 {{ image.caption }}
               </div>
             </div>
           </div>
         </div>
-        
+
         <!-- 轮播控制 -->
         <div class="carousel-controls">
-          <button 
+          <button
             class="carousel-btn prev"
-            @click="previousImage"
             :disabled="currentImageIndex === 0"
+            @click="previousImage"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
             </svg>
           </button>
-          <button 
+          <button
             class="carousel-btn next"
-            @click="nextImage"
             :disabled="currentImageIndex === (Array.isArray(currentMedia.items) ? currentMedia.items.length : 0) - 1"
+            @click="nextImage"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
             </svg>
           </button>
         </div>
-        
+
         <!-- 轮播指示器 -->
         <div class="carousel-indicators">
-          <button 
+          <button
             v-for="(image, index) in currentMedia.items"
             :key="index"
             class="indicator"
@@ -87,8 +130,11 @@
       </div>
 
       <!-- 视频播放器 -->
-      <div v-else-if="currentMedia.type === 'video'" class="video-player">
-        <video 
+      <div
+        v-else-if="currentMedia.type === 'video'"
+        class="video-player"
+      >
+        <video
           ref="videoPlayer"
           class="video-element"
           :src="currentMedia.url"
@@ -97,103 +143,171 @@
           @timeupdate="onTimeUpdate"
           @ended="onVideoEnded"
           @error="onVideoError"
-        ></video>
-        
+        />
+
         <!-- 视频控制栏 -->
-        <div class="video-controls" :class="{ visible: showVideoControls }">
-          <button class="play-btn" @click="togglePlay">
-            <svg v-if="!isPlaying" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z"/>
+        <div
+          class="video-controls"
+          :class="{ visible: showVideoControls }"
+        >
+          <button
+            class="play-btn"
+            @click="togglePlay"
+          >
+            <svg
+              v-if="!isPlaying"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M8 5v14l11-7z" />
             </svg>
-            <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            <svg
+              v-else
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
             </svg>
           </button>
-          
+
           <div class="time-display">
             {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
           </div>
-          
+
           <div class="progress-container">
-            <input 
-              type="range" 
+            <input
+              type="range"
               class="progress-bar"
               :value="progressPercentage"
-              @input="seekVideo"
               min="0"
               max="100"
-            />
+              @input="seekVideo"
+            >
           </div>
-          
-          <button class="volume-btn" @click="toggleMute">
-            <svg v-if="!isMuted && volume > 0.5" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+
+          <button
+            class="volume-btn"
+            @click="toggleMute"
+          >
+            <svg
+              v-if="!isMuted && volume > 0.5"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+              />
             </svg>
-            <svg v-else-if="!isMuted && volume > 0" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z"/>
+            <svg
+              v-else-if="!isMuted && volume > 0"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z" />
             </svg>
-            <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+            <svg
+              v-else
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"
+              />
             </svg>
           </button>
-          
-          <input 
-            type="range" 
-            class="volume-slider"
+
+          <input
             v-model="volume"
-            @input="updateVolume"
+            type="range"
+            class="volume-slider"
             min="0"
             max="1"
             step="0.1"
-          />
+            @input="updateVolume"
+          >
         </div>
       </div>
 
       <!-- 音频播放器 -->
-      <div v-else-if="currentMedia.type === 'audio'" class="audio-player">
+      <div
+        v-else-if="currentMedia.type === 'audio'"
+        class="audio-player"
+      >
         <div class="audio-info">
-          <div class="audio-title">{{ currentMedia.title || '音频资料' }}</div>
-          <div class="audio-description">{{ currentMedia.description }}</div>
+          <div class="audio-title">
+            {{ currentMedia.title || '音频资料' }}
+          </div>
+          <div class="audio-description">
+            {{ currentMedia.description }}
+          </div>
         </div>
-        
-        <audio 
+
+        <audio
           ref="audioPlayer"
           :src="currentMedia.url"
           @loadedmetadata="onAudioLoaded"
           @timeupdate="onTimeUpdate"
           @ended="onAudioEnded"
           @error="onAudioError"
-        ></audio>
-        
+        />
+
         <div class="audio-controls">
-          <button class="play-btn large" @click="togglePlay">
-            <svg v-if="!isPlaying" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z"/>
+          <button
+            class="play-btn large"
+            @click="togglePlay"
+          >
+            <svg
+              v-if="!isPlaying"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M8 5v14l11-7z" />
             </svg>
-            <svg v-else width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            <svg
+              v-else
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
             </svg>
           </button>
-          
+
           <div class="audio-progress">
             <div class="time-info">
               <span>{{ formatTime(currentTime) }}</span>
               <span>{{ formatTime(duration) }}</span>
             </div>
-            <input 
-              type="range" 
+            <input
+              type="range"
               class="progress-bar"
               :value="progressPercentage"
-              @input="seekAudio"
               min="0"
               max="100"
-            />
+              @input="seekAudio"
+            >
           </div>
         </div>
       </div>
 
       <!-- 文档展示 -->
-      <div v-else-if="currentMedia.type === 'document'" class="document-viewer">
+      <div
+        v-else-if="currentMedia.type === 'document'"
+        class="document-viewer"
+      >
         <div class="document-header">
           <h3>{{ currentMedia.title }}</h3>
           <div class="document-meta">
@@ -201,15 +315,21 @@
             <span>{{ currentMedia.source }}</span>
           </div>
         </div>
-        <div class="document-content" v-html="currentMedia.content"></div>
+        <div
+          class="document-content"
+          v-html="currentMedia.content"
+        />
       </div>
     </div>
 
     <!-- 媒体列表 -->
-    <div v-if="mediaList.length > 1" class="media-list">
+    <div
+      v-if="mediaList.length > 1"
+      class="media-list"
+    >
       <h3>相关资料</h3>
       <div class="media-items">
-        <div 
+        <div
           v-for="(media, index) in mediaList"
           :key="index"
           class="media-item"
@@ -217,25 +337,64 @@
           @click="selectMedia(index)"
         >
           <div class="media-thumbnail">
-            <img v-if="media.thumbnail" :src="media.thumbnail" :alt="media.title" />
-            <div v-else class="media-icon">
-              <svg v-if="media.type === 'images'" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+            <img
+              v-if="media.thumbnail"
+              :src="media.thumbnail"
+              :alt="media.title"
+            >
+            <div
+              v-else
+              class="media-icon"
+            >
+              <svg
+                v-if="media.type === 'images'"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                />
               </svg>
-              <svg v-else-if="media.type === 'video'" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+              <svg
+                v-else-if="media.type === 'video'"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"
+                />
               </svg>
-              <svg v-else-if="media.type === 'audio'" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              <svg
+                v-else-if="media.type === 'audio'"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
               </svg>
-              <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+              <svg
+                v-else
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
               </svg>
             </div>
           </div>
           <div class="media-info">
-            <div class="media-title">{{ media.title }}</div>
-            <div class="media-type">{{ getMediaTypeLabel(media.type) }}</div>
+            <div class="media-title">
+              {{ media.title }}
+            </div>
+            <div class="media-type">
+              {{ getMediaTypeLabel(media.type) }}
+            </div>
           </div>
         </div>
       </div>
@@ -357,7 +516,7 @@ const goToImage = (index) => {
 const togglePlay = () => {
   const player = currentMedia.value.type === 'video' ? videoPlayer.value : audioPlayer.value
   if (!player) return
-  
+
   if (isPlaying.value) {
     player.pause()
   } else {
@@ -369,7 +528,7 @@ const togglePlay = () => {
 const toggleMute = () => {
   const player = currentMedia.value.type === 'video' ? videoPlayer.value : audioPlayer.value
   if (!player) return
-  
+
   isMuted.value = !isMuted.value
   player.muted = isMuted.value
 }
@@ -377,7 +536,7 @@ const toggleMute = () => {
 const updateVolume = () => {
   const player = currentMedia.value.type === 'video' ? videoPlayer.value : audioPlayer.value
   if (!player) return
-  
+
   player.volume = volume.value
   isMuted.value = volume.value === 0
 }
@@ -542,7 +701,7 @@ onMounted(() => {
   document.addEventListener('fullscreenchange', () => {
     isFullscreen.value = !!document.fullscreenElement
   })
-  
+
   if (mediaContainer.value) {
     mediaContainer.value.addEventListener('mousemove', handleMouseMove)
   }
@@ -1071,81 +1230,81 @@ onUnmounted(() => {
   .display-header {
     padding: 15px 20px;
   }
-  
+
   .display-title {
     font-size: 20px;
   }
-  
+
   .control-btn {
     width: 40px;
     height: 40px;
   }
-  
+
   .carousel-container,
   .video-player {
     width: 95%;
     height: 70%;
   }
-  
+
   .carousel-controls {
     padding: 0 10px;
   }
-  
+
   .carousel-btn {
     width: 44px;
     height: 44px;
   }
-  
+
   .video-controls {
     padding: 15px;
     gap: 12px;
   }
-  
+
   .time-display {
     font-size: 12px;
     min-width: 80px;
   }
-  
+
   .volume-slider {
     width: 60px;
   }
-  
+
   .audio-player {
     width: 95%;
     padding: 20px;
   }
-  
+
   .audio-title {
     font-size: 18px;
   }
-  
+
   .document-viewer {
     width: 95%;
     height: 75%;
   }
-  
+
   .document-header {
     padding: 15px 20px;
   }
-  
+
   .document-content {
     padding: 20px;
   }
-  
+
   .media-list {
     padding: 15px 20px;
     max-height: 150px;
   }
-  
+
   .media-items {
     gap: 12px;
   }
-  
+
   .media-item {
     min-width: 100px;
     padding: 10px;
   }
-  
+
   .media-thumbnail {
     width: 60px;
     height: 45px;
@@ -1156,60 +1315,60 @@ onUnmounted(() => {
   .display-header {
     padding: 12px 15px;
   }
-  
+
   .display-title {
     font-size: 18px;
   }
-  
+
   .control-btn {
     width: 36px;
     height: 36px;
   }
-  
+
   .carousel-container,
   .video-player {
     width: 98%;
     height: 65%;
   }
-  
+
   .audio-player {
     width: 98%;
     padding: 15px;
   }
-  
+
   .audio-controls {
     flex-direction: column;
     gap: 15px;
   }
-  
+
   .play-btn.large {
     width: 50px;
     height: 50px;
   }
-  
+
   .document-viewer {
     width: 98%;
     height: 70%;
   }
-  
+
   .media-list {
     padding: 12px 15px;
   }
-  
+
   .media-item {
     min-width: 80px;
     padding: 8px;
   }
-  
+
   .media-thumbnail {
     width: 50px;
     height: 38px;
   }
-  
+
   .media-title {
     font-size: 11px;
   }
-  
+
   .media-type {
     font-size: 9px;
   }

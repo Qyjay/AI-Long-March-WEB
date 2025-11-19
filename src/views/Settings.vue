@@ -4,15 +4,25 @@
     <div class="page-header">
       <div class="header-content">
         <button 
-          @click="goBack"
           class="back-button"
           aria-label="返回"
+          @click="goBack"
         >
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          <svg
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+              clip-rule="evenodd"
+            />
           </svg>
         </button>
-        <h1 class="page-title">设置</h1>
+        <h1 class="page-title">
+          设置
+        </h1>
       </div>
     </div>
 
@@ -20,22 +30,32 @@
     <div class="settings-content">
       <!-- 显示设置 -->
       <div class="settings-section">
-        <h2 class="section-title">显示设置</h2>
+        <h2 class="section-title">
+          显示设置
+        </h2>
         <div class="settings-group">
           <!-- 主题设置 -->
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">主题模式</label>
-              <p class="setting-description">选择应用的外观主题</p>
+              <p class="setting-description">
+                选择应用的外观主题
+              </p>
             </div>
             <select 
               v-model="settings.theme"
-              @change="updateSetting('theme', $event.target.value)"
               class="setting-select"
+              @change="updateSetting('theme', $event.target.value)"
             >
-              <option value="light">浅色</option>
-              <option value="dark">深色</option>
-              <option value="auto">跟随系统</option>
+              <option value="light">
+                浅色
+              </option>
+              <option value="dark">
+                深色
+              </option>
+              <option value="auto">
+                跟随系统
+              </option>
             </select>
           </div>
 
@@ -43,16 +63,24 @@
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">语言</label>
-              <p class="setting-description">选择应用界面语言</p>
+              <p class="setting-description">
+                选择应用界面语言
+              </p>
             </div>
             <select 
               v-model="settings.language"
-              @change="updateSetting('language', $event.target.value)"
               class="setting-select"
+              @change="updateSetting('language', $event.target.value)"
             >
-              <option value="zh-CN">简体中文</option>
-              <option value="zh-TW">繁體中文</option>
-              <option value="en-US">English</option>
+              <option value="zh-CN">
+                简体中文
+              </option>
+              <option value="zh-TW">
+                繁體中文
+              </option>
+              <option value="en-US">
+                English
+              </option>
             </select>
           </div>
 
@@ -60,16 +88,24 @@
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">字体大小</label>
-              <p class="setting-description">调整文字显示大小</p>
+              <p class="setting-description">
+                调整文字显示大小
+              </p>
             </div>
             <select 
               v-model="settings.fontSize"
-              @change="updateSetting('fontSize', $event.target.value)"
               class="setting-select"
+              @change="updateSetting('fontSize', $event.target.value)"
             >
-              <option value="small">小</option>
-              <option value="medium">中</option>
-              <option value="large">大</option>
+              <option value="small">
+                小
+              </option>
+              <option value="medium">
+                中
+              </option>
+              <option value="large">
+                大
+              </option>
             </select>
           </div>
         </div>
@@ -77,21 +113,25 @@
 
       <!-- 音频设置 -->
       <div class="settings-section">
-        <h2 class="section-title">音频设置</h2>
+        <h2 class="section-title">
+          音频设置
+        </h2>
         <div class="settings-group">
           <!-- 背景音乐 -->
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">背景音乐</label>
-              <p class="setting-description">开启或关闭背景音乐</p>
+              <p class="setting-description">
+                开启或关闭背景音乐
+              </p>
             </div>
             <label class="toggle-switch">
               <input 
-                type="checkbox"
                 v-model="settings.backgroundMusic"
+                type="checkbox"
                 @change="updateSetting('backgroundMusic', $event.target.checked)"
               >
-              <span class="toggle-slider"></span>
+              <span class="toggle-slider" />
             </label>
           </div>
 
@@ -99,15 +139,17 @@
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">音效</label>
-              <p class="setting-description">开启或关闭界面音效</p>
+              <p class="setting-description">
+                开启或关闭界面音效
+              </p>
             </div>
             <label class="toggle-switch">
               <input 
-                type="checkbox"
                 v-model="settings.soundEffects"
+                type="checkbox"
                 @change="updateSetting('soundEffects', $event.target.checked)"
               >
-              <span class="toggle-slider"></span>
+              <span class="toggle-slider" />
             </label>
           </div>
 
@@ -115,16 +157,18 @@
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">主音量</label>
-              <p class="setting-description">调整整体音量大小</p>
+              <p class="setting-description">
+                调整整体音量大小
+              </p>
             </div>
             <div class="volume-control">
               <input 
+                v-model="settings.volume"
                 type="range"
                 min="0"
                 max="100"
-                v-model="settings.volume"
-                @input="updateSetting('volume', $event.target.value)"
                 class="volume-slider"
+                @input="updateSetting('volume', $event.target.value)"
               >
               <span class="volume-value">{{ settings.volume }}%</span>
             </div>
@@ -134,21 +178,25 @@
 
       <!-- 游戏设置 -->
       <div class="settings-section">
-        <h2 class="section-title">游戏设置</h2>
+        <h2 class="section-title">
+          游戏设置
+        </h2>
         <div class="settings-group">
           <!-- 自动保存 -->
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">自动保存</label>
-              <p class="setting-description">自动保存游戏进度</p>
+              <p class="setting-description">
+                自动保存游戏进度
+              </p>
             </div>
             <label class="toggle-switch">
               <input 
-                type="checkbox"
                 v-model="settings.autoSave"
+                type="checkbox"
                 @change="updateSetting('autoSave', $event.target.checked)"
               >
-              <span class="toggle-slider"></span>
+              <span class="toggle-slider" />
             </label>
           </div>
 
@@ -156,15 +204,17 @@
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">动画效果</label>
-              <p class="setting-description">开启或关闭界面动画</p>
+              <p class="setting-description">
+                开启或关闭界面动画
+              </p>
             </div>
             <label class="toggle-switch">
               <input 
-                type="checkbox"
                 v-model="settings.animations"
+                type="checkbox"
                 @change="updateSetting('animations', $event.target.checked)"
               >
-              <span class="toggle-slider"></span>
+              <span class="toggle-slider" />
             </label>
           </div>
 
@@ -172,15 +222,17 @@
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">新手提示</label>
-              <p class="setting-description">显示操作提示和帮助信息</p>
+              <p class="setting-description">
+                显示操作提示和帮助信息
+              </p>
             </div>
             <label class="toggle-switch">
               <input 
-                type="checkbox"
                 v-model="settings.showHints"
+                type="checkbox"
                 @change="updateSetting('showHints', $event.target.checked)"
               >
-              <span class="toggle-slider"></span>
+              <span class="toggle-slider" />
             </label>
           </div>
         </div>
@@ -188,17 +240,21 @@
 
       <!-- 数据管理 -->
       <div class="settings-section">
-        <h2 class="section-title">数据管理</h2>
+        <h2 class="section-title">
+          数据管理
+        </h2>
         <div class="settings-group">
           <!-- 导出数据 -->
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">导出进度</label>
-              <p class="setting-description">导出游戏进度和成就数据</p>
+              <p class="setting-description">
+                导出游戏进度和成就数据
+              </p>
             </div>
             <button 
-              @click="exportData"
               class="action-button secondary"
+              @click="exportData"
             >
               导出数据
             </button>
@@ -208,18 +264,20 @@
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">导入进度</label>
-              <p class="setting-description">从文件导入游戏进度</p>
+              <p class="setting-description">
+                从文件导入游戏进度
+              </p>
             </div>
             <input 
               ref="fileInput"
               type="file"
               accept=".json"
-              @change="importData"
               style="display: none;"
+              @change="importData"
             >
             <button 
-              @click="$refs.fileInput.click()"
               class="action-button secondary"
+              @click="$refs.fileInput.click()"
             >
               导入数据
             </button>
@@ -229,11 +287,13 @@
           <div class="setting-item">
             <div class="setting-info">
               <label class="setting-label">重置进度</label>
-              <p class="setting-description">清除所有游戏数据（不可恢复）</p>
+              <p class="setting-description">
+                清除所有游戏数据（不可恢复）
+              </p>
             </div>
             <button 
-              @click="showResetConfirm = true"
               class="action-button danger"
+              @click="showResetConfirm = true"
             >
               重置数据
             </button>
@@ -243,18 +303,33 @@
 
       <!-- 关于信息 -->
       <div class="settings-section">
-        <h2 class="section-title">关于</h2>
+        <h2 class="section-title">
+          关于
+        </h2>
         <div class="settings-group">
           <div class="about-info">
-            <h3 class="app-name">数字长征</h3>
-            <p class="app-version">版本 1.0.0</p>
+            <h3 class="app-name">
+              数字长征
+            </h3>
+            <p class="app-version">
+              版本 1.0.0
+            </p>
             <p class="app-description">
               通过交互式体验重走长征路，感受革命先辈的伟大精神。
             </p>
             <div class="app-links">
-              <a href="#" class="app-link">用户协议</a>
-              <a href="#" class="app-link">隐私政策</a>
-              <a href="#" class="app-link">意见反馈</a>
+              <a
+                href="#"
+                class="app-link"
+              >用户协议</a>
+              <a
+                href="#"
+                class="app-link"
+              >隐私政策</a>
+              <a
+                href="#"
+                class="app-link"
+              >意见反馈</a>
             </div>
           </div>
         </div>
@@ -262,22 +337,31 @@
     </div>
 
     <!-- 重置确认弹窗 -->
-    <div v-if="showResetConfirm" class="modal-overlay" @click="showResetConfirm = false">
-      <div class="modal-content" @click.stop>
-        <h3 class="modal-title">确认重置</h3>
+    <div
+      v-if="showResetConfirm"
+      class="modal-overlay"
+      @click="showResetConfirm = false"
+    >
+      <div
+        class="modal-content"
+        @click.stop
+      >
+        <h3 class="modal-title">
+          确认重置
+        </h3>
         <p class="modal-message">
           此操作将清除所有游戏进度、成就和设置，且无法恢复。确定要继续吗？
         </p>
         <div class="modal-actions">
           <button 
-            @click="showResetConfirm = false"
             class="action-button secondary"
+            @click="showResetConfirm = false"
           >
             取消
           </button>
           <button 
-            @click="resetAllData"
             class="action-button danger"
+            @click="resetAllData"
           >
             确认重置
           </button>

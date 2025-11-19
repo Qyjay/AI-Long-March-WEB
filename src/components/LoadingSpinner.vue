@@ -1,8 +1,19 @@
 <template>
-  <div class="loading-container" :class="{ overlay: overlay }">
+  <div
+    class="loading-container"
+    :class="{ overlay: overlay }"
+  >
     <div class="loading-content">
-      <div class="spinner" :class="size"></div>
-      <p v-if="message" class="loading-message">{{ message }}</p>
+      <div
+        class="spinner"
+        :class="size"
+      />
+      <p
+        v-if="message"
+        class="loading-message"
+      >
+        {{ message }}
+      </p>
     </div>
   </div>
 </template>

@@ -1,63 +1,91 @@
 <template>
-  <div v-if="props.node" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[200]" @click.self="close">
-  <!-- 中心弹窗 -->
-<div class="node-popup bg-white rounded-2xl shadow-xl w-[850px] max-h-[90vh] flex flex-col overflow-hidden">
-  
-  <!-- 头部 -->
-  <div class="flex items-start justify-between p-4">
-    <div>
-      <h3 class="text-lg font-semibold">{{ props.node.name_zh }}</h3>
-      <p class="text-sm text-gray-500">{{ props.node.time || '' }}</p>
-    </div>
-    <button @click="close" class="text-gray-500 hover:text-gray-800">✕</button>
-  </div>
-
-  <!-- 主体内容 -->
-  <div class="px-4 py-3 flex-1 overflow-auto" ref="contentArea">
-    
-    <!-- 页 1：描述 + 诗词 + 图片 -->
-    <div v-if="currentPage === 1">
-      <div class="mb-4" v-if="props.node.image">
-        <img
-          :src="`/assets/${props.node.image}`"
-          alt="node image"
-          class="w-full max-h-[380px] object-contain rounded-lg"
-        />
+  <div
+    v-if="props.node"
+    class="fixed inset-0 flex items-center justify-center bg-black/50 z-[200]"
+    @click.self="close"
+  >
+    <!-- 中心弹窗 -->
+    <div class="node-popup bg-white rounded-2xl shadow-xl w-[850px] max-h-[90vh] flex flex-col overflow-hidden">
+      <!-- 头部 -->
+      <div class="flex items-start justify-between p-4">
+        <div>
+          <h3 class="text-lg font-semibold">
+            {{ props.node.name_zh }}
+          </h3>
+          <p class="text-sm text-gray-500">
+            {{ props.node.time || '' }}
+          </p>
+        </div>
+        <button
+          class="text-gray-500 hover:text-gray-800"
+          @click="close"
+        >
+          ✕
+        </button>
       </div>
 
-      <p class="text-gray-700 leading-snug whitespace-pre-wrap mb-2">
-        {{ props.node.description_zh }}
-      </p>
+      <!-- 主体内容 -->
+      <div
+        ref="contentArea"
+        class="px-4 py-3 flex-1 overflow-auto"
+      >
+        <!-- 页 1：描述 + 诗词 + 图片 -->
+        <div v-if="currentPage === 1">
+          <div
+            v-if="props.node.image"
+            class="mb-4"
+          >
+            <img
+              :src="resolveImage(props.node.image)"
+              alt="node image"
+              class="w-full max-h-[380px] object-contain rounded-lg"
+            >
+          </div>
 
-      <div v-if="props.node.poem_zh" class="mb-2">
-        <p class="italic text-sm text-red-700 whitespace-pre-wrap">{{ props.node.poem_zh }}</p>
-      </div>
+          <p class="text-gray-700 leading-snug whitespace-pre-wrap mb-2">
+            {{ props.node.description_zh }}
+          </p>
 
-      <div class="text-sm text-gray-600">
-        <p><strong>地形：</strong>{{ props.node.terrain || '—' }}</p>
-        <p><strong>气候：</strong>{{ props.node.weather || '—' }}</p>
-        <p><strong>参与：</strong>{{ props.node.participants || '—' }}</p>
-      </div>
-    </div>
+          <div
+            v-if="props.node.poem_zh"
+            class="mb-2"
+          >
+            <p class="italic text-sm text-red-700 whitespace-pre-wrap">
+              {{ props.node.poem_zh }}
+            </p>
+          </div>
+
+          <div class="text-sm text-gray-600">
+            <p><strong>地形：</strong>{{ props.node.terrain || '—' }}</p>
+            <p><strong>气候：</strong>{{ props.node.weather || '—' }}</p>
+            <p><strong>参与：</strong>{{ props.node.participants || '—' }}</p>
+          </div>
+        </div>
 
         <!-- 页 2：小精灵气泡 + 问题 + 选项（都在弹窗内部，不会溢出） -->
         <div v-else-if="currentPage === 2 && decision">
           <div class="flex items-start gap-4">
             <!-- 小精灵头像（固定宽度，不会撑开弹窗） -->
             <img
-              src="/assets/1.png"
+              :src="resolveImage('/static/assets/1.png')"
               alt="sprite"
               class="w-16 h-16 rounded-full flex-shrink-0"
-            />
+            >
 
             <!-- 气泡区域：受限最大宽度，自动换行 -->
             <div class="flex-1">
               <div class="bg-gray-100 p-3 rounded-xl break-words">
                 <!-- 显示问题或已选后的简短精灵提示 -->
-                <p class="text-sm font-medium text-gray-800" v-if="!submitted">
+                <p
+                  v-if="!submitted"
+                  class="text-sm font-medium text-gray-800"
+                >
                   {{ decision.question }}
                 </p>
-                <p class="text-sm font-medium text-gray-800" v-else>
+                <p
+                  v-else
+                  class="text-sm font-medium text-gray-800"
+                >
                   <!-- 精灵回答气泡：根据是否正确显示不同短语 -->
                   <span v-if="isCorrect">精灵：回答正确 ✅</span>
                   <span v-else>精灵：回答错误 ❌</span>
@@ -65,7 +93,10 @@
               </div>
 
               <!-- 解释（选择后在此展示，保持在弹窗内部） -->
-              <div v-if="submitted" class="mt-3">
+              <div
+                v-if="submitted"
+                class="mt-3"
+              >
                 <div class="bg-white border p-3 rounded shadow-sm text-sm text-gray-700 whitespace-pre-wrap">
                   {{ decision.explanation }}
                 </div>
@@ -74,15 +105,16 @@
           </div>
 
           <!-- 选项：放在气泡下面并左内缩对齐（避免遮挡右侧） -->
-          <div class="mt-5 ml-[64px]"> <!-- ml 与头像宽度一致，使选项左对齐气泡下方 -->
+          <div class="mt-5 ml-[64px]">
+            <!-- ml 与头像宽度一致，使选项左对齐气泡下方 -->
             <div class="grid gap-3">
               <button
                 v-for="(opt, idx) in decision.options"
                 :key="idx"
-                @click="onSelect(idx)"
                 :disabled="submitted"
                 :class="optionClass(idx)"
                 class="w-full text-left px-4 py-2 rounded-lg transition"
+                @click="onSelect(idx)"
               >
                 {{ opt }}
               </button>
@@ -96,15 +128,15 @@
         <div class="flex items-center gap-3">
           <button
             v-if="currentPage > 1"
-            @click="prevPage"
             class="px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 text-sm"
+            @click="prevPage"
           >
             上一步
           </button>
           <button
             v-if="currentPage < totalPages"
-            @click="nextPage"
             class="px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700 text-sm"
+            @click="nextPage"
           >
             下一步
           </button>
@@ -115,7 +147,12 @@
         </div>
 
         <div>
-          <button @click="close" class="px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 text-sm">关闭</button>
+          <button
+            class="px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 text-sm"
+            @click="close"
+          >
+            关闭
+          </button>
         </div>
       </div>
     </div>
@@ -213,5 +250,15 @@ const nextPage = (event) => {
 
 const close = () => {
   emit('close');
+};
+
+// 解析图片URL为可访问的完整地址
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const resolveImage = (url) => {
+  if (!url) return '';
+  if (url.startsWith('http')) return url;
+  if (url.startsWith('/static')) return `${API_BASE}${url}`;
+  if (url.startsWith('/assets')) return url;
+  return `${API_BASE}/static/assets/${url}`;
 };
 </script>

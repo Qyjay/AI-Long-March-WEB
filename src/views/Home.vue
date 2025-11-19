@@ -3,9 +3,9 @@
     <!-- 英雄区域 -->
     <section class="hero-section bg-red-radial bg-flag-wave">
       <div class="hero-background">
-        <div class="hero-overlay"></div>
+        <div class="hero-overlay" />
         <img 
-          src="/images/hero-bg.svg" 
+          src="@/data/bg.png" 
           alt="长征背景" 
           class="hero-image"
           @error="handleImageError"
@@ -26,40 +26,67 @@
           
           <div class="hero-actions">
             <button 
-              @click="startJourney"
               class="btn btn-primary btn-large pulse-glow hover-lift red-glow"
+              @click="startJourney"
             >
-              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                  clip-rule="evenodd"
+                />
               </svg>
               开始征程
             </button>
             
             <button 
-              @click="continueJourney"
               v-if="hasProgress"
               class="btn btn-secondary btn-large hover-lift"
+              @click="continueJourney"
             >
-              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                  clip-rule="evenodd"
+                />
               </svg>
               继续征程
             </button>
             
             <button 
-              @click="watchDemo"
               class="btn btn-outline btn-large hover-lift"
+              @click="watchDemo"
             >
-              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 13.047 14.01c-.04.27-.24.49-.51.51h-.054c-.27-.02-.47-.24-.51-.51L9.854 7.2 11.033 2.744A1 1 0 0112 2z"
+                  clip-rule="evenodd"
+                />
               </svg>
-              观看演示
+              红色文旅
             </button>
           </div>
         </div>
         
         <!-- 进度概览 -->
-        <div class="progress-overview animate-fade-in-left" v-if="hasProgress">
+        <div
+          v-if="hasProgress"
+          class="progress-overview animate-fade-in-left"
+        >
           <div class="progress-card hover-lift">
             <h3>您的征程进度</h3>
             <div class="progress-stats">
@@ -81,7 +108,7 @@
               <div 
                 class="progress-fill"
                 :style="{ width: completionPercentage + '%' }"
-              ></div>
+              />
             </div>
           </div>
         </div>
@@ -91,62 +118,122 @@
     <!-- 特色功能 -->
     <section class="features-section">
       <div class="container">
-        <h2 class="section-title brush-underline">探索长征历史</h2>
+        <h2 class="section-title brush-underline">
+          探索长征历史
+        </h2>
         <p class="section-description">
-          通过交互式地图、历史故事和成就系统，深入了解这段波澜壮阔的历史
+          通过交互式地图、历史故事和长征英雄，深入了解这段波澜壮阔的历史
         </p>
         
         <div class="features-grid">
-          <div class="feature-card hover-lift animate-fade-in-up red-glow" @click="navigateToMap" style="animation-delay: 0.1s;">
+          <div
+            class="feature-card hover-lift animate-fade-in-up red-glow"
+            style="animation-delay: 0.1s;"
+            @click="navigateToMap"
+          >
             <div class="feature-icon">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z" clip-rule="evenodd" />
+              <svg
+                class="w-8 h-8"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z"
+                  clip-rule="evenodd"
+                />
               </svg>
             </div>
-            <h3 class="feature-title">交互式地图</h3>
+            <h3 class="feature-title">
+              交互式地图
+            </h3>
             <p class="feature-description">
               在详细的地图上追踪长征路线，探索每个重要的历史节点和事件发生地
             </p>
             <div class="feature-action">
               <span>探索地图</span>
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              <svg
+                class="w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"
+                />
               </svg>
             </div>
           </div>
           
-          <div class="feature-card hover-lift animate-fade-in-up red-glow" @click="navigateToStory" style="animation-delay: 0.2s;">
+          <div
+            class="feature-card hover-lift animate-fade-in-up red-glow"
+            style="animation-delay: 0.2s;"
+            @click="navigateToStory"
+          >
             <div class="feature-icon">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+              <svg
+                class="w-8 h-8"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 class="feature-title">历史故事</h3>
+            <h3 class="feature-title">
+              历史故事
+            </h3>
             <p class="feature-description">
-              通过生动的故事情节和人物对话，亲身体验长征途中的重要历史时刻
+              通过生动的故事情节，感受长征征途中的历史故事和感人瞬间
             </p>
             <div class="feature-action">
               <span>阅读故事</span>
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              <svg
+                class="w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"
+                />
               </svg>
             </div>
           </div>
           
-          <div class="feature-card hover-lift animate-fade-in-up red-glow" @click="navigateToAchievements" style="animation-delay: 0.3s;">
+          <div
+            class="feature-card hover-lift animate-fade-in-up red-glow"
+            style="animation-delay: 0.3s;"
+            @click="navigateToHeroes"
+          >
             <div class="feature-icon">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+              <svg
+                class="w-8 h-8"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             </div>
-            <h3 class="feature-title">成就系统</h3>
+            <h3 class="feature-title">
+              长征英雄
+            </h3>
             <p class="feature-description">
-              完成各种挑战，解锁成就徽章，记录您在长征路上的每一个里程碑
+              长征路上伟大的英雄们，他们的奋斗和奉献，换来如今祖国的和平与富强
             </p>
             <div class="feature-action">
-              <span>查看成就</span>
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              <span>了解英雄</span>
+              <svg
+                class="w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"
+                />
               </svg>
             </div>
           </div>
@@ -157,7 +244,9 @@
     <!-- 历史时间线 -->
     <section class="timeline-section">
       <div class="container">
-        <h2 class="section-title brush-underline">长征历程</h2>
+        <h2 class="section-title brush-underline">
+          长征历程
+        </h2>
         <p class="section-description">
           1934年10月至1936年10月，历时两年的伟大征程
         </p>
@@ -171,15 +260,24 @@
             @click="goToEvent(event)"
           >
             <div class="timeline-marker">
-              <div class="marker-dot"></div>
+              <div class="marker-dot" />
             </div>
             
             <div class="timeline-content">
-              <div class="timeline-date">{{ event.date }}</div>
-              <h3 class="timeline-title">{{ event.title }}</h3>
-              <p class="timeline-description">{{ event.description }}</p>
+              <div class="timeline-date">
+                {{ event.date }}
+              </div>
+              <h3 class="timeline-title">
+                {{ event.title }}
+              </h3>
+              <p class="timeline-description">
+                {{ event.description }}
+              </p>
               
-              <div class="timeline-stats" v-if="isEventVisited(event.id)">
+              <div
+                v-if="isEventVisited(event.id)"
+                class="timeline-stats"
+              >
                 <span class="visited-badge">已访问</span>
               </div>
             </div>
@@ -189,9 +287,14 @@
     </section>
     
     <!-- 最新成就 -->
-    <section class="recent-achievements" v-if="recentAchievements.length > 0">
+    <section
+      v-if="recentAchievements.length > 0"
+      class="recent-achievements"
+    >
       <div class="container">
-        <h2 class="section-title">最新成就</h2>
+        <h2 class="section-title">
+          最新成就
+        </h2>
         
         <div class="achievements-carousel">
           <div 
@@ -207,16 +310,27 @@
                 :alt="achievement.name"
                 class="icon-image"
               >
-              <div v-else class="icon-placeholder">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <div
+                v-else
+                class="icon-placeholder"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </div>
             </div>
             
             <div class="achievement-info">
-              <h4 class="achievement-name">{{ achievement.name }}</h4>
-              <p class="achievement-description">{{ achievement.description }}</p>
+              <h4 class="achievement-name">
+                {{ achievement.name }}
+              </h4>
+              <p class="achievement-description">
+                {{ achievement.description }}
+              </p>
             </div>
           </div>
         </div>
@@ -312,12 +426,11 @@ const continueJourney = () => {
 }
 
 /**
- * 观看演示
+ * 观看演示 - 红色文旅页面
  */
 const watchDemo = () => {
-  // 触发演示模式
-  eventBus.emit('start-demo')
-  router.push('/map')
+  // 导航到纪念馆页面
+  router.push('/memorials')
 }
 
 /**
@@ -339,10 +452,10 @@ const navigateToStory = () => {
 }
 
 /**
- * 导航到成就
+ * 导航到英雄
  */
-const navigateToAchievements = () => {
-  router.push('/achievements')
+const navigateToHeroes = () => {
+  router.push('/heroes')
 }
 
 /**

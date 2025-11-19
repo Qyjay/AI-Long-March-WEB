@@ -1,47 +1,89 @@
 <template>
   <div class="fixed left-4 bottom-4 z-50 flex flex-col items-start">
     <!-- 小精灵按钮 -->
-    <button v-if="!isOpen" @click="isOpen=true" class="flex items-center gap-2 bg-white shadow-lg rounded-full px-3 py-2">
+    <button
+      v-if="!isOpen"
+      class="flex items-center gap-2 bg-white shadow-lg rounded-full px-3 py-2"
+      @click="isOpen=true"
+    >
       <img
-    src="/assets/1.png"
-    alt="sprite"
-    class="w-16 h-16 rounded-full"
-  />
+        src="/assets/1.png"
+        alt="sprite"
+        class="w-16 h-16 rounded-full"
+      >
       <span class="text-lg font-medium text-gray-800">我是长小征～欢迎向我提问❤️</span>
     </button>
 
     <!-- 聊天窗口 -->
-    <div v-if="isOpen" class="w-[400px] h-[500px] bg-white rounded-2xl shadow-xl flex flex-col overflow-hidden">
+    <div
+      v-if="isOpen"
+      class="w-[400px] h-[500px] bg-white rounded-2xl shadow-xl flex flex-col overflow-hidden"
+    >
       <div class="flex items-center justify-between p-3 border-b">
         <div class="flex items-center gap-2">
-         <img
-    src="/assets/1.png"
-    alt="sprite"
-    class="w-16 h-16 rounded-full"
-  />
+          <img
+            src="/assets/1.png"
+            alt="sprite"
+            class="w-16 h-16 rounded-full"
+          >
           <span class="font-medium text-gray-800">长小征🚩</span>
         </div>
-        <button @click="isOpen=false" class="text-gray-500 hover:text-gray-800">✕</button>
+        <button
+          class="text-gray-500 hover:text-gray-800"
+          @click="isOpen=false"
+        >
+          ✕
+        </button>
       </div>
 
       <!-- Tab 选择 -->
       <div class="flex border-b">
-        <button :class="tab==='story'?activeTab:inactiveTab" @click="tab='story'">剧情类</button>
-        <button :class="tab==='poem'?activeTab:inactiveTab" @click="tab='poem'">诗词类</button>
+        <button
+          :class="tab==='story'?activeTab:inactiveTab"
+          @click="tab='story'"
+        >
+          剧情类
+        </button>
+        <button
+          :class="tab==='poem'?activeTab:inactiveTab"
+          @click="tab='poem'"
+        >
+          诗词类
+        </button>
       </div>
 
       <!-- 消息区 -->
-      <div ref="messageArea" class="flex-1 p-3 overflow-y-auto space-y-2 bg-gray-50">
-        <div v-for="(msg, idx) in messages[tab]" :key="idx" class="flex" :class="msg.role==='user'?'justify-end':'justify-start'">
-          <div :class="msg.role==='user' ? userClass : assistantClass">{{ msg.content }}</div>
+      <div
+        ref="messageArea"
+        class="flex-1 p-3 overflow-y-auto space-y-2 bg-gray-50"
+      >
+        <div
+          v-for="(msg, idx) in messages[tab]"
+          :key="idx"
+          class="flex"
+          :class="msg.role==='user'?'justify-end':'justify-start'"
+        >
+          <div :class="msg.role==='user' ? userClass : assistantClass">
+            {{ msg.content }}
+          </div>
         </div>
       </div>
 
       <!-- 输入框 -->
       <div class="flex p-2 border-t gap-2">
-        <input v-model="inputText" @keydown.enter="sendMessage" type="text" placeholder="请输入问题..."
-          class="flex-1 border rounded-full px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"/>
-        <button @click="sendMessage" class="bg-blue-600 text-white px-4 py-1 rounded-full hover:bg-blue-700">发送</button>
+        <input
+          v-model="inputText"
+          type="text"
+          placeholder="请输入问题..."
+          class="flex-1 border rounded-full px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          @keydown.enter="sendMessage"
+        >
+        <button
+          class="bg-blue-600 text-white px-4 py-1 rounded-full hover:bg-blue-700"
+          @click="sendMessage"
+        >
+          发送
+        </button>
       </div>
     </div>
   </div>
@@ -82,9 +124,10 @@ const sendMessage = async () => {
   await scrollToBottom();
 
   // 构建 payload
+  const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
   const endpoint = tab.value === 'story'
-    ? 'http://localhost:8000/chat/explanation'
-    : 'http://localhost:8000/chat/poem';
+    ? `${base}/chat/explanation`
+    : `${base}/chat/poem`;
   const payload = tab.value === 'story'
     ? {
         route: "长征路线",
@@ -111,14 +154,30 @@ const sendMessage = async () => {
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
-    let done = false;
+    let buffer = '';
 
-    while(!done){
+    while(true){
       const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      if (value) {
-        messages.value[tab.value][msgIndex].content += decoder.decode(value);
-        await scrollToBottom();
+      if (doneReading) break;
+      buffer += decoder.decode(value, { stream: true });
+      const parts = buffer.split('\n\n');
+      buffer = parts.pop() || '';
+      for (const part of parts) {
+        const lines = part.split('\n');
+        for (const line of lines) {
+          if (line.startsWith('data:')) {
+            const jsonStr = line.slice(5).trim();
+            try {
+              const evt = JSON.parse(jsonStr);
+              if (evt && evt.content) {
+                messages.value[tab.value][msgIndex].content += evt.content;
+                await scrollToBottom();
+              }
+            } catch(_) {
+              // ignore malformed chunk
+            }
+          }
+        }
       }
     }
   } catch(err) {

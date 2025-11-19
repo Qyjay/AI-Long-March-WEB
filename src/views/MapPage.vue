@@ -11,24 +11,50 @@
     </div>
     
     <!-- 侧边栏 -->
-    <div v-if="showNodeList" class="sidebar animate-fade-in-left" :class="{ collapsed: sidebarCollapsed }">
+    <div
+      v-if="showNodeList"
+      class="sidebar animate-fade-in-left"
+      :class="{ collapsed: sidebarCollapsed }"
+    >
       <!-- 侧边栏头部 -->
       <div class="sidebar-header">
-        <h2 v-if="!sidebarCollapsed" class="sidebar-title">长征节点</h2>
+        <h2
+          v-if="!sidebarCollapsed"
+          class="sidebar-title"
+        >
+          长征节点
+        </h2>
         <button 
-          @click="toggleSidebar"
           class="sidebar-toggle hover-lift"
           :title="sidebarCollapsed ? '展开侧边栏' : '收起侧边栏'"
+          @click="toggleSidebar"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path v-if="sidebarCollapsed" fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-            <path v-else fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              v-if="sidebarCollapsed"
+              fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            />
+            <path
+              v-else
+              fill-rule="evenodd"
+              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            />
           </svg>
         </button>
       </div>
       
       <!-- 节点列表 -->
-      <div class="sidebar-content" v-if="!sidebarCollapsed">
+      <div
+        v-if="!sidebarCollapsed"
+        class="sidebar-content"
+      >
         <NodeList 
           ref="nodeListRef"
           @node-select="handleNodeSelect"
@@ -40,28 +66,43 @@
     
     <!-- 浮动控制面板 -->
     <div class="floating-controls">
-      
       <!-- 导航控制 -->
       <div class="control-group">
         <button 
-          @click="goToPreviousNode"
           :disabled="!hasPreviousNode"
           class="control-btn hover-lift"
           title="上一个节点"
+          @click="goToPreviousNode"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            />
           </svg>
         </button>
         
         <button 
-          @click="goToNextNode"
           :disabled="!hasNextNode"
           class="control-btn hover-lift"
           title="下一个节点"
+          @click="goToNextNode"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            />
           </svg>
         </button>
       </div>
@@ -69,54 +110,82 @@
       <!-- 功能控制 -->
       <div class="control-group">
         <button 
-          @click="toggleNodeList"
           class="control-btn hover-lift"
           :class="{ active: showNodeList }"
           title="节点列表"
+          @click="toggleNodeList"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M3 4a1 1 0 000 2h14a1 1 0 100-2H3zm0 4a1 1 0 000 2h14a1 1 0 100-2H3zm0 4a1 1 0 000 2h14a1 1 0 100-2H3z" clip-rule="evenodd" />
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 4a1 1 0 000 2h14a1 1 0 100-2H3zm0 4a1 1 0 000 2h14a1 1 0 100-2H3zm0 4a1 1 0 000 2h14a1 1 0 100-2H3z"
+              clip-rule="evenodd"
+            />
           </svg>
         </button>
         
         <button 
-          @click="toggleTimeline"
           class="control-btn hover-lift"
           :class="{ active: showTimeline }"
           title="时间轴"
+          @click="toggleTimeline"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            />
           </svg>
         </button>
         
         <button 
-          @click="showCurrentStory"
           :disabled="!currentNode"
           class="control-btn"
           title="查看当前故事"
+          @click="showCurrentStory"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button>
         
         <button 
-          @click="showAchievements"
           class="control-btn"
           title="查看成就"
+          @click="showAchievements"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
         </button>
         
         <button 
-          @click="goHome"
           class="control-btn"
           title="返回首页"
+          @click="goHome"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
           </svg>
         </button>
@@ -152,36 +221,51 @@
     >
       <div class="popup-content">
         <div class="popup-header">
-          <h3 class="popup-title">{{ selectedNode.name }}</h3>
+          <h3 class="popup-title">
+            {{ selectedNode.name }}
+          </h3>
           <button 
-            @click="closeNodePopup"
             class="popup-close"
+            @click="closeNodePopup"
           >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            <svg
+              class="w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
             </svg>
           </button>
         </div>
         
         <div class="popup-body">
-          <p class="node-summary">{{ selectedNode.summary }}</p>
+          <p class="node-summary">
+            {{ selectedNode.summary }}
+          </p>
           
-          <div class="node-poem" v-if="selectedNode.poem">
+          <div
+            v-if="selectedNode.poem"
+            class="node-poem"
+          >
             <blockquote>{{ selectedNode.poem }}</blockquote>
           </div>
           
           <div class="node-actions">
             <button 
-              @click="visitNode(selectedNode)"
               :disabled="isNodeVisited(selectedNode.id)"
               class="btn-primary btn-sm"
+              @click="visitNode(selectedNode)"
             >
               {{ isNodeVisited(selectedNode.id) ? '已访问' : '访问节点' }}
             </button>
             
             <button 
-              @click="showNodeStory(selectedNode)"
               class="btn-secondary btn-sm"
+              @click="showNodeStory(selectedNode)"
             >
               查看故事
             </button>
@@ -207,9 +291,12 @@
     />
     
     <!-- 加载状态 -->
-    <div v-if="isLoading" class="loading-overlay">
+    <div
+      v-if="isLoading"
+      class="loading-overlay"
+    >
       <div class="loading-spinner">
-        <div class="spinner"></div>
+        <div class="spinner" />
         <p>加载地图数据...</p>
       </div>
     </div>
@@ -279,7 +366,9 @@ const loadMapData = async () => {
     isLoading.value = true
     
     // 加载节点数据
-    nodes.value = await apiClient.getNodes()
+    // 先获取节点数据，再按时间进行排序，保证时间轴与前/后导航顺序正确
+    const fetched = await apiClient.getNodes()
+    nodes.value = sortNodesChronologically(fetched)
     
     // 设置当前节点
     if (progressStore.currentNodeId) {
@@ -295,6 +384,72 @@ const loadMapData = async () => {
   } finally {
     isLoading.value = false
   }
+}
+
+/**
+ * 解析中文时间字符串为 Date
+ * 支持格式："1934年10月"、"1935年1月15日"、"1935年1-4月"、"1935年1月15-17日"
+ */
+const parseChineseTimeToDate = (t) => {
+  if (!t || typeof t !== 'string') return null
+  try {
+    const yearMatch = t.match(/(\d{4})年/)
+    const monthRangeMatch = t.match(/(\d{1,2})(?:-(\d{1,2}))?月/)
+    const dayRangeMatch = t.match(/(\d{1,2})(?:-(\d{1,2}))?日/)
+    const year = yearMatch ? parseInt(yearMatch[1], 10) : NaN
+    const month = monthRangeMatch ? parseInt(monthRangeMatch[1], 10) : 1
+    const day = dayRangeMatch ? parseInt(dayRangeMatch[1], 10) : 1
+    if (!isNaN(year)) return new Date(year, Math.max(0, month - 1), day)
+    return null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * 解析英文时间字符串为 Date
+ * 支持格式："October 1934"、"January 1935" 等
+ */
+const parseEnglishTimeToDate = (t) => {
+  if (!t || typeof t !== 'string') return null
+  try {
+    const months = {
+      January:1, February:2, March:3, April:4, May:5, June:6,
+      July:7, August:8, September:9, October:10, November:11, December:12
+    }
+    const m = t.match(/(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})/)
+    if (m) {
+      const month = months[m[1]]
+      const year = parseInt(m[2], 10)
+      return new Date(year, month - 1, 1)
+    }
+    const y = t.match(/(\d{4})/)
+    if (y) return new Date(parseInt(y[1], 10), 0, 1)
+    return null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * 提取节点用于排序的时间戳
+ * 优先中文时间，其次英文时间，失败则使用 Infinity
+ */
+const getNodeSortTime = (node) => {
+  const d = parseChineseTimeToDate(node.time || node.time_zh) || parseEnglishTimeToDate(node.time_en)
+  return d ? d.getTime() : Number.POSITIVE_INFINITY
+}
+
+/**
+ * 按时间升序排序节点
+ */
+const sortNodesChronologically = (arr) => {
+  return [...arr].sort((a, b) => {
+    const ta = getNodeSortTime(a)
+    const tb = getNodeSortTime(b)
+    if (ta === tb) return (a.id || '').localeCompare(b.id || '')
+    return ta - tb
+  })
 }
 
 /**

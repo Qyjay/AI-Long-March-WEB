@@ -1,5 +1,8 @@
 <template>
-  <div class="story-runner-container" :class="{ 'fullscreen': isFullscreen }">
+  <div
+    class="story-runner-container"
+    :class="{ 'fullscreen': isFullscreen }"
+  >
     <!-- 加载状态 -->
     <LoadingSpinner 
       v-if="isLoading" 
@@ -26,7 +29,7 @@
       class="story-background"
       :style="{ backgroundImage: currentScene?.background ? `url(${currentScene.background})` : 'none' }"
     >
-      <div class="story-overlay"></div>
+      <div class="story-overlay" />
     </div>
     
     <!-- 故事内容 -->
@@ -40,55 +43,104 @@
         
         <div class="story-controls">
           <button 
-            @click="toggleTimelineView"
             class="control-btn"
             :class="{ active: showTimeline }"
             title="时间轴视图"
+            @click="toggleTimelineView"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              />
             </svg>
           </button>
           
           <button 
-            @click="toggleAutoPlay"
             class="control-btn"
             :class="{ active: isAutoPlay }"
             title="自动播放"
+            @click="toggleAutoPlay"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path v-if="isAutoPlay" fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-              <path v-else fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                v-if="isAutoPlay"
+                fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+                clip-rule="evenodd"
+              />
+              <path
+                v-else
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                clip-rule="evenodd"
+              />
             </svg>
           </button>
           
           <button 
-            @click="toggleFullscreen"
             class="control-btn"
             title="全屏"
+            @click="toggleFullscreen"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path v-if="isFullscreen" fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 11-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd" />
-              <path v-else fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 11-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12z" clip-rule="evenodd" />
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                v-if="isFullscreen"
+                fill-rule="evenodd"
+                d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 11-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z"
+                clip-rule="evenodd"
+              />
+              <path
+                v-else
+                fill-rule="evenodd"
+                d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 11-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12z"
+                clip-rule="evenodd"
+              />
             </svg>
           </button>
           
           <button 
-            @click="closeStory"
             class="control-btn close-btn"
             title="关闭"
+            @click="closeStory"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
             </svg>
           </button>
         </div>
       </div>
       
       <!-- 历史时间轴视图 -->
-      <div v-if="showTimeline" class="timeline-view">
+      <div
+        v-if="showTimeline"
+        class="timeline-view"
+      >
         <div class="timeline-container">
-          <h3 class="timeline-title">长征历史时间轴</h3>
+          <h3 class="timeline-title">
+            长征历史时间轴
+          </h3>
           <div class="timeline-content">
             <div 
               v-for="(node, index) in timelineNodes"
@@ -98,20 +150,33 @@
               @click="selectTimelineNode(node)"
             >
               <div class="timeline-marker">
-                <div class="timeline-dot"></div>
-                <div v-if="index < timelineNodes.length - 1" class="timeline-line"></div>
+                <div class="timeline-dot" />
+                <div
+                  v-if="index < timelineNodes.length - 1"
+                  class="timeline-line"
+                />
               </div>
               <div class="timeline-content-item">
                 <div class="timeline-header">
-                  <h4 class="timeline-node-title">{{ node.name_zh }}</h4>
+                  <h4 class="timeline-node-title">
+                    {{ node.name_zh }}
+                  </h4>
                   <span class="timeline-date">{{ node.time }}</span>
                 </div>
-                <p class="timeline-summary">{{ node.summary_zh }}</p>
-                <div v-if="node.id === currentNodeId" class="timeline-details">
+                <p class="timeline-summary">
+                  {{ node.summary_zh }}
+                </p>
+                <div
+                  v-if="node.id === currentNodeId"
+                  class="timeline-details"
+                >
                   <div class="timeline-description">
                     <p>{{ node.description_zh }}</p>
                   </div>
-                  <div v-if="node.gallery && node.gallery.length > 0" class="timeline-gallery">
+                  <div
+                    v-if="node.gallery && node.gallery.length > 0"
+                    class="timeline-gallery"
+                  >
                     <h5>历史图片</h5>
                     <div class="gallery-grid">
                       <div 
@@ -120,11 +185,17 @@
                         class="gallery-item"
                         @click="openImageModal(image, imgIndex)"
                       >
-                        <img :src="image" :alt="`${node.name_zh} 图片 ${imgIndex + 1}`" />
+                        <img
+                          :src="image"
+                          :alt="`${node.name_zh} 图片 ${imgIndex + 1}`"
+                        >
                       </div>
                     </div>
                   </div>
-                  <div v-if="node.historical_significance" class="timeline-significance">
+                  <div
+                    v-if="node.historical_significance"
+                    class="timeline-significance"
+                  >
                     <h5>历史意义</h5>
                     <p>{{ node.historical_significance }}</p>
                   </div>
@@ -136,9 +207,15 @@
       </div>
       
       <!-- 角色对话区域 -->
-      <div class="dialogue-area" v-if="currentDialogue">
+      <div
+        v-if="currentDialogue"
+        class="dialogue-area"
+      >
         <!-- 角色头像和信息 -->
-        <div class="character-info" v-if="currentCharacter">
+        <div
+          v-if="currentCharacter"
+          class="character-info"
+        >
           <div class="character-avatar">
             <img 
               v-if="currentCharacter.avatar"
@@ -146,21 +223,31 @@
               :alt="currentCharacter.name"
               class="avatar-image"
             >
-            <div v-else class="avatar-placeholder">
+            <div
+              v-else
+              class="avatar-placeholder"
+            >
               {{ currentCharacter.name.charAt(0) }}
             </div>
           </div>
           
           <div class="character-details">
-            <h3 class="character-name">{{ currentCharacter.name }}</h3>
-            <p class="character-role">{{ currentCharacter.role }}</p>
+            <h3 class="character-name">
+              {{ currentCharacter.name }}
+            </h3>
+            <p class="character-role">
+              {{ currentCharacter.role }}
+            </p>
           </div>
         </div>
         
         <!-- 对话内容 -->
         <div class="dialogue-content">
-          <div class="dialogue-text" ref="dialogueTextRef">
-            <p v-html="displayedText"></p>
+          <div
+            ref="dialogueTextRef"
+            class="dialogue-text"
+          >
+            <p v-html="displayedText" />
           </div>
           
           <!-- 继续指示器 -->
@@ -169,27 +256,43 @@
             class="continue-indicator"
           >
             <span>点击继续</span>
-            <svg class="w-4 h-4 animate-bounce" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            <svg
+              class="w-4 h-4 animate-bounce"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
             </svg>
           </div>
         </div>
       </div>
       
       <!-- 选择分支 -->
-      <div class="choices-area" v-if="showChoices && currentChoices.length > 0">
-        <h4 class="choices-title">请选择：</h4>
+      <div
+        v-if="showChoices && currentChoices.length > 0"
+        class="choices-area"
+      >
+        <h4 class="choices-title">
+          请选择：
+        </h4>
         <div class="choices-list">
           <button 
             v-for="(choice, index) in currentChoices"
             :key="index"
-            @click="makeChoice(choice)"
             class="choice-btn"
             :class="{ disabled: choice.disabled }"
             :disabled="choice.disabled"
+            @click="makeChoice(choice)"
           >
             <span class="choice-text">{{ choice.text }}</span>
-            <span v-if="choice.consequence" class="choice-consequence">
+            <span
+              v-if="choice.consequence"
+              class="choice-consequence"
+            >
               {{ choice.consequence }}
             </span>
           </button>
@@ -197,7 +300,10 @@
       </div>
       
       <!-- 场景描述 -->
-      <div class="scene-description" v-if="currentScene?.description">
+      <div
+        v-if="currentScene?.description"
+        class="scene-description"
+      >
         <p>{{ currentScene.description }}</p>
       </div>
     </div>
@@ -208,7 +314,7 @@
         <div 
           class="progress-fill"
           :style="{ width: progressPercentage + '%' }"
-        ></div>
+        />
       </div>
       <span class="progress-text">
         {{ currentDialogueIndex + 1 }} / {{ totalDialogues }}
@@ -221,35 +327,73 @@
       :src="currentScene?.music"
       loop
       preload="auto"
-    ></audio>
+    />
     
     <!-- 图片模态框 -->
-    <div v-if="showImageModal" class="image-modal" @click="closeImageModal">
-      <div class="image-modal-content" @click.stop>
-        <button class="image-modal-close" @click="closeImageModal">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+    <div
+      v-if="showImageModal"
+      class="image-modal"
+      @click="closeImageModal"
+    >
+      <div
+        class="image-modal-content"
+        @click.stop
+      >
+        <button
+          class="image-modal-close"
+          @click="closeImageModal"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
           </svg>
         </button>
-        <img :src="currentModalImage" :alt="modalImageAlt" class="modal-image" />
+        <img
+          :src="currentModalImage"
+          :alt="modalImageAlt"
+          class="modal-image"
+        >
         <div class="image-modal-nav">
           <button 
-            @click="previousImage"
             class="nav-btn"
             :disabled="currentImageIndex === 0"
+            @click="previousImage"
           >
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
             </svg>
           </button>
           <span class="image-counter">{{ currentImageIndex + 1 }} / {{ currentGallery.length }}</span>
           <button 
-            @click="nextImage"
             class="nav-btn"
             :disabled="currentImageIndex === currentGallery.length - 1"
+            @click="nextImage"
           >
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              />
             </svg>
           </button>
         </div>

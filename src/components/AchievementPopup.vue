@@ -9,13 +9,17 @@
         src="/assets/ok.png"
         alt="achievement"
         class="w-full object-cover rounded-t-2xl"
-      />
+      >
       <div class="p-4 text-center">
-        <h2 class="text-xl font-bold">你已完成长征！</h2>
-        <p class="text-gray-600 mt-2">恭喜你达成成就 🎉</p>
+        <h2 class="text-xl font-bold">
+          你已完成长征！
+        </h2>
+        <p class="text-gray-600 mt-2">
+          恭喜你达成成就 🎉
+        </p>
         <button
-          @click="close"
           class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          @click="close"
         >
           关闭
         </button>

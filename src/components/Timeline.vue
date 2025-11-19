@@ -1,27 +1,56 @@
 <template>
-  <div class="timeline-container" v-show="isVisible">
+  <div
+    v-show="isVisible"
+    class="timeline-container"
+  >
     <transition name="slide-up">
-      <div v-show="isVisible" class="timeline-wrapper">
+      <div
+        v-show="isVisible"
+        class="timeline-wrapper"
+      >
         <div class="timeline-steps">
-          <div v-for="(node, index) in timelineNodes" :key="node.id" class="timeline-step" :class="{
-            'active': index === activeStep,
-            'completed': progressStore.isNodeVisited(node.id),
-            'current': progressStore.currentNodeId === node.id
-          }" @click="handleStepClick(node, index)">
+          <div
+            v-for="(node, index) in timelineNodes"
+            :key="node.id"
+            class="timeline-step"
+            :class="{
+              'active': index === activeStep,
+              'completed': progressStore.isNodeVisited(node.id),
+              'current': progressStore.currentNodeId === node.id
+            }"
+            @click="handleStepClick(node, index)"
+          >
             <div class="step-icon">
-              <i v-if="progressStore.isNodeVisited(node.id)" class="icon-check">✓</i>
-              <i v-else-if="progressStore.currentNodeId === node.id" class="icon-current">●</i>
-              <span v-else class="step-number">{{ index + 1 }}</span>
+              <i
+                v-if="progressStore.isNodeVisited(node.id)"
+                class="icon-check"
+              >✓</i>
+              <i
+                v-else-if="progressStore.currentNodeId === node.id"
+                class="icon-current"
+              >●</i>
+              <span
+                v-else
+                class="step-number"
+              >{{ index + 1 }}</span>
             </div>
             <div class="step-content">
-              <div class="step-title">{{ node.name_zh }}</div>
-              <div class="step-subtitle">{{ node.time || '长征途中' }}</div>
+              <div class="step-title">
+                {{ node.name_zh }}
+              </div>
+              <div class="step-subtitle">
+                {{ node.time || '长征途中' }}
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 关闭按钮 -->
-        <button class="close-btn" @click="hide" title="关闭时间轴">
+        <button
+          class="close-btn"
+          title="关闭时间轴"
+          @click="hide"
+        >
           <i class="icon-close">×</i>
         </button>
       </div>

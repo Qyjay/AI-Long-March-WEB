@@ -25,6 +25,30 @@ const routes = [
     }
   },
   {
+    path: '/stories',
+    name: 'HistoryStories',
+    component: () => import('@/views/StoryPage.vue'),
+    meta: {
+      title: '历史故事'
+    }
+  },
+  {
+    path: '/heroes',
+    name: 'Heroes',
+    component: () => import('@/views/HeroesPage.vue'),
+    meta: {
+      title: '长征英雄'
+    }
+  },
+  {
+    path: '/memorials',
+    name: 'Memorials',
+    component: () => import('@/views/MemorialsPage.vue'),
+    meta: {
+      title: '红色圣地'
+    }
+  },
+  {
     path: '/story/:nodeId',
     name: 'Story',
     component: () => import('@/views/StoryPage.vue'),
