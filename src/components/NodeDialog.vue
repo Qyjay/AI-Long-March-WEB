@@ -67,7 +67,7 @@
           <div class="flex items-start gap-4">
             <!-- 小精灵头像（固定宽度，不会撑开弹窗） -->
             <img
-              :src="resolveImage('/static/assets/1.png')"
+              :src="resolveImage('/assets/1.png')"
               alt="sprite"
               class="w-16 h-16 rounded-full flex-shrink-0"
             >
@@ -182,7 +182,7 @@ const selectedIndex = ref(null);
 const isCorrect = ref(false);
 
 // small sprite url
-const spriteUrl = '/assets/sprite.png';
+const spriteUrl = '/assets/sprite.jpg';
 const contentArea = ref(null);
 
 // class helper
@@ -257,8 +257,10 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 const resolveImage = (url) => {
   if (!url) return '';
   if (url.startsWith('http')) return url;
-  if (url.startsWith('/static')) return `${API_BASE}${url}`;
   if (url.startsWith('/assets')) return url;
-  return `${API_BASE}/static/assets/${url}`;
+  if (url.startsWith('/static')) return `${API_BASE}${url}`;
+  // 文件名（如 ruijin.png）统一指向前端 public 资源
+  if (/\.(png|jpg|jpeg|webp|gif)$/i.test(url)) return `/assets/${url}`;
+  return `/assets/${url}.png`;
 };
 </script>

@@ -16,16 +16,8 @@
     <!-- 英雄列表 -->
     <section class="heros-list-section">
       <h2 class="section-title" />
-      <div
-        v-if="heros.length"
-        class="heros-grid"
-      >
-        <div
-          v-for="hero in heros"
-          :key="hero.id"
-          class="hero-card"
-          @click="openHero(hero)"
-        >
+      <div v-if="heros.length" class="heros-grid">
+        <div v-for="hero in heros" :key="hero.id" class="hero-card" @click="openHero(hero)">
           <div class="hero-content">
             <h3 class="hero-name">
               {{ hero.name }}
@@ -40,20 +32,13 @@
           </div>
         </div>
       </div>
-      <div
-        v-else
-        class="empty-state"
-      >
+      <div v-else class="empty-state">
         <p>暂无英雄信息</p>
       </div>
     </section>
 
     <!-- 英雄详情弹窗 -->
-    <HeroDetailModal
-      v-if="selectedHero"
-      :hero="selectedHero"
-      @close="closeHero"
-    />
+    <HeroDetailModal v-if="selectedHero" :hero="selectedHero" @close="closeHero" />
   </div>
 </template>
 
@@ -66,9 +51,9 @@ import HeroDetailModal from '@/components/HeroDetailModal.vue'
 
 // 导入已知的英雄图片
 const heroImages = {
-  'maozedong': new URL('@/data/maozedong.png', import.meta.url).href,
-  'zhouenlai': new URL('@/data/zhouenlai.png', import.meta.url).href,
-  'zhude': new URL('@/data/zhude.png', import.meta.url).href,
+  'maozedong': new URL('../data/ok.png', import.meta.url).href,
+  'zhouenlai': new URL('../data/ok.png', import.meta.url).href,
+  'zhude': new URL('../data/ok.png', import.meta.url).href,
   'penghuai': new URL('@/data/ok.png', import.meta.url).href, // 使用占位图
   'linbiao': new URL('@/data/ok.png', import.meta.url).href, // 使用占位图
   'liuxiang': new URL('@/data/ok.png', import.meta.url).href, // 使用占位图
@@ -216,7 +201,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
+  background:
     radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.1) 0%, transparent 50%);
   pointer-events: none;
@@ -298,7 +283,7 @@ onMounted(() => {
 
 .hero-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 
+  box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.3),
     0 0 30px rgba(212, 175, 55, 0.2);
   border-color: rgba(212, 175, 55, 0.6);

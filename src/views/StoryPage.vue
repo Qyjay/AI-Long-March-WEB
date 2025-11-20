@@ -128,9 +128,9 @@ import OkPng from '@/data/ok.png'
 
 // 导入已知的历史故事图片
 const storyImages = {
-  'ruijinchufa': new URL('@/data/ruijinchufa.png', import.meta.url).href,
-  'yuduheye': new URL('@/data/yuduheye.png', import.meta.url).href,
-  'bantiaobeizi': new URL('@/data/bantiaobeizi.png', import.meta.url).href,
+  'ruijinchufa': new URL('../data/ruijinchufa.png', import.meta.url).href,
+  'yuduheye': new URL('../data/yuduheye.png', import.meta.url).href,
+  'bantiaobeizi': new URL('../data/bantiaobeizi.png', import.meta.url).href,
   'wuzhuangudu': new URL('@/data/ok.png', import.meta.url).href, // 使用占位图
   'qiaodujinsha': new URL('@/data/ok.png', import.meta.url).href, // 使用占位图
   'yihaijiemeng': new URL('@/data/ok.png', import.meta.url).href, // 使用占位图
