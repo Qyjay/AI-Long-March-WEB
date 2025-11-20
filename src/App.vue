@@ -100,31 +100,11 @@
       </div>
     </Transition>
 
-    <!-- 离线模式提示 -->
-    <div
-      v-if="isOfflineMode"
-      class="fixed top-4 right-4 bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-2 rounded-lg shadow-lg z-40"
-    >
-      <div class="flex items-center">
-        <svg
-          class="w-5 h-5 mr-2"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-            clip-rule="evenodd"
-          />
-        </svg>
-        离线内容
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import { ref, computed, onMounted, onErrorCaptured } from 'vue'
+import { ref, onMounted, onErrorCaptured } from 'vue'
 import { useSettings } from '@/stores/settings'
 import AchievementToast from '@/components/AchievementToast.vue'
 
@@ -146,12 +126,7 @@ export default {
     const errorDetails = ref('')
     const retrying = ref(false)
 
-    /**
-     * 检查是否为离线模式
-     */
-    const isOfflineMode = computed(() => {
-      return import.meta.env.VITE_USE_MOCK === '1'
-    })
+    
 
     /**
      * 显示全局加载状态
@@ -244,7 +219,6 @@ export default {
 
     return {
       isLoading,
-      isOfflineMode,
       globalLoading,
       loadingMessage,
       globalError,

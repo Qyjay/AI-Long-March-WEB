@@ -50,6 +50,12 @@
         >
           诗词类
         </button>
+        <button
+          :class="tab==='qa'?activeTab:inactiveTab"
+          @click="tab='qa'"
+        >
+          问答类
+        </button>
       </div>
 
       <!-- 消息区 -->
@@ -74,7 +80,7 @@
         <input
           v-model="inputText"
           type="text"
-          placeholder="请输入问题..."
+          :placeholder="placeholder"
           class="flex-1 border rounded-full px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
           @keydown.enter="sendMessage"
         >
@@ -90,25 +96,55 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, computed } from 'vue';
+import { createLlmClient } from '../lib/langchainClient';
 
 const isOpen = ref(false);
-const tab = ref('story'); // story / poem
+const tab = ref('story'); // story / poem / qa
 const inputText = ref('');
-const messages = ref({ story: [], poem: [] });
+const messages = ref({ story: [], poem: [], qa: [] });
 const messageArea = ref(null);
+const abortController = ref(null);
+
+// 输入占位提示
+const placeholder = computed(() => {
+  if (tab.value === 'story') return '请输入背景或补充信息（剧情类）';
+  if (tab.value === 'poem') return '请输入赏析要点（诗词类）';
+  return '请输入提问（问答类）';
+});
 
 const activeTab = "flex-1 py-2 text-center font-medium border-b-2 border-blue-500";
 const inactiveTab = "flex-1 py-2 text-center font-medium text-gray-500 hover:bg-gray-100";
 const userClass = 'inline-block bg-blue-500 text-white px-3 py-1 rounded-lg max-w-[80%] break-words';
 const assistantClass = 'inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-lg max-w-[80%] break-words';
 
+// 是否启用前端 mock（使用 LangChain 直接调用）
+const USE_MOCK = import.meta.env.VITE_USE_MOCK === '1' || import.meta.env.VITE_USE_MOCK === 'true';
+
+// 前端 LangChain 客户端（仅在 mock 模式创建）
+const llmClient = USE_MOCK
+  ? createLlmClient({
+      model: import.meta.env.VITE_LLM_MODEL,
+      baseUrl: import.meta.env.VITE_OPENAI_BASE_URL,
+      apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+    })
+  : null;
+
+/**
+ * 滚动消息区域到底部，确保最新内容可见
+ */
 const scrollToBottom = async () => {
   await nextTick();
   const area = messageArea.value;
   if (area) area.scrollTop = area.scrollHeight;
 }
 
+/**
+ * 发送消息并接入后端 SSE 流式返回
+ * - 根据当前 tab 构造请求体与终端路径
+ * - 使用 ReadableStream 解析 SSE（按 \n\n 分段，行以 data: 开头）
+ * - 支持中止上一次请求（AbortController）
+ */
 const sendMessage = async () => {
   if (!inputText.value.trim()) return;
 
@@ -121,36 +157,94 @@ const sendMessage = async () => {
   // 添加占位小精灵消息
   messages.value[tab.value].push({ role: 'assistant', content: '' });
   const msgIndex = messages.value[tab.value].length - 1;
+  const lockedTab = tab.value;
   await scrollToBottom();
 
   // 构建 payload
   const base = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
   const endpoint = tab.value === 'story'
     ? `${base}/chat/explanation`
-    : `${base}/chat/poem`;
-  const payload = tab.value === 'story'
-    ? {
+    : tab.value === 'poem'
+      ? `${base}/chat/poem`
+      : `${base}/chat/qa`;
+  const payload = (() => {
+    if (tab.value === 'story') {
+      // 默认示例字段，使用用户输入补充背景，便于与对话关联
+      return {
         route: "长征路线",
         choice: "正面突破",
         real_history_choice: "分兵佯攻",
-        history_background: "历史背景描述",
+        history_background: userInput || "历史背景描述",
         tactical_logic: "战术逻辑描述"
       }
-    : {
+    }
+    if (tab.value === 'poem') {
+      return {
         route: "长征路线",
         poem: "七律·长征",
         creation_background: "创作背景描述",
-        poem_analysis: "诗词解析描述",
+        poem_analysis: userInput || "诗词解析描述",
         spirit: "精神内涵描述",
         meanings: "当代意义描述"
-      };
+      }
+    }
+    // qa：直接将用户输入作为问题
+    return { question: userInput }
+  })();
+
+  // mock: 前端直接调用 LangChain（流式输出，仅使用用户输入）
+  if (USE_MOCK && llmClient) {
+    try {
+      const stream = llmClient.askStream(lockedTab, userInput);
+      for await (const delta of stream) {
+        const target = messages.value[lockedTab][msgIndex];
+        if (!target) break;
+        target.content += delta;
+        await scrollToBottom();
+      }
+      return;
+    } catch (e) {
+      const target = messages.value[lockedTab][msgIndex];
+      if (target) target.content = '前端模型调用失败';
+      await scrollToBottom();
+      return;
+    }
+  }
+
+  // 取消上一次请求（若存在）
+  if (abortController.value) {
+    try { abortController.value.abort(); } catch {}
+  }
+  abortController.value = new AbortController();
 
   try {
     const res = await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'text/event-stream'
+      },
+      body: JSON.stringify(payload),
+      signal: abortController.value.signal
     });
+
+    // 非 SSE 错误（例如参数解析失败），尝试读取 JSON 并提示
+    const ct = res.headers.get('Content-Type') || '';
+    if (!res.ok) {
+      try {
+        const errJson = await res.json();
+        messages.value[tab.value][msgIndex].content = errJson?.error || '请求失败';
+      } catch {
+        messages.value[tab.value][msgIndex].content = `请求失败(${res.status})`;
+      }
+      await scrollToBottom();
+      return;
+    }
+    if (!ct.includes('text/event-stream')) {
+      messages.value[tab.value][msgIndex].content = '服务未以 SSE 返回';
+      await scrollToBottom();
+      return;
+    }
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
@@ -169,8 +263,12 @@ const sendMessage = async () => {
             const jsonStr = line.slice(5).trim();
             try {
               const evt = JSON.parse(jsonStr);
-              if (evt && evt.content) {
+              if (evt?.type === 'content' && evt?.content) {
                 messages.value[tab.value][msgIndex].content += evt.content;
+                await scrollToBottom();
+              } else if (evt?.type === 'error') {
+                const msg = evt?.meta?.message || evt?.message || '服务错误';
+                messages.value[tab.value][msgIndex].content += `\n[错误] ${msg}`;
                 await scrollToBottom();
               }
             } catch(_) {
@@ -181,28 +279,14 @@ const sendMessage = async () => {
       }
     }
   } catch(err) {
-  let fakeAnswer = '';
-
-  if(tab.value === 'story'){
-    fakeAnswer = `瑞金是中华苏维埃共和国临时中央政府所在地，被称为“红色故都”。在1931年至1934年间，瑞金是中央苏区的政治、军事和经济中心。这里发生了许多重要事件，包括红军的战略部署和苏维埃政府的建立。瑞金的红军和苏维埃政府在中国共产党领导下，由毛泽东、朱德、周恩来等领导核心人物带领，开展了土地革命和抗击国民党军队的斗争，为后续长征奠定了坚实的基础。这一段历史体现了红军的勇敢、智慧和坚韧不拔的精神。`;
-  } else if(tab.value === 'poem'){
-    fakeAnswer = `长征期间流传的著名诗词有毛泽东的《长征》和《七律·长征》等。《七律·长征》通过生动的描写，展现了红军战士在长征途中跨越雪山草地、攻克敌军封锁线的艰难与壮丽。诗句既有雄壮的气势，也有深厚的历史厚重感，每一句都充满了坚定的意志和革命精神。这些诗词不仅是文学作品，更是红军精神的象征，激励后人铭记历史、坚韧奋进。`;
-  }
-
-  // 将回答拆成若干小段
-  const chunks = fakeAnswer.match(/(.|[\r\n]){1,20}/g); // 每20个字符一段
-  let idx = 0;
-
-  const interval = setInterval(async () => {
-    if(idx >= chunks.length){
-      clearInterval(interval);
+    if (err?.name === 'AbortError') {
+      messages.value[tab.value][msgIndex].content += '\n[已取消]';
+      await scrollToBottom();
       return;
     }
-    messages.value[tab.value][msgIndex].content += chunks[idx];
-    idx++;
+    messages.value[tab.value][msgIndex].content = '网络错误或服务不可用';
     await scrollToBottom();
-  }, 250); // 每50ms输出一段，效果类似流式输出
-}
+  }
 }
 </script>
 
